@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UpdateprofileComponent } from './profilecomponents/updateprofile/updateprofile.component';
-import { LoginComponent } from './routing/login/login.component'; 
+import { LoginComponent } from './routing/login/login.component';
 import { NavbarComponent } from './routing/navbar/navbar.component';
 import { SalaryDetailsComponent } from './routing/salary-details/salary-details.component';
 // import { SalaryDetailsComponent } from './salary-details/salary-details.component';
@@ -29,9 +29,7 @@ import { BankDetailsComponent } from './routing/bank-details/bank-details.compon
 import { CreateBankDetailsComponent } from './routing/create-bank-details/create-bank-details.component';
 import { EditBankDetailsComponent } from './routing/edit-bank-details/edit-bank-details.component';
 import { CreateLeaveComponent } from './routing/create-leave/create-leave.component';
-
-
-
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -41,16 +39,20 @@ const routes: Routes = [
   {
     path: 'navbar',
     component: NavbarComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'updateprofile', component: UpdateprofileComponent },
       { path: 'salary-details', component: SalaryDetailsComponent },
-      {path: 'create-new-salary-details',component: CreateNewSalaryDetailsComponent, },
+      {
+        path: 'create-new-salary-details',
+        component: CreateNewSalaryDetailsComponent,
+      },
       { path: 'create-designation', component: CreateDesignationComponent },
       { path: 'changepassword', component: ChangepasswordComponent },
       { path: 'create-taxtype', component: CreateTaxtypeComponent },
       { path: 'profile-photo', component: ProfilePhotoComponent },
       { path: 'salDeduction', component: SalDeductionComponent },
-    
+
       { path: 'salary-details', component: SalaryDetailsComponent },
       { path: 'create-designation', component: CreateDesignationComponent },
       { path: 'create-taxtype', component: CreateTaxtypeComponent },
@@ -61,15 +63,18 @@ const routes: Routes = [
       { path: 'apply', component: ApppledLeavesComponent },
       { path: 'Employees', component: EmployeesComponent },
       { path: 'paySlip', component: PaySlipComponent },
-      {path: 'create-new-salary-details',component: CreateNewSalaryDetailsComponent,},
-      {path: 'create-leave',component: CreateLeaveComponent},
-      {path:'cretenewemployee',component:CreateNewEmployeeComponent},
-      {path:'updatephoto',component:UpdatephotoComponent},
-      {path:'updateemployee',component:UpdateEmployeeComponent},
-      {path:'employee-leaves',component:EmployeeLeavesComponent},
-      {path:'bankDetails',component:BankDetailsComponent},
-      {path:'create-bank-details',component:CreateBankDetailsComponent},
-      {path:'edit-bank-details/:id',component:EditBankDetailsComponent},
+      {
+        path: 'create-new-salary-details',
+        component: CreateNewSalaryDetailsComponent,
+      },
+      { path: 'create-leave', component: CreateLeaveComponent },
+      { path: 'cretenewemployee', component: CreateNewEmployeeComponent },
+      { path: 'updatephoto', component: UpdatephotoComponent },
+      { path: 'updateemployee', component: UpdateEmployeeComponent },
+      { path: 'employee-leaves', component: EmployeeLeavesComponent },
+      { path: 'bankDetails', component: BankDetailsComponent },
+      { path: 'create-bank-details', component: CreateBankDetailsComponent },
+      { path: 'edit-bank-details/:id', component: EditBankDetailsComponent },
     ],
   },
 
