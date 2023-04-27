@@ -22,11 +22,11 @@
         <div class="p-inputgroup">
           <input type="text" class="form-control" pInputText  placeholder="Username" name="username" [(ngModel)]="form.username" required
             #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.errors }">
-
+            <p *ngIf="username.errors && f.submitted" class="invalid-feedback">
+              Username is required!
+            </p>
         </div>
-        <p *ngIf="username.errors && f.submitted" class="invalid-feedback">
-          Username is required!
-        </p>
+        
       </div>
       <br>
       <div class="p-col-12 p-md-4">
