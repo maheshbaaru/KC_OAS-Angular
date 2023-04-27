@@ -22,7 +22,11 @@
         <div class="p-inputgroup">
           <input type="text" class="form-control" pInputText  placeholder="Username" name="username" [(ngModel)]="form.username" required
             #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.errors }">
+
         </div>
+        <p *ngIf="username.errors && f.submitted" class="invalid-feedback">
+          Username is required!
+        </p>
       </div>
       <br>
       <div class="p-col-12 p-md-4">
@@ -32,9 +36,7 @@
 
           <input type="text" class="form-control" pInputText placeholder="Password" name="password" [(ngModel)]="form.password" required
             minlength="4" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.errors }">
-          <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
-            Username is required!
-          </div>
+        
           <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
             <div *ngIf="password.errors['required']">Password is required</div>
             <div *ngIf="password.errors['minlength']">
