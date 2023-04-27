@@ -93,13 +93,17 @@
 
     </mat-toolbar>
 
+    <div class="bottom-content" >
+        <app-home *ngIf="isHome"></app-home>
 
+        <router-outlet></router-outlet>
+    </div>
 
 
     <div class="bottom-content" *ngIf="showAdminBoard">
         <app-home *ngIf="isHome"></app-home>
 
-        <router-outlet></router-outlet>
+        
     </div>
 <footer>©2023 - Kode Corp Technology Solutions Pvt.Ltd </footer>
 </div>
