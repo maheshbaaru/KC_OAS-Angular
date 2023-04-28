@@ -16,7 +16,7 @@ import { HomeComponent } from './routing/home/home.component';
 import { SalDeductionListComponent } from './routing/sal-deduction-list/sal-deduction-list.component';
 import { LeavesApprovelComponent } from './routing/leaves-approvel/leaves-approvel.component';
 import { EmployeeAccessComponent } from './routing/employee-access/employee-access.component';
-import { ApppledLeavesComponent } from './routing/apppled-leaves/apppled-leaves.component';
+import { ApplyLeavesComponent } from './routing/apply-leaves/apply-leaves.component';
 import { EmployeesComponent } from './routing/employees/employees.component';
 import { PaySlipComponent } from './routing/pay-slip/pay-slip.component';
 import { ChangepasswordComponent } from './profilecomponents/changepassword/changepassword.component';
@@ -56,7 +56,7 @@ const routes: Routes = [
       { path: 'DeductionList/:id', component: SalDeductionListComponent },
       { path: 'leavesApprov', component: LeavesApprovelComponent },
       { path: 'access', component: EmployeeAccessComponent },
-      { path: 'apply', component: ApppledLeavesComponent },
+      { path: 'apply', component: ApplyLeavesComponent },
       { path: 'Employees', component: EmployeesComponent },
       { path: 'paySlip', component: PaySlipComponent },
       { path: 'create-new-salary-details',component: CreateNewSalaryDetailsComponent,},
