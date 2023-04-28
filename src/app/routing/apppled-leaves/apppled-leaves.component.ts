@@ -10,13 +10,17 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class ApppledLeavesComponent {
   employeeLeavs: any;
-  constructor(private empSer: EmployeeService) {}
-  // ngOnInit() {
-  //   this.empSer.appliedLeaves().subscribe((data) => {
-  //     this.employeeLeavs = data;
-  //   });
-  // }
-  ngOnInit() {
-    this.empSer.appliedLeaves();
+  appliedLeaves: any;
+  constructor(private empSer: EmployeeService) {
+    this.empSer.appliedLeaves().subscribe((data) => {
+      this.employeeLeavs = data;
+      console.log(data);
+    });
   }
+  ngOnInit() {
+    this.empSer.appliedLeaves().subscribe((data) => {
+      this.appliedLeaves = data;
+    });
+  }
+  // ngOnInit() {}
 }

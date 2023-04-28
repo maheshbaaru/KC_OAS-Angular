@@ -6,15 +6,7 @@ import { ajax } from 'rxjs/ajax';
   providedIn: 'root',
 })
 export class EmployeeService {
-  constructor(private http: HttpClient) {
-    const API_CALL = 'https://localhost:7236';
-
-    forkJoin({
-      user: ajax.getJSON(`${API_CALL}/GetEmployeeTbls`),
-      appliedLeaves: ajax.getJSON(`${API_CALL}/LeavesApproval
-      `),
-    }).subscribe(console.log);
-  }
+  constructor(private http: HttpClient) {}
 
   getEmp() {
     return this.http.get('https://localhost:7236/GetEmployeeTbls');
@@ -23,5 +15,13 @@ export class EmployeeService {
     debugger;
     return this.http.get('assets/data/employeeList.json/' + id);
   }
-  appliedLeaves() {}
+  appliedLeaves() {
+    const API_CALL = 'https://localhost:7236';
+
+    return forkJoin({
+      user: ajax.getJSON(`${API_CALL}/GetEmployeeTbls`),
+      appliedLeaves: ajax.getJSON(`${API_CALL}/LeavesApproval
+      `),
+    });
+  }
 }

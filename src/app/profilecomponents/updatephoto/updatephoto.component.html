@@ -4,7 +4,7 @@
       <strong>UPDATE PROFILE PHOTO </strong>
     </div>
     <div class="col-sm-6" style="text-align:right">
-      <button pButton class="h-1rem" style="float: right;margin-right:5px; font-size: smaller;"><i
+      <button pButton class="h-1rem" style="float: right;margin-right:5px; font-size: smaller;" ><i
           class="pi pi-check icon"></i>SAVE</button>
     </div>
   </ng-template>
@@ -22,8 +22,8 @@
             <label for="designation-input" class="input-styling" required>Photo
               <span class="required">*</span>
             </label>
-            <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" [auto]="true"
-              chooseLabel="Browse"></p-fileUpload>
+            <p-fileUpload #fubauto mode="basic" name="demo[]" url="https://localhost:7236/UpdateProfilePhoto" accept="image/*" [auto]="true"
+              chooseLabel="Browse" (onUpload)="onUpload($event)"></p-fileUpload>
           </div>
         </form>
       </div>
