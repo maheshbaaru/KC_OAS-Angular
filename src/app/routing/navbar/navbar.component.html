@@ -70,9 +70,9 @@
         <div class="profile">
 
 
-            <div class="nav-item" routerLinkActive="active" (mouseover)="dispatchPlanmenuTrigger.openMenu()" *ngFor="let pPic of profilePic;index as i">
+            <div class="nav-item" routerLinkActive="active" (mouseover)="dispatchPlanmenuTrigger.openMenu()" >
                 <a class="nav-link customizing" #dispatchPlanmenuTrigger="matMenuTrigger"
-                    [matMenuTriggerFor]="dispatchPlan" >Welcome {{name}} <i src="pPic.photo"></i><mat-icon>person</mat-icon> </a>
+                    [matMenuTriggerFor]="dispatchPlan" >Welcome {{name}} <mat-icon>person</mat-icon> </a>
                 <mat-menu #dispatchPlan="matMenu">
 
                     <button mat-menu-item
