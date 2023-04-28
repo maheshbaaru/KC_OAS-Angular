@@ -20,10 +20,10 @@ export class HomeComponent {
   ];
 
   ngOnInit(): void {
-    debugger;
+
     this.authService.GetDashboarddetails().subscribe({
       next: (data: any) => {
-        debugger
+      
         this.pendingLeaves=data.approvalCount;
         this.upComingRevision=data.revisedCount;
         this.ActiveEmploye=data.employeeCount;

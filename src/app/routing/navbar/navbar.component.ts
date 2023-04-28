@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit {
         this.roles = ['ROLE_ADMIN'];
         this.authService.GetDashboarddetails().subscribe({
           next: (data: any) => {
-            debugger;
+           
             this.PendingLeaves = data.approvalCount;
             this.UpComingRevision = data.revisedCount;
             this.ActiveEmploye = data.employeeCount;

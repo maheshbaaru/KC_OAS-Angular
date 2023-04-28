@@ -18,7 +18,7 @@ export class AuthguardService {
   }
 
   GetDashboarddetails(): Observable<any> {
-    debugger
+    
     return this.httpClient.get<any>(environment.API_URL+environment.BASE_URL+'GetHome',  httpOptions);
   }
 

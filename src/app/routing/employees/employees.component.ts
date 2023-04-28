@@ -17,7 +17,7 @@ export class EmployeesComponent {
   ngOnInit(): void {
     this.service.getEmployeeList().subscribe((data1: any) => {
       console.log(data1);
-      debugger
+   
       this.empdata = data1;
     });
   }
