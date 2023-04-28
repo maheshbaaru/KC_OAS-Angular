@@ -9,7 +9,7 @@
               <mat-tab label="Third">Content 3</mat-tab>
             </mat-tab-group> -->
 
-           
+
             <div>
                 <p class="nav-link customizing" [routerLink]="['paySlip']" >Payslip</p>
             </div>
@@ -70,9 +70,9 @@
         <div class="profile">
 
 
-            <div class="nav-item" routerLinkActive="active" (mouseover)="dispatchPlanmenuTrigger.openMenu()">
+            <div class="nav-item" routerLinkActive="active" (mouseover)="dispatchPlanmenuTrigger.openMenu()" *ngFor="let pPic of profilePic;index as i">
                 <a class="nav-link customizing" #dispatchPlanmenuTrigger="matMenuTrigger"
-                    [matMenuTriggerFor]="dispatchPlan">Welcome {{name}} <mat-icon>account_circle</mat-icon> </a>
+                    [matMenuTriggerFor]="dispatchPlan" >Welcome {{name}} <i src="pPic.photo"></i><mat-icon>person</mat-icon> </a>
                 <mat-menu #dispatchPlan="matMenu">
 
                     <button mat-menu-item
@@ -94,7 +94,7 @@
     </mat-toolbar>
 
     <div class="bottom-content" >
-       
+
 
         <router-outlet></router-outlet>
     </div>
@@ -103,7 +103,7 @@
     <div class="bottom-content" *ngIf="showAdminBoard">
         <app-home *ngIf="isHome"></app-home>
 
-        
+
     </div>
 <footer>©2023 - Kode Corp Technology Solutions Pvt.Ltd </footer>
 </div>

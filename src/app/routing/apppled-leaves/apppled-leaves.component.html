@@ -2,13 +2,13 @@
   <ng-template pTemplate="header" >
     <div  class="col -md-6" style="text-align:left">
     <strong>LEAVES APPROVAL </strong>
-   
+
   </div>
       <div class="col-sm-6" style="text-align:right">
           <button pButton class="h-1rem" routerLink="../create-leave" class="h-2rem"style="float: right;font-size: small;font-weight: 500;margin-top:6px ;">+ CREATE NEW</button>
   </div>
-  </ng-template> 
-  
+  </ng-template>
+
   <p-table style="padding-bottom: 50px;" #dt1 [value]="employeeLeavs" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['Name','EmpId','LeaveType','NoDays','FDate','Tdate','AppliedOn','status']" responsiveLayout="scroll">
 
 
@@ -90,16 +90,16 @@
     </ng-template>
     <ng-template pTemplate="body" let-emp>
       <tr>
-        <td >{{emp.EmpId}}</td>
+        <td >{{emp.empId}}</td>
         <td>{{emp.Name}}</td>
-        <td>{{emp.LeaveType}}</td>
-        <td>{{emp.NoDays}}</td>
-        <td>{{emp.FDate}}</td>
-        <td>{{emp.Tdate}}</td>
-        <td>{{emp.AppliedOn}}</td>
-        <td>{{emp.status}}</td>
-        <td>{{emp.comment}}</td>
-        <td>{{emp.AComments}}</td>
+        <td>{{emp.leaveTypeId}}</td>
+        <td>{{emp.numOfDays}}</td>
+        <td>{{emp.fromDate}}</td>
+        <td>{{emp.toDate}}</td>
+        <td>{{emp.appliedOn}}</td>
+        <td>{{emp.statusId}}</td>
+        <td>{{emp.comments}}</td>
+        <td>{{emp.adminComments}}</td>
 
 
       </tr>

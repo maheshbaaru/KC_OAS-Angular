@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
   PendingLeaves: Int32Array;
   UpComingRevision: Int32Array;
   ActiveEmploye: Int32Array;
-
+  profilePic: any;
   constructor(
     private router: Router,
     private storageService: StorageService,
@@ -71,5 +71,11 @@ export class NavbarComponent implements OnInit {
   logout(): void {
     this.storageService.clean();
     this.router.navigate(['/login']);
+  }
+  profilePhoto() {
+    this.profileServ.getImage().subscribe((data) => {
+      this.profilePic = data;
+      console.log(data);
+    });
   }
 }

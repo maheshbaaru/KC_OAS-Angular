@@ -19,9 +19,10 @@ export class EmployeesComponent {
       console.log(data1);
       debugger
       this.empdata = data1;
+
     });
   }
 
-  
+
 
 }
