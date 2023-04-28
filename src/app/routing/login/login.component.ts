@@ -12,6 +12,25 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+  // const togglePassword = document.querySelector('#togglePassword');
+  // const password = document.querySelector('#id_password');
+
+//   togglePassword.addEventListener('click', function (e) {
+//     // toggle the type attribute
+//     const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+//     password.setAttribute('type', type);
+//     // toggle the eye slash icon
+//     this.classList.toggle('fa-eye-slash');
+// });
+
+
+
+  ṣshow = false;
+  password: string;
+
+
+
   form: any = {
     username: null,
     password: null
@@ -20,12 +39,18 @@ export class LoginComponent {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  loginForm: any;
 
   constructor(
-    private fb: FormBuilder,private authService: AuthguardService, private storageService: StorageService,private router: Router,) { }
+    private fb: FormBuilder,private authService: AuthguardService, private storageService: StorageService,private router: Router,      private formBuilder: FormBuilder,) { }
 
     
     ngOnInit(): void {
+
+      this.form = this.formBuilder.group({
+        username: ['', Validators.required],
+        password: ['', Validators.required]
+    });
       if (this.storageService.isLoggedIn()) {
         this.isLoggedIn = true;
         this.roles = this.storageService.getUser().designationID;
@@ -33,7 +58,7 @@ export class LoginComponent {
     }
   
     onSubmit() {
-  debugger
+
 
       const { username, password } = this.form;
       this.authService.login(username, password).subscribe({
@@ -54,5 +79,10 @@ export class LoginComponent {
     reloadPage(): void {
       window.location.reload();
     }
+
+
+
+    
+  
   }
 

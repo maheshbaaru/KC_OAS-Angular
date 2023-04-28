@@ -1,85 +1,107 @@
 <div class="main" [style.background-image]="'url(/assets/image1.avif)'">
   <div class="head ">
 
-    <div class="nav-left">
-      <h2> <img src="http://www.kodecorp.com/KodeCorp/uploads/2020/08/Logo.png" width="300px" height="100px"> </h2>
-    </div>
-
-
+    <h2> <img src="http://www.kodecorp.com/KodeCorp/uploads/2020/08/Logo.png" width="300px" height="100px"> </h2>
   </div>
 
+  <div class="login-form">
+    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
-  <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <p-card [style]="{width: '360px'}" styleClass="shadow-2">
+        <ng-template pTemplate="header">
+            <h1 class="card" [style.background-image]="'url(/assets/images2.jfif)'"> SIGN IN </h1>
+        </ng-template>
 
-    <p-card [style]="{width: '360px'}" styleClass="shadow-2">
-      <ng-template pTemplate="header">
-
-        <h1 class="card" [style.background-image]="'url(/assets/images2.jfif)'"> SIGN IN </h1>
-      </ng-template>
-
-      <div class="p-col-12 p-md-4">
-        <label>Username</label>
-        <div class="p-inputgroup">
-          <input type="text" class="form-control" pInputText  placeholder="Username" name="username" [(ngModel)]="form.username" required
-            #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.errors }">
-            
-            <p *ngIf="username.errors && f.submitted" class="invalid-feedback">
-              Username is required!
-            </p>
-        </div>
-        
-      </div>
-      <br>
-      <div class="p-col-12 p-md-4">
-        <label>Password</label>
-
-        <div class="p-inputgroup">
-
-          <input type="text" class="form-control" pInputText placeholder="Password" name="password" [(ngModel)]="form.password" required
-            minlength="4" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.errors }">
-        
-          <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
-            <div *ngIf="password.errors['required']">Password is required</div>
-            <div *ngIf="password.errors['minlength']">
-              Password must be at least 6 characters
+        <div class="p-col-12 p-md-4">
+          <label>Username</label>
+          <div>
+            <div class="p-inputgroup">
+              <input type="text" class="form-control" pInputText placeholder="Username" name="username"
+                [(ngModel)]="form.username" required #username="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && username.errors }"   >
+          <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
+                  <div *ngIf="username.errors['required']">  Username is required! </div>
+                 
+                </div>
             </div>
+          
+          </div>
+         
+
+        </div>
+        <br>
+        <div class="p-col-12 p-md-4">
+          <label>Password</label>
+
+          <div class="p-inputgroup">
+
+            <input type="text" class="form-control" pInputText placeholder="Password" name="password"
+              [(ngModel)]="form.password" required minlength="8" #password="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && password.errors }" >
+            
+            <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+              <div *ngIf="password.errors['required']">Password is required</div>
+              <div *ngIf="password.errors['minlength']">
+                Password must be at least 6 characters
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <br>
+        <div class="links">
+          <div class="p-field-checkbox">
+            <p-checkbox name="group1" value="" inputId="ny"></p-checkbox>
+            <label for="ny">Remember Me</label>
+          </div>
+          <div>
+            <a class="txt1" [routerLink]="['/forgotpassword']">Forgot Password?</a>
           </div>
 
         </div>
-      </div>
-      <br>
-      <div class="links">
-        <div class="p-field-checkbox">
-          <p-checkbox name="group1" value="" inputId="ny"></p-checkbox>
-          <label for="ny">Remember Me</label>
+        <br>
+        <button pButton pRipple type="submit" label="Login" [routerLink]=""
+          class="p-button-rounded p-button-info"></button>
+
+
+        <div class="form-group">
+          <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+            Login failed: {{ errorMessage }}
+          </div>
         </div>
-        <div>
-          <a class="txt1" [routerLink]="['/forgotpassword']">Forgot Password?</a>
-        </div>
-
-      </div>
-      <br>
-      <button pButton pRipple type="submit" label="Login" [routerLink]=""  class="p-button-rounded p-button-info"></button>
+      </p-card>
 
 
-      <div class="form-group">
-        <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
-          Login failed: {{ errorMessage }}
-        </div>
-      </div>
-    </p-card>
-   
+    </form>
+  </div>
 
-  </form>
-  <!-- <div class="alert alert-success" *ngIf="isLoggedIn">
+   <div class="alert alert-success" *ngIf="isLoggedIn">
     Logged in as {{ roles }}.
-  </div> -->
- 
+  </div> 
 
-</div> 
+
+</div>
 
 <div class="footer">
   <footer>©2023 - Kode Corp Technology Solutions Pvt.Ltd </footer>
 </div>
 
 
+<!-- <input type="text" id="name" name="name" class="form-control"
+      required minlength="4" appForbiddenName="bob"
+      [(ngModel)]="hero.name" #name="ngModel">
+
+<div *ngIf="name.invalid && (name.dirty || name.touched)"
+    class="alert">
+
+  <div *ngIf="name.errors?.['required']">
+    Name is required.
+  </div>
+  <div *ngIf="name.errors?.['minlength']">
+    Name must be at least 4 characters long.
+  </div>
+  <div *ngIf="name.errors?.['forbiddenName']">
+    Name cannot be Bob.
+  </div>
+
+</div> -->
