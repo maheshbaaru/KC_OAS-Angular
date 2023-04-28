@@ -6,7 +6,10 @@ import { ajax } from 'rxjs/ajax';
   providedIn: 'root',
 })
 export class EmployeeService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    const API_CALL = 'https://localhost:7236';
+    // user: ajax.getJSON(`${API_CALL}/GetEmployeeTbls`),
+  }
 
   getEmp() {
     return this.http.get('https://localhost:7236/GetEmployeeTbls');
@@ -18,10 +21,6 @@ export class EmployeeService {
   appliedLeaves() {
     const API_CALL = 'https://localhost:7236';
 
-    return forkJoin({
-      user: ajax.getJSON(`${API_CALL}/GetEmployeeTbls`),
-      appliedLeaves: ajax.getJSON(`${API_CALL}/LeavesApproval
-      `),
-    });
+    return this.http.get(`${API_CALL}/LeavesApproval`);
   }
 }

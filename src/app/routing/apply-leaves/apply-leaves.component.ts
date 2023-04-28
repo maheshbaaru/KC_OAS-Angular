@@ -12,14 +12,15 @@ export class ApplyLeavesComponent {
   employeeLeavs: any;
   appliedLeaves: any;
   constructor(private empSer: EmployeeService) {
-    this.empSer.appliedLeaves().subscribe((data) => {
-      this.employeeLeavs = data;
-      console.log(data);
-    });
+    // this.empSer.appliedLeaves().subscribe((data) => {
+    //   this.employeeLeavs = data;
+    //   console.log(data);
+    // });
   }
   ngOnInit() {
     this.empSer.appliedLeaves().subscribe((data) => {
-      this.appliedLeaves = data;
+      this.employeeLeavs = data;
+      console.log(data);
     });
   }
   // ngOnInit() {}
