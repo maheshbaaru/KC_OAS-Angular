@@ -56,9 +56,7 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    debugger;
-
-    const { username, password } = this.form;
+ const { username, password } = this.form;
     this.authService.login(username, password).subscribe({
       next: (data: any) => {
         if (!!data.email) {
