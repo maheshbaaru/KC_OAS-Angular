@@ -5,10 +5,10 @@ import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-apppled-leaves',
-  templateUrl: './apppled-leaves.component.html',
-  styleUrls: ['./apppled-leaves.component.css'],
+  templateUrl: './apply-leaves.component.html',
+  styleUrls: ['./apply-leaves.component.css'],
 })
-export class ApppledLeavesComponent {
+export class ApplyLeavesComponent {
   employeeLeavs: any;
   appliedLeaves: any;
   constructor(private empSer: EmployeeService) {
