@@ -61,7 +61,7 @@ export class EmployeeLeavesComponent {
 
   ngOnInit() {
     this.salaryService
-      .getCarsSmall()
+      .getEmployee()
       .then((employees: any) => (this.employees = employees));
   }
 
