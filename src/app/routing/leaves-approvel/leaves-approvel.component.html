@@ -40,7 +40,7 @@
 
 </div>
 
-  <p-table #dt1 [value]="employeeLeavs" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['Name','EmpId','LeaveType','NoDays','FDate','Tdate','AppliedOn','status']" responsiveLayout="scroll">
+  <p-table #dt1 [value]="leavesApproved" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['Name','EmpId','LeaveType','NoDays','FDate','Tdate','AppliedOn','status']" responsiveLayout="scroll">
 
 
 
@@ -121,16 +121,16 @@
     </ng-template>
     <ng-template pTemplate="body" let-emp>
       <tr>
-        <td >{{emp.EmpId}}</td>
+        <td >{{emp.empId}}</td>
         <td>{{emp.Name}}</td>
-        <td>{{emp.LeaveType}}</td>
-        <td>{{emp.NoDays}}</td>
-        <td>{{emp.FDate}}</td>
-        <td>{{emp.Tdate}}</td>
-        <td>{{emp.AppliedOn}}</td>
-        <td>{{emp.status}}</td>
-        <td>{{emp.comment}}</td>
-        <td>{{emp.AComments}}</td>
+        <td>{{emp.leaveTypeId}}</td>
+        <td>{{emp.numOfDays}}</td>
+        <td>{{emp.fromDate}}</td>
+        <td>{{emp.toDate}}</td>
+        <td>{{emp.appliedOn}}</td>
+        <td>{{emp.statusId}}</td>
+        <td>{{emp.comments}}</td>
+        <td>{{emp.adminComments}}</td>
 
 
       </tr>

@@ -15,7 +15,7 @@
         <div class="p-col-12 p-md-4">
           <label>Username</label>
           <div>
-            <div class="p-inputgroup">
+            <div class="">
               <input type="text" class="form-control" pInputText placeholder="Username" name="username"
                 [(ngModel)]="form.username" required #username="ngModel"
                 [ngClass]="{ 'is-invalid': f.submitted && username.errors }"   >
@@ -33,7 +33,7 @@
         <div class="p-col-12 p-md-4">
           <label>Password</label>
 
-          <div class="p-inputgroup">
+          <div class="">
 
             <input type="text" class="form-control" pInputText placeholder="Password" name="password"
               [(ngModel)]="form.password" required minlength="8" #password="ngModel"
@@ -65,7 +65,7 @@
 
 
         <div class="form-group">
-          <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger" role="alert">
+          <div *ngIf="isLoginFailed" class="alert alert-danger" role="alert">
             Login failed: {{ errorMessage }}
           </div>
         </div>

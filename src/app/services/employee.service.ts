@@ -8,12 +8,7 @@ import { ajax } from 'rxjs/ajax';
 export class EmployeeService {
   constructor(private http: HttpClient) {
     const API_CALL = 'https://localhost:7236';
-
-    forkJoin({
-      user: ajax.getJSON(`${API_CALL}/GetEmployeeTbls`),
-      appliedLeaves: ajax.getJSON(`${API_CALL}/LeavesApproval
-      `),
-    }).subscribe(console.log);
+    // user: ajax.getJSON(`${API_CALL}/GetEmployeeTbls`),
   }
 
   getEmp() {
@@ -23,5 +18,9 @@ export class EmployeeService {
     debugger;
     return this.http.get('assets/data/employeeList.json/' + id);
   }
-  appliedLeaves() {}
+  appliedLeaves() {
+    const API_CALL = 'https://localhost:7236';
+
+    return this.http.get(`${API_CALL}/LeavesApproval`);
+  }
 }

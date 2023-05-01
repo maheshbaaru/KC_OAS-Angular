@@ -1,7 +1,7 @@
 <p-panel >
   <ng-template pTemplate="header" >
     <div  class="col -md-6" style="text-align:left">
-    <strong>LEAVES APPROVAL </strong>
+    <strong>APPLY LEAVE  </strong>
 
   </div>
       <div class="col-sm-6" style="text-align:right">
@@ -9,7 +9,7 @@
   </div>
   </ng-template>
 
-  <p-table style="padding-bottom: 50px;" #dt1 [value]="employeeLeavs" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['Name','EmpId','LeaveType','NoDays','FDate','Tdate','AppliedOn','status']" responsiveLayout="scroll">
+  <p-table  #dt1 [value]="employeeLeavs" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['empId','leaveTypeId','numOfDays','fromDate','toDate','appliedOn','statusId','comments','adminComments']" responsiveLayout="scroll">
 
 
 
@@ -89,7 +89,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-emp>
-      <tr>
+      <tr >
         <td >{{emp.empId}}</td>
         <td>{{emp.Name}}</td>
         <td>{{emp.leaveTypeId}}</td>
