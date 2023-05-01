@@ -14,11 +14,8 @@ import { StorageService } from 'src/app/services/storage.service';
 export class LoginComponent {
 
 
-
-
-  ṣshow = false;
+  show = false;
   password: string;
-
 
 
   form: any = {
@@ -31,12 +28,17 @@ export class LoginComponent {
   roles: string[] = [];
   loginForm: any;
 
+
+  
   constructor(
     private fb: FormBuilder,
     private authService: AuthguardService,
     private storageService: StorageService,
     private router: Router
   ) {}
+
+
+
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
@@ -45,7 +47,14 @@ export class LoginComponent {
     }
   }
 
+
+  
+
+ 
+
   onSubmit() {
+
+    this.password = 'password'
  const { username, password } = this.form;
     this.authService.login(username, password).subscribe({
       next: (data: any) => {

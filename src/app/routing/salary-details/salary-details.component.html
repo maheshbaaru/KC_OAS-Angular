@@ -17,7 +17,7 @@
         
     </div>
     </ng-template> 
-    <p-table #dt [value]="sample" [tableStyle]="{'min-width': '50rem'}" styleClass="p-datatable-gridlines"   [globalFilterFields]="['FirstName']">
+    <p-table #dt [value]="sample" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10"  styleClass="p-datatable-gridlines"   [globalFilterFields]="['FirstName']">
     <ng-template pTemplate="header">
         <tr>
 

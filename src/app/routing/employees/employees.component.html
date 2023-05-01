@@ -8,7 +8,7 @@
       <button pButton  type="button" label="Create New"  icon="pi pi-plus" routerLink="../cretenewemployee"  class="p-button-sm p-button-success" ></button>
   </div>
   </ng-template>
-  <p-table #table [value]="empdata" [tableStyle]="{'min-width': '50rem'}" styleClass="p-datatable-gridlines"   [globalFilterFields]="['FirstName','IsActive']">
+  <p-table #table [value]="empdata" [tableStyle]="{'min-width': '50rem'}"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines"   [globalFilterFields]="['FirstName','IsActive']">
   <ng-template pTemplate="header">
     <tr>
       <th>
