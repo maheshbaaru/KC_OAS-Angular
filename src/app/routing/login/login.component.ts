@@ -13,16 +13,6 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class LoginComponent {
 
-  // const togglePassword = document.querySelector('#togglePassword');
-  // const password = document.querySelector('#id_password');
-
-//   togglePassword.addEventListener('click', function (e) {
-//     // toggle the type attribute
-//     const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-//     password.setAttribute('type', type);
-//     // toggle the eye slash icon
-//     this.classList.toggle('fa-eye-slash');
-// });
 
 
 
@@ -59,7 +49,8 @@ export class LoginComponent {
  const { username, password } = this.form;
     this.authService.login(username, password).subscribe({
       next: (data: any) => {
-        if (!!data.email) {
+        console.log('data',data)
+        if (data != '' && data != null) {
           this.storageService.saveUser(data);
           this.isLoginFailed = false;
           this.isLoggedIn = true;

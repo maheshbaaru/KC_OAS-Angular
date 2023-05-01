@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { EmployeeService } from 'src/app/services/employee.service';
 import namesData from 'src/assets/data/names.json';
 interface StatusType {
   name: string;
@@ -19,7 +20,7 @@ export class LeavesApprovelComponent {
   empForm: FormGroup;
   names: EmployeeName[];
   statusTypes: StatusType[];
-  constructor(private http: HttpClient,private _fb:FormBuilder) {
+  constructor(private http: HttpClient,private _fb:FormBuilder, private empservice:EmployeeService) {
     this.names = namesData
     this.statusTypes = [
       { name: 'Pending' },
