@@ -24,7 +24,7 @@ import { CreateNewEmployeeComponent } from './routing/create-new-employee/create
 import { UpdatephotoComponent } from './profilecomponents/updatephoto/updatephoto.component';
 import { ForgotpasswordComponent } from './routing/forgotpassword/forgotpassword.component';
 import { UpdateEmployeeComponent } from './routing/update-employee/update-employee.component';
-import { EmployeeLeavesComponent } from './routing/employee-leaves/employee-leaves.component';
+import { EmployeeLeavesComponent } from './routing/Leaves/employee-leaves/employee-leaves.component';
 import { BankDetailsComponent } from './routing/bank-details/bank-details.component';
 import { CreateBankDetailsComponent } from './routing/bank-details/create-bank-details/create-bank-details.component';
 import { EditBankDetailsComponent } from './routing/edit-bank-details/edit-bank-details.component';
