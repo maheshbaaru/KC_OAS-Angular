@@ -16,7 +16,7 @@ interface EmployeeName {
   styleUrls: ['./leaves-approvel.component.css'],
 })
 export class LeavesApprovelComponent {
-  employeeLeavs: any;
+  leavesApproved: any;
   empForm: FormGroup;
   names: EmployeeName[];
   statusTypes: StatusType[];
@@ -36,10 +36,15 @@ export class LeavesApprovelComponent {
     })
   }
   ngOnInit() {
-    this.http.get('assets/data/employeeLeaves.json').subscribe((data) => {
-      this.employeeLeavs = data;
+
+    this.empservice.appliedLeaves().subscribe((data) => {
+      this.leavesApproved  = data;
       console.log(data);
-      console.log(this.employeeLeavs);
     });
+    // this.http.get('assets/data/employeeLeaves.json').subscribe((data) => {
+    //   this.employeeLeavs = data;
+    //   console.log(data);
+    //   console.log(this.employeeLeavs);
+    // });
   }
 }
