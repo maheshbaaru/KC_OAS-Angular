@@ -23,5 +23,5 @@ export class ApplyLeavesComponent {
       console.log(data);
     });
   }
-  // ngOnInit() {}
+
 }
