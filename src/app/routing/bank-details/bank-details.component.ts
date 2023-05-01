@@ -30,13 +30,17 @@ export class BankDetailsComponent implements OnInit{
        private router:Router) { }
 
   ngOnInit() {
-      this.employeeService.getEmployeeData().then(employees => {
-          this.employees = employees;
-          this.loading = false;
+    //   this.employeeService.getEmployeeData().then(employees => {
+    //       this.employees = employees;
+    //       this.loading = false;
           
-      });
+      //});
 
-
+this.employeeService.getEmployeeData().subscribe((result:any)=>{
+    this.employees=result;
+    console.log(this.employees);
+    this.loading=false;
+})
      
 
       this.statuses = [

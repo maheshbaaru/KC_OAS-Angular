@@ -7,18 +7,17 @@ import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent {
-  empdata:any;
+  empdata: any;
   constructor(
     //private router:Router,
-     private service:EmployeedDataService
-    ) { }
+    private service: EmployeedDataService
+  ) { }
 
 
   ngOnInit(): void {
     this.service.getEmployeeList().subscribe((data1: any) => {
       console.log(data1);
-   
-      this.empdata = data1;
+            this.empdata = data1;
 
     });
   }

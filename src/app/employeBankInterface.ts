@@ -18,11 +18,11 @@ export interface Customer {
     representative?: Representative;
 }
 export interface Employee{
-    EmpId?:number,
-    ACCNO?:string,
-    BankName?:string,
-    ACCNAME?:string,
-    FirstName?:string,
+    accname?:string,
+    accno?:string,
+    bankName?:string,
+    empId?:number,
+    firstName?:string,
     LastName?:string
 }
 

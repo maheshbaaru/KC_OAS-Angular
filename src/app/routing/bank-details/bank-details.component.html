@@ -72,22 +72,22 @@
                             KC{{employee.EmpId<100?'0'+employee.EmpId:employee.EmpId}}
                         </a> -->
                         
-                        <a [routerLink]="['../edit-bank-details', employee.EmpId]" class="empId">
-                            KC{{employee.EmpId<100?'0'+employee.EmpId:employee.EmpId}}
+                        <a [routerLink]="['../edit-bank-details', employee.empId]" class="empId">
+                            KC{{employee.empId<100?'0'+employee.empId:employee.empId}}
                         </a>
 
                     </td>
                     <td>
-                        <span class="p-column-title">Country</span>
-                        <span class="image-text">{{employee.ACCNO}}</span>
+                        <span class="p-column-title">Account No</span>
+                        <span class="image-text">{{employee.accno}}</span>
                     </td>
                     <td>
-                        <span class="p-column-title">Representative</span>
-                        <span class="image-text">{{employee.ACCNAME}}</span>
+                        <span class="p-column-title">Account Holder Name</span>
+                        <span class="image-text">{{employee.firstName}} {{employee.lastName}}</span>
                     </td>
                     <td>
-                        <span class="p-column-title">Date</span>
-                        {{employee.BankName}}
+                        <span class="p-column-title">Bank Name</span>
+                        {{employee.bankName}}
                     </td>
                 </tr>
             
