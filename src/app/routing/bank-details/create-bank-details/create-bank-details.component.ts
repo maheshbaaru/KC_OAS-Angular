@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Employee } from 'src/app/employeBankInterface';
-import { EmployeService } from 'src/app/employeBankService';
+import { Employee } from 'src/app/Modesls/employeBankInterface';
+import { EmployeService } from 'src/app/services/employeBankService';
 
 @Component({
   selector: 'app-create-bank-details',
@@ -10,13 +10,7 @@ import { EmployeService } from 'src/app/employeBankService';
 })
 export class CreateBankDetailsComponent implements OnInit {
   employeess: Employee[] | any;
-  // employeDetails={
-  //   EmpIdName:'',
-  //   ACCNO:'',
-  //   ACCNAME:'',
-  //   BankName:"Kotak Bank",
-  //   EmpId:''
-  // }
+
   employeDetails = {
     EmpIdName: '',
     ACCNO: '',

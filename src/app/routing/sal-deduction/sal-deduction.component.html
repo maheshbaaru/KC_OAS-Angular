@@ -37,7 +37,7 @@
   </ng-template>
   <ng-template pTemplate="body" let-emp >
     <tr>
-      <td class="idStyle" ><a [routerLink]="['../DeductionList',emp.employeeId]">{{emp.employeeId}}</a></td>
+      <td class="idStyle" ><a [routerLink]="['../DeductionList',emp.empId]">{{emp.empId}}</a></td>
       <td>{{emp.firstName}} {{emp.lastName}}</td>
 
     </tr>

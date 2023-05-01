@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import namesData from 'src/assets/data/namesData.json';
 import { OnInit, ViewChild } from '@angular/core';
-import { EmployeeData, Representative } from 'src/app/employee';
+import { EmployeeData, Representative } from 'src/app/Modesls/employee';
 import { Table } from 'primeng/table';
 
 import { SalaryService } from 'src/app//services/salary.service';
@@ -47,12 +47,7 @@ export class EmployeeLeavesComponent {
   }
 
   sample = [
-    {
-      "FirstName": "HARI RAM",
-      "LastName": "KODI",
-      "EmployeeID": "9",
-      "NumofLeaves": 12,
-    }
+   ''
   ];
 
   representatives: Representative[] = [];
@@ -60,9 +55,9 @@ export class EmployeeLeavesComponent {
   table!: Table;
 
   ngOnInit() {
-    // this.salaryService
-    //   .getEmployee()
-    //   .then((employees: any) => (this.employees = employees));
+    this.salaryService
+      .getEmployee()
+      .then((employees: any) => (this.employees = employees));
   }
 
 }

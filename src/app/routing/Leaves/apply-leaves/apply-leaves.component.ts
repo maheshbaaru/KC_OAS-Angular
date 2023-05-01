@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { EmployeService } from 'src/app/employeBankService';
+import { EmployeService } from 'src/app/services/employeBankService';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({

@@ -34,7 +34,7 @@
           <label>Password</label>
           <input type="password" class="form-control" pInputText placeholder="Password" name="password"
             [(ngModel)]="form.password" required minlength="8" #password="ngModel"
-            [ngClass]="{ 'is-invalid': f.submitted && password.errors }">
+            [ngClass]="{ 'is-invalid': f.submitted && password.errors }"  >
 
           <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
             <div *ngIf="password.errors['required']">Password is required</div>

@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { Table } from 'primeng/table';
-import { Customer, Employee, Representative } from '../../employeBankInterface';
-import { EmployeService } from '../../employeBankService';
+import { Customer, Employee, Representative } from '../../Modesls/employeBankInterface';
+import { EmployeService } from '../../services/employeBankService';
 
 @Component({
   selector: 'app-bank-details',

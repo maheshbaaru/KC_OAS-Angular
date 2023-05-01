@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EmployeeService } from '../../services/employee.service';
+import { EmployeeService } from '../../../services/employee.service';
 
 @Component({
   selector: 'app-sal-deduction-list',
@@ -18,6 +18,7 @@ export class SalDeductionListComponent {
     console.log(id);
     this.employeeSer.getEmployee(id).subscribe((u) => {
       this.employeeList = u;
+      console.log(this.employeeList);
       console.log(u);
     });
   }

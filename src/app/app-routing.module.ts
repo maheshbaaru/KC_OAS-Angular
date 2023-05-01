@@ -5,31 +5,31 @@ import { LoginComponent } from './routing/login/login.component';
 import { NavbarComponent } from './routing/navbar/navbar.component';
 import { SalaryDetailsComponent } from './routing/salary-details/salary-details.component';
 // import { SalaryDetailsComponent } from './salary-details/salary-details.component';
-import { CreateDesignationComponent } from './routing/create-designation/create-designation.component';
-import { CreateTaxtypeComponent } from './routing/create-taxtype/create-taxtype.component';
+import { CreateDesignationComponent } from './routing/Admin/create-designation/create-designation.component';
+import { CreateTaxtypeComponent } from './routing/Admin/create-taxtype/create-taxtype.component';
 import { CreateNewSalaryDetailsComponent } from './routing/create-new-salary-details/create-new-salary-details.component';
 import { ProfilePhotoComponent } from './profilecomponents/profile-photo/profile-photo.component';
 
 import { SalDeductionComponent } from './routing/sal-deduction/sal-deduction.component';
 import { HomeComponent } from './routing/home/home.component';
 
-import { SalDeductionListComponent } from './routing/sal-deduction-list/sal-deduction-list.component';
-import { LeavesApprovelComponent } from './routing/leaves-approvel/leaves-approvel.component';
-import { EmployeeAccessComponent } from './routing/employee-access/employee-access.component';
-import { ApplyLeavesComponent } from './routing/apply-leaves/apply-leaves.component';
-import { EmployeesComponent } from './routing/employees/employees.component';
+import { SalDeductionListComponent } from './routing/Admin/sal-deduction-list/sal-deduction-list.component';
+import { LeavesApprovelComponent } from './routing/Leaves/leaves-approvel/leaves-approvel.component';
+import { EmployeeAccessComponent } from './routing/Leaves/employee-access/employee-access.component';
+import { ApplyLeavesComponent } from './routing/Leaves/apply-leaves/apply-leaves.component';
+import { EmployeesComponent } from './routing/Admin/employees/employees.component';
 import { PaySlipComponent } from './routing/pay-slip/pay-slip.component';
 import { ChangepasswordComponent } from './profilecomponents/changepassword/changepassword.component';
-import { CreateNewEmployeeComponent } from './routing/create-new-employee/create-new-employee.component';
+import { CreateNewEmployeeComponent } from './routing/Admin/create-new-employee/create-new-employee.component';
 import { UpdatephotoComponent } from './profilecomponents/updatephoto/updatephoto.component';
 import { ForgotpasswordComponent } from './routing/forgotpassword/forgotpassword.component';
 import { UpdateEmployeeComponent } from './routing/update-employee/update-employee.component';
-import { EmployeeLeavesComponent } from './routing/employee-leaves/employee-leaves.component';
+import { EmployeeLeavesComponent } from './routing/Leaves/employee-leaves/employee-leaves.component';
 import { BankDetailsComponent } from './routing/bank-details/bank-details.component';
-import { CreateBankDetailsComponent } from './routing/create-bank-details/create-bank-details.component';
+import { CreateBankDetailsComponent } from './routing/bank-details/create-bank-details/create-bank-details.component';
 import { EditBankDetailsComponent } from './routing/edit-bank-details/edit-bank-details.component';
 import { CreateLeaveComponent } from './routing/create-leave/create-leave.component';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './services/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
