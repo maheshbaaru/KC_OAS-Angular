@@ -1,6 +1,6 @@
 <p-panel header="Salary Deduction List" class="border-900">
 
-  <p-table #dt1 [value]="employeeList" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['Name','EmployeeId','TaxType','Amount','EffectedMonth','NoOfLOPDays']" responsiveLayout="scroll">
+  <p-table #dt1 [value]="employeeList" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['Name','empId','taxType','amount','effectedMonth','noOfLopdays']" responsiveLayout="scroll">
 
 
     <ng-template pTemplate="caption">
@@ -54,11 +54,11 @@
     </ng-template>
     <ng-template pTemplate="body" let-emp >
       <tr>
-        <td class="idStyle" >{{emp.EmployeeId}}</td>
-        <td>{{emp.TaxType}}</td>
-        <td>{{emp.Amount}}</td>
-        <td>{{emp.EffectedMonth}}</td>
-        <td>{{emp.NoOfLOPDays}}</td>
+        <td class="idStyle" >{{emp.empId}}</td>
+        <td>{{emp.taxType}}</td>
+        <td>{{emp.amount}}</td>
+        <td>{{emp.effectedMonth}}</td>
+        <td>{{emp.noOfLopdays}}</td>
 
       </tr>
     </ng-template>

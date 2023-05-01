@@ -18,6 +18,7 @@ export class SalDeductionListComponent {
     console.log(id);
     this.employeeSer.getEmployee(id).subscribe((u) => {
       this.employeeList = u;
+      console.log(this.employeeList);
       console.log(u);
     });
   }
