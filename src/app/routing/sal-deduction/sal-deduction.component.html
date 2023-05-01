@@ -1,4 +1,4 @@
-<p-table #dt1 [value]="employee" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['Name','EmployeeId']" responsiveLayout="scroll">
+<p-table #dt1 [value]="employee" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['employeeId','firstName','lastName']" responsiveLayout="scroll">
   <ng-template pTemplate="right">
 
 
@@ -37,8 +37,8 @@
   </ng-template>
   <ng-template pTemplate="body" let-emp >
     <tr>
-      <td class="idStyle" ><a [routerLink]="['../DeductionList',emp.EmployeeId]">{{emp.EmployeeId}}</a></td>
-      <td>{{emp.Name}}</td>
+      <td class="idStyle" ><a [routerLink]="['../DeductionList',emp.employeeId]">{{emp.employeeId}}</a></td>
+      <td>{{emp.firstName}} {{emp.lastName}}</td>
 
     </tr>
   </ng-template>
