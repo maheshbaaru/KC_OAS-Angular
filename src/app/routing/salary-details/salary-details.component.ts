@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import salary from './salary.json';
+//import salary from './salary.json';
 import { Table } from 'primeng/table';
 import { SalaryService } from 'src/app/services/salary.service';
-import { EmployeeData,Representative } from 'src/app/employee';
-
+import { EmployeeData, Representative } from 'src/app/employee';
+import{ Employee} from 'src/app/employeBankInterface';
 @Component({
   selector: 'app-salary-details',
   templateUrl: './salary-details.component.html',
@@ -12,19 +12,24 @@ import { EmployeeData,Representative } from 'src/app/employee';
 
 
 export class SalaryDetailsComponent {
-  sample = salary;
-
+ // sample = salary;
+ empSalDetails:EmployeeData[];
   representatives: Representative[] = [];
-  @ViewChild('dt')
-  table: Table;
+  @ViewChild('dt') table: Table;
 
-  employees: EmployeeData[] | any;
-
-  constructor(private salaryService: SalaryService) {}
+  //employees: EmployeeData[] | any;
+  constructor(private salaryService: SalaryService) { }
 
   ngOnInit() {
-    this.salaryService
-      .getEmployee()
-      .then((employees: any) => (this.employees = employees));
+    // this.salaryService
+    //   .getEmployee()
+    //   .then((employees: any) => (this.employees = employees));
+    this.salaryService.getEmployee().subscribe(data => {
+      debugger;
+      this.empSalDetails = data;
+      
+      
+      console.log(this.empSalDetails);
+    })
   }
 }

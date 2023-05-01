@@ -17,7 +17,7 @@
         
     </div>
     </ng-template> 
-    <p-table #dt [value]="sample" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10"  styleClass="p-datatable-gridlines"   [globalFilterFields]="['FirstName']">
+    <p-table #dt [value]="empSalDetails" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="50"  styleClass="p-datatable-gridlines"   [globalFilterFields]="['FirstName']">
     <ng-template pTemplate="header">
         <tr>
 
@@ -56,12 +56,18 @@
     </ng-template>
     <ng-template pTemplate="body" let-Employee>
         <tr>
-            <td><a href="#">KC{{Employee.EmployeeID<100?'0'+Employee.EmployeeID:Employee.EmployeeID}}</a>
+            <td><a href="#">KC{{Employee.empId<100?'0'+Employee.empId:Employee.empId}}</a>
                 </td>
             <td>{{Employee.FirstName}} {{Employee.LastName}}</td>
-            <td>{{Employee.Salary}}</td>
-            <td>{{Employee.LastRevisedDate| date: 'dd-MM-yyyy'}}</td>
-            <td>{{Employee.NextRevisedDate| date: 'dd-MM-yyyy'}}</td>
+            <td>{{Employee.salary}}</td>
+            <td>{{Employee.lastRevisedDate| date: 'dd-MM-yyyy'}}</td>
+            <td>{{Employee.nextRevisedDate| date: 'dd-MM-yyyy'}}</td>
+            <!-- <td><a href="#">KC{{Employee.empId<100?'0'+Employee.id:Employee.empId}}</a>
+            </td>
+        <td>{{Employee.firstName}} {{Employee.lastName}}</td>
+        <td>{{Employee.Salary}}</td>
+        <td>{{Employee.lastRevisedDate| date: 'dd-MM-yyyy'}}</td>
+        <td>{{Employee.nextRevisedDate| date: 'dd-MM-yyyy'}}</td> -->
         </tr>
     </ng-template>
   

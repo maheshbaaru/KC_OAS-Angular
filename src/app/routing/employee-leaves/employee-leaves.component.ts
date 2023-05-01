@@ -48,10 +48,10 @@ export class EmployeeLeavesComponent {
 
   sample = [
     {
-        "FirstName": "HARI RAM",
-        "LastName": "KODI",
-        "EmployeeID": "9",
-        "NumofLeaves": 12,
+      "FirstName": "HARI RAM",
+      "LastName": "KODI",
+      "EmployeeID": "9",
+      "NumofLeaves": 12,
     }
   ];
 
@@ -60,9 +60,9 @@ export class EmployeeLeavesComponent {
   table!: Table;
 
   ngOnInit() {
-    this.salaryService
-      .getEmployee()
-      .then((employees: any) => (this.employees = employees));
+    // this.salaryService
+    //   .getEmployee()
+    //   .then((employees: any) => (this.employees = employees));
   }
 
 }
