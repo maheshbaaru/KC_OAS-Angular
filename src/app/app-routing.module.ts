@@ -17,10 +17,10 @@ import { SalDeductionListComponent } from './routing/Admin/sal-deduction-list/sa
 import { LeavesApprovelComponent } from './routing/Leaves/leaves-approvel/leaves-approvel.component';
 import { EmployeeAccessComponent } from './routing/Leaves/employee-access/employee-access.component';
 import { ApplyLeavesComponent } from './routing/Leaves/apply-leaves/apply-leaves.component';
-import { EmployeesComponent } from './routing/employees/employees.component';
+import { EmployeesComponent } from './routing/Admin/employees/employees.component';
 import { PaySlipComponent } from './routing/pay-slip/pay-slip.component';
 import { ChangepasswordComponent } from './profilecomponents/changepassword/changepassword.component';
-import { CreateNewEmployeeComponent } from './routing/create-new-employee/create-new-employee.component';
+import { CreateNewEmployeeComponent } from './routing/Admin/create-new-employee/create-new-employee.component';
 import { UpdatephotoComponent } from './profilecomponents/updatephoto/updatephoto.component';
 import { ForgotpasswordComponent } from './routing/forgotpassword/forgotpassword.component';
 import { UpdateEmployeeComponent } from './routing/update-employee/update-employee.component';
