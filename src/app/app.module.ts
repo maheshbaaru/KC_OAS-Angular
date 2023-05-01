@@ -36,7 +36,7 @@ import { SalDeductionComponent } from './routing/sal-deduction/sal-deduction.com
 import { SalDeductionListComponent } from './routing/Admin/sal-deduction-list/sal-deduction-list.component';
 import { LeavesApprovelComponent } from './routing/Leaves/leaves-approvel/leaves-approvel.component';
 import { EmployeeAccessComponent } from './routing/Leaves/employee-access/employee-access.component';
-import { ApplyLeavesComponent } from './routing/apply-leaves/apply-leaves.component';
+import { ApplyLeavesComponent } from './routing/Leaves/apply-leaves/apply-leaves.component';
 import { EmployeesComponent } from './routing/employees/employees.component';
 import { PaySlipComponent } from './routing/pay-slip/pay-slip.component';
 import { CreateNewEmployeeComponent } from './routing/create-new-employee/create-new-employee.component';
