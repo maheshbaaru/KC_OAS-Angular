@@ -29,7 +29,7 @@ import { BankDetailsComponent } from './routing/bank-details/bank-details.compon
 import { CreateBankDetailsComponent } from './routing/bank-details/create-bank-details/create-bank-details.component';
 import { EditBankDetailsComponent } from './routing/edit-bank-details/edit-bank-details.component';
 import { CreateLeaveComponent } from './routing/create-leave/create-leave.component';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './services/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
