@@ -15,7 +15,12 @@ export class HttpClientService {
 
 
 
-   postdesignation(){
-    // return this.http.post('');
+   postdesignation(data:any){
+    this.http.post('https://localhost:7236/GetTblEmpBankDetails', data)
    }
+
+   profilephoto(id:any){
+    this.http.post('https://localhost:7236/AddProfilePhoto',id)
+   }
+
 }

@@ -8,72 +8,22 @@
       <button pButton  type="button" label="Create New"  icon="pi pi-plus" routerLink="../cretenewemployee"  class="p-button-sm p-button-success" ></button>
   </div>
   </ng-template>
-  <p-table #table [value]="empdata" [tableStyle]="{'min-width': '50rem'}"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines"   [globalFilterFields]="['FirstName','IsActive']">
-  <ng-template pTemplate="header">
+  <p-table #table [columns]="cols" [value]="empdata" [tableStyle]="{'min-width': '50rem'}"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines"   [globalFilterFields]="['employeeID','firstName','lastName','designationName','email','IsActive','panNumber','isActive','shiftName']">
+  <ng-template pTemplate="header" let-columns>
     <tr>
-      <th>
+      <th *ngFor="let col of columns">
         <div class="p-d-flex p-jc-between p-ai-center">
-        EmpID
-        <p-columnFilter style="color:rgb(79, 85, 90)" type="text" field="employeeID" display="menu"></p-columnFilter>
+          {{col.header}}
+        <p-columnFilter style="color:rgb(79, 85, 90)" type="text" [field]="col.field" display="menu"></p-columnFilter>
       </div>
     </th>
-      <th>
-        <div class="p-d-flex p-jc-between p-ai-center">
-          FirstName
-        <p-columnFilter  type="text" field="firstName" display="menu"></p-columnFilter>
-      </div>
-    </th>
-      <th>
-        <div class="p-d-flex p-jc-between p-ai-center">
-        LastName
-      <p-columnFilter type="text" field="lastName" display="menu"></p-columnFilter>
-    </div>
-        </th>
-      <th>
-        <div class="p-d-flex p-jc-between p-ai-center">
-          Email
-        <p-columnFilter type="text" field="email" display="menu"></p-columnFilter>
-      </div>
-    </th>
-      <th>
-        <div class="p-d-flex p-jc-between p-ai-center">
-        Designation
-      <p-columnFilter type="text" field="designationName" display="menu"></p-columnFilter>
-    </div>
-      </th>
-      <th>
-         <div class="p-d-flex p-jc-between p-ai-center">
-        Pan Number
-      <p-columnFilter type="text" field="panNumber" display="menu"></p-columnFilter>
-    </div>
-  </th>
-      <th>
-         <div class="p-d-flex p-jc-between p-ai-center">
-        IsActive
-      <p-columnFilter type="text" field="isActive" display="menu"></p-columnFilter>
-    </div>
-       </th>
-      <th>
-         <div class="p-d-flex p-jc-between p-ai-center">
-        Shift
-      <p-columnFilter type="text" field="employeeID" display="menu"></p-columnFilter>
-    </div>
-       </th>
 
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-employee >
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
-      <td style="color: blue;" [routerLink]="['../updateemployee']">{{employee.employeeID}}</td>
-      <td>{{employee.firstName}}</td>
-      <td>{{employee.lastName}}</td>
-      <td>{{employee.email}}</td>
-      <td>{{employee.designationName}}</td>
-      <td>{{employee.panNumber}}</td>
-      <td>{{employee.isActive}}</td>
-      <td>{{employee.shiftName}}</td>
-
-    </tr>
+      <td  [routerLink]="['../updateemployee']" *ngFor="let col of columns">{{rowData[col.field]}}</td>
+   </tr>
 
   </ng-template>
 

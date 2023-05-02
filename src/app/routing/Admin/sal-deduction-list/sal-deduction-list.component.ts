@@ -14,12 +14,14 @@ export class SalDeductionListComponent {
     private active: ActivatedRoute,
     private employeeSer: EmployeeService
   ) {
-    let id = this.active.snapshot.params['id'];
+    console.log(this.active);
+  }
+  ngAfterViewInit() {
+    let id = +this.active.snapshot.params['id'];
     console.log(id);
-    this.employeeSer.getEmployee(id).subscribe((u) => {
-      this.employeeList = u;
+    this.employeeSer.getEmployee(id).subscribe((data: any) => {
+      this.employeeList = [data];
       console.log(this.employeeList);
-      console.log(u);
     });
   }
 }

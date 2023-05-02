@@ -52,17 +52,25 @@
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-emp >
+    <ng-template pTemplate="body" let-emp>
       <tr>
         <td class="idStyle" >{{emp.empId}}</td>
-        <td>{{emp.taxType}}</td>
+        <td>{{emp.taxTypeId}}</td>
         <td>{{emp.amount}}</td>
         <td>{{emp.effectedMonth}}</td>
         <td>{{emp.noOfLopdays}}</td>
 
       </tr>
     </ng-template>
+
   </p-table>
 
 </p-panel>
+<!-- <table>
+<section *ngFor="let emp of employeeList">
+
+
+</section>
+</table>
+{{employeeList|json}} -->
 

@@ -31,6 +31,7 @@ export class SalDeductionComponent {
     ];
   }
   ngOnInit() {
+    
     this.employeeSer.getEmp().subscribe((data) => {
       //console.log(data);
       this.employee = data;
