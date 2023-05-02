@@ -55,11 +55,19 @@ export class CreateBankDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.employeesService.getEmployeeData().then(employee=>{
+    // this.employeesService.getEmployeeData().then(employee => {
 
-    //   this.employeess=employee
+    //   this.employeess = employee
 
     // })
+    this.employeesService.getEmployeeData().subscribe(employee => {
+
+      this.employeess = employee.filter(item => {
+        this.employeDetails = item.firstName + item.lastName;
+        console.log(this.employeDetails);
+      })
+
+    })
   }
 
   // onClickBack(){
