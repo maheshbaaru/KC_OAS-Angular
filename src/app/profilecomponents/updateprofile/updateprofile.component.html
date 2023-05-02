@@ -1,4 +1,4 @@
-<p-panel header="UPDATE PROFILE" >
+<p-panel header="UPDATE PROFILE"   >
 
     <ng-template pTemplate="icons">
 
@@ -11,27 +11,27 @@
             class="p-button-rounded p-button-info"></button>
         </div>
     </ng-template>
-    <form formgroup="updateform">
+    <form formgroup="updateform"    >
         <div class="formgrid grid m-5">
 
                 <div class="col-4 w-100% p-4">
                     <span>EmployeeID</span>
                     <div class="p-inputgroup" >
-                        <input class="form-control" type="text" pInputText placeholder="EmployeeID" >
+                        <input class="form-control"{{employee.employeeID}} type="text" pInputText placeholder="EmployeeID" >
                     </div>
                 </div>
 
                 <div class="col-4 w-100%  p-4">
                     <span>FirstName<span class="required">*</span></span>
                     <div class="p-inputgroup" >
-                        <input class="form-control" type="text"  pInputText placeholder="FirstName">
+                        <input class="form-control" {{employee.firstName}} type="text"  pInputText placeholder="FirstName">
                     </div>
                 </div>
 
                 <div class="col-4 w-100% p-4">
                     <span>LastName<span class="required">*</span></span>
                     <div class="p-inputgroup" >
-                        <input class="form-control" type="text" pInputText placeholder="LastName" readonly="readonly">
+                        <input class="form-control"{{employee.lastName}} type="text" pInputText placeholder="LastName" readonly="readonly">
                     </div>
                 </div>
 
@@ -41,21 +41,21 @@
                 <div class="col-4  w-100% p-4">
                     <span  >Email<span class="required">*</span></span>
                     <div class="p-inputgroup" >
-                        <input class="form-control" type="text" pInputText placeholder="Email">
+                        <input class="form-control" {{employee.email}} type="text" pInputText placeholder="Email">
                     </div>
                 </div>
 
                 <div class="col-4 w-100% p-4">
                     <span>PanNumber<span class="required">*</span></span>
                     <div class="p-inputgroup" >
-                        <input class="form-control" type="text" pInputText placeholder="PanNumber">
+                        <input class="form-control" {{employee.panNumber}} type="text" pInputText placeholder="PanNumber">
                     </div>
                 </div>
 
                 <div class="col-4  w-100% p-4">
                     <span>DesignationID<span class="required">*</span></span>
                     <div class="p-inputgroup" >
-                        <input class="form-control" type="text" pInputText placeholder="DesignationID">
+                        <input class="form-control"  {{employee.designationName}} type="text" pInputText placeholder="DesignationID">
                     </div>
                 </div>
 
@@ -66,7 +66,7 @@
                 <div class="col-4  w-100% p-4">
                     <span>ShiftId<span class="required">*</span></span>
                     <div class="p-inputgroup" >
-                        <input class="form-control" type="text" pInputText placeholder="ShiftId">
+                        <input class="form-control"{{employee.shiftName}} type="text" pInputText placeholder="ShiftId">
                     </div>
                 </div>
                 <div class="col-4  w-100% p-4">
@@ -77,8 +77,8 @@
                 </div>
                 <div class="col-4 w-100% p-5 mt-5">
                     <div class="p-field-checkbox">
-                        <p-checkbox name="group1" value=""  inputId="ny"></p-checkbox>
-                        <label>IsActive<span class="required">*</span></label>
+                        <p-checkbox name="group1" {{employee.isActive}} value=""  inputId="ny"></p-checkbox>
+                        <label>IsActive <span class="required">*</span></label>
                     </div>
                 </div>
               </div>
