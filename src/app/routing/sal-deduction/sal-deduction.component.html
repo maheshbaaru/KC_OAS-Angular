@@ -1,4 +1,4 @@
-<p-table #dt1 [value]="employee" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['employeeId','firstName','lastName']" responsiveLayout="scroll">
+<p-table #dt1 [value]="employee" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"  [globalFilterFields]="['employeeId','firstName','lastName']" responsiveLayout="scroll" >
   <ng-template pTemplate="right">
 
 
@@ -42,6 +42,7 @@
 
     </tr>
   </ng-template>
+
 </p-table>
 <p-dialog [(visible)]="productDialog" [style]="{width: '850px',height:'700px'}"  header="Create" [modal]="true" styleClass="p-fluid">
 
@@ -110,3 +111,7 @@
   </ng-template>
 
 </p-dialog>
+
+
+
+
