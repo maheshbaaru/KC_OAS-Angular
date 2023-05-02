@@ -8,13 +8,13 @@ export class SalaryService {
   constructor(private http: HttpClient) {}
 
   getEmployee() {
-    return this.http
-      .get('')
-      .toPromise()
-      .then((res: any) => <EmployeeData[]>res.data)
-      .then((data) => {
-        return data;
-      });
+    // return this.http
+    //   .get('')
+    //   .toPromise()
+    //   .then((res: any) => <EmployeeData[]>res.data)
+    //   .then((data) => {
+    //     return data;
+    //   });
   }
 }
 

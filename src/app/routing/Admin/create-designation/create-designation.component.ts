@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-designation.component.css']
 })
 export class CreateDesignationComponent {
+  designationService: any;
+
+
+
+  submit(){
+   
+    this.designationService.createDesignation(this.designation);
+
+
+
+  }
+  designation(designation: any) {
+    throw new Error('Method not implemented.');
+  }
 
 }

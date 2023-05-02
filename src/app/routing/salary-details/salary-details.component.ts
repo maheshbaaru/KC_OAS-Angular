@@ -23,8 +23,8 @@ export class SalaryDetailsComponent {
   constructor(private salaryService: SalaryService) {}
 
   ngOnInit() {
-    this.salaryService
-      .getEmployee()
-      .then((employees: any) => (this.employees = employees));
+    // this.salaryService
+    //   .getEmployee()
+    //   .then((employees: any) => (this.employees = employees));
   }
 }
