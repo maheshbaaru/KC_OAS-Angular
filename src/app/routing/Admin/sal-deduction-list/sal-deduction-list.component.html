@@ -1,6 +1,6 @@
 <p-panel header="Salary Deduction List" class="border-900">
 
-  <p-table #dt1 [value]="employeeList" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['Name','empId','taxType','amount','effectedMonth','noOfLopdays']" responsiveLayout="scroll">
+  <p-table #dt1 [columns]="cols" [value]="employeeList" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['this.cols.find']" responsiveLayout="scroll">
 
 
     <ng-template pTemplate="caption">
@@ -14,15 +14,15 @@
       </div>
   </ng-template>
 
-    <ng-template pTemplate="header">
+    <ng-template pTemplate="header" let-columns>
       <tr>
-        <th>
+        <th *ngFor="let col of columns">
           <div class="p-d-flex p-jc-between p-ai-center">
-          Emp ID
-          <p-columnFilter type="text" field="EmployeeId" display="menu"></p-columnFilter>
+         {{col.header}}
+          <p-columnFilter type="text" [field]="col.field" display="menu"></p-columnFilter>
 
         </div>
-        </th>
+        <!-- </th>
         <th>
           <div class="p-d-flex p-jc-between p-ai-center">
            TaxTypes
@@ -49,16 +49,16 @@
           <p-columnFilter type="text" field="EmployeeId" display="menu"></p-columnFilter>
 
         </div>
-        </th>
+        </th> -->
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-emp>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr>
-        <td class="idStyle" >{{emp.empId}}</td>
-        <td>{{emp.taxTypeId}}</td>
+        <td class="idStyle"  *ngFor="let col of columns">{{rowData[col.field]}}</td>
+        <!-- <td>{{emp.taxTypeId}}</td>
         <td>{{emp.amount}}</td>
         <td>{{emp.effectedMonth}}</td>
-        <td>{{emp.noOfLopdays}}</td>
+        <td>{{emp.noOfLopdays}}</td> -->
 
       </tr>
     </ng-template>

@@ -9,12 +9,22 @@ import { EmployeeService } from '../../../services/employee.service';
 })
 export class SalDeductionListComponent {
   employeeList: any;
+  cols: { field: string; header: string }[];
 
   constructor(
     private active: ActivatedRoute,
     private employeeSer: EmployeeService
   ) {
     console.log(this.active);
+  }
+  ngOnInit() {
+    this.cols = [
+      { field: 'empId', header: 'EmployeeId' },
+      { field: 'taxTypeId', header: 'TaxTypes' },
+      { field: 'amount', header: 'Amount' },
+      { field: 'effectedMonth', header: 'EffectedMonth' },
+      { field: 'noOfLopdays', header: 'No Of LOP Days' },
+    ];
   }
   ngAfterViewInit() {
     let id = +this.active.snapshot.params['id'];
