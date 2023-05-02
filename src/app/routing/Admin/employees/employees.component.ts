@@ -20,7 +20,7 @@ export class EmployeesComponent {
       this.empdata = data1;
       this.cols = [
         { field: 'employeeID', header: 'EmpID' },
-        { field: 'employeeID', header: 'FirstName' },
+        { field: 'firstName', header: 'FirstName' },
         { field: 'lastName', header: 'LastName' },
         { field: 'email', header: 'Email' },
         { field: 'designationName', header: 'Designation' },
