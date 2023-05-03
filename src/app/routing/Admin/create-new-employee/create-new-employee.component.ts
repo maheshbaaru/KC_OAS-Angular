@@ -64,11 +64,9 @@ export class CreateNewEmployeeComponent {
   ngAfterViewInit() {
     this.empServ.getDesignationRoles().subscribe((res) => {
       this.roles = res;
-      console.log(this.roles);
     });
     this.empServ.getShifts().subscribe((res) => {
       this.Shifts = res;
-      
     });
   }
 }
