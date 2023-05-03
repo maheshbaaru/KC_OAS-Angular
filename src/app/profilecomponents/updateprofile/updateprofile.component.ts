@@ -62,6 +62,30 @@ export class UpdateprofileComponent {
         value: '',
         disabled: false
       }),
+      designationID: new FormControl({
+        value: '',
+        disabled: false
+      }),
+      id: new FormControl({
+        value: '',
+        disabled: false
+      }),
+      isLocked: new FormControl({
+        value: '',
+        disabled: false
+      }),
+      name: new FormControl({
+        value: '',
+        disabled: false
+      }),
+      password: new FormControl({
+        value: '',
+        disabled: false
+      }),
+      shiftId: new FormControl({
+        value: '',
+        disabled: false
+      }),
     });
    
    this.formdataget()
@@ -70,11 +94,14 @@ export class UpdateprofileComponent {
 
 
   formdataget(){
-    this.service.getEmployeeList().subscribe((data1: any) => {
-      console.log(data1);
-           this.updateform.setValue(data1) ;
-           if(!data1.isActive) this.updateform.controls['isActive'].disable()
-    });
+  
+    let userdata :any= window.sessionStorage.getItem('loggedinUser') ;
+    console.log(userdata)
+    // this.service.getEmployeeList().subscribe((data1: any) => {
+    //   console.log(data1);
+           this.updateform.setValue(JSON.parse(userdata)) ;
+            if(!userdata.isActive) this.updateform.controls['isActive'].disable()
+    // });
   }
 
 

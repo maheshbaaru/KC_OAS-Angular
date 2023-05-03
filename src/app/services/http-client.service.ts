@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
+import { environment } from './environment';
 
+
+
+
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 @Injectable({
   providedIn: 'root'
 })
@@ -23,4 +31,9 @@ export class HttpClientService {
     this.http.post('https://localhost:7236/AddProfilePhoto',id)
    }
 
+
+
+   getUpdateform( ){
+    return this.http.get<any>(environment.API_URL+environment.BASE_URL+'Login?id='+'',  httpOptions);
+  }
 }

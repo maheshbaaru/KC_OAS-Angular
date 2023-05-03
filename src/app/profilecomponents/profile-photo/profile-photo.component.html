@@ -9,14 +9,14 @@
     </div>
   </ng-template>
   <div class="row">
-    <form class=" form-styles cont  ">
+    
       <div>
-        <form class=" form-styles cont  ">
+        <form class=" form-styles cont  " [formGroup]="updateform">
           <div class="cont2 ">
             <label for="designation-input" class="input-styling" required>EmpID
               <span class="required">*</span>
             </label>
-            <input id="designation-input" type="input" pInputText />
+            <input id="designation-input" type="input" formControlName="id" pInputText />
           </div>
           <div class="cont2">
             <label for="designation-input" class="input-styling" required>Photo
@@ -27,6 +27,6 @@
           </div>
         </form>
       </div>
-    </form>
+    
     </div>
 </p-panel>

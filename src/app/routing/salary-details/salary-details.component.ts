@@ -25,7 +25,7 @@ export class SalaryDetailsComponent {
     //   .getEmployee()
     //   .then((employees: any) => (this.employees = employees));
     this.salaryService.getEmployee().subscribe(data => {
-      debugger;
+    
       this.empSalDetails = data;
       
       

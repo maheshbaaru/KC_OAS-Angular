@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
+import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 import { AuthguardService } from 'src/app/services/authguard.service';
 // import { AuthguardService } from 'app/services/authguard.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -34,7 +35,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private authService: AuthguardService,
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    private service: EmployeedDataService
   ) {}
 
 
@@ -58,8 +60,14 @@ export class LoginComponent {
  const { username, password } = this.form;
     this.authService.login(username, password).subscribe({
       next: (data: any) => {
+        this.service.getEmployeeList().subscribe((data1: any) => {
+          window.sessionStorage.setItem('loggedinUser', JSON.stringify(data1.find((x:any)=>
+          x.id==data.id)));
+          window.sessionStorage.setItem('EmployeeList',JSON.stringify(data1));
+        });
         console.log('data',data)
         if (data != '' && data != null) {
+
           this.storageService.saveUser(data);
           this.isLoginFailed = false;
           this.isLoggedIn = true;

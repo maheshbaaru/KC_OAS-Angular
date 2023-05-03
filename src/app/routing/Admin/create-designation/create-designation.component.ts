@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
+import { HttpClientService } from 'src/app/services/http-client.service';
 
 @Component({
   selector: 'app-create-designation',
@@ -6,19 +10,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-designation.component.css']
 })
 export class CreateDesignationComponent {
-  designationService: any;
 
-
+  constructor(
+    private router:Router,
+    private service: EmployeedDataService,
+    private dgnservice:HttpClientService,
+    private formBuilder: FormBuilder
+  ) { }
 
   submit(){
-   
-    this.designationService.createDesignation(this.designation);
-
-
-
+ 
   }
-  designation(designation: any) {
-    throw new Error('Method not implemented.');
-  }
-
+ 
 }
