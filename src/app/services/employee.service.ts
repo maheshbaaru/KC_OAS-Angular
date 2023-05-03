@@ -19,23 +19,28 @@ export class EmployeeService {
     }).subscribe((e: any) => {
       this.list1 = e.user;
       this.list2 = e.salary;
-      console.log(this.list1,"thiss");
+      console.log(this.list1);
     });
     // forkJoin([this.list1, this.list2]).subscribe((res) => {
     //   console.log(this.listAll);
     //   console.log(...res[0]);
     // });
-    console.log(this.list1, this.list2,"calling.....");
+    // console.log(this.list1, this.list2);
   }
 
   getEmp() {
     return this.http.get(`${this.API_CALL}/SalaryDeductions`);
   }
   getEmployee(id: number) {
-    debugger;
     return this.http.get(`${this.API_CALL}/SalaryDeduction?EmpId=` + id);
   }
   appliedLeaves() {
     return this.http.get(`${this.API_CALL}/LeavesApproval`);
+  }
+  getDesignationRoles() {
+    return this.http.get(`${this.API_CALL}/GetDesignations`);
+  }
+  getShifts() {
+    return this.http.get(`${this.API_CALL}/TblShiftControllerAPI`);
   }
 }
