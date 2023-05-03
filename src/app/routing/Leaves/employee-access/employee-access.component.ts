@@ -13,6 +13,6 @@ export class EmployeeAccessComponent {
   empAccess: any;
   constructor(private empServe: EmployeeService) {}
   ngAfterViewInit() {
-    this.empServe.getEmp().subscribe(console.log);
+    return this.empServe.getUsers().subscribe((res) => (this.empAccess = res));
   }
 }
