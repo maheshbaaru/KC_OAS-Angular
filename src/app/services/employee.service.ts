@@ -12,24 +12,13 @@ export class EmployeeService {
   listAll: any;
 
   constructor(private http: HttpClient) {
-    const API_CALL = 'https://localhost:7236';
-    forkJoin({
-      user: ajax.getJSON(`${API_CALL}/GetEmployeeTbls`),
-      salary: ajax.getJSON(`${this.API_CALL}/SalaryDeductions`),
-    }).subscribe((e: any) => {
-      this.list1 = e.user;
-      this.list2 = e.salary;
-      console.log(this.list1);
-    });
-    // forkJoin([this.list1, this.list2]).subscribe((res) => {
-    //   console.log(this.listAll);
-    //   console.log(...res[0]);
-    // });
-    // console.log(this.list1, this.list2);
   }
 
   getEmp() {
     return this.http.get(`${this.API_CALL}/SalaryDeductions`);
+  }
+  getUsers() {
+    return this.http.get(`${this.API_CALL}/GetEmployeeTbls`);
   }
   getEmployee(id: number) {
     return this.http.get(`${this.API_CALL}/SalaryDeduction?EmpId=` + id);

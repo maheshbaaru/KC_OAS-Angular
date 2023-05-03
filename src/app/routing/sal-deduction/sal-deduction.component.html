@@ -1,4 +1,4 @@
-<p-table #dt1 [value]="employee" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"  [globalFilterFields]="['employeeId','firstName','lastName']" responsiveLayout="scroll" >
+<p-table #dt1 [value]="users" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"  [globalFilterFields]="['employeeId','firstName','lastName']" responsiveLayout="scroll" >
   <ng-template pTemplate="right">
 
 
@@ -37,7 +37,7 @@
   </ng-template>
   <ng-template pTemplate="body" let-emp >
     <tr>
-      <td class="idStyle" ><a [routerLink]="['../DeductionList',emp.empId]">{{emp.empId}}</a></td>
+      <td class="idStyle" ><a [routerLink]="['../DeductionList',emp.employeeId]">{{emp.employeeId}}</a></td>
       <td>{{emp.firstName}} {{emp.lastName}}</td>
 
     </tr>
@@ -65,10 +65,11 @@
         <label for="name">EmpId
           <span class="text-red-500" required>*</span>
         </label>
-        <p-dropdown [options]="employee" [(ngModel)]="selectedCity1" placeholder="Select Id" [group]="true">
+        <p-dropdown [options]="users" [(ngModel)]="selectedCity1" placeholder="Select Id" [group]="true">
           <ng-template let-group pTemplate="group">
             <div class="p-d-flex p-ai-center">
               <span>{{group.empId}}</span>
+              <span>{{group.firstName}} {{group.lastName}}</span>
             </div>
           </ng-template>
         </p-dropdown>
@@ -86,7 +87,7 @@
 
 
           <div class="col-6 mr-5" style="width:15rem ">
-              <label for="LOPDAYS">NoOF LOP DAYS
+              <label for="LOPDAYS">No of LOP DAYS
                 <span class="text-red-500" required>*</span>
               </label>
               <input type="text" pInputText id="LOPDAYS" [(ngModel)]="selectedLOP" placeholder="NO OF LOP DAY'S" required autofocus />
