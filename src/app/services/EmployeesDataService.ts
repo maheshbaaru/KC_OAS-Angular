@@ -9,12 +9,22 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root',
 })
-export class EmployeedDataService{
-  constructor(private http: HttpClient) {}
-  getEmployeeList(){
-    return this.http.get<any>(environment.API_URL+environment.BASE_URL+'GetEmployees',  httpOptions);
+export class EmployeedDataService {
+  constructor(private http: HttpClient) { }
+  getEmployeeList() {
+    return this.http.get<any>(environment.API_URL + environment.BASE_URL + 'GetEmployees', httpOptions);
   }
-}
+  CreatenewSalaryDetails(data: any) {
+    debugger
+   this.http.post('https://localhost:7236/createNewSalary', JSON.stringify(data), httpOptions).subscribe((result) => {
+      const resultData = Object.values(result);
+      console.log(resultData);
+     
+    })
+  }
+  }
+
+
 
 
 
