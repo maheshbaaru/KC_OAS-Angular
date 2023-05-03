@@ -21,10 +21,15 @@ export class EmployeeService {
     return this.http.get(`${this.API_CALL}/GetEmployeeTbls`);
   }
   getEmployee(id: number) {
-    debugger;
     return this.http.get(`${this.API_CALL}/SalaryDeduction?EmpId=` + id);
   }
   appliedLeaves() {
     return this.http.get(`${this.API_CALL}/LeavesApproval`);
+  }
+  getDesignationRoles() {
+    return this.http.get(`${this.API_CALL}/GetDesignations`);
+  }
+  getShifts() {
+    return this.http.get(`${this.API_CALL}/TblShiftControllerAPI`);
   }
 }

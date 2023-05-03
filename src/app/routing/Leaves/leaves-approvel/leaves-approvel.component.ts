@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { LeavesService } from 'src/app/services/leaves.service';
 import namesData from 'src/assets/data/names.json';
 interface StatusType {
   name: string;
 }
 interface EmployeeName {
-  Name: string
-
+  Name: string;
 }
 @Component({
   selector: 'app-leaves-approvel',
@@ -19,32 +19,34 @@ export class LeavesApprovelComponent {
   leavesApproved: any;
   empForm: FormGroup;
   names: EmployeeName[];
-  statusTypes: StatusType[];
-  constructor(private http: HttpClient,private _fb:FormBuilder, private empservice:EmployeeService) {
-    this.names = namesData
-    this.statusTypes = [
-      { name: 'Pending' },
-      { name: 'Approved' },
-      { name: 'Declined' },
-    
-    ];
-    this.empForm=this._fb.group({
-      name:'',
-      Salary:'',
-      LastRevisedDate:'',
-      NextRevisedDate:''
-    })
+  statusTypes: any;
+  constructor(
+    private http: HttpClient,
+    private _fb: FormBuilder,
+    private empservice: EmployeeService,
+    private leaveSer: LeavesService
+  ) {
+    this.names = namesData;
+    // this.statusTypes = [
+    //   { name: 'Pending' },
+    //   { name: 'Approved' },
+    //   { name: 'Declined' },
+
+    // ];
+    this.empForm = this._fb.group({
+      name: '',
+      Salary: '',
+      LastRevisedDate: '',
+      NextRevisedDate: '',
+    });
   }
   ngOnInit() {
-
     this.empservice.appliedLeaves().subscribe((data) => {
-      this.leavesApproved  = data;
+      this.leavesApproved = data;
       console.log(data);
     });
-    // this.http.get('assets/data/employeeLeaves.json').subscribe((data) => {
-    //   this.employeeLeavs = data;
-    //   console.log(data);
-    //   console.log(this.employeeLeavs);
-    // });
+  }
+  ngAfterViewInit() {
+    this.leaveSer.getStatus().subscribe((res) => (this.statusTypes = res));
   }
 }

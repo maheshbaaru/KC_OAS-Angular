@@ -8,14 +8,14 @@
       <button pButton type="button" label="Save" icon="pi pi-check" iconPos="left" class="p-button-sm"></button>
 
   </div>
-  </ng-template> 
- 
+  </ng-template>
+
     <form >
        <div class="row">
     <div class="col-md-4">
   <div class="col-12 md:col-4  ">
     <h3 >EmployeeID<span class="required">*</span></h3>
-    <input type="text" pInputText  class="p-inputtext-normal" placeholder="ENTER EMPLOYEE ID" required> 
+    <input type="text" pInputText  class="p-inputtext-normal" placeholder="ENTER EMPLOYEE ID" required>
     <br>
     <br>
 
@@ -25,10 +25,11 @@
     <br>
 
     <h3 >DesignationID<span class="required">*</span></h3>
-   
-     <p-dropdown [options]="roles" [showClear]="true"  [(ngModel)]="selectedrole"   placeholder="Select Designation" >
-    
-    </p-dropdown> 
+
+    <p-dropdown [options]="roles" optionLabel="name" placeholder="Select Role"></p-dropdown>
+
+
+    <!-- </p-dropdown> -->
     <!-- <p-dropdown [options]="roles" [(ngModel)]="selectedrole"  placeholder="Select Role" [group]="true">
       <ng-template let-group pTemplate="group">
         <div class="p-d-flex p-ai-center">
@@ -47,7 +48,7 @@
 <div class="col-md-4">
 <div class="col-12 md:col-4">
   <h3>FirstName<span class="required">*</span></h3>
-  <input type="text" pInputText  class="p-inputtext-normal" required  placeholder="ENTER FIRSTNAME"> 
+  <input type="text" pInputText  class="p-inputtext-normal" required  placeholder="ENTER FIRSTNAME">
   <br>
   <br>
 
@@ -57,7 +58,7 @@
   <br>
 
   <h3 >ShiftId<span class="required">*</span></h3>
-  <p-dropdown [options]="Shifts"   placeholder="Select Shift"  ></p-dropdown>
+  <p-dropdown [options]="Shifts" optionLabel="shiftName"   placeholder="Select Shift"  ></p-dropdown>
   <!-- <p-dropdown [options]="Shifts"   placeholder="Select Shift"    [group]="true">
     <ng-template let-group pTemplate="group">
       <div class="p-d-flex p-ai-center">
@@ -70,7 +71,7 @@
 <div class="col-md-4">
 <div class="col-12 md:col-4  ">
   <h3 >LastName<span class="required">*</span></h3>
-  <input type="text"  class="p-inputtext-normal" required  pInputText placeholder="ENTER LASTNAME"> 
+  <input type="text"  class="p-inputtext-normal" required  pInputText placeholder="ENTER LASTNAME">
   <br>
   <br>
 
@@ -80,7 +81,7 @@
   <br>
 
   <h3 >DOJ<span class="required">*</span></h3>
-  <input type="text"  class="p-inputtext-normal" pInputText placeholder="DD/MM/YYYY"> 
+  <input type="text"  class="p-inputtext-normal" pInputText placeholder="DD/MM/YYYY">
 </div>
 </div></div>
 </form>

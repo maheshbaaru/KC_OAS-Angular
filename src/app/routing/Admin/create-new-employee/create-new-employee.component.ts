@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EmployeeService } from 'src/app/services/employee.service';
 // interface Shifts {
 //   name: string;
 // }
@@ -8,39 +9,39 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-create-new-employee',
   templateUrl: './create-new-employee.component.html',
-  styleUrls: ['./create-new-employee.component.css']
+  styleUrls: ['./create-new-employee.component.css'],
 })
 export class CreateNewEmployeeComponent {
-   roles:string[];
- // roles:Roles[];
-   selectedrole:any;
+  roles: any;
+  // roles:Roles[];
+  selectedrole: any;
   //Shifts:Shifts[];
-  Shifts:string[];
-  constructor(
-    ) { }
-    ngOnInit(){
+  Shifts: any;
+  constructor(private empServ: EmployeeService) {}
+  ngOnInit() {
     // this.Shifts = [
     //   {name:'selectShift'},
     //   {name:'First Shift' },
     //   {name:'Second Shift'}
     // ];
-    this.Shifts=["selectShift","FirstShift","SecondShift"];
-    this.roles=[ "Accountant",
-    "InVoiceSpecialist",
-     "HRExecutive",
-     "QALead",
-     "SoftWareDeveloper",
-     "SoftwareEngineer",
-     "SoftwareTrainee",
-    "QALead",
-     "QA Trainee",
-     "Tech Lead",
-    "UI Designer",
-     "Sr.SoftwareDeveloper",
-    "Project Manager",
-     "Sr.SoftwareEngineer",
-     "Sr.QA"
-    ]
+    // this.Shifts = ['selectShift', 'FirstShift', 'SecondShift'];
+    // this.roles = [
+    //   'Accountant',
+    //   'InVoiceSpecialist',
+    //   'HRExecutive',
+    //   'QALead',
+    //   'SoftWareDeveloper',
+    //   'SoftwareEngineer',
+    //   'SoftwareTrainee',
+    //   'QALead',
+    //   'QA Trainee',
+    //   'Tech Lead',
+    //   'UI Designer',
+    //   'Sr.SoftwareDeveloper',
+    //   'Project Manager',
+    //   'Sr.SoftwareEngineer',
+    //   'Sr.QA',
+    // ];
     // this.roles=[
     //   {name:   "Accountant"},
     //   {name: "InVoiceSpecialist"},
@@ -58,10 +59,14 @@ export class CreateNewEmployeeComponent {
     //   {name: "Sr.SoftwareEngineer"},
     //   {name: "Sr.QA"}
     //    ];
-       this.selectedrole;
+    // this.selectedrole;
   }
-
-
-  
-
+  ngAfterViewInit() {
+    this.empServ.getDesignationRoles().subscribe((res) => {
+      this.roles = res;
+    });
+    this.empServ.getShifts().subscribe((res) => {
+      this.Shifts = res;
+    });
+  }
 }
