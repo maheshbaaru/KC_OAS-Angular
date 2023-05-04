@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Employee } from 'src/app/Modesls/employeBankInterface';
+import { Employee, Names } from 'src/app/Modesls/employeBankInterface';
 import { EmployeService } from 'src/app/services/employeBankService';
 
 @Component({
@@ -10,7 +10,7 @@ import { EmployeService } from 'src/app/services/employeBankService';
 })
 export class CreateBankDetailsComponent implements OnInit {
   employeess: Employee[] | any;
-
+names:Names[];
   employeDetails = {
     EmpIdName: '',
     ACCNO: '',
@@ -65,6 +65,8 @@ export class CreateBankDetailsComponent implements OnInit {
       this.employeess = employee.filter(item => {
         this.employeDetails = item.firstName + item.lastName;
         console.log(this.employeDetails);
+        this.names=item.firstName + item.lastName;
+
       })
 
     })
