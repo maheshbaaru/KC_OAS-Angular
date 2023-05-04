@@ -62,7 +62,7 @@
             <td>{{Employee.salary}}</td>
             <td>{{Employee.lastRevisedDate| date: 'dd-MM-yyyy'}}</td>
             <td>{{Employee.nextRevisedDate| date: 'dd-MM-yyyy'}}</td> -->
-            <td><a href="#">KC{{Employee.empId<100?'0'+Employee.id:Employee.empId}}</a>
+            <td><a href="#" routerLink="../updateSalaryDetails">KC{{Employee.empId<100?'0'+Employee.id:Employee.empId}}</a>
             </td>
         <td>{{Employee.firstName}} {{Employee.lastName}}</td>
         <td>{{Employee.salary}}</td>
