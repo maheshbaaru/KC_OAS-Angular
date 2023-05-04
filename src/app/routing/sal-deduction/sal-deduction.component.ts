@@ -77,6 +77,8 @@ export class SalDeductionComponent {
     this.date3;
   }
   ngAfterViewInit() {
-    this.salDeductionServ.ngOnInit().subscribe((res) => (this.taxTaypes = res));
+    this.salDeductionServ
+      .getTaxDeduction()
+      .subscribe((res) => (this.taxTaypes = res));
   }
 }
