@@ -21,7 +21,7 @@ export class UpdateprofileComponent {
     private designatonservice: HttpClientService,
     private formBuilder: FormBuilder,
     private authServ: AuthguardService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.updateform = this.formBuilder.group({
@@ -65,54 +65,58 @@ export class UpdateprofileComponent {
         value: '',
         disabled: false
       }),
-      id: new FormControl({
-        value: '',
-        disabled: false
-      }),
-      isLocked: new FormControl({
-        value: '',
-        disabled: false
-      }),
-      name: new FormControl({
-        value: '',
-        disabled: false
-      }),
-      password: new FormControl({
-        value: '',
-        disabled: false
-      }),
-      shiftId: new FormControl({
-        value: '',
-        disabled: false
-      }),
+      // id: new FormControl({
+      //   value: '',
+      //   disabled: false
+      // }),
+      // isLocked: new FormControl({
+      //   value: '',
+      //   disabled: false
+      // }),
+      // name: new FormControl({
+      //   value: '',
+      //   disabled: false
+      // }),
+      // password: new FormControl({
+      //   value: '',
+      //   disabled: false
+      // }),
+      // shiftId: new FormControl({
+      //   value: '',
+      //   disabled: false
+      // }),
     });
 
     this.formdataget();
   }
 
 
-  formdataget(){
-  
-    let userdata :any= window.sessionStorage.getItem('loggedinUser') ;
+  formdataget() {
+
+    let data: any = window.sessionStorage.getItem('loggedinUser');
+    let userdata = JSON.parse(data)
     console.log(userdata)
+
     // this.service.getEmployeeList().subscribe((data1: any) => {
     //   console.log(data1);
-           this.updateform.setValue(JSON.parse(userdata)) ;
-            if(!userdata.isActive) this.updateform.controls['isActive'].disable()
+    //  this.updateform.get('email')?.setValue(data.email);
+    this.updateform.patchValue(userdata)
+    // this.updateform.get('email')?.setValue(userdata.email)
+    if(!userdata.isActive) this.updateform.controls['isActive'].disable()
     // });
-  // formdataget() {
-  //   this.service.getEmployeeList().subscribe((data1: any) => {
-  //     console.log(data1);
-  //     this.updateform.setValue(data1);
-  //     if (!data1.isActive) this.updateform.controls['isActive'].disable();
-  //   });
-  // }
+    // formdataget() {
+    //   this.service.getEmployeeList().subscribe((data1: any) => {
+    //     console.log(data1);
+    //     this.updateform.setValue(data1);
+    //     if (!data1.isActive) this.updateform.controls['isActive'].disable();
+    //   });
+    // }
 
-  // formdatpost() {
-  //   this.designatonservice.postdesignation((data: any) => {
-  //     console.log(data);
-  //     this.dendata = data;
-  //   });
-  // }
-}
+    // formdatpost() {
+    //   this.designatonservice.postdesignation((data: any) => {
+    //     console.log(data);
+    //     this.dendata = data;
+    //   });
+    // }
+  }
 }
