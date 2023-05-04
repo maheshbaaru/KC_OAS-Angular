@@ -13,5 +13,9 @@ export class LeavesService {
   getLeaveType() {
     return this.http.get(`${this.API_CALL}/TblLeaveTypeApi`);
   }
+
+  applyleave(){
+    // return this.http.post(`https://localhost:7236/SubmitLeaves`);
+  }
   ngOnInit() {}
 }

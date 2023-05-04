@@ -14,4 +14,10 @@ export class ProfileService {
     loogedUser = JSON.parse(loogedUser)
     return this.http.get(`https://localhost:7236/GetProfilePhoto?id=${loogedUser.id}`);
   }
+  addprofilephoto(Photo:string,EmpId:number){
+
+
+    // return this.http.post(`https://localhost:7236/AddProfilePhoto`)
+
+  }
 }

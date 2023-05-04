@@ -14,7 +14,7 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class LoginComponent {
 
-
+  rememberMe: boolean;
   show = false;
   password: string;
 
@@ -22,6 +22,7 @@ export class LoginComponent {
   form: any = {
     username: null,
     password: null,
+    rememberMe: false,
   };
   isLoggedIn = false;
   isLoginFailed = false;
@@ -47,6 +48,7 @@ export class LoginComponent {
       this.isLoggedIn = true;
       this.roles = this.storageService.getUser().designationID;
     }
+    this.rememberMe = false;
   }
 
 
@@ -57,7 +59,7 @@ export class LoginComponent {
   onSubmit() {
 
     this.password = 'password'
- const { username, password } = this.form;
+ const { username, password,rememberMe} = this.form;
     this.authService.login(username, password).subscribe({
       next: (data: any) => {
         this.service.getEmployeeList().subscribe((data1: any) => {
@@ -81,7 +83,11 @@ export class LoginComponent {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       },
+      
     });
+    if(rememberMe) {
+      sessionStorage.setItem('rememberMe', 'yes')
+    }
   }
 
  
