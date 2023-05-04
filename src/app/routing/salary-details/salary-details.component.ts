@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 //import salary from './salary.json';
 import { Table } from 'primeng/table';
 import { SalaryService } from 'src/app/services/salary.service';
-import { EmployeeData,Representative } from 'src/app/Modesls/employee';
+import { EmployeeData, Representative } from 'src/app/Modesls/employee';
 
 @Component({
   selector: 'app-salary-details',
@@ -12,23 +12,24 @@ import { EmployeeData,Representative } from 'src/app/Modesls/employee';
 
 
 export class SalaryDetailsComponent {
- // sample = salary;
- empSalDetails:EmployeeData[];
+  // sample = salary;
+  empSalDetails: EmployeeData[];
   representatives: Representative[] = [];
   @ViewChild('dt') table: Table;
 
   //employees: EmployeeData[] | any;
-  constructor(private salaryService: SalaryService) { }
+  constructor(private salaryService: SalaryService,
+  ) { }
 
   ngOnInit() {
     // this.salaryService
     //   .getEmployee()
     //   .then((employees: any) => (this.employees = employees));
     this.salaryService.getEmployee().subscribe(data => {
-    
+
       this.empSalDetails = data;
-      
-      
+
+
       console.log(this.empSalDetails);
     })
   }

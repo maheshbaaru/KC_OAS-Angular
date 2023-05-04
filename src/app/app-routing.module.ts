@@ -30,6 +30,7 @@ import { CreateBankDetailsComponent } from './routing/bank-details/create-bank-d
 import { EditBankDetailsComponent } from './routing/edit-bank-details/edit-bank-details.component';
 import { CreateLeaveComponent } from './routing/create-leave/create-leave.component';
 import { AuthGuard } from './services/guards/auth.guard';
+import { SalarydisplyComponent } from './routing/salarydisply/salarydisply.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -43,7 +44,7 @@ const routes: Routes = [
     children: [
       { path: 'updateprofile', component: UpdateprofileComponent },
       { path: 'salary-details', component: SalaryDetailsComponent },
-      {path: 'create-new-salary-details',component: CreateNewSalaryDetailsComponent,},
+      { path: 'create-new-salary-details', component: CreateNewSalaryDetailsComponent, },
       { path: 'create-designation', component: CreateDesignationComponent },
       { path: 'changepassword', component: ChangepasswordComponent },
       { path: 'create-taxtype', component: CreateTaxtypeComponent },
@@ -59,7 +60,7 @@ const routes: Routes = [
       { path: 'apply', component: ApplyLeavesComponent },
       { path: 'Employees', component: EmployeesComponent },
       { path: 'paySlip', component: PaySlipComponent },
-      { path: 'create-new-salary-details',component: CreateNewSalaryDetailsComponent,},
+      { path: 'create-new-salary-details',component: CreateNewSalaryDetailsComponent },
       { path: 'create-leave', component: CreateLeaveComponent },
       { path: 'cretenewemployee', component: CreateNewEmployeeComponent },
       { path: 'updatephoto', component: UpdatephotoComponent },
@@ -68,6 +69,7 @@ const routes: Routes = [
       { path: 'bankDetails', component: BankDetailsComponent },
       { path: 'create-bank-details', component: CreateBankDetailsComponent },
       { path: 'edit-bank-details/:id', component: EditBankDetailsComponent },
+      { path: 'updateSalaryDetails', component: SalarydisplyComponent }
     ],
   },
 
@@ -79,4 +81,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
