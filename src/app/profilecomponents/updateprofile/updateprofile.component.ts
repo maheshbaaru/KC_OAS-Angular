@@ -65,26 +65,7 @@ export class UpdateprofileComponent {
         value: '',
         disabled: false
       }),
-      // id: new FormControl({
-      //   value: '',
-      //   disabled: false
-      // }),
-      // isLocked: new FormControl({
-      //   value: '',
-      //   disabled: false
-      // }),
-      // name: new FormControl({
-      //   value: '',
-      //   disabled: false
-      // }),
-      // password: new FormControl({
-      //   value: '',
-      //   disabled: false
-      // }),
-      // shiftId: new FormControl({
-      //   value: '',
-      //   disabled: false
-      // }),
+    
     });
 
     this.formdataget();

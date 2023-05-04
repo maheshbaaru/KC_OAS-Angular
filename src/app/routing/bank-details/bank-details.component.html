@@ -17,7 +17,7 @@
         #dt [value]="employees" [(selection)]="selectedCustomers" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [filterDelay]="0" styleClass="p-datatable-gridlines" [globalFilterFields]="['EmpId','ACCNO','ACCNAME','BankName']">
+        [filterDelay]="0" styleClass="p-datatable-gridlines" [globalFilterFields]="['empId','accno','firstName','lastName','bankName']">
             <!-- <ng-template pTemplate="caption">
                 
             </ng-template> -->

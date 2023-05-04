@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/app/services/environment';
-
+import { BehaviorSubject } from 'rxjs';
 
 
 
@@ -13,6 +13,12 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthguardService {
+  private currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
+  isRemberMeChecked: boolean=true;
+
+
+
   login( username:string, password: String): Observable<any> {
     return this.httpClient.get<any>(environment.API_URL+environment.BASE_URL+'Login?username='+username+'&password='+password+'',  httpOptions);
   }
@@ -35,10 +41,20 @@ export class AuthguardService {
   // }
 
   logout(): Observable<any> {
+    localStorage.removeItem('user');
     return this.httpClient.post('http://localhost:4200/signout', { }, httpOptions);
   }
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+
+    // this.currentUserSubject = new BehaviorSubject(JSON.parse(sessionStorage.getItem('user')));
+    // this.currentUser = this.currentUserSubject.asObservable();
+   }
+
+
+
+
+
 
 }
 
