@@ -12,16 +12,13 @@ import { LeavesService } from 'src/app/services/leaves.service';
 export class ApplyLeavesComponent {
   employeeLeavs: any;
   appliedLeaves: any;
-  constructor(private empSer: EmployeeService,private leaveServ:LeavesService) {
-    // this.empSer.appliedLeaves().subscribe((data) => {
-    //   this.employeeLeavs = data;
-    //   console.log(data);
-    // });
+  constructor(private empSer: EmployeeService) {
   }
   ngOnInit() {
-    this.empSer.appliedLeaves().subscribe((data) => {
-      this.employeeLeavs = data;
-      console.log(data);
+    let loogedUser: any = window.sessionStorage.getItem('auth-user')
+    loogedUser = JSON.parse(loogedUser)
+    this.empSer.appliedLeaves().subscribe((data: any) => {
+    this.employeeLeavs = data.filter((data1: any) => data1.empId == loogedUser.employeeID * 1);
     });
   }
  

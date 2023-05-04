@@ -55,7 +55,7 @@ export class NavbarComponent implements OnInit {
       }
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
+      window.sessionStorage.setItem('isAdmin', this.showAdminBoard+"");
       this.username = user.name;
       this.name = this.username;
     }
