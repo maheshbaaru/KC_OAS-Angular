@@ -84,6 +84,7 @@ export class LoginComponent {
     });
   }
 
+ 
   reloadPage(): void {
     window.location.reload();
   }

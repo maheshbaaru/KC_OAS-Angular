@@ -6,7 +6,12 @@ import { Injectable } from '@angular/core';
 })
 export class ProfileService {
   constructor(private http: HttpClient) {}
-  getImage() {
+  getImages() {
     return this.http.get('https://localhost:7236/GetProfilePhotos');
+  }
+  getloggedInProfile() {
+    let loogedUser: any = window.sessionStorage.getItem('auth-user')
+    loogedUser = JSON.parse(loogedUser)
+    return this.http.get(`https://localhost:7236/GetProfilePhoto?id=${loogedUser.id}`);
   }
 }

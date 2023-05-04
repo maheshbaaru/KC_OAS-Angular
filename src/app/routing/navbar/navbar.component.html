@@ -72,12 +72,11 @@
 
             <div class="nav-item" routerLinkActive="active" (mouseover)="dispatchPlanmenuTrigger.openMenu()" >
                 <a class="nav-link customizing" #dispatchPlanmenuTrigger="matMenuTrigger"
-                    [matMenuTriggerFor]="dispatchPlan" >Welcome {{name}} <mat-icon>person</mat-icon> </a>
+                    [matMenuTriggerFor]="dispatchPlan" >Welcome {{name}} <img src="{{profilePic}}"  class="profile-class"/>
+                </a>
                 <mat-menu #dispatchPlan="matMenu">
 
-                    <button mat-menu-item
-                        [routerLink]="['profile-photo']"><mat-icon>camera_enhance</mat-icon> Profile
-                        Photo</button>
+                    
                     <button mat-menu-item [routerLink]="['updatephoto']">
                         <mat-icon>camera_enhance</mat-icon> Update Photo</button>
                     <button mat-menu-item [routerLink]="['updateprofile']"> <mat-icon>person</mat-icon>Profile</button>

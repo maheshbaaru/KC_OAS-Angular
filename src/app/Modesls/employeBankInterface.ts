@@ -25,4 +25,7 @@ export interface Employee{
     firstName?:string,
     LastName?:string
 }
+export interface Names{
+    name:string;
+}
 
