@@ -72,7 +72,8 @@
 
             <div class="nav-item" routerLinkActive="active" (mouseover)="dispatchPlanmenuTrigger.openMenu()" >
                 <a class="nav-link customizing" #dispatchPlanmenuTrigger="matMenuTrigger"
-                    [matMenuTriggerFor]="dispatchPlan" >Welcome {{name}} <mat-icon>person</mat-icon> </a>
+                    [matMenuTriggerFor]="dispatchPlan" >Welcome {{name}} <img src="{{profilePic}}"  class="profile-class"/>
+                </a>
                 <mat-menu #dispatchPlan="matMenu">
 
                     <button mat-menu-item

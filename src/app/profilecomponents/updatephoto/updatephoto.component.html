@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-8">
         <label class="btn btn-default p-0">
-<!-- 
+          <!-- 
           <mat-form-field>
             <div>
               <mat-toolbar>
@@ -39,28 +39,19 @@
           </mat-form-field> -->
           <!-- <p-fileUpload  mode="basic" 
           accept="image/*"  chooseLabel="Choose File" ></p-fileUpload> -->
-           <input type="file" accept="image/*" (change)="selectFile($event)" />  
-        </label>
-
+          <input type="file" accept="image/*" (change)="selectFile($event)" />
+          </label>
         <div>
-          <img  [src]="preview" class="preview" />
+           <img src="{{preview}}"  class="preview"/>
         </div>
       </div>
-    
-
-
-
       <div class="col-4">
-        <button
-          class="btn btn-success btn-sm float-right"
-          [disabled]="!selectedFiles"
-          (click)="upload()"
-        >
+        <button class="btn btn-success btn-sm float-right" [disabled]="!selectedFiles" (click)="upload()">
           Upload
         </button>
       </div>
     </div>
-<!-- 
+    <!-- 
     <form class=" form-styles cont  " [formGroup]="updateform">
       <div class="cont2 ">
         <label for="designation-input" class="input-styling" required>EmpID

@@ -29,12 +29,12 @@ export class NavbarComponent implements OnInit {
     private authService: AuthguardService,
     private profileServ: ProfileService
   ) {
-    this.profileServ.getImage().subscribe(console.log);
   }
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
-
+    this.profileServ.getloggedInProfile().subscribe((blob:any)=>{
+      this.profilePic= 'data:image/jpg;base64,'+blob.photo});
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
       if (user.designationID == 1 || user.designationID == 11) {
@@ -72,10 +72,5 @@ export class NavbarComponent implements OnInit {
     this.storageService.clean();
     this.router.navigate(['/login']);
   }
-  profilePhoto() {
-    this.profileServ.getImage().subscribe((data) => {
-      this.profilePic = data;
-      console.log(data);
-    });
-  }
+
 }
