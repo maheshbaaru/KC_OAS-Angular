@@ -55,7 +55,7 @@
         <label class="p-mb-3" for="taxTayes" >TaxTypeId
           <span class="text-red-500" required>*</span>
         </label>
-        <p-dropdown [options]="taxTaypes" [(ngModel)]="SelectedCity1" placeholder="SELECT TAX TYPE" optionLabel="name" [showClear]="true" ></p-dropdown>
+        <p-dropdown [options]="taxTaypes" [(ngModel)]="SelectedCity1" placeholder="SELECT TAX TYPE" optionLabel="type" [showClear]="true" filterBy="type" [filter]="true" ></p-dropdown>
 
       </div>
       <div>
@@ -65,13 +65,13 @@
         <label for="name">EmpId
           <span class="text-red-500" required>*</span>
         </label>
-        <p-dropdown [options]="users" [(ngModel)]="selectedCity1" placeholder="Select Id" [group]="true">
-          <ng-template let-group pTemplate="group">
+        <p-dropdown [options]="users" [(ngModel)]="selectedCity1" placeholder="EmpId" [filter]="true"  optionLabel="firstName" [showClear]="true" [filter]="true" filterBy="firstName">
+          <!-- <ng-template let-group pTemplate="group">
             <div class="p-d-flex p-ai-center">
-              <span>{{group.empId}}</span>
-              <span>{{group.firstName}} {{group.lastName}}</span>
+
+              <option>{{group.firstName}} {{group.lastName}}</option>
             </div>
-          </ng-template>
+          </ng-template> -->
         </p-dropdown>
 
 
