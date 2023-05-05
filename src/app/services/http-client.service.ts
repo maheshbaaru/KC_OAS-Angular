@@ -28,7 +28,7 @@ export class HttpClientService {
    }
 
    profilephoto(id:any){
-    this.http.post('https://localhost:7236/AddProfilePhoto',id)
+    this.http.put('https://localhost:7236/AddProfilePhoto',id)
    }
 
 
