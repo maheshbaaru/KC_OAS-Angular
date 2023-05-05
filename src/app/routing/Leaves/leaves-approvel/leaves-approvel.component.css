@@ -2,3 +2,10 @@
     margin:40px;
     padding-bottom: 40px;
 }
+.empId{
+    text-decoration: none !important;
+    color: blue;
+    font-weight: 450;
+    line-height: 1;
+    
+}

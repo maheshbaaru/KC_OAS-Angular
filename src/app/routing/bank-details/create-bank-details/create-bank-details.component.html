@@ -1,84 +1,43 @@
-<!-- <div class="create-bank-container">
+<!-- saleem changes -->
+<div class="create-bank-container">
     
-    <div class="cbd-container">
-        <div class="cbd-caption-content1">
-            <h1 class="cbd-title">CREATE BANK DETAILS</h1>
-        </div>
-        <div class="cbd-buttons-container">
-            <button class="creat-button" routerLink="../bankDetails"> <i class="pi pi-arrow-left"></i> Back</button>
-            <button class="creat-button" (click)="savingForm()" form="myForm"> <i class="pi pi-check" ></i> Save</button>
-        </div>
-    </div>
-    
-    <form class="cbd-contnt-container" id="myForm" #myForm="ngForm">
-        
-        <div class="cbd-input-container" >
-                 <label for="EmpId" class="cbd-label">
-                    EmpId<span class="cbd-empClass">*</span>
-                </label>
-                  <select name="EmpId" id="EmpId" class="cbd-input-fields" [(ngModel)]="employeDetails.EmpIdName">
-                     <option  selected="Default" value="SELECT EMPLOYEE">SELECT EMPLOYEE</option>
-                     <option [value]="empname.FirstName" *ngFor="let empname of  employeess">{{empname.FirstName}}</option>
-                 </select>   
-                          
-             </div>
-       <div class="cbd-input-container">
-            <label for="accno" class="label">ACCNO<span class="cbd-empClass">*</span></label>
-            <input type="text" id="accno" class="cbd-input-fields" placeholder="ENTER ACCOUNT NUMBER" name="ACCNO" [(ngModel)]="employeDetails.ACCNO"/>
-       </div>
-
-       <div class="cbd-input-container">
-            <label for="accname" class="label">ACCNAME<span class="cbd-empClass">*</span></label>
-            <input type="text" id="accname" class="cbd-input-fields" placeholder="ENTER HOLDER NAME" name="ACCNO" [(ngModel)]="employeDetails.ACCNAME"/>
-       </div>
-
-       <div class="cbd-input-container">
-            <label for="bankname" class="label ">BankName<span class="cbd-empClass">*</span></label>
-            <input type="text" id="bankname" class="cbd-input-fields disabledButton" disabled value="Kotak Bank" name="BankName" />
-       </div>
-    
-    </form>
-
-
-    <h1>{{employeDetails.ACCNO}}</h1>
-</div>  -->
-
- <p-panel  >
-    <ng-template pTemplate="header" >
-      <div  class="col -md-6" style="text-align:left">
-      <strong>CREATE BANK DETAILS</strong>
-    </div>
-        <div class="col-sm-6" style="text-align:right">
-          <button pButton class="h-1rem" style="float: right; font-size: smaller;" routerLink="/navbar/bankDetails"><i class="pi pi-arrow-left icon"></i>BACK</button>
-          <button pButton class="h-1rem" style="float: right;margin-right:5px; font-size: smaller;"  type="submit"  ><i class="pi pi-check icon"></i>SAVE</button>
-    </div>
-    </ng-template> 
-    <div class="row">   
-      <form  class=" form-styles cont  "  >
-       
-        <div class="cont2 ">
-         <label for="EmpId" class="input-styling" required >EmpID <span class="required">*</span></label>
-          <p-dropdown [options]="names" placeholder="SELECT EMPLOYEE" optionLabel="name"
-          [showClear]="true"  formControlName="name" ></p-dropdown>
-        </div>
-        <div  class="cont2">
-         <label for="accno" class="input-styling" required  >ACC NO <span class="required">*</span>
-          </label>
-          <input id="accno" type="text"  placeholder="ENTER ACCOUNT NO" pInputText formControlName="accno"/>
-        </div>
-        <div  class="cont2">
-         <label for="accname" class="input-styling" required>ACC NAME <span class="required">*</span>
-          </label>
-          <input id="accname" type="text"  placeholder="ENTER HOLDER NAME" pInputText formControlName="accname"/>
-
-        </div>
-         <div  class="cont2">
-         <label for="bankname" class="input-styling" required>BANK NAME  <span class="required">*</span>
-          </label>
-          <input id="bankname" type="text"  value="Kotak Bank"  pInputText formControlName="bankname"/>
-
-        </div> 
-  
-      </form>
+  <div class="cbd-container">
+      <div class="cbd-caption-content1">
+          <h1 class="cbd-title">CREATE BANK DETAILS</h1>
+      </div>
+      <div class="cbd-buttons-container">
+          <button class="creat-button" routerLink="../bankDetails"> <i class="pi pi-arrow-left"></i> Back</button>
+          <button class="creat-button" (click)="savingForm()" form="myForm"> <i class="pi pi-check" ></i> Save</button>
+      </div>
   </div>
-  </p-panel> 
+  
+  <form class="cbd-contnt-container" id="myForm" #myForm="ngForm">
+      
+      <div class="cbd-input-container" >
+               <label for="EmpId" class="cbd-label">
+                  EmpId<span class="cbd-empClass">*</span>
+              </label>
+               <select name="EmpId" id="EmpId" class="cbd-input-fields" [(ngModel)]="employeDetails.EmpNameById">
+                   <option  selected="Default" value="SELECT EMPLOYEE">SELECT EMPLOYEE</option>
+                   <option  *ngFor="let empname of  employeess" >{{empname.firstName}} {{empname.lastName}}</option>
+               </select>  
+              
+           </div>
+     <div class="cbd-input-container">
+          <label for="accno" class="label">ACCNO<span class="cbd-empClass">*</span></label>
+          <input type="text" id="accno" class="cbd-input-fields" placeholder="ENTER ACCOUNT NUMBER" name="ACCNO" [(ngModel)]="employeDetails.ACCNO"/>
+     </div>
+
+     <div class="cbd-input-container">
+          <label for="accname" class="label">ACCNAME<span class="cbd-empClass">*</span></label>
+          <input type="text" id="accname" class="cbd-input-fields" placeholder="ENTER HOLDER NAME" name="ACCNO" [(ngModel)]="employeDetails.ACCNAME"/>
+     </div>
+
+     <div class="cbd-input-container">
+          <label for="bankname" class="label ">BankName<span class="cbd-empClass">*</span></label>
+          <input type="text" id="bankname" class="cbd-input-fields disabledButton" disabled value="Kotak Bank" name="BankName" />
+     </div>
+  
+  </form>
+</div>
+
