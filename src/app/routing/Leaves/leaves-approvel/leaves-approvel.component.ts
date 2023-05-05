@@ -43,7 +43,6 @@ export class LeavesApprovelComponent {
   ngOnInit() {
     this.empservice.appliedLeaves().subscribe((data) => {
       this.leavesApproved = data;
-      console.log(data);
     });
   }
   ngAfterViewInit() {

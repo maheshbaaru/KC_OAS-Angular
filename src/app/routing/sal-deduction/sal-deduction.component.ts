@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
 import { SalarydeductionlistService } from 'src/app/services/salarydeductionlist.service';
+import { NgForm } from '@angular/forms';
 export interface TaxTayes {
   id?: number;
   Type?: string;
@@ -67,7 +68,8 @@ export class SalDeductionComponent {
     this.productDialog = false;
     this.submitted = false;
   }
-  save() {
+  save(data: NgForm) {
+    console.log(data);
     this.submitted = true;
 
     this.SelectedCity1;

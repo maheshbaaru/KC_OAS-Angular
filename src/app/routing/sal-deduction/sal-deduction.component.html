@@ -44,9 +44,10 @@
   </ng-template>
 
 </p-table>
-<p-dialog [(visible)]="productDialog" [style]="{width: '850px',height:'700px'}"  header="Create" [modal]="true" styleClass="p-fluid" >
+<p-dialog [(visible)]="productDialog" [style]="{width: '850px',height:'700px'}"  header="Create" [modal]="true" styleClass="p-fluid"  >
 
-  <ng-template pTemplate="content p-p-4">
+  <ng-template pTemplate="content p-p-4" #form let-form="form">
+  <form  #salDeduction="ngForm" (ngSubmit)="save($event)">
 
     <div class="formgrid grid">
 
@@ -55,7 +56,7 @@
         <label class="p-mb-3" for="taxTayes" >TaxTypeId
           <span class="text-red-500" required>*</span>
         </label>
-        <p-dropdown [options]="taxTaypes" [(ngModel)]="SelectedCity1" placeholder="SELECT TAX TYPE" optionLabel="type" [showClear]="true" filterBy="type" [filter]="true" ></p-dropdown>
+        <p-dropdown [options]="taxTaypes"  placeholder="SELECT TAX TYPE" id="TaxTypeId" name="TaxTypeId" class="form-control" optionLabel="type" [showClear]="true" filterBy="type" [filter]="true" ngModel></p-dropdown>
 
       </div>
       <div>
@@ -65,7 +66,7 @@
         <label for="name">EmpId
           <span class="text-red-500" required>*</span>
         </label>
-        <p-dropdown [options]="users" [(ngModel)]="selectedCity1" placeholder="EmpId" [filter]="true"  optionLabel="firstName" [showClear]="true" [filter]="true" filterBy="firstName">
+        <p-dropdown [options]="users" placeholder="EmpId" [filter]="true"  optionLabel="firstName" [showClear]="true" [filter]="true" filterBy="firstName" name="EmpId" class="form-control" ngModel>
           <!-- <ng-template let-group pTemplate="group">
             <div class="p-d-flex p-ai-center">
 
@@ -81,7 +82,7 @@
           <label class="p-mb-3">Amount
             <span class="text-red-500" required>*</span>
           </label>
-          <p-inputNumber id="Amount" [(ngModel)]="selectedAmount" mode="currency" currency="INR" locale="en-US"  autofocus></p-inputNumber>
+          <p-inputNumber id="Amount"  mode="currency" currency="INR" locale="en-US"  autofocus class="form-control" name="Amount" ngModel></p-inputNumber>
       </div>
 
 
@@ -90,7 +91,7 @@
               <label for="LOPDAYS">No of LOP DAYS
                 <span class="text-red-500" required>*</span>
               </label>
-              <input type="text" pInputText id="LOPDAYS" [(ngModel)]="selectedLOP" placeholder="NO OF LOP DAY'S" required autofocus />
+              <input type="text" pInputText id="LOPDAYS"  placeholder="NO OF LOP DAY'S" required autofocus name="LOPDAYS" ngModel/>
 
           </div>
           <div class="col-6" style="width: 15rem;">
@@ -98,17 +99,18 @@
             <label for="Month" >Effected Month
               <span class="text-red-500" required>*</span>
             </label>
-            <p-calendar  [(ngModel)]="date3" [disabledDates]="invalidDates" [showIcon]="true" view="month" [touchUI]="true" inputId="Month" dateFormat="mm.yy"  [required]="true" autofocus></p-calendar>
+            <p-calendar   [disabledDates]="invalidDates" [showIcon]="true" view="month"  inputId="Month" dateFormat="mm.yy"  [required]="true" name="Month" ngModel></p-calendar>
         </div>
       </div>
 
-
-
+    </form>
   </ng-template>
 
-  <ng-template pTemplate="footer">
-      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-      <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+
+  <ng-template pTemplate="footer" #salDeduction>
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" id="save" type="submit"  ></button>
+
   </ng-template>
 
 </p-dialog>

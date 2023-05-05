@@ -3,10 +3,10 @@
     <div  class="col -md-6" >
     <strong>LEAVES APPROVAL</strong>
   </div>
-    
-  </ng-template> 
+
+  </ng-template>
   <div class="row">
-    
+
       <form [formGroup]="empForm" class=" form-styles cont  ">
 
           <div class="cont2 ">
@@ -18,7 +18,7 @@
           </div>
           <div class="cont2 ">
               <label for="designation-input" class="input-styling" required>Status ID
-                
+
               </label>
               <p-dropdown [options]="statusTypes" placeholder="SELECT STATUS TYPE" optionLabel="name"
                   [showClear]="true" formControlName="name"></p-dropdown>
@@ -34,7 +34,7 @@
             </label>
             <p-calendar [showIcon]="true"  id="designation-input" placeholder="DD/MM/YYYY"  formControlName="year"></p-calendar>
         </div>
-          
+
       </form>
 
 
@@ -121,7 +121,7 @@
     </ng-template>
     <ng-template pTemplate="body" let-emp>
       <tr>
-        <td >{{emp.empId}}</td>
+        <td ><a routerLink="/">KC0{{emp.empId}}</a></td>
         <td>{{emp.Name}}</td>
         <td>{{emp.leaveTypeId}}</td>
         <td>{{emp.numOfDays}}</td>
