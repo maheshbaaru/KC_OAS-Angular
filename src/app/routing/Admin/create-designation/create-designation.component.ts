@@ -18,8 +18,20 @@ export class CreateDesignationComponent {
     private formBuilder: FormBuilder
   ) { }
 
-  submit(){
- 
+  ngOnInit(data:any){
+    this.submit(data)
   }
+
+  submit(data:any ){
+
+    // this.router.navigate['/navbar']
+//  this.dgnservice.postdesignation(data).subscribe(
+//   data => {
+//     console.log(data);
+// }
+//  )
+
+ }
+  
  
 }
