@@ -1,6 +1,8 @@
+// saleem changes
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Employee, Names } from 'src/app/Modesls/employeBankInterface';
+import { Employee } from 'src/app/Modesls/employeBankInterface';
 import { EmployeService } from 'src/app/services/employeBankService';
 
 @Component({
@@ -9,30 +11,40 @@ import { EmployeService } from 'src/app/services/employeBankService';
   styleUrls: ['./create-bank-details.component.css']
 })
 export class CreateBankDetailsComponent implements OnInit {
+  
+
+  constructor(private employeesService: EmployeService,
+    private router: Router) { }
+
+
+    ngOnInit() {
+      this.employeesService.getEmployeeData().subscribe(result => {
+        
+        this.employeess = result
+  
+      })
+
+    }
+
+  
   employeess: Employee[] | any;
-names:Names[];
+
   employeDetails = {
-    EmpIdName: '',
+    EmpNameById: '',
     ACCNO: '',
     ACCNAME: '',
     BankName: "Kotak Bank",
     EmpId: ''
   }
+  
   accno: string = ''
   idArray: Employee[] | any
   newArray: Employee[] | any
-
-  // dont add empId ass it will get someError
-
-  constructor(private employeesService: EmployeService,
-    private router: Router) { }
-  // ngDoCheck(): void {
-  //   console.log(this.employeDetails)
-  // }
+  firstname: string[];
 
   resetingCreatForm() {
     this.employeDetails = {
-      EmpIdName: '',
+      EmpNameById: 'SELECT EMPLOYEE',
       ACCNO: '',
       ACCNAME: '',
       BankName: "Kotak Bank",
@@ -41,38 +53,29 @@ names:Names[];
   }
 
   savingForm() {
-    this.idArray = this.employeess.filter((emp: any) => emp.FirstName === this.employeDetails.EmpIdName)
-      .map((emp: any) => emp.EmpId)
+  
+    this.firstname=this.employeDetails.EmpNameById.split(" ")
+   
+    this.idArray = this.employeess.find(
+        (e:any)=>
+        e.lastName ===this.firstname.reverse()[0]
+        )
     this.newArray = {
-      "EmpId": this.idArray[0],
-      "ACCNO": this.employeDetails.ACCNO,
-      "BankName": "Kotak Bank",
-      "ACCNAME": this.employeDetails.ACCNAME,
-      "EmpIdName": this.employeDetails.EmpIdName,
+      "id":this.idArray.id,
+      "empId": this.idArray.empId?this.idArray.empId:"",
+      "accno": this.employeDetails.ACCNO,
+      "bankName": "Kotak Bank",
+      "accname": this.employeDetails.ACCNAME,
     }
-    this.employeesService.creatEmployeDataAndPost(this.newArray)
+    alert("Are You Sure You Want To Create New Employee Bank Details")
+    this.employeesService.PostEmployeeNewBankData(this.newArray)
     this.resetingCreatForm()
   }
 
-  ngOnInit() {
-    // this.employeesService.getEmployeeData().then(employee => {
-
-    //   this.employeess = employee
-
-    // })
-    this.employeesService.getEmployeeData().subscribe(employee => {
-
-      this.employeess = employee.filter(item => {
-        this.employeDetails = item.firstName + item.lastName;
-        console.log(this.employeDetails);
-        this.names=item.firstName + item.lastName;
-
-      })
-
-    })
-  }
+ 
 
   // onClickBack(){
   //   this.router.navigate(['../bankDetails'])
   // }
 }
+

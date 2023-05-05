@@ -31,6 +31,7 @@ import { EditBankDetailsComponent } from './routing/edit-bank-details/edit-bank-
 import { CreateLeaveComponent } from './routing/create-leave/create-leave.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { SalarydisplyComponent } from './routing/salarydisply/salarydisply.component';
+import { LeavesApprovalScreenComponent } from './routing/Leaves/leaves-approvel/leaves-approval-screen/leaves-approval-screen.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -56,6 +57,9 @@ const routes: Routes = [
       { path: 'profile-photo', component: ProfilePhotoComponent },
       { path: 'DeductionList/:id', component: SalDeductionListComponent },
       { path: 'leavesApprov', component: LeavesApprovelComponent },
+
+      {path:'approval-screen/:id',component:LeavesApprovalScreenComponent},
+      
       { path: 'access', component: EmployeeAccessComponent },
       { path: 'apply', component: ApplyLeavesComponent },
       { path: 'Employees', component: EmployeesComponent },
@@ -66,6 +70,7 @@ const routes: Routes = [
       { path: 'updatephoto', component: UpdatephotoComponent },
       { path: 'updateemployee', component: UpdateEmployeeComponent },
       { path: 'employee-leaves', component: EmployeeLeavesComponent },
+      
       { path: 'bankDetails', component: BankDetailsComponent },
       { path: 'create-bank-details', component: CreateBankDetailsComponent },
       { path: 'edit-bank-details/:id', component: EditBankDetailsComponent },

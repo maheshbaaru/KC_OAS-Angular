@@ -121,7 +121,12 @@
     </ng-template>
     <ng-template pTemplate="body" let-emp>
       <tr>
-        <td >{{emp.empId}}</td>
+        <td >
+          <a [routerLink]="['../approval-screen', emp.empId]" class="empId">
+            KC{{emp.empId<100?'0'+emp.empId:emp.empId}}
+          </a>
+          <!-- {{emp.empId}} -->
+        </td>
         <td>{{emp.Name}}</td>
         <td>{{emp.leaveTypeId}}</td>
         <td>{{emp.numOfDays}}</td>

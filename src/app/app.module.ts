@@ -51,6 +51,7 @@ import { CreateBankDetailsComponent } from './routing/bank-details/create-bank-d
 import { EditBankDetailsComponent } from './routing/edit-bank-details/edit-bank-details.component';
 import { EmployeService } from './services/employeBankService';
 import { CreateLeaveComponent } from './routing/create-leave/create-leave.component';
+import { LeavesApprovalScreenComponent } from './routing/Leaves/leaves-approvel/leaves-approval-screen/leaves-approval-screen.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,8 @@ import { CreateLeaveComponent } from './routing/create-leave/create-leave.compon
     CreateBankDetailsComponent,
     EditBankDetailsComponent,
     CreateLeaveComponent,
+    LeavesApprovalScreenComponent,
+
   ],
   imports: [
     BrowserModule,
