@@ -30,6 +30,7 @@ export class CreateDesignationComponent {
   submit() {}
   public form: FormGroup;
   addDesignation() {
+
     this.addDesinations = this.form.value;
     this.salDeductionServe
       .AddDesignation(this.addDesinations.name)
