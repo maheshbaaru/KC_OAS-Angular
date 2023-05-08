@@ -11,7 +11,7 @@ import { SalarydeductionlistService } from 'src/app/services/salarydeductionlist
   styleUrls: ['./create-designation.component.css'],
 })
 export class CreateDesignationComponent {
-  addDesination: any;
+  addDesinations: any;
   constructor(
     fb: FormBuilder,
     private router: Router,
@@ -27,9 +27,12 @@ export class CreateDesignationComponent {
 
   submit() {}
   public form: FormGroup;
-  addDesignation(name: any) {
-    this.salDeductionServe.AddDesignation(name).subscribe((res) => {
-      this.addDesination = res;
-    });
+  addDesignation() {
+    this.addDesinations = this.form.value;
+    this.salDeductionServe
+      .AddDesignation(this.addDesinations.name)
+      .subscribe((res: any) => {
+        console.log(res);
+      });
   }
 }

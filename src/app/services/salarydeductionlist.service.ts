@@ -17,14 +17,13 @@ export class SalarydeductionlistService {
   getTaxDeduction() {
     return this.http.get(`${this.API_CALL}/TblTaxDeduction`);
   }
-  AddDesignation(name: string) {
+  AddDesignation(name: string): Observable<any[]> {
     debugger;
-    return new Observable<any[]>((observer) => {
-      this.http.post<any>(
-        `${this.API_CALL}/AddDesignations?Name=`,
-        JSON.stringify({ name }),
-        this.httpOptions
-      );
-    });
+    console.log(name);
+    return this.http.post<any>(
+      `${this.API_CALL}/AddDesignations?Name=${name}`,
+
+      this.httpOptions
+    );
   }
 }
