@@ -14,6 +14,10 @@ export class LeavesService {
     return this.http.get(`${this.API_CALL}/TblLeaveTypeApi`);
   }
 
+  appliedLeaves() {
+    return this.http.get(`${this.API_CALL}/LeavesApproval`);
+  }
+
   applyleave(){
     // return this.http.post(`https://localhost:7236/SubmitLeaves`);
   }

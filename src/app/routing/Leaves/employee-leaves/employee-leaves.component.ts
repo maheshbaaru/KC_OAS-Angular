@@ -7,6 +7,7 @@ import { Table } from 'primeng/table';
 
 import { SalaryService } from 'src/app//services/salary.service';
 import { LeavesService } from 'src/app/services/leaves.service';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 interface EmployeeName {
   Name: string;
@@ -28,10 +29,12 @@ export class EmployeeLeavesComponent {
 
   names: EmployeeName[];
   empForm: FormGroup;
+  leavesApproved: any;
 
   constructor(
     private _fb: FormBuilder,
-    private salaryService: SalaryService,
+ 
+    private empservice: EmployeeService,
     private leaveSer: LeavesService
   ) {
     this.names = namesData;
@@ -50,18 +53,20 @@ export class EmployeeLeavesComponent {
     });
   }
 
-  sample = [''];
+  // sample = [''];
 
-  representatives: Representative[] = [];
-  @ViewChild('dt')
-  table!: Table;
+  // representatives: Representative[] = [];
+  // @ViewChild('dt')
+  // table!: Table;
 
   ngOnInit() {
-    // this.salaryService
-    //   .getEmployee()
-    //   .then((employees: any) => (this.employees = employees));
+    this.leaveSer.appliedLeaves().subscribe((data) => {
+      this.leavesApproved = data;
+      console.log(this.leavesApproved)
+    });
   }
-  ngAfterViewInit() {
-    this.leaveSer.getLeaveType().subscribe((res) => (this.leaveTypes = res));
-  }
+  // ngAfterViewInit() {
+  //   this.leaveSer.getLeaveType().subscribe((res) => (this.leaveTypes = res));
+  // }
+
 }
