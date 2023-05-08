@@ -65,13 +65,11 @@
                 </th>
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-Employee>
+        <ng-template pTemplate="body" let-emp>
             <tr>
-                <td>{{Employee.empId}}
-                       
-                </td>
-                <td>{{Employee.FirstName}} {{Employee.LastName}}</td>
-                <td>{{Employee.numOfDays}}</td>
+                <td>{{emp.empId}} </td>
+                <td>{{emp.FirstName}} {{emp.LastName}}</td>
+                <td>{{emp.numOfDays}}</td>
             
             </tr>
         </ng-template>

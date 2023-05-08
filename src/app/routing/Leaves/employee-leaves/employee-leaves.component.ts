@@ -61,8 +61,8 @@ export class EmployeeLeavesComponent {
 
   ngOnInit() {
     this.leaveSer.appliedLeaves().subscribe((data) => {
-      this.leavesApproved = data;
-      console.log(this.leavesApproved)
+      this.employees = data;
+      console.log(this.employees)
     });
   }
   // ngAfterViewInit() {
