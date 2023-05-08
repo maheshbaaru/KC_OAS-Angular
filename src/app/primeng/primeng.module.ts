@@ -23,7 +23,7 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { StyleClassModule } from 'primeng/styleclass';
 import { ConfirmationService } from 'primeng/api';
 import { DividerModule } from 'primeng/divider';
-
+import { ToastModule } from 'primeng/toast';
 const primeNg: any = [
   CheckboxModule,
   InputTextModule,
@@ -46,6 +46,7 @@ const primeNg: any = [
   ContextMenuModule,
   StyleClassModule,
   DividerModule,
+  ToastModule
 ];
 
 @NgModule({
