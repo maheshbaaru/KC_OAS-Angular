@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 import { HttpClientService } from 'src/app/services/http-client.service';
 import { SalarydeductionlistService } from 'src/app/services/salarydeductionlist.service';
@@ -18,7 +19,8 @@ export class CreateDesignationComponent {
     private service: EmployeedDataService,
     private dgnservice: HttpClientService,
     private formBuilder: FormBuilder,
-    private salDeductionServe: SalarydeductionlistService
+    private salDeductionServe: SalarydeductionlistService,
+    private messageService: MessageService
   ) {
     this.form = fb.group({
       name: [null, Validators.required],
@@ -33,6 +35,22 @@ export class CreateDesignationComponent {
       .AddDesignation(this.addDesinations.name)
       .subscribe((res: any) => {
         console.log(res);
+
+
       });
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Designation saved',
+      });
+      if (this.addDesinations === '' && this.addDesinations === null) {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Please gave a Designation',
+        });
+      }
+
+    this.form.reset();
   }
 }
