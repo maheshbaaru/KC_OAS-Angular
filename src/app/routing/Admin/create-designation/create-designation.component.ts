@@ -28,11 +28,14 @@ export class CreateDesignationComponent {
   submit() {}
   public form: FormGroup;
   addDesignation() {
+ 
     this.addDesinations = this.form.value;
     this.salDeductionServe
       .AddDesignation(this.addDesinations.name)
       .subscribe((res: any) => {
         console.log(res);
+       
       });
+      this.router.navigate(['/navabar']);
   }
 }

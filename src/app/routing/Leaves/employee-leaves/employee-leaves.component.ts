@@ -29,7 +29,7 @@ export class EmployeeLeavesComponent {
 
   names: EmployeeName[];
   empForm: FormGroup;
-  leavesApproved: any;
+
 
   constructor(
     private _fb: FormBuilder,
