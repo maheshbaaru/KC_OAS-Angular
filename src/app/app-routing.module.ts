@@ -58,13 +58,13 @@ const routes: Routes = [
       { path: 'DeductionList/:id', component: SalDeductionListComponent },
       { path: 'leavesApprov', component: LeavesApprovelComponent },
 
-      {path:'approval-screen/:id',component:LeavesApprovalScreenComponent},
-      
+      { path: 'approval-screen/:id', component: LeavesApprovalScreenComponent },
+
       { path: 'access', component: EmployeeAccessComponent },
       { path: 'apply', component: ApplyLeavesComponent },
       { path: 'Employees', component: EmployeesComponent },
       { path: 'paySlip', component: PaySlipComponent },
-      { path: 'create-new-salary-details',component: CreateNewSalaryDetailsComponent },
+      { path: 'create-new-salary-details', component: CreateNewSalaryDetailsComponent },
       { path: 'create-leave', component: CreateLeaveComponent },
       { path: 'cretenewemployee', component: CreateNewEmployeeComponent },
       { path: 'updatephoto', component: UpdatephotoComponent },
@@ -74,7 +74,7 @@ const routes: Routes = [
       { path: 'bankDetails', component: BankDetailsComponent },
       { path: 'create-bank-details', component: CreateBankDetailsComponent },
       { path: 'edit-bank-details/:id', component: EditBankDetailsComponent },
-      { path: 'updateSalaryDetails', component: SalarydisplyComponent }
+      { path: 'updateSalaryDetails/:id', component: SalarydisplyComponent }
     ],
   },
 
