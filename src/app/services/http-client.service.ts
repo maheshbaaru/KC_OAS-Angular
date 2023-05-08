@@ -28,7 +28,9 @@ export class HttpClientService {
    }
 
    profilephoto(id:any){
-    this.http.put('https://localhost:7236/AddProfilePhoto',id)
+    let loogedUser: any = window.sessionStorage.getItem('auth-user')
+   loogedUser = JSON.parse(loogedUser)
+    this.http.post(`https://localhost:7236/AddProfilePhoto`,id)
    }
 
 

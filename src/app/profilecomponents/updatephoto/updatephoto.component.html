@@ -4,8 +4,8 @@
       <strong>UPDATE PROFILE PHOTO </strong>
     </div>
     <div class="col-sm-6" style="text-align:right">
-      <button pButton class="h-1rem" style="float: right;margin-right:5px; font-size: smaller;"><i
-          class="pi pi-check icon"></i>SAVE</button>
+      <button pButton class="h-1rem" (click)="upload($event)" style="float: right;margin-right:5px; font-size: smaller;" ><i
+          class="pi pi-check icon"></i>Upload</button>
     </div>
   </ng-template>
   <div class="row">
@@ -45,11 +45,11 @@
            <img src="{{preview}}"  class="preview"/>
         </div>
       </div>
-      <div class="col-4">
-        <button class="btn btn-success btn-sm float-right" [disabled]="!selectedFiles" (click)="upload()">
+      <!-- <div class="col-4">
+        <button class="btn btn-success btn-sm float-right" [disabled]="!selectedFiles" >
           Upload
         </button>
-      </div>
+      </div> -->
     </div>
     <!-- 
     <form class=" form-styles cont  " [formGroup]="updateform">
