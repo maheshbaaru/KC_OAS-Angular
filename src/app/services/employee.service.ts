@@ -1,6 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+// new Changes
+
+
+
 import { Injectable } from '@angular/core';
-import { forkJoin, merge, of } from 'rxjs';
+import { Observable, forkJoin, merge, of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 
 const httpOptions = {
@@ -14,6 +18,8 @@ export class EmployeeService {
   list1: string[] = [];
   list2: string[] = [];
   listAll: any;
+  // +++++++++++//
+  currentid: any;
 
   constructor(private http: HttpClient) {
   }

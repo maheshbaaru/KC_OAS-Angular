@@ -21,5 +21,5 @@ export class LeavesService {
   applyleave(){
     // return this.http.post(`https://localhost:7236/SubmitLeaves`);
   }
-  ngOnInit() {}
+
 }
