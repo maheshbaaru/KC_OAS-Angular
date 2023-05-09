@@ -1,6 +1,9 @@
+// new Changes
+
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { forkJoin, merge, of } from 'rxjs';
+import { Observable, forkJoin, merge, of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 @Injectable({
   providedIn: 'root',
@@ -10,6 +13,8 @@ export class EmployeeService {
   list1: string[] = [];
   list2: string[] = [];
   listAll: any;
+  // +++++++++++//
+  currentid: any;
 
   constructor(private http: HttpClient) {
   }
@@ -32,4 +37,21 @@ export class EmployeeService {
   getShifts() {
     return this.http.get(`${this.API_CALL}/TblShiftControllerAPI`);
   }
+
+  id(id:any){
+    this.currentid=id
+  }
+
+  getSpecifiEmployeeLeavesDataById(): Observable<any[]>{
+    return new Observable((observer) => {
+        this.http.get(`https://localhost:7236/GetSpecificEmpLeave?id=${this.currentid}`).subscribe((result) => {
+            const resultData = Object.values(result);
+            //  console.log(resultData);
+            observer.next(resultData);
+            observer.complete();
+        })
+    })
+  }
+ 
+
 }

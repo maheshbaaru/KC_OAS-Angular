@@ -1,4 +1,4 @@
-// saleem changes
+
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -19,9 +19,7 @@ export class CreateBankDetailsComponent implements OnInit {
 
     ngOnInit() {
       this.employeesService.getEmployeeData().subscribe(result => {
-        
         this.employeess = result
-  
       })
 
     }
