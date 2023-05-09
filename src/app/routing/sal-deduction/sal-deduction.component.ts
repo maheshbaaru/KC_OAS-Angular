@@ -25,6 +25,7 @@ export class SalDeductionComponent {
   selectedLOP: any;
   date3: Date;
   invalidDates: Date[];
+  cols:any[];
   constructor(
     private employeeSer: EmployeeService,
     private salDeductionServ: SalarydeductionlistService
@@ -58,6 +59,13 @@ export class SalDeductionComponent {
         // console.log(this.employee);
       });
     });
+    this.cols = [
+      { field: 'empId', header: 'EmployeeId' },
+      { field: 'taxTypeId', header: 'TaxTypes' },
+      { field: 'amount', header: 'Amount' },
+      { field: 'effectedMonth', header: 'EffectedMonth' },
+      { field: 'noOfLopdays', header: 'No Of LOP Days' },
+    ];
   }
   openNew() {
     this.employe = {};

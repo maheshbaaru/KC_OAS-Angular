@@ -30,27 +30,28 @@ export class CreateDesignationComponent {
   submit() {}
   public form: FormGroup;
   addDesignation() {
-
+    debugger;
     this.addDesinations = this.form.value;
+
     this.salDeductionServe
       .AddDesignation(this.addDesinations.name)
       .subscribe((res: any) => {
         console.log(res);
 
-
+        if (res.status !== null && this.addDesinations.name !== '') {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Designation saved',
+          });
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Please gave a Designation',
+          });
+        }
       });
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Success',
-        detail: 'Designation saved',
-      });
-      if (this.addDesinations === '' && this.addDesinations === null) {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: 'Please gave a Designation',
-        });
-      }
 
     this.form.reset();
   }
