@@ -21,7 +21,7 @@ export class EmployeeAccessComponent {
     loogedUser = JSON.parse(loogedUser)
     this.empServe.getUsers().subscribe((data: any) => {
     
-    this.employeeLeavs = data.filter((dat: any) => dat.empId == loogedUser.employeeID * 1);
+    this.employeeLeavs = data.filter((dat: any) => dat.Id == loogedUser.employeeID * 1);
     });
   }
  

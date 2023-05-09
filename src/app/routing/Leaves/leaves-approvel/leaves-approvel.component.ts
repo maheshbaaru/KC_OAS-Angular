@@ -41,9 +41,9 @@ export class LeavesApprovelComponent {
     });
   }
   ngOnInit() {
-    this.empservice.appliedLeaves().subscribe((data) => {
-      this.leavesApproved = data;
-    });
+    // this.empservice.appliedLeaves().subscribe((data) => {
+    //   this.leavesApproved = data;
+    // });
   }
   ngAfterViewInit() {
     this.leaveSer.getStatus().subscribe((res) => (this.statusTypes = res));
