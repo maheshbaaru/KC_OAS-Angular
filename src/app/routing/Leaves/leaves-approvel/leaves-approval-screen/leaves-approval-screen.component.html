@@ -17,9 +17,9 @@
                  <label for="leaveType" class="label mb-2">
                     LeaveType<span class="laps-empClass">*</span>
                 </label>
-                 <select name="leaveType" id="leaveType" class="laps-input-fields" >
+                 <select name="leaveType" id="leaveType" class="laps-input-fields" (change)="onSelectLeaveTye($event.target)">
                      <!-- <option  selected="Default" value="SELECT EMPLOYEE">SELECT LEAVE</option> -->
-                     <option *ngFor="let leavetype of leaveType">{{leavetype.leaveTypeName}}</option>
+                     <option value={{leavetype.leaveTypeName}} *ngFor="let leavetype of leaveType">{{leavetype.leaveTypeName}}</option>
                  </select>  
                 
         </div>
@@ -81,8 +81,8 @@
             <label for="StatusId" class="label mb-2">
                Status ID<span class="laps-empClass">*</span>
            </label>
-            <select name="StatusId" id="StatusId" class="laps-input-fields" >
-                <option *ngFor="let status of statusId">{{status.statusType}}</option>
+            <select name="StatusId" id="StatusId" class="laps-input-fields" (change)="onSelectStatusType($event.target)">
+                <option value={{status.statusType}} *ngFor="let status of statusId">{{status.statusType}}</option>
             </select>  
         </div>
     </form>

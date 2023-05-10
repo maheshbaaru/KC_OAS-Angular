@@ -27,7 +27,7 @@ export class SalaryDetailsComponent {
     })
   }
   getEmployeeById(id: number) {
-    debugger;
+    // debugger;
     console.log(id);
 
 //     this.salaryService.getEmployeeById(id).subscribe(data => {

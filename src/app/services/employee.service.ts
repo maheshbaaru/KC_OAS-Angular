@@ -1,7 +1,7 @@
 // new Changes
 
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin, merge, of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
@@ -19,6 +19,12 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) {
   }
+
+  private httpOptions = {
+    headers: new HttpHeaders({
+        'Content-type': 'application/json'
+    })
+}
 
   getEmp() {
     return this.http.get(`${this.API_CALL}/SalaryDeductions`);
@@ -70,6 +76,18 @@ export class EmployeeService {
         })
     })
   }
+
+  updateLeavesApprovalData(updateData: any) {
+    // debugger;
+    
+    const body = JSON.stringify(updateData);
+    //  return this.http.put<any>('https://localhost:7236/UpdateBankDetails?', body,this.httpOptions)
+     return this.http.put<any>(`https://localhost:7236/UpdateEmpLeaveDetails?Id=${updateData.id}&LeaveTypeId=${updateData.leaveTypeId}&StatusId=${updateData.statusId}`,this.httpOptions)
+     .subscribe((result)=>{
+        const resultData = Object.values(result)
+     })
+     
+}
  
 
 }

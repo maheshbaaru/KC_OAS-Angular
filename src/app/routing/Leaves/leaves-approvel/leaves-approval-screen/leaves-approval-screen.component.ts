@@ -40,6 +40,9 @@ export class LeavesApprovalScreenComponent {
      ){ 
   }
 
+  leaveTypeName="Sick";
+  statusIdName="Approved";
+  
   ngOnInit() {
     this.activeRoutIdFunction()
       this.empservice.getSpecifiEmployeeLeavesDataById().subscribe((result1:any)=>{
@@ -72,7 +75,13 @@ export class LeavesApprovalScreenComponent {
      return this.empservice.id(activatedRouteId)
   }
 
-  
+  onSelectLeaveTye(event:any){
+    this.leaveTypeName = event.value
+  }
+
+  onSelectStatusType(event:any){
+    this.statusIdName = event.value
+  }
   speficEmployeeLeaveData={
     adminComments:"",
     appliedOn :"",
@@ -91,9 +100,10 @@ export class LeavesApprovalScreenComponent {
   } 
   
   statusId=[
-    {statusType:"Pending"},
     {statusType:"Approved"},
-    {statusType:"Declined"},
+    {statusType:"New"},
+    {statusType:"Rejected"},
+    {statusType:"Forwarded"},
   ]
     
   leaveType=[
@@ -105,20 +115,60 @@ export class LeavesApprovalScreenComponent {
   ]
   
   onSave(){
-    const postData={
-      // adminComments:this.speficEmployeeLeaveData.,
-      // appliedOn:this.speficEmployeeLeaveData.,
-      // comments:this.speficEmployeeLeaveData.,
-      // empId:this.speficEmployeeLeaveData.,
-      // fromDate:this.speficEmployeeLeaveData.,
-      // id:this.speficEmployeeLeaveData.,
-      // leaveTypeId:this.speficEmployeeLeaveData.,
-      // numOfDays:this.speficEmployeeLeaveData.,
-      // statusId:this.speficEmployeeLeaveData.,
-      // toDate:this.speficEmployeeLeaveData.,
-    }
 
-    console.log(this.speficEmployeeLeaveData)
+    
+    let leaveTypeid= 2
+    let statusId= 1
+
+      switch(this.leaveTypeName){
+        case "Sick":
+          leaveTypeid=2
+          break
+        case "Casual" :
+          leaveTypeid=1
+          break
+        case "Earned":
+          leaveTypeid=3
+          break
+        case "Compensation":
+          leaveTypeid=4
+          break
+        case "Optional":
+          leaveTypeid=5
+          break
+      }
+
+
+      switch(this.statusIdName){
+        case "Approved" :
+          statusId=1
+          break
+        case "New":
+          statusId=2
+          break
+        case "Rejected":
+          statusId=3
+          break
+        case "Forwarded":
+          statusId=4
+          break
+      }
+
+      const postData={
+        statusId:statusId,
+        leaveTypeId:leaveTypeid,
+        id:this.speficEmployeeLeaveData.id,
+        // adminComments:this.speficEmployeeLeaveData.adminComments,
+        // appliedOn:this.speficEmployeeLeaveData.,
+        // comments:this.speficEmployeeLeaveData.,
+        // empId:this.speficEmployeeLeaveData.,
+        // fromDate:this.speficEmployeeLeaveData.,
+        // numOfDays:this.speficEmployeeLeaveData.,
+        // toDate:this.speficEmployeeLeaveData.,
+      }
+      // console.log(postData)
+      this.empservice.updateLeavesApprovalData(postData)
+    }
   }
-}
+
 
