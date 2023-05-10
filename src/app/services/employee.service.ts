@@ -9,6 +9,7 @@ import { ajax } from 'rxjs/ajax';
   providedIn: 'root',
 })
 export class EmployeeService {
+ 
   API_CALL = 'https://localhost:7236';
   list1: string[] = [];
   list2: string[] = [];
@@ -22,13 +23,26 @@ export class EmployeeService {
   getEmp() {
     return this.http.get(`${this.API_CALL}/SalaryDeductions`);
   }
+  postEmp(data: any){
+    console.log(data)
+    // return this.http.post(`https://localhost:7236/AddEmployee`,data)
+    return this.http.post(`${this.API_CALL}/createEmployee`,data) 
+    .subscribe((result) => {
+      const resultData = Object.values(result);
+      console.log(resultData);
+     
+    })
+  }
   getUsers() {
     return this.http.get(`${this.API_CALL}/GetEmployeeTbls`);
   }
   getEmployee(id: number) {
     return this.http.get(`${this.API_CALL}/SalaryDeduction?EmpId=` + id);
   }
-  appliedLeaves() {
+  // appliedLeaves(id: any) {
+  //   return this.http.get(`${this.API_CALL}/LeavesApproval?EmpId=`+id);
+  // }
+    appliedLeaves() {
     return this.http.get(`${this.API_CALL}/LeavesApproval`);
   }
   getDesignationRoles() {
