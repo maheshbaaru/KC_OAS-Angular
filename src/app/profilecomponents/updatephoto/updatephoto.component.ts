@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 import { ProfileService } from 'src/app/services/profile.service';
+import { StorageService } from 'src/app/services/storage.service';
+
 @Component({
   selector: 'app-updatephoto',
   templateUrl: './updatephoto.component.html',
@@ -21,10 +23,17 @@ data:any
   empdata: any;
   public updateform: FormGroup;
  
-  constructor(private messageService: MessageService , private service: EmployeedDataService ,private formBuilder: FormBuilder,private profileServ: ProfileService) {}
-  ngOnInit(EmpId:any ): void {
-    this.profileServ.addprofilephoto(EmpId).subscribe((data:any)=>{
-      this.preview= 'data:image/jpg;base64,'+data.photo});
+  constructor(private messageService: MessageService ,
+     private service: EmployeedDataService ,
+     private formBuilder: FormBuilder,
+     private profileServ: ProfileService,
+     private storageService: StorageService,) {}
+
+  ngOnInit(): void {
+    let emp: any = window.sessionStorage.getItem('loggedinUser');
+    this.empdata = JSON.parse(emp)
+    // this.profileServ.addprofilephoto(EmpId,Id).subscribe((data:any)=>{
+    //   this.preview= 'data:image/jpg;base64,'+data.photo});
 
    }
   
@@ -56,7 +65,7 @@ data:any
     }
   }
 
-  upload(EmpId:any ): void {
+  upload( ): void {
     this.progress = 0;
 
     if (this.selectedFiles) {
@@ -64,15 +73,17 @@ data:any
 
       if (file) {
         this.currentFile = file;
+      
+      console.log(this.currentFile)
 
-     this.profileServ.addprofilephoto(EmpId).subscribe({
+     this.profileServ.addprofilephoto({'EmpId': this.empdata.employeeID, 'Photo': this.preview }).subscribe({
       next: (event: any) => {
-            if (event.type === HttpEventType.UploadProgress) {
-              this.progress = Math.round((100 * event.loaded) / event.total);
-            } else if (event instanceof HttpResponse) {
-              this.message = event.body.message;
-              this.imageInfos = this.profileServ.addprofilephoto(EmpId );
-            }
+            // if (event.type === HttpEventType.UploadProgress) {
+            //   this.progress = Math.round((100 * event.loaded) / event.total);
+            // } else if (event instanceof HttpResponse) {
+            //   this.message = event.body.message;
+            //   this.imageInfos = this.profileServ.addprofilephoto(EmpId,Id);
+            // }
           },
           error: (err: any) => {
             console.log(err);

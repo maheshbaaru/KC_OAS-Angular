@@ -5,28 +5,28 @@
   </div>
       <div class="col-sm-6" style="text-align:right">
       <button pButton type="button" label="Back"  icon=" pi pi-arrow-left"  routerLink="../Employees" iconPos="left" class="p-button-sm " ></button>&nbsp;
-      <button pButton type="button" label="Save" icon="pi pi-check" iconPos="left" class="p-button-sm"></button>
+      <button pButton type="button" label="Save" [disabled]="save_button" (click)="save()" icon="pi pi-check" iconPos="left" class="p-button-sm"></button>
 
   </div>
   </ng-template>
 
-    <form >
+    <form [formGroup]="empForm"  >
        <div class="row">
     <div class="col-md-4">
   <div class="col-12 md:col-4  ">
     <h3 >EmployeeID<span class="required">*</span></h3>
-    <input type="text" pInputText  class="p-inputtext-normal" placeholder="ENTER EMPLOYEE ID" required>
+    <input (change)="onchange()" type="text" formControlName="employeeID" pInputText  class="p-inputtext-normal" placeholder="ENTER EMPLOYEE ID" required >
     <br>
     <br>
 
     <h3>Email<span class="required" >*</span></h3>
-    <input type="text"  class="p-inputtext-normal" required  pInputText placeholder="ENTER EMAIL">
+    <input type="text" (change)="onchange()" formControlName="email" class="p-inputtext-normal" required  pInputText placeholder="ENTER EMAIL">
     <br>
     <br>
 
     <h3 >DesignationID<span class="required">*</span></h3>
 
-    <p-dropdown [options]="roles" optionLabel="name" placeholder="Select Role"></p-dropdown>
+    <p-dropdown [options]="roles" formControlName="designationName"  optionLabel="name" placeholder="Select Role"></p-dropdown>
 
 
     <!-- </p-dropdown> -->
@@ -40,7 +40,7 @@
     <br>
     <br>
 
-    <p-checkbox name="group1" value="IsActive" inputId="any" ></p-checkbox>
+    <p-checkbox name="group1" formControlName="isActive" value="IsActive" inputId="any" ></p-checkbox>
     <label for="any">IsActive<span class="required">*</span></label>
 
 </div>
@@ -48,17 +48,17 @@
 <div class="col-md-4">
 <div class="col-12 md:col-4">
   <h3>FirstName<span class="required">*</span></h3>
-  <input type="text" pInputText  class="p-inputtext-normal" required  placeholder="ENTER FIRSTNAME">
+  <input type="text" pInputText formControlName="firstName" class="p-inputtext-normal" required  placeholder="ENTER FIRSTNAME">
   <br>
   <br>
 
   <h3 >PanNumber</h3>
-  <input type="text"   class="p-inputtext-normal" pInputText placeholder="ENTER PAN NUMBER">
+  <input type="text"  formControlName="panNumber" class="p-inputtext-normal" pInputText placeholder="ENTER PAN NUMBER">
   <br>
   <br>
 
   <h3 >ShiftId<span class="required">*</span></h3>
-  <p-dropdown [options]="Shifts" optionLabel="shiftName"   placeholder="Select Shift"  ></p-dropdown>
+  <p-dropdown [options]="Shifts" optionLabel="shiftName"formControlName="shiftName"   placeholder="Select Shift"  ></p-dropdown>
   <!-- <p-dropdown [options]="Shifts"   placeholder="Select Shift"    [group]="true">
     <ng-template let-group pTemplate="group">
       <div class="p-d-flex p-ai-center">
@@ -71,17 +71,17 @@
 <div class="col-md-4">
 <div class="col-12 md:col-4  ">
   <h3 >LastName<span class="required">*</span></h3>
-  <input type="text"  class="p-inputtext-normal" required  pInputText placeholder="ENTER LASTNAME">
+  <input type="text" formControlName="lastName"   class="p-inputtext-normal" required  pInputText placeholder="ENTER LASTNAME">
   <br>
   <br>
 
   <h3 >Password<span class="required">*</span></h3>
-  <input type="text"   class="p-inputtext-normal" required  pInputText placeholder="ENTER PASSWORD">
+  <input type="text" formControlName="Password"  class="p-inputtext-normal" required  pInputText placeholder="ENTER PASSWORD">
   <br>
   <br>
 
   <h3 >DOJ<span class="required">*</span></h3>
-  <input type="text"  class="p-inputtext-normal" pInputText placeholder="DD/MM/YYYY">
+  <input type="text"  class="p-inputtext-normal" formControlName="doj" pInputText placeholder="DD/MM/YYYY">
 </div>
 </div></div>
 </form>

@@ -14,7 +14,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { PanelModule } from 'primeng/panel';
 import { CalendarModule } from 'primeng/calendar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { MessageService } from 'primeng/api';
+import { MessageService} from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DropdownModule } from 'primeng/dropdown';
@@ -23,6 +23,7 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { StyleClassModule } from 'primeng/styleclass';
 import { ConfirmationService } from 'primeng/api';
 import { DividerModule } from 'primeng/divider';
+import { ToastModule } from 'primeng/toast';
 
 const primeNg: any = [
   CheckboxModule,
@@ -46,6 +47,8 @@ const primeNg: any = [
   ContextMenuModule,
   StyleClassModule,
   DividerModule,
+  ToastModule,
+
 ];
 
 @NgModule({
