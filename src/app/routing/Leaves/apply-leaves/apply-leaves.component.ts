@@ -15,19 +15,21 @@ export class ApplyLeavesComponent {
   constructor(private empSer: EmployeeService) {
   }
   ngOnInit() {
-    let loogedUser: any = window.sessionStorage.getItem('loggedinUser')
-    loogedUser = JSON.parse(loogedUser)
-    // this.empSer.appliedLeaves(loogedUser.id).subscribe((data: any) => {
-    
-    // this.employeeLeavs = data.filter((dat: any) => dat.empId == loogedUser.employeeID * 1);
-    };
     // let loogedUser: any = window.sessionStorage.getItem('loggedinUser')
     // loogedUser = JSON.parse(loogedUser)
-    // this.empSer.appliedLeaves(loogedUser.id).subscribe((data: any) => {
+    //  this.empSer.applyleave(loogedUser.id).subscribe((data: any) => {
     
-    // // this.employeeLeavs = data.filter((dat: any) => dat.empId == loogedUser.employeeID * 1);
+    // this.employeeLeavs = data.filter((dat: any) => dat.empId == loogedUser.employeeID * 1);
     // });
+    let loogedUser: any = window.sessionStorage.getItem('auth-user')
+     loogedUser = JSON.parse(loogedUser)
+    this.empSer.appliedLeaves().subscribe((data:any) => {
+       console.log(data)
+      this.employeeLeavs = data.filter((dat: any) => dat.empId == loogedUser.employeeID * 1);
+    });
+  
   }
+}
  
 
 

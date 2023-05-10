@@ -39,9 +39,13 @@ export class EmployeeService {
   getEmployee(id: number) {
     return this.http.get(`${this.API_CALL}/SalaryDeduction?EmpId=` + id);
   }
-  // appliedLeaves(id: any) {
-  //   return this.http.get(`${this.API_CALL}/LeavesApproval?EmpId=`+id);
-  // }
+  applyleave(id: any) {
+    return this.http.get(`${this.API_CALL}/TblEmpLeaves?EmpId=`+id);
+  }
+  leaveapply(Id:any){
+  //  return this.http.post(`${this.API_CALL}/ApplyLeave`);
+  }
+
     appliedLeaves() {
     return this.http.get(`${this.API_CALL}/LeavesApproval`);
   }

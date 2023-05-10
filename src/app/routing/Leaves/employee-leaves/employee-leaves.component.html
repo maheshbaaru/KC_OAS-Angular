@@ -38,7 +38,7 @@
             </div>
         </form>
     </div>
-    <p-table #dt [value]="employees" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10"
+    <p-table #dt [value]="employeeLeavs" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10"
         [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
         styleClass="p-datatable-gridlines"
@@ -69,7 +69,7 @@
             <tr>
                 <td>{{emp.empId}} </td>
                 <td>{{emp.empName}}</td>
-                <td>{{emp.numOfDays}}</td>
+                <td>{{emp.numOfLeaves}}</td>
             
             </tr>
         </ng-template>
