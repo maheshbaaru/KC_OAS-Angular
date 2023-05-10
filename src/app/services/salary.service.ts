@@ -33,6 +33,6 @@ export class SalaryService {
   // }
   getEmployeeById(id: number) {
     debugger;
-    return this.http.get(`https://localhost:7236/SalHistoryDetails?EmpId=${id}`);
+    return this.http.get(`https://localhost:7236/SalaryDetailsById?EmpId=${id}`);
   }
 }
