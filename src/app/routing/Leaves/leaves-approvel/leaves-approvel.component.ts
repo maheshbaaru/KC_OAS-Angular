@@ -41,12 +41,12 @@ export class LeavesApprovelComponent {
     });
   }
   ngOnInit() {
-    // this.empservice.appliedLeaves().subscribe((data) => {
-    //   // console.log(data)
-    //   this.leavesApproved = data;
-    // });
+    this.empservice.appliedLeaves().subscribe((data) => {
+      // console.log(data)
+      this.leavesApproved = data;
+    });
   }
-  // ngAfterViewInit() {
-  //   this.leaveSer.getStatus().subscribe((res) => (this.statusTypes = res));
-  // }
+  ngAfterViewInit() {
+    this.leaveSer.getStatus().subscribe((res) => (this.statusTypes = res));
+  }
 }
