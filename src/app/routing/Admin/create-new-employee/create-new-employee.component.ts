@@ -105,7 +105,7 @@ export class CreateNewEmployeeComponent {
   save() {
     console.log(this.empForm.value)
     let data = JSON.stringify(this.empForm.value)
-    this.empServ.postEmp(data)
+    // this.empServ.postEmp(data)
 
   }
   onchange() {

@@ -1,15 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 // new Changes
 
 
-
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin, merge, of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 @Injectable({
   providedIn: 'root',
 })
@@ -27,24 +22,14 @@ export class EmployeeService {
   getEmp() {
     return this.http.get(`${this.API_CALL}/SalaryDeductions`);
   }
-  postEmp(data: any){
-    console.log(data)
-    // return this.http.post(`https://localhost:7236/AddEmployee`,data)
-    return this.http.post(`${this.API_CALL}/AddEmployee`,data,httpOptions) 
-    .subscribe((result) => {
-      const resultData = Object.values(result);
-      console.log(resultData);
-     
-    })
-  }
   getUsers() {
     return this.http.get(`${this.API_CALL}/GetEmployeeTbls`);
   }
   getEmployee(id: number) {
     return this.http.get(`${this.API_CALL}/SalaryDeduction?EmpId=` + id);
   }
-  appliedLeaves(id: any) {
-    return this.http.get(`${this.API_CALL}/LeavesApproval?EmpId=`+id);
+  appliedLeaves() {
+    return this.http.get(`${this.API_CALL}/LeavesApproval`);
   }
   getDesignationRoles() {
     return this.http.get(`${this.API_CALL}/GetDesignations`);
@@ -53,12 +38,20 @@ export class EmployeeService {
     return this.http.get(`${this.API_CALL}/TblShiftControllerAPI`);
   }
 
-   postcreateemployee(data:any ){
-    this.http.post('https://localhost:7236/createNewSalary', JSON.stringify(data), httpOptions)
-    .subscribe((result) => {
-      const resultData = Object.values(result);
-      console.log(resultData);
-     
+  id(id:any){
+    this.currentid=id
+  }
+
+  getSpecifiEmployeeLeavesDataById(): Observable<any[]>{
+    return new Observable((observer) => {
+        this.http.get(`https://localhost:7236/GetSpecificEmpLeave?id=${this.currentid}`).subscribe((result) => {
+            const resultData = Object.values(result);
+            //  console.log(resultData);
+            observer.next(resultData);
+            observer.complete();
+        })
     })
   }
+ 
+
 }

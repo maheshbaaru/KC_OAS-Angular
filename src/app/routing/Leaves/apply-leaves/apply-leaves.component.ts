@@ -17,11 +17,11 @@ export class ApplyLeavesComponent {
   ngOnInit() {
     let loogedUser: any = window.sessionStorage.getItem('loggedinUser')
     loogedUser = JSON.parse(loogedUser)
-    this.empSer.appliedLeaves(loogedUser.id).subscribe((data: any) => {
+    // this.empSer.appliedLeaves(loogedUser.id).subscribe((data: any) => {
     
     // this.employeeLeavs = data.filter((dat: any) => dat.empId == loogedUser.employeeID * 1);
-    });
+    };
   }
  
 
-}
+
