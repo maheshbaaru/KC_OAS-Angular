@@ -1,4 +1,4 @@
-<p-table #dt1 [columns]="cols" [value]="employeeName" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"  [globalFilterFields]="['employeeId','firstName','lastName']" responsiveLayout="scroll" >
+<p-table #dt1 [columns]="cols" [value]="employeeName" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"  [globalFilterFields]="['employeeId','Name']" responsiveLayout="scroll" >
   <ng-template pTemplate="right">
 
 
@@ -22,7 +22,7 @@
       <th *ngFor="let col of columns">
         <div class="p-d-flex p-jc-between p-ai-center">
         {{col.header}}
-        <p-columnFilter type="text" field="EmployeeId" display="menu"></p-columnFilter>
+        <p-columnFilter type="text" [field]="col.field" display="menu"></p-columnFilter>
 
       </div>
       </th>
@@ -110,7 +110,8 @@
   </ng-template>
 
 
-  <ng-template pTemplate="footer" #salDeduction>
+  <ng-template pTemplate="footer" >
+    <p-toast position="top-center" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
     <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
     <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" id="save" type="submit" (click)="save()" [disabled]="!form.valid" ></button>
 
