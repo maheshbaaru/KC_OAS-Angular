@@ -13,7 +13,7 @@ export class CreateTaxtypeComponent {
   public form: FormGroup;
   constructor(
     private httpClient: HttpClientService,
-    fb: FormBuilder,
+    private fb: FormBuilder,
     private messageService: MessageService
   ) {
     this.form = fb.group({

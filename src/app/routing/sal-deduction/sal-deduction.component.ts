@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
 import { SalarydeductionlistService } from 'src/app/services/salarydeductionlist.service';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { DatePipe, formatDate } from '@angular/common';
+import { Inject, LOCALE_ID } from '@angular/core';
+import { from } from 'rxjs';
+import { MessageService } from 'primeng/api';
+
 export interface TaxTayes {
   id?: number;
   Type?: string;
@@ -13,7 +18,7 @@ export interface TaxTayes {
 })
 export class SalDeductionComponent {
   employe: any;
-
+  employeeName: any;
   submitted: boolean;
   employee: any;
   users: any;
@@ -23,12 +28,19 @@ export class SalDeductionComponent {
   selectedCity1: any;
   selectedAmount: any;
   selectedLOP: any;
-  date3: Date;
+  employeeId: any;
+  taxType: any;
+  month: any;
   invalidDates: Date[];
-  cols:any[];
+  cols: any[];
+  description: any;
+  public form: FormGroup;
   constructor(
     private employeeSer: EmployeeService,
-    private salDeductionServ: SalarydeductionlistService
+    private salDeductionServ: SalarydeductionlistService,
+    private fb: FormBuilder,
+    @Inject(LOCALE_ID) public local: string,
+    private messageSer: MessageService
   ) {
     // this.taxTaypes = [
     //   { name: 'SELECT TAX' },
@@ -37,6 +49,13 @@ export class SalDeductionComponent {
     //   { name: 'LOP' },
     //   { name: 'PROVIDENT FUND' },
     // ];
+    this.form = fb.group({
+      TaxTypeId: [null, Validators.required],
+      EmpId: [null, Validators.required],
+      Amount: [null, Validators.required],
+      LOPDAYS: [null, Validators.required],
+      Month: [[], Validators.required],
+    });
   }
   ngOnInit() {
     this.employeeSer.getEmp().subscribe((data) => {
@@ -50,6 +69,12 @@ export class SalDeductionComponent {
             ? -1
             : 0
         );
+        const employeeData = this.users.map((person: any) => ({
+          ...person,
+          Name: `${person.firstName} ${person.lastName}`,
+        }));
+        this.employeeName = employeeData;
+        console.log(employeeData);
 
         // this.employee.map((eachData:any)=>{
         //   let filterData=this.users.find((emp:any)=>emp.employeeId*1 ==eachData.empId)
@@ -60,11 +85,8 @@ export class SalDeductionComponent {
       });
     });
     this.cols = [
-      { field: 'empId', header: 'EmployeeId' },
-      { field: 'taxTypeId', header: 'TaxTypes' },
-      { field: 'amount', header: 'Amount' },
-      { field: 'effectedMonth', header: 'EffectedMonth' },
-      { field: 'noOfLopdays', header: 'No Of LOP Days' },
+      { field: 'employeeId', header: 'EmployeeId' },
+      { field: 'Name', header: 'Name' },
     ];
   }
   openNew() {
@@ -76,15 +98,36 @@ export class SalDeductionComponent {
     this.productDialog = false;
     this.submitted = false;
   }
-  save(data: NgForm) {
-    console.log(data);
-    this.submitted = true;
+  save() {
+    debugger;
+    // this.salDeductionServ.AddDeduction();
+    console.log(this.form);
 
-    this.SelectedCity1;
-    this.selectedCity1;
-    this.selectedAmount;
-    this.selectedLOP;
-    this.date3;
+    this.taxType = this.form.value.TaxTypeId.id;
+    this.employeeId = this.form.value.EmpId.employeeId;
+    this.selectedAmount = this.form.value.Amount;
+    this.selectedLOP = this.form.value.LOPDAYS;
+    (this.month = formatDate(this.form.value.Month, 'YYYY-MM-dd', this.local)),
+      (this.description = this.form.value.TaxTypeId.type);
+    this.salDeductionServ
+      .AddDeduction(
+        this.employeeId,
+        this.taxType,
+        this.selectedAmount,
+        this.month,
+        this.selectedLOP,
+        this.description
+      )
+      .subscribe((res) => {
+        console.log(res);
+        this.messageSer.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'TaxType saved',
+        });
+      });
+    //
+    this.form.reset();
   }
   ngAfterViewInit() {
     this.salDeductionServ

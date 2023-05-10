@@ -14,7 +14,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { PanelModule } from 'primeng/panel';
 import { CalendarModule } from 'primeng/calendar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { MessageService} from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DropdownModule } from 'primeng/dropdown';
@@ -48,7 +48,9 @@ const primeNg: any = [
   StyleClassModule,
   DividerModule,
   ToastModule,
-
+  PanelModule,
+  DropdownModule,
+  CalendarModule,
 ];
 
 @NgModule({

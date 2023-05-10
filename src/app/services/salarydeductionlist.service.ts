@@ -18,14 +18,24 @@ export class SalarydeductionlistService {
     return this.http.get(`${this.API_CALL}/TblTaxDeduction`);
   }
   AddDesignation(name: string): Observable<any[]> {
-
-
     console.log(name);
     return this.http.post<any>(
       `${this.API_CALL}/AddDesignations?Name=${name}`,
 
       this.httpOptions
     );
-
+  }
+  AddDeduction(
+    EmpId: number,
+    TaxTypeId: number,
+    Amount: number,
+    Month: Date,
+    LOPDAYS: string,
+    TaxDescription:string
+  ): Observable<any[]> {
+    return this.http.post<any>(
+      `${this.API_CALL}/createNewSalaryDeductions?EmpId=${EmpId}&TaxTypeId=${TaxTypeId}&Amount=${Amount}&EffectedMonth=${Month}&NoOfLopdays=${LOPDAYS}&TaxDescription=${TaxDescription}`,
+      this.httpOptions
+    );
   }
 }

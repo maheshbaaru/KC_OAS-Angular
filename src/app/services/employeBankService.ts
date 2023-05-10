@@ -11,7 +11,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 @Injectable()
 export class EmployeService {
-
+API_BASE='https://localhost:7236';
     //private baseUrl = '../assets/data/employeeBankData.json';
     private httpOptions = {
         headers: new HttpHeaders({
@@ -27,7 +27,7 @@ export class EmployeService {
 
     getEmployeeData(): Observable<any[]> {
         return new Observable((observer) => {
-            this.http.get('https://localhost:7236/GetTblEmpBankDetails').subscribe((result) => {
+            this.http.get(`${this.API_BASE}/GetTblEmpBankDetails`).subscribe((result) => {
                 const resultData = Object.values(result);
                 observer.next(resultData);
                 observer.complete();
@@ -41,7 +41,7 @@ export class EmployeService {
 
     getSpecifiEmployeeDataById(): Observable<any[]>{
         return new Observable((observer) => {
-            this.http.get(`https://localhost:7236/GetSpecificBankDetails?id=${this.currentid}`).subscribe((result) => {
+            this.http.get(`${this.API_BASE}/GetSpecificBankDetails?id=${this.currentid}`).subscribe((result) => {
                 const resultData = Object.values(result);
                 //  console.log(resultData);
                 observer.next(resultData);
@@ -52,31 +52,31 @@ export class EmployeService {
 
     updateEmployeeBankData(updateData: any) {
         // debugger;
-        
+
         const body = JSON.stringify(updateData);
         //  return this.http.put<any>('https://localhost:7236/UpdateBankDetails?', body,this.httpOptions)
-         return this.http.put<any>(`https://localhost:7236/UpdateBankDetails?Id=${updateData.id}&EmpId=${updateData.empId}&Accno=${updateData.accno}&BankName=${updateData.bankName}&Accname=${updateData.accname}`,this.httpOptions)
+         return this.http.put<any>(`${this.API_BASE}/UpdateBankDetails?Id=${updateData.id}&EmpId=${updateData.empId}&Accno=${updateData.accno}&BankName=${updateData.bankName}&Accname=${updateData.accname}`,this.httpOptions)
          .subscribe((result)=>{
             const resultData = Object.values(result)
          })
-         
+
     }
 
     PostEmployeeNewBankData(postData: any) {
         // debugger;
-        
+
         const body = JSON.stringify(postData);
-       
+
         //  return this.http.put<any>('https://localhost:7236/UpdateBankDetails?', body,this.httpOptions)
-         return this.http.post<any>(`https://localhost:7236/CreateNewEmpBankDetails?EmpId=${postData.empId}&Accno=${postData.accno}&BankName=${postData.bankName}&Accname=${postData.Accname}`,this.httpOptions)
+         return this.http.post<any>(`${this.API_BASE}/CreateNewEmpBankDetails?EmpId=${postData.empId}&Accno=${postData.accno}&BankName=${postData.bankName}&Accname=${postData.Accname}`,this.httpOptions)
          .subscribe((result)=>{
             const resultData = Object.values(result)
          })
          // acc name adding ass a null
-         
+
     }
-    
-  
+
+
 }
 
 
