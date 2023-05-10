@@ -55,12 +55,12 @@ export class EmployeeService {
     appliedLeaves() {
     return this.http.get(`${this.API_CALL}/LeavesApproval`);
   }
-  getDesignationRoles() {
-    return this.http.get(`${this.API_CALL}/GetDesignations`);
-  }
-  getShifts() {
-    return this.http.get(`${this.API_CALL}/TblShiftControllerAPI`);
-  }
+  // getDesignationRoles() {
+  //   return this.http.get(`${this.API_CALL}/GetDesignations`);
+  // }
+  // getShifts() {
+  //   return this.http.get(`${this.API_CALL}/TblShiftControllerAPI`);
+  // }
 
   id(id:any){
     this.currentid=id
@@ -88,6 +88,25 @@ export class EmployeeService {
      })
      
 }
- 
+getShifts():Observable<any[]>{
+  return new Observable((observer)=>{
+    this.http.get(`https://localhost:7236/TblShiftControllerAPI`).subscribe(data=>{
+const res=Object.values(data);
+observer.next(res);
+observer.complete();
+    })
+    
+  })
 
+}
+getDesignationRoles(): Observable<any[]>{
+  return new Observable((observer) => {
+      this.http.get(`https://localhost:7236/GetDesignations`).subscribe((result) => {
+          const resultData = Object.values(result);
+          //  console.log(resultData);
+          observer.next(resultData);
+          observer.complete();
+      })
+  })
+}
 }
