@@ -29,6 +29,7 @@ export class EmployeeLeavesComponent {
 
   names: EmployeeName[];
   empForm: FormGroup;
+  employeeLeavs: any;
 
 
   constructor(
@@ -60,10 +61,18 @@ export class EmployeeLeavesComponent {
   // table!: Table;
 
   ngOnInit() {
-    this.leaveSer.appliedLeaves().subscribe((data) => {
-      this.employees = data;
-      console.log(this.employees)
+
+
+    let loogedUser: any = window.sessionStorage.getItem('loggedinUser')
+    loogedUser = JSON.parse(loogedUser)
+     this.empservice.applyleave(loogedUser.id).subscribe((data: any) => {
+    
+    this.employeeLeavs = data.filter((dat: any) => dat.empId == loogedUser.employeeID * 1);
     });
+    // this.leaveSer.applyleave().subscribe((data) => {
+    //   this.employees = data;
+    //   console.log(this.employees)
+    // });
   }
   // ngAfterViewInit() {
   //   this.leaveSer.getLeaveType().subscribe((res) => (this.leaveTypes = res));

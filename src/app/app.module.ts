@@ -116,7 +116,6 @@ import { LeavesApprovalScreenComponent } from './routing/Leaves/leaves-approvel/
 
     TableModule,
     DropdownModule,
-    FormsModule,
     HttpClientModule,
     CardModule,
     CheckboxModule,
@@ -124,7 +123,6 @@ import { LeavesApprovalScreenComponent } from './routing/Leaves/leaves-approvel/
     BrowserAnimationsModule,
     MaterialModule,
     PrimengModule,
-    FormsModule,
     HttpClientModule,
   ],
   providers: [SalaryService,EmployeService],

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { SalaryService } from 'src/app/services/salary.service';
 
 @Component({
   selector: 'app-salarydisply',
@@ -6,5 +8,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./salarydisply.component.css']
 })
 export class SalarydisplyComponent {
+  resultData: any[];
+  constructor(private _ser: SalaryService
+    ,
+    private active: ActivatedRoute,
+  ) {
+
+  }
+  ngOnInit() {
+
+    let id = this.active.snapshot.params['id'];
+
+    this._ser.getEmployeeById(id).subscribe(data => {
+      this.resultData = [data];
+      console.log(this.resultData);
+
+    })
+  }
+
+
+  
 
 }
+

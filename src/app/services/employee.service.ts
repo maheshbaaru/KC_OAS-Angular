@@ -1,21 +1,43 @@
-import { HttpClient } from '@angular/common/http';
+// new Changes
+
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { forkJoin, merge, of } from 'rxjs';
+import { Observable, forkJoin, merge, of } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 @Injectable({
   providedIn: 'root',
 })
 export class EmployeeService {
+ 
   API_CALL = 'https://localhost:7236';
   list1: string[] = [];
   list2: string[] = [];
   listAll: any;
+  // +++++++++++//
+  currentid: any;
 
   constructor(private http: HttpClient) {
   }
 
+  private httpOptions = {
+    headers: new HttpHeaders({
+        'Content-type': 'application/json'
+    })
+}
+
   getEmp() {
     return this.http.get(`${this.API_CALL}/SalaryDeductions`);
+  }
+  postEmp(data: any){
+    console.log(data)
+    // return this.http.post(`https://localhost:7236/AddEmployee`,data)
+    return this.http.post(`${this.API_CALL}/createEmployee`,data) 
+    .subscribe((result) => {
+      const resultData = Object.values(result);
+      console.log(resultData);
+     
+    })
   }
   getUsers() {
     return this.http.get(`${this.API_CALL}/GetEmployeeTbls`);
@@ -23,7 +45,14 @@ export class EmployeeService {
   getEmployee(id: number) {
     return this.http.get(`${this.API_CALL}/SalaryDeduction?EmpId=` + id);
   }
-  appliedLeaves() {
+  applyleave(id: any) {
+    return this.http.get(`${this.API_CALL}/TblEmpLeaves?EmpId=`+id);
+  }
+  leaveapply(Id:any){
+  //  return this.http.post(`${this.API_CALL}/ApplyLeave`);
+  }
+
+    appliedLeaves() {
     return this.http.get(`${this.API_CALL}/LeavesApproval`);
   }
   getDesignationRoles() {
@@ -32,4 +61,33 @@ export class EmployeeService {
   getShifts() {
     return this.http.get(`${this.API_CALL}/TblShiftControllerAPI`);
   }
+
+  id(id:any){
+    this.currentid=id
+  }
+
+  getSpecifiEmployeeLeavesDataById(): Observable<any[]>{
+    return new Observable((observer) => {
+        this.http.get(`https://localhost:7236/GetSpecificEmpLeave?id=${this.currentid}`).subscribe((result) => {
+            const resultData = Object.values(result);
+            //  console.log(resultData);
+            observer.next(resultData);
+            observer.complete();
+        })
+    })
+  }
+
+  updateLeavesApprovalData(updateData: any) {
+    // debugger;
+    
+    const body = JSON.stringify(updateData);
+    //  return this.http.put<any>('https://localhost:7236/UpdateBankDetails?', body,this.httpOptions)
+     return this.http.put<any>(`https://localhost:7236/UpdateEmpLeaveDetails?Id=${updateData.id}&LeaveTypeId=${updateData.leaveTypeId}&StatusId=${updateData.statusId}`,this.httpOptions)
+     .subscribe((result)=>{
+        const resultData = Object.values(result)
+     })
+     
+}
+ 
+
 }
