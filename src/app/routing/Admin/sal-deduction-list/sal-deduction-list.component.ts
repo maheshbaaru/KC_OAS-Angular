@@ -22,16 +22,16 @@ export class SalDeductionListComponent {
       { field: 'empId', header: 'EmployeeId' },
       { field: 'taxTypeId', header: 'TaxTypes' },
       { field: 'amount', header: 'Amount' },
+      { field: 'taxDescription', header: 'TaxDescription' },
       { field: 'effectedMonth', header: 'EffectedMonth' },
       { field: 'noOfLopdays', header: 'No Of LOP Days' },
     ];
   }
   ngAfterViewInit() {
     let id = +this.active.snapshot.params['id'];
-    console.log(id);
+
     this.employeeSer.getEmployee(id).subscribe((data: any) => {
-      this.employeeList = [data];
-      console.log(this.employeeList);
+      this.employeeList = data;
     });
   }
 }

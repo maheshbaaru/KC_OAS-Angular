@@ -25,8 +25,7 @@ export class SalDeductionComponent {
   salDeduction: any;
   productDialog: boolean;
   taxTaypes: any;
-  SelectedCity1: TaxTayes[];
-  selectedCity1: any;
+
   selectedAmount: any;
   selectedLOP: any;
   employeeId: any;
@@ -75,7 +74,6 @@ export class SalDeductionComponent {
           Name: `${person.firstName} ${person.lastName}`,
         }));
         this.employeeName = employeeData;
-        console.log(employeeData);
 
         // this.employee.map((eachData:any)=>{
         //   let filterData=this.users.find((emp:any)=>emp.employeeId*1 ==eachData.empId)
@@ -87,7 +85,7 @@ export class SalDeductionComponent {
     });
     this.cols = [
       { field: 'employeeId', header: 'EmployeeId' },
-      { field: 'Name', header: 'Name' },
+      { field: 'Name', header: 'Employee Name' },
     ];
   }
   openNew() {
