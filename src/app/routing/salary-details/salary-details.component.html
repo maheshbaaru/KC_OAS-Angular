@@ -56,13 +56,11 @@
     </ng-template>
     <ng-template pTemplate="body" let-Employee>
         <tr>
-         <!--   <td><a href="#">KC{{Employee.empId<100?'0'+Employee.empId:Employee.empId}}</a>
-                </td>
-            <td>{{Employee.FirstName}} {{Employee.LastName}}</td>
-            <td>{{Employee.salary}}</td>
-            <td>{{Employee.lastRevisedDate| date: 'dd-MM-yyyy'}}</td>
-            <td>{{Employee.nextRevisedDate| date: 'dd-MM-yyyy'}}</td> -->
-            <td><a href="#" [routerLink]="['../updateSalaryDetails', Employee.empId]" (click)="getEmployeeById(Employee.empId)">KC{{Employee.empId<100?'0'+Employee.id:Employee.empId}}</a>
+            <!-- <td><a href="#" [routerLink]="['../updateSalaryDetails', Employee.empId]" (click)="getEmployeeById(Employee.empId)">KC{{Employee.empId<100?'0'+Employee.id:Employee.empId}}</a> -->
+           
+                <td><a href="#" [routerLink]="['../updateSalaryDetails', Employee.empId]" >KC{{Employee.empId<100?'0'+Employee.id:Employee.empId}}</a>
+
+           
             </td>
         <td>{{Employee.firstName}} {{Employee.lastName}}</td>
         <td>{{Employee.salary}}</td>

@@ -21,18 +21,13 @@ export class SalaryDetailsComponent {
   ) { }
 
   ngOnInit() {
-    this.salaryService.getEmployee().subscribe(data => {
+    this.salaryService. getEmployeesalaryDetails().subscribe(data => {
       this.empSalDetails = data;
       console.log(this.empSalDetails);
     })
   }
-  getEmployeeById(id: number) {
-    // debugger;
-    console.log(id);
-
-//     this.salaryService.getEmployeeById(id).subscribe(data => {
-// this.table=data;
-// console.log(this.table);
-   // })
-  }
+  // getEmployeeById(id: number) {
+  //    debugger;
+  //    console.log(id);
+  // }
 }

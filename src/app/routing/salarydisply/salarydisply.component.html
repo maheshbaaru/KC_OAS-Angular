@@ -2,7 +2,6 @@
 <ng-template pTemplate="header">
   <div  class="col -md-6" style="text-align:left">
   <strong>SALARY DISPLAY LIST  </strong>
-  <!-- <input type="text" pInputText placeholder="Search Employee" (input)="dt.filterGlobal($any($event.target).value,'contains')"    /> -->
 </div>
     <div class="col-sm-6" style="text-align:right">
         <button pButton class="h-1rem" routerLink="/navbar/salary-details" class="h-2rem"style="float: right;font-size: small;font-weight: 500;margin-top:6px ;">Back</button>
@@ -48,22 +47,11 @@
   </ng-template>
   <ng-template pTemplate="body" let-Employee>
       <tr>
-          <td>{{Employee.FirstName}} {{Employee.LastName}}</td>
+          <td>{{Employee.firstName}} {{Employee.lastName}}</td>
           <td>{{Employee.salary}}</td>
           <td>{{Employee.lastRevisedDate| date: 'dd-MM-yyyy'}}</td>
           <td>{{Employee.nextRevisedDate| date: 'dd-MM-yyyy'}}</td>
           <td>{{Employee.modifiedDate|date:'dd-MM-yyyy'}}</td>
-
-
-
-
-          <!-- <td><a href="#" >KC{{Employee.empId<100?'0'+Employee.id:Employee.empId}}</a>
-          </td>
-      <td>{{Employee.firstName}} {{Employee.lastName}}</td>
-      <td>{{Employee.salary}}</td>
-      <td>{{Employee.lastRevisedDate| date: 'dd-MM-yyyy'}}</td>
-      <td>{{Employee.nextRevisedDate| date: 'dd-MM-yyyy'}}</td>
-      <td>{{Employee.modifiedDate|date:'dd-MM-yyyy'}}</td> -->
       </tr>
   </ng-template>
 
