@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EmployeeData } from 'src/app/Modesls/employee';
 import { SalaryService } from 'src/app/services/salary.service';
 
 @Component({
@@ -20,14 +21,14 @@ export class SalarydisplyComponent {
     let id = this.active.snapshot.params['id'];
 
     this._ser.getEmployeeById(id).subscribe(data => {
-      this.resultData = [data];
+      this.resultData = data;
       console.log(this.resultData);
 
     })
   }
 
 
-  
+
 
 }
 

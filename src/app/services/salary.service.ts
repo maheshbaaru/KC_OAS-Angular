@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class SalaryService {
   constructor(private http: HttpClient) { }
-  getEmployee(): Observable<any> {
+  getEmployeesalaryDetails(): Observable<any> {
     return new Observable((observer) => {
       this.http.get('https://localhost:7236/SalaryDetails').subscribe((result) => {
         const resultData = Object.values(result);
@@ -16,23 +16,18 @@ export class SalaryService {
       })
     })
   }
-  // getEmployeeById(id: number): Observable<any> {
-  //   debugger;
-  //   console.log(`https://localhost:7236/SalaryHistory?id=${id}`);
+  getEmployeeById(id: number): Observable<any> {
+    debugger;
+    return new Observable((obserer) => {
+      this.http.get(`https://localhost:7236/SalaryDetailsById?EmpId=${id}`).subscribe((res) => {
+        const resdata = Object.values(res);
+        obserer.next(resdata);
+        obserer.complete();
 
-  //   return new Observable((obserer) => {
-  //      this.http.get(`https://localhost:7236/SalHistoryDetails?EmpId=${id}`).subscribe((res) => {
-  //       console.log(res);
-  //       const resdata = Object.values(res);
-  //       obserer.next(resdata);
-  //       obserer.complete();
+      })
 
-  //     })
-
-  //   })
-  // }
-  getEmployeeById(id: number) {
-    // debugger;
-    return this.http.get(`https://localhost:7236/SalaryDetailsById?EmpId=${id}`);
+    })
   }
+
+
 }
