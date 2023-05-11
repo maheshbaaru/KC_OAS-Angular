@@ -4,7 +4,7 @@
 
         <div class="right-content">
             <div class="navbar-nav mr-auto">
-                <a class="nav-link customizing" [routerLink]="['paySlip']">Payslip</a>
+                <a class="nav-link customizing" [routerLink]="['paySlip']" style="font-family:sans-serif;">Payslip</a>
             </div>
 
             <div class="leaves">
@@ -13,7 +13,7 @@
 
                     <div class="nav-item" routerLinkActive="active" (mouseout)="$event.stopPropagation()">
                         <a class="nav-link customizing" #levelOneTrigger="matMenuTrigger"
-                            (mouseenter)="levelOneTrigger.openMenu()" [matMenuTriggerFor]="levelOne">Leaves</a>
+                            (mouseenter)="levelOneTrigger.openMenu()" [matMenuTriggerFor]="levelOne" style="font-family:sans-serif;">Leaves</a>
                         <mat-menu #levelOne="matMenu" direction="down" yPosition="below">
                             <span (mouseleave)="levelOneTrigger.closeMenu()">
                                 <button mat-menu-item [routerLink]="['apply']" (click)="hideHome()">
@@ -40,7 +40,7 @@
 
                     <div class="nav-item" routerLinkActive="active" (mouseout)="$event.stopPropagation()">
                         <a class="nav-link customizing" #levelOneTrigger="matMenuTrigger"
-                            (mouseenter)="levelOneTrigger.openMenu()" [matMenuTriggerFor]="levelOne">Admin</a>
+                            (mouseenter)="levelOneTrigger.openMenu()" [matMenuTriggerFor]="levelOne" style="font-family:sans-serif;">Admin</a>
                         <mat-menu #levelOne="matMenu" direction="down" yPosition="below">
                             <span (mouseleave)="levelOneTrigger.closeMenu()">
                                 <!-- <mat-menu #createPlan="matMenu"> -->
@@ -77,7 +77,7 @@
 
                 <div class="nav-item" routerLinkActive="active" (mouseout)="$event.stopPropagation()">
                     <a class="nav-link customizing" #levelTWoTrigger="matMenuTrigger"
-                        (mouseenter)="levelTWoTrigger.openMenu()" [matMenuTriggerFor]="levelTWo">Welcome {{name}} <img
+                        (mouseenter)="levelTWoTrigger.openMenu()" [matMenuTriggerFor]="levelTWo"style="font-family:sans-serif;">Welcome {{name}} <img
                             src="{{profilePic}}" class="profile-class" alt=" " /> </a>
                     <mat-menu #levelTWo="matMenu" direction="down" yPosition="below">
 
