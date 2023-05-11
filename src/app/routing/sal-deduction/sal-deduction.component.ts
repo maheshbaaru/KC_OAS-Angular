@@ -123,7 +123,7 @@ export class SalDeductionComponent {
           this.messageSer.add({
             severity: 'success',
             summary: 'Success',
-            detail: 'TaxType saved',
+            detail: 'Employee SalaryDeduction saved',
           });
         }
 
@@ -131,7 +131,7 @@ export class SalDeductionComponent {
           this.messageSer.add({
             severity: 'error',
             summary: 'Error',
-            detail: 'Please gave a TaxType',
+            detail: 'Please gave Employee SalaryDeduction details',
           });
         }
       });
