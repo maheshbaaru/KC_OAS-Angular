@@ -2,10 +2,10 @@
   <ng-template pTemplate="header">
     <div class="col -md-6" style="text-align: left">
       <strong>SALARY DEDUCTIONS LIST </strong>
-      <input
+      <input style="margin-left:10px;"
         type="text"
         pInputText
-        class="h-2rem"
+        class="h-1rem"
         placeholder="Search Employee"
         (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
       />
@@ -15,12 +15,13 @@
         pButton
       
         (click)="openNew()"
-        class="h-2rem p-button-success"
+        class="h-1rem p-button-success"
         style="
           float: right;
           font-size: small;
           font-weight: 500;
-          margin-top: 6px;
+          margin-right:10px;
+       
         "
       >
         + CREATE NEW
@@ -108,7 +109,7 @@
             </label>
             <p-dropdown
               [options]="taxTaypes"
-              placeholder="SELECT TAX TYPE"
+              placeholder="Select Tax Type"
               id="TaxTypeId"
               name="TaxTypeId"
               class="form-control"
@@ -172,7 +173,7 @@
               type="text"
               pInputText
               id="LOPDAYS"
-              placeholder="NO OF LOP DAY'S"
+              placeholder="No of LOP Days"
               required
               autofocus
               name="LOPDAYS"

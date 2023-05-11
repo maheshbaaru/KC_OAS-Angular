@@ -2,13 +2,13 @@
   <ng-template pTemplate="header">
     <div  class="col -md-6" style="text-align:left">
     <strong>EMPLOYEES </strong>
-    <input type="text"  class="h-2rem" pInputText placeholder="Search Employee" (input)="table.filterGlobal($any($event.target).value,'contains')"    />
+    <input type="text"  class="h-1rem" style="margin-left:10px;" pInputText placeholder="Search Employee" (input)="table.filterGlobal($any($event.target).value,'contains')"    />
   </div>
     <!-- <div class="col-sm-6" style="text-align:right">
       <button pButton  type="button"  routerLink="../cretenewemployee"  class="p-button-sm p-button-success h-2rem" >+ CREATE NEW</button>
   </div> -->
   <div class="col-sm-6" style="text-align:right">
-    <button pButton class="h-1rem" routerLink="../cretenewemployee" class="h-2rem p-button-success"style="float: right;font-size: small;font-weight: 500;margin-top:6px ;">+ CREATE NEW</button>  
+    <button pButton class="h-1rem" routerLink="../cretenewemployee" class="h-1rem p-button-success"style="float: right;font-size: small;font-weight: 500;margin-right:10px;">+ CREATE NEW</button>  
 </div>
   </ng-template>
   <p-table #table [columns]="cols" [value]="empdata" [tableStyle]="{'min-width': '50rem'}"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines"   [globalFilterFields]="['employeeID','firstName','lastName','designationName','email','IsActive','panNumber','isActive','shiftName']">

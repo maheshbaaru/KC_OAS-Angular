@@ -9,6 +9,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ::placeholder{
     font-size: medium;
     font-style: italic;
+    font-size: small;
     }
 
 
@@ -25,7 +26,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
 
     label{
-       font-weight: 600;
+       font-weight: 500;
     }
     
     .create-container{
@@ -60,7 +61,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 } 
 b, strong {
-    font-weight: bolder;
+    font-weight:500 !important;
+    font-size: small;
     color: aliceblue !important;
 }
 .p-panel .p-panel-header .p-panel-title {
@@ -69,3 +71,6 @@ b, strong {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+th{
+    font-size: small;
+}

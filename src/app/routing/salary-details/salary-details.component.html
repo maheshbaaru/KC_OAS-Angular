@@ -10,10 +10,10 @@
     <ng-template pTemplate="header">
       <div  class="col -md-6" style="text-align:left">
       <strong>SALARY DISPLAY LIST  </strong>
-      <input type="text" pInputText class="h-2rem" placeholder="Search Employee" (input)="table.filterGlobal($any($event.target).value,'contains')"    />
+      <input style="margin-left:10px;" type="text" pInputText class="h-1rem" placeholder="Search Employee" (input)="table.filterGlobal($any($event.target).value,'contains')"    />
     </div>
         <div class="col-sm-6" style="text-align:right">
-            <button pButton class="h-1rem" routerLink="../create-new-salary-details" class="h-2rem p-button-success"style="float: right;font-size: small;font-weight: 500;margin-top:6px ;">+ CREATE NEW</button>  
+            <button pButton routerLink="../create-new-salary-details" class="h-1rem p-button-success"style="float: right;font-size: small;font-weight: 500;margin-right:10px;">+ CREATE NEW</button>  
     </div>
     </ng-template> 
     <p-table #dt [value]="empSalDetails" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10"  styleClass="p-datatable-gridlines"   [globalFilterFields]="['FirstName','empId','firstName','nextRevisedDate','lastRevisedDate','salary']">
