@@ -14,10 +14,10 @@
     margin: 10px;
 }
 .leaves{
-    margin: 20px;
+    margin: 30px;
 }
 .profile{
-    margin: 20px;
+    margin: 30px;
 }
 
 /* .navbar-nav .mr-auto{
@@ -41,6 +41,8 @@ footer {
 }
 .customizing{
    cursor: pointer;
+   font-size: medium;
+   font-weight:400;
 }
 .profile-class{
     width:50px;

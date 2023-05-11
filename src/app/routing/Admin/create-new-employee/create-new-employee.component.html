@@ -3,24 +3,27 @@
     <div  class="col -md-6" style="text-align:left">
     <strong>CREATE EMPLOYEES </strong>
   </div>
-      <div class="col-sm-6" style="text-align:right">
-      <button pButton type="button" label="Back"  icon=" pi pi-arrow-left"  routerLink="../Employees" iconPos="left" class="p-button-sm " ></button>&nbsp;
-      <button pButton type="button" label="Save" [disabled]="save_button" (click)="save()" icon="pi pi-check" iconPos="left" class="p-button-sm"></button>
+<!-- <div class="col-sm-6" style="text-align:right">
+  <button pButton class="h-1rem" style="float: right; font-size: smaller;" routerLink="../Employees"><i class="pi pi-arrow-left icon"></i>BACK</button>
+  <button pButton class="h-1rem" style="float: right;margin-right:5px; font-size: smaller;"  type="submit" [disabled]="save_button" (click)="save()" ><i class="pi pi-check icon"></i>SAVE</button>
+</div> -->
 
-  </div>
+<div class="col-sm-6" style="text-align:right">
+  <button pButton class="h-1rem" style="float: right; font-size: smaller;margin-right:10px;" routerLink="../Employees"><i class="pi pi-arrow-left icon"></i>BACK</button>
+  <button pButton class="h-1rem" style="float: right;margin-right:5px; font-size: smaller;"  type="submit"  [disabled]="save_button" (click)="save()" ><i class="pi pi-check icon"></i>SAVE</button>
+</div>
   </ng-template>
-
     <form [formGroup]="empForm"  >
        <div class="row">
     <div class="col-md-4">
   <div class="col-12 md:col-4  ">
     <h3 >EmployeeID<span class="required">*</span></h3>
-    <input (change)="onchange()" type="text" formControlName="employeeID" pInputText  class="p-inputtext-normal" placeholder="ENTER EMPLOYEE ID" required >
+    <input (change)="onchange()" type="text" formControlName="employeeID" pInputText  class="p-inputtext-normal h-2rem" placeholder="Enter Employee ID" required >
     <br>
     <br>
 
     <h3>Email<span class="required" >*</span></h3>
-    <input type="text" (change)="onchange()" formControlName="email" class="p-inputtext-normal" required  pInputText placeholder="ENTER EMAIL">
+    <input type="text" (change)="onchange()" formControlName="email" class="p-inputtext-normal h-2rem" required  pInputText placeholder="Enter Email">
     <br>
     <br>
 
@@ -48,12 +51,12 @@
 <div class="col-md-4">
 <div class="col-12 md:col-4">
   <h3>FirstName<span class="required">*</span></h3>
-  <input type="text" pInputText formControlName="firstName" class="p-inputtext-normal" required  placeholder="ENTER FIRSTNAME">
+  <input type="text"   pInputText formControlName="firstName" class="p-inputtext-normal h-2rem" required  placeholder="Enter First Name">
   <br>
   <br>
 
   <h3 >PanNumber</h3>
-  <input type="text"  formControlName="panNumber" class="p-inputtext-normal" pInputText placeholder="ENTER PAN NUMBER">
+  <input type="text"  formControlName="panNumber" class="p-inputtext-normal h-2rem" pInputText placeholder="Enter PAN Number">
   <br>
   <br>
 
@@ -71,17 +74,17 @@
 <div class="col-md-4">
 <div class="col-12 md:col-4  ">
   <h3 >LastName<span class="required">*</span></h3>
-  <input type="text" formControlName="lastName"   class="p-inputtext-normal" required  pInputText placeholder="ENTER LASTNAME">
+  <input type="text" formControlName="lastName"   class="p-inputtext-normal h-2rem" required  pInputText placeholder="Enter Last Name">
   <br>
   <br>
 
   <h3 >Password<span class="required">*</span></h3>
-  <input type="text" formControlName="Password"  class="p-inputtext-normal" required  pInputText placeholder="ENTER PASSWORD">
+  <input type="text" formControlName="Password"  class="p-inputtext-normal h-2rem" required  pInputText placeholder="Enter Password">
   <br>
   <br>
 
   <h3 >DOJ<span class="required">*</span></h3>
-  <input type="text"  class="p-inputtext-normal" formControlName="doj" pInputText placeholder="DD/MM/YYYY">
+  <input type="text"  class="p-inputtext-normal h-2rem" formControlName="doj" pInputText placeholder="DD/MM/YYYY">
 </div>
 </div></div>
 </form>

@@ -9,11 +9,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ::placeholder{
     font-size: medium;
     font-style: italic;
+    font-size: small;
     }
 
 
 .input-styling{
     padding-bottom:10px;
+    font-size: small;
         
     }
 .cont2{
@@ -25,7 +27,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
 
     label{
-       font-weight: 600;
+       font-weight: 500;
     }
     
     .create-container{
@@ -54,13 +56,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
    
  .p-panel .p-panel-header{
-    background-color:rgb(68, 65, 65) !important;
+    background-color:rgb(121, 121, 128) !important;
     padding:0.5rem !important;
    
 
 } 
 b, strong {
-    font-weight: bolder;
+    font-weight:500 !important;
+    font-size: small;
     color: aliceblue !important;
 }
 .p-panel .p-panel-header .p-panel-title {
@@ -69,3 +72,9 @@ b, strong {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+th{
+    font-size: small;
+}
+td{
+    font-size: small;
+}
