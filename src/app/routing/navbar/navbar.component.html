@@ -1,5 +1,4 @@
-
-<div class ="main">
+<div class="main">
 
     <mat-toolbar class="nav-content" color="primary">
         <!-- <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
@@ -8,75 +7,87 @@
               <mat-tab label="Second">Content 2</mat-tab>
               <mat-tab label="Third">Content 3</mat-tab>
             </mat-tab-group> -->
-
-
-            <div>
-                <p class="nav-link customizing" [routerLink]="['paySlip']" >Payslip</p>
+        <div class="right-content">
+            <div class="navbar-nav mr-auto">
+                <a class="nav-link customizing" [routerLink]="['paySlip']">Payslip</a>
             </div>
 
             <div class="leaves">
-                <div class="navbar-nav mr-auto">
+                <div class=" mr-auto">
 
                     <div class="nav-item" routerLinkActive="active" (mouseover)="leavesmenuTrigger.openMenu()"
-                    (mouseout)="$event.stopPropagation();leavesmenuTrigger.openMenu()">
-                    <a class="nav-link customizing" #leavesmenuTrigger="matMenuTrigger" [matMenuTriggerFor]="leavesmenu">Leaves</a>
+                        (mouseout)="$event.stopPropagation();leavesmenuTrigger.openMenu()">
+                        <a class="nav-link customizing" #leavesmenuTrigger="matMenuTrigger"
+                            [matMenuTriggerFor]="leavesmenu">Leaves</a>
                         <mat-menu #leavesmenu="matMenu">
-                        <button mat-menu-item [routerLink]="['apply']" (click)="hideHome()"> <mat-icon>event_note</mat-icon>Apply Leave</button>
-                        <button mat-menu-item [routerLink]="['access']"><mat-icon>people</mat-icon> EmployeeAccess</button>
-                        <div *ngIf="showAdminBoard">
-                            <button mat-menu-item [routerLink]="['leavesApprov']">
-                                <mat-icon>event_busy</mat-icon>Leaves Approval</button>
-                            <button mat-menu-item
-                                [routerLink]="['employee-leaves']"><mat-icon>event_available</mat-icon> Employee
-                                Leaves
-                            </button>
-                        </div>
+                            <button mat-menu-item [routerLink]="['apply']" (click)="hideHome()">
+                                <mat-icon>event_note</mat-icon>Apply Leave</button>
+                            <button mat-menu-item [routerLink]="['access']"><mat-icon>people</mat-icon>
+                                EmployeeAccess</button>
+                            <div *ngIf="showAdminBoard">
+                                <button mat-menu-item [routerLink]="['leavesApprov']">
+                                    <mat-icon>event_busy</mat-icon>Leaves Approval</button>
+                                <button mat-menu-item
+                                    [routerLink]="['employee-leaves']"><mat-icon>event_available</mat-icon> Employee
+                                    Leaves
+                                </button>
+                            </div>
                         </mat-menu>
                     </div>
                 </div>
             </div>
-
+            <!-- <p class="nav-link customizing" [routerLink]="['paySlip']" >Payslip</p> -->
 
 
             <div class="admin" *ngIf="showAdminBoard">
                 <div class="navbar-nav mr-auto">
 
-                <div class="nav-item" routerLinkActive="active" (mouseover)="createPlanmenuTrigger.openMenu()"
+                    <div class="nav-item" routerLinkActive="active" (mouseover)="createPlanmenuTrigger.openMenu()"
                         (mouseout)="$event.stopPropagation();createPlanmenuTrigger.openMenu()">
                         <a class="nav-link customizing" #createPlanmenuTrigger="matMenuTrigger"
                             [matMenuTriggerFor]="createPlan">Admin</a>
                         <mat-menu #createPlan="matMenu">
-                            <button mat-menu-item
-                                [routerLink]="['Employees']" (click)="hideHome()"><mat-icon>people</mat-icon>Employees</button>
-                            <button mat-menu-item [routerLink]="['salDeduction']"><img src="assets/rupe.png" alt="profile-pic">Salary
+                            <button mat-menu-item [routerLink]="['Employees']"
+                                (click)="hideHome()"><mat-icon>people</mat-icon>Employees</button>
+                            <button mat-menu-item [routerLink]="['salDeduction']"><img src="assets/rupe.png"
+                                    alt="profile-pic">Salary
                                 Deductions</button>
                             <button mat-menu-item [routerLink]="['create-designation']"><mat-icon>add_circle</mat-icon>
                                 Create Designation</button>
                             <button mat-menu-item [routerLink]="['create-taxtype']">
                                 <mat-icon>add_circle</mat-icon>
                                 Create TaxType</button>
-                            <button mat-menu-item
-                                [routerLink]="['bankDetails']"><mat-icon>account_balance</mat-icon> Bank
+                            <button mat-menu-item [routerLink]="['bankDetails']"><mat-icon>account_balance</mat-icon>
+                                Bank
                                 Details</button>
-                            <button mat-menu-item [routerLink]="['salary-details']"><img src="assets/rupe.png" alt="profile-pic">Salary
+                            <button mat-menu-item [routerLink]="['salary-details']"><img src="assets/rupe.png"
+                                    alt="profile-pic">Salary
                                 Details</button>
                         </mat-menu>
                     </div>
                 </div>
             </div>
+        </div>
+
+
+
+
+
+
 
 
 
         <div class="profile">
 
 
-            <div class="nav-item" routerLinkActive="active" (mouseover)="dispatchPlanmenuTrigger.openMenu()" >
+            <div class="nav-item" routerLinkActive="active" (mouseover)="dispatchPlanmenuTrigger.openMenu()">
                 <a class="nav-link customizing" #dispatchPlanmenuTrigger="matMenuTrigger"
-                    [matMenuTriggerFor]="dispatchPlan" >Welcome {{name}} <img src="{{profilePic}}"  class="profile-class" alt=" "/>
+                    [matMenuTriggerFor]="dispatchPlan">Welcome {{name}} <img src="{{profilePic}}" class="profile-class"
+                        alt=" " />
                 </a>
                 <mat-menu #dispatchPlan="matMenu">
 
-                    
+
                     <button mat-menu-item [routerLink]="['updatephoto']">
                         <mat-icon>camera_enhance</mat-icon> Update Photo</button>
                     <button mat-menu-item [routerLink]="['updateprofile']"> <mat-icon>person</mat-icon>Profile</button>
@@ -92,20 +103,16 @@
 
     </mat-toolbar>
 
-    <div class="bottom-content" >
-
-
-        <router-outlet></router-outlet>
-    </div>
-
-
     <div class="bottom-content" *ngIf="showAdminBoard">
         <app-home *ngIf="isHome"></app-home>
 
 
     </div>
-<footer>©2023 - Kode Corp Technology Solutions Pvt.Ltd </footer>
+
+    <div class="bottom-content">
+        <router-outlet></router-outlet>
+    </div>
+
+
+    <footer>©2023 - Kode Corp Technology Solutions Pvt.Ltd </footer>
 </div>
-
-
-

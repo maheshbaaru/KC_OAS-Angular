@@ -22,10 +22,10 @@ export class SalDeductionComponent {
   submitted: boolean;
   employee: any;
   users: any;
+  salDeduction: any;
   productDialog: boolean;
   taxTaypes: any;
-  SelectedCity1: TaxTayes[];
-  selectedCity1: any;
+
   selectedAmount: any;
   selectedLOP: any;
   employeeId: any;
@@ -74,7 +74,6 @@ export class SalDeductionComponent {
           Name: `${person.firstName} ${person.lastName}`,
         }));
         this.employeeName = employeeData;
-        console.log(employeeData);
 
         // this.employee.map((eachData:any)=>{
         //   let filterData=this.users.find((emp:any)=>emp.employeeId*1 ==eachData.empId)
@@ -86,7 +85,7 @@ export class SalDeductionComponent {
     });
     this.cols = [
       { field: 'employeeId', header: 'EmployeeId' },
-      { field: 'Name', header: 'Name' },
+      { field: 'Name', header: 'Employee Name' },
     ];
   }
   openNew() {
@@ -118,13 +117,23 @@ export class SalDeductionComponent {
         this.selectedLOP,
         this.description
       )
-      .subscribe((res) => {
+      .subscribe((res: any) => {
         console.log(res);
-        this.messageSer.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: 'TaxType saved',
-        });
+        if (res !== null && res !== res.statusText && res !== res.type) {
+          this.messageSer.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'TaxType saved',
+          });
+        }
+
+        if (this.taxType === '' && this.taxType === null) {
+          this.messageSer.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Please gave a TaxType',
+          });
+        }
       });
     //
     this.form.reset();
@@ -133,5 +142,8 @@ export class SalDeductionComponent {
     this.salDeductionServ
       .getTaxDeduction()
       .subscribe((res) => (this.taxTaypes = res));
+    // this.employeeSer.getEmp().subscribe((res) =>{
+    //   this.salDeduction =res
+    // } );
   }
 }

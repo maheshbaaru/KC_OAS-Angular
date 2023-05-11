@@ -22,14 +22,18 @@ export class CreateTaxtypeComponent {
   }
   AddTaxType() {
     this.taxType = this.form.value;
-    this.httpClient.AddTaxType(this.taxType.tax).subscribe((res) => {
+    this.httpClient.AddTaxType(this.taxType.tax).subscribe((res:any) => {
       console.log(res);
+      if(res!==null&&res!==res.statusText&&res!==res.type
+
+        )
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'TaxType saved',
+      });
     });
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success',
-      detail: 'TaxType saved',
-    });
+
     if (this.taxType === '' && this.taxType === null) {
       this.messageService.add({
         severity: 'error',

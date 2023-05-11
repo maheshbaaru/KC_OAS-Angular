@@ -1,20 +1,29 @@
  .nav-content{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     
 } 
 
+.right-content{
+    display: flex;
+    align-items: center;
+}
 
 .bottom-content{
     padding-top: 10px;
     margin: 10px;
 }
-.left{
-    /* display: flex;
-    float:right;
-    justify-content: space-evenly; */
-    display: contents;
+.leaves{
+    margin: 20px;
 }
+.profile{
+    margin: 20px;
+}
+
+/* .navbar-nav .mr-auto{
+    margin: 15px;
+} */
+
 
 
 .mat-toolbar.mat-primary {

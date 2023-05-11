@@ -21,7 +21,7 @@ export class UpdateprofileComponent {
     private designatonservice: HttpClientService,
     private formBuilder: FormBuilder,
     private authServ: AuthguardService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.updateform = this.formBuilder.group({
@@ -63,27 +63,23 @@ export class UpdateprofileComponent {
       }),
       designationID: new FormControl({
         value: '',
-        disabled: false
+        disabled: false,
       }),
-    
     });
 
     this.formdataget();
   }
 
-
   formdataget() {
-
     let data: any = window.sessionStorage.getItem('loggedinUser');
-    let userdata = JSON.parse(data)
-    console.log(userdata)
+    let userdata = JSON.parse(data);
 
     // this.service.getEmployeeList().subscribe((data1: any) => {
     //   console.log(data1);
     //  this.updateform.get('email')?.setValue(data.email);
-    this.updateform.patchValue(userdata)
+    this.updateform.setValue(userdata);
     // this.updateform.get('email')?.setValue(userdata.email)
-    if(!userdata.isActive) this.updateform.controls['isActive'].disable()
+    if (!userdata.isActive) this.updateform.controls['isActive'].disable();
     // });
     // formdataget() {
     //   this.service.getEmployeeList().subscribe((data1: any) => {
