@@ -24,7 +24,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         margin-bottom: 30px !important;
     }
 
-    label{
+    label,p{
        font-weight: 600;
     }
     

@@ -2,45 +2,25 @@
   <ng-template pTemplate="header">
     <div class="col -md-6" style="text-align: left">
       <strong>SALARY DEDUCTIONS LIST </strong>
-      <input
-        type="text"
-        pInputText
-        class="h-2rem"
-        placeholder="Search Employee"
-        (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
-      />
+      <input type="text" pInputText class="h-2rem" placeholder="Search Employee"
+        (input)="dt1.filterGlobal($any($event.target).value, 'contains')" />
     </div>
     <div class="col-sm-6" style="text-align: right">
-      <button
-        pButton
-      
-        (click)="openNew()"
-        class="h-2rem p-button-success"
-        style="
+      <button pButton (click)="openNew()" class="h-2rem p-button-success" style="
           float: right;
           font-size: small;
           font-weight: 500;
           margin-top: 6px;
-        "
-      >
+        ">
         + CREATE NEW
       </button>
     </div>
   </ng-template>
 
-  <p-table
-    #dt1
-    [columns]="cols"
-    [value]="employeeName"
-    styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
-    [paginator]="true"
-    [rows]="10"
-    [showCurrentPageReport]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[10, 25, 50]"
-    [globalFilterFields]="['employeeId', 'Name']"
-    responsiveLayout="scroll"
-  >
+  <p-table #dt1 [columns]="cols" [value]="employeeName"
+    styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10"
+    [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[10, 25, 50]" [globalFilterFields]="['employeeId', 'Name']" responsiveLayout="scroll">
     <ng-template pTemplate="right"> </ng-template>
     <!-- <ng-template pTemplate="caption">
     <div class="p-d-flex">
@@ -61,11 +41,7 @@
         <th *ngFor="let col of columns">
           <div class="p-d-flex p-jc-between p-ai-center">
             {{ col.header }}
-            <p-columnFilter
-              type="text"
-              [field]="col.field"
-              display="menu"
-            ></p-columnFilter>
+            <p-columnFilter type="text" [field]="col.field" display="menu"></p-columnFilter>
           </div>
         </th>
         <!-- <th>
@@ -79,64 +55,34 @@
     <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr>
         <td *ngFor="let col of columns">
-          <a
-            *ngIf="col.field == 'employeeId'"
-            style="text-decoration: none"
-            [routerLink]="['../DeductionList', rowData.employeeId]"
-            >{{ rowData.employeeId }}</a
-          >
+          <a *ngIf="col.field == 'employeeId'" style="text-decoration: none"
+            [routerLink]="['../DeductionList', rowData.employeeId]">{{ rowData.employeeId }}</a>
           <div *ngIf="col.field != 'employeeId'">{{ rowData[col.field] }}</div>
         </td>
         <!-- <td >{{emp.Name}}</td> -->
       </tr>
     </ng-template>
   </p-table>
-  <p-dialog
-    [(visible)]="productDialog"
-    [style]="{ width: '850px', height: '700px' }"
-    header="Create"
-    [modal]="true"
-    styleClass="p-fluid"
-  >
+  <p-dialog [(visible)]="productDialog" [style]="{ width: '850px', height: '700px' }" header="Create" [modal]="true"
+    styleClass="p-fluid">
     <ng-template pTemplate="content p-p-4">
       <form [formGroup]="form">
         <div class="formgrid grid">
           <div class="field col-4">
-            <label class="p-mb-3" for="taxTayes"
-              >TaxTypeId
+            <label class="p-mb-3" for="taxTayes">TaxTypeId
               <span class="text-red-500" required>*</span>
             </label>
-            <p-dropdown
-              [options]="taxTaypes"
-              placeholder="SELECT TAX TYPE"
-              id="TaxTypeId"
-              name="TaxTypeId"
-              class="form-control"
-              optionLabel="type"
-              [showClear]="true"
-              filterBy="type"
-              [filter]="true"
-              formControlName="TaxTypeId"
-            ></p-dropdown>
+            <p-dropdown [options]="taxTaypes" placeholder="SELECT TAX TYPE" id="TaxTypeId" name="TaxTypeId"
+           optionLabel="type" [showClear]="true" filterBy="type" [filter]="true"
+              formControlName="TaxTypeId"></p-dropdown>
           </div>
 
           <div class="field col-4">
-            <label for="name"
-              >EmpId
+            <label for="name">EmpId
               <span class="text-red-500" required>*</span>
             </label>
-            <p-dropdown
-              [options]="users"
-              placeholder="EmpId"
-              [filter]="true"
-              optionLabel="firstName"
-              [showClear]="true"
-              [filter]="true"
-              filterBy="firstName"
-              name="EmpId"
-              class="form-control"
-              formControlName="EmpId"
-            >
+            <p-dropdown [options]="users" placeholder="EmpId" [filter]="true" optionLabel="firstName" [showClear]="true"
+              [filter]="true" filterBy="firstName" name="EmpId" formControlName="EmpId">
               <!-- <ng-template let-group pTemplate="group">
             <div class="p-d-flex p-ai-center">
 
@@ -147,89 +93,38 @@
           </div>
 
           <div class="field col-4" [style]="{ width: '14rem' }">
-            <label class="p-mb-3"
-              >Amount
+            <label class="p-mb-3">Amount
               <span class="text-red-500" required>*</span>
             </label>
-            <p-inputNumber
-              id="Amount"
-              mode="currency"
-              currency="INR"
-              locale="en-US"
-              autofocus
-              class="form-control"
-              name="Amount"
-              formControlName="Amount"
-            ></p-inputNumber>
+            <p-inputNumber id="Amount" mode="currency" currency="INR" locale="en-US" autofocus 
+              name="Amount" formControlName="Amount"></p-inputNumber>
           </div>
 
           <div class="col-6 mr-5" style="width: 15rem">
-            <label for="LOPDAYS"
-              >No of LOP DAYS
+            <label for="LOPDAYS">No of LOP DAYS
               <span class="text-red-500" required>*</span>
             </label>
-            <input
-              type="text"
-              pInputText
-              id="LOPDAYS"
-              placeholder="NO OF LOP DAY'S"
-              required
-              autofocus
-              name="LOPDAYS"
-              formControlName="LOPDAYS"
-            />
+            <input type="text" pInputText id="LOPDAYS" placeholder="NO OF LOP DAY'S" required autofocus name="LOPDAYS"
+              formControlName="LOPDAYS" />
           </div>
           <div class="col-6" style="width: 15rem">
-            <label for="Month"
-              >Effected Month
+            <label for="Month">Effected Month
               <span class="text-red-500" required>*</span>
             </label>
-            <p-calendar
-              [disabledDates]="invalidDates"
-              [showIcon]="true"
-              view="month"
-              inputId="Month"
-              dateFormat="mm.yy"
-              [required]="true"
-              name="Month"
-              formControlName="Month"
-            ></p-calendar>
+            <p-calendar [disabledDates]="invalidDates" [showIcon]="true" view="month" inputId="Month" dateFormat="mm.yy"
+              [required]="true" name="Month" formControlName="Month"></p-calendar>
           </div>
         </div>
-        <div
-          *ngIf="form.invalid && (form.dirty || form.touched)"
-          class="alert"
-        ></div>
+        <div *ngIf="form.invalid && (form.dirty || form.touched)" class="alert"></div>
       </form>
     </ng-template>
 
     <ng-template pTemplate="footer">
-      <p-toast
-        position="top-center"
-        [showTransformOptions]="'translateY(100%)'"
-        [showTransitionOptions]="'1000ms'"
-        [hideTransitionOptions]="'1000ms'"
-        [showTransformOptions]="'translateX(100%)'"
-      ></p-toast>
-      <button
-        pButton
-        pRipple
-        label="Cancel"
-        icon="pi pi-times"
-        class="p-button-text"
-        (click)="hideDialog()"
-      ></button>
-      <button
-        pButton
-        pRipple
-        label="Save"
-        icon="pi pi-check"
-        class="p-button-text"
-        id="save"
-        type="submit"
-        (click)="save()"
-        [disabled]="!form.valid"
-      ></button>
+      <p-toast position="top-center" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'"
+        [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
+      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+      <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" id="save" type="submit"
+        (click)="save()" [disabled]="!form.valid"></button>
     </ng-template>
   </p-dialog>
 </p-panel>
