@@ -1,11 +1,11 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee.service';
-interface Shifts {
+export interface Shifts {
   name: string;
 }
-interface Roles{
-  name:string;
+export interface Roles {
+  name: string;
 }
 @Component({
   selector: 'app-create-new-employee',
@@ -13,9 +13,9 @@ interface Roles{
   styleUrls: ['./create-new-employee.component.css'],
 })
 export class CreateNewEmployeeComponent {
-   roles:Roles[];
+  roles: Roles[];
   selectedrole: any;
-  shifts:Shifts[];
+  shifts: Shifts[];
   Shifts: any;
   save_button: Boolean = false;
   empForm: FormGroup;
@@ -29,79 +29,32 @@ export class CreateNewEmployeeComponent {
       // employeeID: new FormControl({
       //   value: '',
       //   disabled: false
-      // },Validators.required),
-      employeeID:[''],
-
-      firstName:[''],
-      lastName:[''],
-      email:[''],
-      panNumber:[''],
-      designationName:[''],
-      shiftName:[''],
-      isActive:[''],
-      doj:[''],
+      // }, Validators.required),
+      employeeID: [''],
+      firstName: [''],
+      lastName: [''],
+      email: [''],
+      panNumber: [''],
+      designationName: [''],
+      shiftName: [''],
+      isActive: [''],
+      doj: [''],
       designationID: [''],
       Password: [''],
-
     });
 
-    // this.Shifts = [
-    //   { name: 'selectShift' },
-    //   { name: 'First Shift' },
-    //   { name: 'Second Shift' }
-    // ];
-    // this.Shifts = ['selectShift', 'FirstShift', 'SecondShift'];
-    // this.roles = [
-    //   'Accountant',
-    //   'InVoiceSpecialist',
-    //   'HRExecutive',
-    //   'QALead',
-    //   'SoftWareDeveloper',
-    //   'SoftwareEngineer',
-    //   'SoftwareTrainee',
-    //   'QALead',
-    //   'QA Trainee',
-    //   'Tech Lead',
-    //   'UI Designer',
-    //   'Sr.SoftwareDeveloper',
-    //   'Project Manager',
-    //   'Sr.SoftwareEngineer',
-    //   'Sr.QA',
-    // ];
-    // this.roles = [
-    //   { name: "Accountant" },
-    //   { name: "InVoiceSpecialist" },
-    //   { name: "HRExecutive" },
-    //   { name: "QALead" },
-    //   { name: "SoftWareDeveloper" },
-    //   { name: "SoftwareEngineer" },
-    //   { name: "SoftwareTrainee" },
-    //   { name: "QALead" },
-    //   { name: "QA Trainee" },
-    //   { name: "Tech Lead" },
-    //   { name: "UI Designer" },
-    //   { name: "Sr.SoftwareDeveloper" },
-    //   { name: "Project Manager" },
-    //   { name: "Sr.SoftwareEngineer" },
-    //   { name: "Sr.QA" }
-    // ];
-    //  this.selectedrole;
-
-    // this.save();
     this.empServ.getShifts().subscribe((res) => {
-         this.Shifts = res;
-       });
-     this.empServ.getDesignationRoles().subscribe((res)=>{
-      this.roles=res;
-     })
+      this.Shifts = res;
+    });
+    this.empServ.getDesignationRoles().subscribe((res) => {
+      this.roles = res;
+    })
+   
 
   }
 
-
-
-
   ngAfterViewInit(data: any) {
-    // this.empServ.postcreateemployee(data).subscribe((data:any ) => {
+    // this.empServ.postEmp(data).subscribe((data: any) => {
     //   this.roles = data;
     // });
     // this.empServ.getShifts().subscribe((res) => {
@@ -109,9 +62,10 @@ export class CreateNewEmployeeComponent {
     // });
   }
   save() {
-    console.log(this.empForm.value)
+    console.log(this.empForm.value);
+    debugger;
     let data = JSON.stringify(this.empForm.value)
-    // this.empServ.postEmp(data)
+   // this.empServ.postEmp(data);
 
   }
   onchange() {

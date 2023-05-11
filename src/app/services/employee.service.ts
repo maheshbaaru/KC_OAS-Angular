@@ -15,7 +15,7 @@ export class EmployeeService {
   // +++++++++++//
   currentid: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -27,11 +27,13 @@ export class EmployeeService {
     return this.http.get(`${this.API_CALL}/SalaryDeductions`);
   }
   postEmp(data: any) {
-    // return this.http.post(`https://localhost:7236/AddEmployee`,data)
+    debugger;
+    //return this.http.post(`https://localhost:7236/AddEmployee`, data)
     return this.http
       .post(`${this.API_CALL}/createEmployee`, data)
       .subscribe((result) => {
-        const resultData = Object.values(result);
+        //const resultData = Object.values(result);
+        console.log(result);
       });
   }
   getUsers() {
