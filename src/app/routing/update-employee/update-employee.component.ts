@@ -1,33 +1,44 @@
 import { Component } from '@angular/core';
-
+import { EmployeeService } from 'src/app/services/employee.service';
+import { Shifts } from '../Admin/create-new-employee/create-new-employee.component';
+import { Roles } from '../Admin/create-new-employee/create-new-employee.component';
 @Component({
   selector: 'app-update-employee',
   templateUrl: './update-employee.component.html',
   styleUrls: ['./update-employee.component.css']
 })
 export class UpdateEmployeeComponent {
-  Shifts:string[];
-  roles:string[];
-  constructor(){
+  shifts: Shifts[];
+  roles: Roles[];
+  constructor(private _service: EmployeeService) {
 
   }
-  ngOnInit(){
-    this.Shifts=["selectShift","FirstShift","SecondShift"];
-    this.roles=[ "Accountant",
-    "InVoiceSpecialist",
-     "HRExecutive",
-     "QALead",
-     "SoftWareDeveloper",
-     "SoftwareEngineer",
-     "SoftwareTrainee",
-    "QALead",
-     "QA Trainee",
-     "Tech Lead",
-    "UI Designer",
-     "Sr.SoftwareDeveloper",
-    "Project Manager",
-     "Sr.SoftwareEngineer",
-     "Sr.QA"
-    ];
+  ngOnInit() {
+    //   this.Shifts=["selectShift","FirstShift","SecondShift"];
+    //   this.roles=[ "Accountant",
+    //   "InVoiceSpecialist",
+    //    "HRExecutive",
+    //    "QALead",
+    //    "SoftWareDeveloper",
+    //    "SoftwareEngineer",
+    //    "SoftwareTrainee",
+    //   "QALead",
+    //    "QA Trainee",
+    //    "Tech Lead",
+    //   "UI Designer",
+    //    "Sr.SoftwareDeveloper",
+    //   "Project Manager",
+    //    "Sr.SoftwareEngineer",
+    //    "Sr.QA"
+    //   ];
+    // }
+
+  
+
+
+
+
+
+
   }
 }

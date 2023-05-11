@@ -12,13 +12,13 @@ export class EmployeesComponent {
   constructor(
     //private router:Router,
     private service: EmployeedDataService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.service.getEmployeeList().subscribe((data1: any) => {
       this.empdata = data1;
       this.cols = [
-        { field: 'employeeID', header: 'EmpID' },
+        { field: 'employeeID', header: 'EmpID', routerLink: '../updateemployee' },
         { field: 'firstName', header: 'FirstName' },
         { field: 'lastName', header: 'LastName' },
         { field: 'email', header: 'Email' },
