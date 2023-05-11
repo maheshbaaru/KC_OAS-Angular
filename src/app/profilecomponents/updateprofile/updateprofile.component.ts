@@ -77,7 +77,7 @@ export class UpdateprofileComponent {
     // this.service.getEmployeeList().subscribe((data1: any) => {
     //   console.log(data1);
     //  this.updateform.get('email')?.setValue(data.email);
-    this.updateform.patchValue(userdata);
+    this.updateform.setValue(userdata);
     // this.updateform.get('email')?.setValue(userdata.email)
     if (!userdata.isActive) this.updateform.controls['isActive'].disable();
     // });
