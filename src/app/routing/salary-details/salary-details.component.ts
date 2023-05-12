@@ -12,7 +12,7 @@ import { EmployeeData, Representative } from 'src/app/Modesls/employee';
 
 export class SalaryDetailsComponent {
   empSalDetails: EmployeeData[];
-  
+
   representatives: Representative[] = [];
   @ViewChild('dt') table: any;
   id:number;
@@ -21,7 +21,7 @@ export class SalaryDetailsComponent {
   ) { }
 
   ngOnInit() {
-    this.salaryService. getEmployeesalaryDetails().subscribe(data => {
+    this.salaryService.getEmployeesalaryDetails().subscribe(data => {
       this.empSalDetails = data;
     })
   }

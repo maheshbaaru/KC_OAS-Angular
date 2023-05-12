@@ -68,7 +68,7 @@ const routes: Routes = [
       { path: 'create-leave', component: CreateLeaveComponent },
       { path: 'cretenewemployee', component: CreateNewEmployeeComponent },
       { path: 'updatephoto', component: UpdatephotoComponent },
-      { path: 'updateemployee', component: UpdateEmployeeComponent },
+      { path: 'updateemployee/:id', component: UpdateEmployeeComponent },
       { path: 'employee-leaves', component: EmployeeLeavesComponent },
       
       { path: 'bankDetails', component: BankDetailsComponent },

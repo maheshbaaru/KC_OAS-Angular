@@ -14,14 +14,7 @@ export class UpdateEmployeeComponent {
 
   }
   ngOnInit() {
-    this._service.getShifts().subscribe(data => {
-      let l= JSON.stringify(data);
-
-
-    });
-    this._service.getDesignationRoles().subscribe(data => {
-      this.roles = data;
-    })
+   
     //   this.Shifts=["selectShift","FirstShift","SecondShift"];
     //   this.roles=[ "Accountant",
     //   "InVoiceSpecialist",
@@ -40,12 +33,17 @@ export class UpdateEmployeeComponent {
     //    "Sr.QA"
     //   ];
     // }
+
+
+
+
+
+
+
+
+    
   }
-  ngAfterViewInit() {
-
-  }
-
-
+  
 
 
 
