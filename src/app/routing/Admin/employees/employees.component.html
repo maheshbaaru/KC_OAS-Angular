@@ -4,14 +4,11 @@
     <strong>EMPLOYEES </strong>
     <input type="text"  class="h-1rem" style="margin-left:10px;" pInputText placeholder="Search Employee" (input)="table.filterGlobal($any($event.target).value,'contains')"    />
   </div>
-    <!-- <div class="col-sm-6" style="text-align:right">
-      <button pButton  type="button"  routerLink="../cretenewemployee"  class="p-button-sm p-button-success h-2rem" >+ CREATE NEW</button>
-  </div> -->
   <div class="col-sm-6" style="text-align:right">
     <button pButton class="h-1rem" routerLink="../cretenewemployee" class="h-1rem p-button-success"style="float: right;font-size: small;font-weight: 500;margin-right:10px;">+ CREATE NEW</button>  
 </div>
   </ng-template>
-  <p-table #table [columns]="cols" [value]="empdata" [tableStyle]="{'min-width': '50rem'}"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines"   [globalFilterFields]="['employeeID','firstName','lastName','designationName','email','IsActive','panNumber','isActive','shiftName']">
+  <!-- <p-table #table [columns]="cols" [value]="empdata" [tableStyle]="{'min-width': '50rem'}"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines"   [globalFilterFields]="['employeeID','firstName','lastName','designationName','email','IsActive','panNumber','isActive','shiftName']">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th *ngFor="let col of columns">
@@ -30,6 +27,75 @@
 
   </ng-template>
 
-</p-table>
+</p-table> -->
+<p-table #table  [value]="empdata" [tableStyle]="{'min-width': '50rem'}"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines"   [globalFilterFields]="['employeeID','firstName','lastName','designationName','email','IsActive','panNumber','isActive','shiftName']">
+
+  <ng-template pTemplate="header">
+    <tr>
+
+        <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Emp ID
+                <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+            </div>
+
+        </th>
+        <th><div class="p-d-flex p-jc-between p-ai-center">
+          FirstName
+            <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+        </div></th>
+        <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+              LastName
+                <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+            </div>
+
+        </th>
+        <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+                Email
+                <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+            </div>
+
+        </th>
+        <th>
+            <div class="p-d-flex p-jc-between p-ai-center">
+               Designation
+                <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+            </div>
+        </th>
+        <th>
+          <div class="p-d-flex p-jc-between p-ai-center">
+             Pan Number
+              <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+          </div>
+      </th>
+      <th>
+        <div class="p-d-flex p-jc-between p-ai-center">
+         IsActive
+            <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+        </div>
+    </th>
+    <th>
+      <div class="p-d-flex p-jc-between p-ai-center">
+   Shift
+          <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+      </div>
+  </th>
+    </tr>
+</ng-template>
+<ng-template pTemplate="body" let-Employee>
+  <tr>
+           <td><a href="#" [routerLink]="['../updateemployee', Employee.empId]" >{{Employee.employeeID}}</a></td>
+           <td>{{Employee.firstName}}</td>
+           <td>{{Employee.lastName}}</td>
+           <td>{{Employee.email}}</td>
+           <td>{{Employee.designationName}}</td>
+           <td>{{Employee.panNumber}}</td>
+           <td>{{Employee.isActive}}</td>
+<td>{{Employee.shiftName}}</td>
+  </tr>
+</ng-template>
+</p-table> 
 </p-panel>
 

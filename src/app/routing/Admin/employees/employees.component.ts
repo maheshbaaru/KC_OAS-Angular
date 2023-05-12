@@ -8,7 +8,7 @@ import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 })
 export class EmployeesComponent {
   empdata: any;
-  cols: any[];
+  // cols: any[];
   constructor(
     //private router:Router,
     private service: EmployeedDataService
@@ -17,16 +17,17 @@ export class EmployeesComponent {
   ngOnInit(): void {
     this.service.getEmployeeList().subscribe((data1: any) => {
       this.empdata = data1;
-      this.cols = [
-        { field: 'employeeID', header: 'EmpID', routerLink: '../updateemployee' },
-        { field: 'firstName', header: 'FirstName' },
-        { field: 'lastName', header: 'LastName' },
-        { field: 'email', header: 'Email' },
-        { field: 'designationName', header: 'Designation' },
-        { field: 'panNumber', header: 'Pan Number' },
-        { field: 'isActive', header: 'IsActive' },
-        { field: 'shiftName', header: 'Shift' },
-      ];
+      console.log(this.empdata);
+      // this.cols = [
+      //   { field: 'employeeID', header: 'EmpID', routerLink: '../updateemployee' },
+      //   { field: 'firstName', header: 'FirstName' },
+      //   { field: 'lastName', header: 'LastName' },
+      //   { field: 'email', header: 'Email' },
+      //   { field: 'designationName', header: 'Designation' },
+      //   { field: 'panNumber', header: 'Pan Number' },
+      //   { field: 'isActive', header: 'IsActive' },
+      //   { field: 'shiftName', header: 'Shift' },
+      // ];
     });
   }
 }
