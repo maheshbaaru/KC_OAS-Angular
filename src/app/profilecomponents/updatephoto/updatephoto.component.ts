@@ -2,6 +2,7 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { Observable, Subscriber } from 'rxjs';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 import { ProfileService } from 'src/app/services/profile.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -13,6 +14,10 @@ import { StorageService } from 'src/app/services/storage.service';
   providers: [MessageService],
 })
 export class UpdatephotoComponent {
+
+
+  myImage!:Observable<any>
+  base64code!:any
   selectedFiles?: FileList;
 data:any 
   imageInfos:any;
@@ -21,6 +26,39 @@ data:any
   message = '';
   preview = '';
   empdata: any;
+
+
+  onChange=($event:Event)=>{
+    debugger
+    const target=$event.target as HTMLInputElement;
+    const file:File=(target.files as FileList)[0];
+    console.log(file)
+    this.convertToBase64(file)
+  }
+
+    convertToBase64(file:File){
+      const observable=new Observable((subscriber:Subscriber<any>)=>{
+        this.readFile(file,subscriber)
+      })
+      observable.subscribe((d)=>{
+        console.log(d)
+      })
+    }
+    readFile(file:File,subscriber:Subscriber<any>){
+      const filereader=new FileReader();
+
+      filereader.readAsDataURL(file)
+
+      filereader.onload=()=>{
+        subscriber.next(filereader.result);
+        subscriber.complete()
+      }
+      filereader.onerror=()=>{
+         subscriber.error()
+         subscriber.complete()
+      }
+    }
+ 
   public updateform: FormGroup;
  
   constructor(private messageService: MessageService ,
