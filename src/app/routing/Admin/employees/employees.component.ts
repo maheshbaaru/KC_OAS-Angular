@@ -17,7 +17,6 @@ export class EmployeesComponent {
   ngOnInit(): void {
     this.service.getEmployeeList().subscribe((data1: any) => {
       this.empdata = data1;
-      console.log(this.empdata);
       // this.cols = [
       //   { field: 'employeeID', header: 'EmpID', routerLink: '../updateemployee' },
       //   { field: 'firstName', header: 'FirstName' },

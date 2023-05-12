@@ -28,7 +28,7 @@
   </ng-template>
 
 </p-table> -->
-<p-table #table  [value]="empdata" [tableStyle]="{'min-width': '50rem'}"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines"   [globalFilterFields]="['employeeID','firstName','lastName','designationName','email','IsActive','panNumber','isActive','shiftName']">
+<p-table #table  [value]="empdata" [tableStyle]="{'min-width': '50rem'}"   [rowsPerPageOptions]="[10, 25, 50]"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines"   [globalFilterFields]="['employeeID','firstName','lastName']">
 
   <ng-template pTemplate="header">
     <tr>
@@ -86,7 +86,7 @@
 </ng-template>
 <ng-template pTemplate="body" let-Employee>
   <tr>
-           <td><a href="#" [routerLink]="['../updateemployee']" >{{Employee.employeeID}}</a></td>
+           <td><a href="#" [routerLink]="['../updateemployee',Employee.id]" >{{Employee.employeeID}}</a></td>
            <td>{{Employee.firstName}}</td>
            <td>{{Employee.lastName}}</td>
            <td>{{Employee.email}}</td>
