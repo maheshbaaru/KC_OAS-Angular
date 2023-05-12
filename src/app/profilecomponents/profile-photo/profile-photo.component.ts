@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 
 @Component({
@@ -9,6 +10,8 @@ import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
   styleUrls: ['./profile-photo.component.css']
 })
 export class ProfilePhotoComponent {
+
+
 
   public updateform: FormGroup
 
