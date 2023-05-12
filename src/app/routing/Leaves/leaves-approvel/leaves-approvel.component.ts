@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { LeavesService } from 'src/app/services/leaves.service';
-import namesData from 'src/assets/data/names.json';
+//import namesData from 'src/assets/data/names.json';
 interface StatusType {
   name: string;
 }
@@ -26,7 +26,7 @@ export class LeavesApprovelComponent {
     private empservice: EmployeeService,
     private leaveSer: LeavesService
   ) {
-    this.names = namesData;
+     //this.names = namesData;
     // this.statusTypes = [
     //   { name: 'Pending' },
     //   { name: 'Approved' },

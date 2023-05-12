@@ -36,7 +36,6 @@ export class CreateDesignationComponent {
     this.salDeductionServe
       .AddDesignation(this.addDesinations.name)
       .subscribe((res: any) => {
-        console.log(res);
 
         if (res.status !== null && this.addDesinations.name !== '') {
           this.messageService.add({

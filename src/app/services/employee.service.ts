@@ -15,7 +15,7 @@ export class EmployeeService {
   // +++++++++++//
   currentid: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -130,5 +130,5 @@ export class EmployeeService {
       this.httpOptions
     );
   }
- 
+
 }

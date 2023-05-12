@@ -32,7 +32,7 @@ export class CreateNewEmployeeComponent {
     private empServ: EmployeeService,
     private fb: FormBuilder,
     private cd: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.empForm = this.fb.group({
@@ -49,12 +49,12 @@ export class CreateNewEmployeeComponent {
       Password: [''],
     });
 
-    this.empServ.getShifts().subscribe((res) => {
-      this.Shifts = res;
-    });
-    this.empServ.getDesignationRoles().subscribe((res) => {
-      this.roles = res;
-    });
+    // this.empServ.getShifts().subscribe((res) => {
+    //   this.Shifts = res;
+    // });
+    // this.empServ.getDesignationRoles().subscribe((res) => {
+    //   this.roles = res;
+    // });
   }
 
   ngAfterViewInit(data: any) {
@@ -65,13 +65,18 @@ export class CreateNewEmployeeComponent {
     //   this.Shifts = res;
     // });
     // this.empServ.createEmployee()
+
+
+
+
+
   }
   save() {
     console.log(this.empForm.value);
     debugger;
     let data = JSON.stringify(this.empForm.value);
-    // this.empServ.postEmp(data);
-    //  this.empServ.createEmployee(data.firstName)
+    //  this.empServ.postEmp(data);
+    // this.empServ.createEmployee(data.firstName)
   }
   onchange() {
     console.log(this.empForm.invalid, this.empForm.status);
