@@ -1,5 +1,11 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  Form,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee.service';
 export interface Shifts {
   name: string;
@@ -13,16 +19,18 @@ export interface Roles {
   styleUrls: ['./create-new-employee.component.css'],
 })
 export class CreateNewEmployeeComponent {
-  roles: Roles[];
+  roles: any;
   selectedrole: any;
-  shifts: Shifts[];
+  // shifts: Shifts[];
   Shifts: any;
   save_button: Boolean = false;
   empForm: FormGroup;
 
-  constructor(private empServ: EmployeeService,
+  constructor(
+    private empServ: EmployeeService,
     private fb: FormBuilder,
-    private cd: ChangeDetectorRef) { }
+    private cd: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.empForm = this.fb.group({
@@ -48,9 +56,7 @@ export class CreateNewEmployeeComponent {
     });
     this.empServ.getDesignationRoles().subscribe((res) => {
       this.roles = res;
-    })
-   
-
+    });
   }
 
   ngAfterViewInit(data: any) {
@@ -60,17 +66,17 @@ export class CreateNewEmployeeComponent {
     // this.empServ.getShifts().subscribe((res) => {
     //   this.Shifts = res;
     // });
+    // this.empServ.createEmployee()
   }
   save() {
     console.log(this.empForm.value);
     debugger;
-    let data = JSON.stringify(this.empForm.value)
-   // this.empServ.postEmp(data);
-
+    let data = JSON.stringify(this.empForm.value);
+    // this.empServ.postEmp(data);
+    //  this.empServ.createEmployee(data.firstName)
   }
   onchange() {
-    console.log(this.empForm.invalid, this.empForm.status)
-    this.save_button = this.empForm.valid
+    console.log(this.empForm.invalid, this.empForm.status);
+    this.save_button = this.empForm.valid;
   }
-
 }
