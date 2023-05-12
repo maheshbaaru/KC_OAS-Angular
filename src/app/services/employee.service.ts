@@ -27,7 +27,7 @@ export class EmployeeService {
     return this.http.get(`${this.API_CALL}/SalaryDeductions`);
   }
   postEmp(data: any) {
-    debugger;
+    // debugger;
     //return this.http.post(`https://localhost:7236/AddEmployee`, data)
     return this.http
       .post(`${this.API_CALL}/createEmployee`, data)

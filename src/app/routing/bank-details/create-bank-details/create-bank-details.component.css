@@ -1,7 +1,7 @@
 
  
  .cbd-container{
-    background-color:  #333;
+    background-color:  rgb(121, 121, 128);;
     ;
     display: flex;
     justify-content: space-between;
@@ -51,7 +51,7 @@
 }
 .cbd-contnt-container{
     height: 240px;
-    border: 1px solid #333;
+    border: 1px solid rgb(121, 121, 128);;
 
     border-bottom-left-radius: 5px !important;
     border-bottom-right-radius: 5px !important;
