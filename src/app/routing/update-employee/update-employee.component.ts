@@ -15,13 +15,12 @@ export class UpdateEmployeeComponent {
   }
   ngOnInit() {
     this._service.getShifts().subscribe(data => {
-      this.shifts = data;
-      console.log(this.shifts);
+      let l= JSON.stringify(data);
+
 
     });
     this._service.getDesignationRoles().subscribe(data => {
       this.roles = data;
-      console.log(this.roles);
     })
     //   this.Shifts=["selectShift","FirstShift","SecondShift"];
     //   this.roles=[ "Accountant",

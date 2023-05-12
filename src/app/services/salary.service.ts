@@ -17,7 +17,6 @@ export class SalaryService {
     })
   }
   getEmployeeById(id: number): Observable<any> {
-    // debugger;
     return new Observable((obserer) => {
       this.http.get(`https://localhost:7236/SalaryDetailsById?EmpId=${id}`).subscribe((res) => {
         const resdata = Object.values(res);

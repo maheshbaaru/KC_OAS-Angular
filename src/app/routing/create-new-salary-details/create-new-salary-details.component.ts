@@ -21,12 +21,7 @@ export class CreateNewSalaryDetailsComponent {
     private _service: EmployeedDataService,
     private router: Router
   ) {
-    //this.names = namesData
     this.empForm = this._fb.group({
-      // name: '',
-      // Salary: '',
-      // LastRevisedDate: '',
-      // NextRevisedDate: ''
       name: new FormControl(''),
       Salary: new FormControl(''),
       LastRevisedDate: new FormControl(''),
@@ -44,10 +39,8 @@ export class CreateNewSalaryDetailsComponent {
 
   ngOnInit() {
     this._service.getEmployeeList().subscribe((data) => {
-      console.log(data);
       this.names = data.filter((item: any) => {
         return item.firstName + item.lastName;
-        console.log(this.names);
       });
     });
   }

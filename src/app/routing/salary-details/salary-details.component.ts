@@ -23,7 +23,6 @@ export class SalaryDetailsComponent {
   ngOnInit() {
     this.salaryService. getEmployeesalaryDetails().subscribe(data => {
       this.empSalDetails = data;
-      console.log(this.empSalDetails);
     })
   }
   // getEmployeeById(id: number) {
