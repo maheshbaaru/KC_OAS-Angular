@@ -64,8 +64,7 @@ export class EditBankDetailsComponent implements OnInit{
       
     }
     // console.log(postData)
-
-    this.employeeService.updateEmployeeBankData(postData)
+      this.employeeService.updateEmployeeBankData(postData)
   }
 }
 
