@@ -2,9 +2,11 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee.service';
 export interface Shifts {
+  shiftId: number;
   name: string;
 }
 export interface Roles {
+  designationId: number;
   name: string;
 }
 @Component({
@@ -26,10 +28,6 @@ export class CreateNewEmployeeComponent {
 
   ngOnInit() {
     this.empForm = this.fb.group({
-      // employeeID: new FormControl({
-      //   value: '',
-      //   disabled: false
-      // }, Validators.required),
       employeeID: [''],
       firstName: [''],
       lastName: [''],
@@ -49,23 +47,18 @@ export class CreateNewEmployeeComponent {
     this.empServ.getDesignationRoles().subscribe((res) => {
       this.roles = res;
     })
-   
+
 
   }
 
   ngAfterViewInit(data: any) {
-    // this.empServ.postEmp(data).subscribe((data: any) => {
-    //   this.roles = data;
-    // });
-    // this.empServ.getShifts().subscribe((res) => {
-    //   this.Shifts = res;
-    // });
+
   }
   save() {
     console.log(this.empForm.value);
     debugger;
     let data = JSON.stringify(this.empForm.value)
-   // this.empServ.postEmp(data);
+    // this.empServ.postEmp(data);
 
   }
   onchange() {
