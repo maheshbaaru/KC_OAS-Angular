@@ -113,10 +113,22 @@ export class EmployeeService {
         });
     });
   }
-  createEmployee(firstName:string,lastName:string,email:string,password:string,isActive:boolean,EmployeeId:number,panNumber:string,shiftId:number,doj:Date,designationID:number):Observable<any[]>{
+  createEmployee(
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+    isActive: boolean,
+    EmployeeId: number,
+    panNumber: string,
+    shiftId: number,
+    doj: Date,
+    designationID: number
+  ): Observable<any[]> {
     return this.http.post<any>(
       `${this.API_CALL}/AddEmployee?FirstName=${firstName}&LastName=${lastName}&Email=${email}&Password=${password}&IsActive=${isActive}&EmployeeId=${EmployeeId}&PanNumber=${panNumber}&ShiftId=${shiftId}&Doj=${doj}&DesignationId=${designationID}`,
       this.httpOptions
     );
   }
+ 
 }

@@ -1,12 +1,19 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LeavesService {
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-type': 'application/json',
+    }),
+  };
   API_CALL = 'https://localhost:7236';
   constructor(private http: HttpClient) {}
+
   getStatus() {
     return this.http.get(`${this.API_CALL}/TblStatusControllerAPI`);
   }
@@ -18,8 +25,22 @@ export class LeavesService {
     return this.http.get(`${this.API_CALL}/LeavesApproval`);
   }
 
-  applyleave(){
+  applyleave() {
     // return this.http.post(`https://localhost:7236/SubmitLeaves`);
   }
-
+  employeeLeaves(
+    empId: number,
+    leaveTypeId: number,
+    nOfLeaves: number,
+    year: string,
+    remainingLeaves: number
+  ): Observable<any[]> {
+    return this.http.post<any>(
+      `${this.API_CALL}/SubmitLeaves?EmpId=${empId}&LeaveTypeId=${leaveTypeId}&NumOfLeaves=${nOfLeaves}&Year=${year}&RemainingLeaves=${remainingLeaves}`,
+      this.httpOptions
+    );
+  }
+  getEmployeeLeaves(): Observable<any[]> {
+    return this.http.get<any>(`${this.API_CALL}/getEmployeesLeaves`);
+  }
 }
