@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { LeavesService } from 'src/app/services/leaves.service';
 
-
 export interface EmployeeInterFace{
   adminComments?:string,
   appliedOn ?:string,
@@ -168,8 +167,7 @@ export class LeavesApprovalScreenComponent {
         // toDate:this.speficEmployeeLeaveData.,
       }
       // console.log(postData)
-        this.empservice.updateLeavesApprovalData(postData)
-      // this.empservice.updateLeavesApprovalData(postData)
+      this.empservice.updateLeavesApprovalData(postData)
     }
   }
 
