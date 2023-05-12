@@ -98,25 +98,25 @@
 }
 
 .caption-container{
-    background-color: #1d3c41;
+    background-color:  #333;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 35px;
-    border-radius: 5px;
-    border-bottom-left-radius: none;
-    border-bottom-right-radius: none;
+    height: 45px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    
 }
 .table-bottom-container{
 
 height: 100%;
 padding: 10px;
 border: 1px solid #333;
-border-radius: 5px;
-border-top: none;
-border-top-left-radius: none !important;
-border-top-right-radius: none !important;
+border-bottom-left-radius: 5px !important;
+border-bottom-right-radius: 5px !important;
 padding-bottom: 35px;
+
 }
 .caption-content1{
     display: flex;
@@ -126,10 +126,10 @@ padding-bottom: 35px;
 }
 
 .bank-details-title{
-    font-size: 14px ;
-    font-weight: 600;
+    font-size: 16px ;
+    font-weight: 550;
     color: #ffffff;
-    margin-top: 8px;
+    margin-top: 16px;
 }
 .caption-search-input{
     width: 250px;
@@ -157,19 +157,26 @@ padding-bottom: 35px;
 }
 
 .creat-button{
+   display: flex;
+    justify-content: center;
+
     height: 25px;
     color: white !important;
-   padding-top: 3px;
-   padding-bottom: 5px;
+   padding-top: 2px;
    font-size: 12px;
-   font-weight: 700;
-   width: 110px;
-   background-color: #5bc0de;
-   margin-right: 15px;
-   border-radius: 8px;
+   width: 90px;
+   background-color: #3B82F6;
+   margin-right: 18px;
+   border-radius: 6px;
    outline: none;
    border: none;
+
 }
+.btn-text{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
 ::placeholder{
     color:silver;
     font: italic !important;

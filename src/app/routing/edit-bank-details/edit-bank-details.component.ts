@@ -5,6 +5,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { map, first } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { EmployeService } from 'src/app/services/employeBankService';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'edit-bank-details',
@@ -64,8 +65,25 @@ export class EditBankDetailsComponent implements OnInit{
       
     }
     // console.log(postData)
-
-    this.employeeService.updateEmployeeBankData(postData)
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Save'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        this.employeeService.updateEmployeeBankData(postData)
+        Swal.fire(
+          'Saved',
+          'Your Changes Are Saved',
+          'success'
+        )
+      }
+    })
   }
 }
 

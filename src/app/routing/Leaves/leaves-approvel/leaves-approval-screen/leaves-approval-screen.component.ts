@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { LeavesService } from 'src/app/services/leaves.service';
+import Swal from 'sweetalert2';
 
 export interface EmployeeInterFace{
   adminComments?:string,
@@ -167,7 +168,25 @@ export class LeavesApprovalScreenComponent {
         // toDate:this.speficEmployeeLeaveData.,
       }
       // console.log(postData)
-      this.empservice.updateLeavesApprovalData(postData)
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Save'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.empservice.updateLeavesApprovalData(postData)
+          Swal.fire(
+            'Saved',
+            'Your Changes Are Saved',
+            'success'
+          )
+        }
+      })
+      // this.empservice.updateLeavesApprovalData(postData)
     }
   }
 

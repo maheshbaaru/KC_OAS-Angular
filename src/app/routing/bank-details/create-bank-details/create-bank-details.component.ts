@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Employee } from 'src/app/Modesls/employeBankInterface';
 import { EmployeService } from 'src/app/services/employeBankService';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-bank-details',
@@ -65,9 +66,25 @@ export class CreateBankDetailsComponent implements OnInit {
       "bankName": "Kotak Bank",
       "accname": this.employeDetails.ACCNAME,
     }
-    alert("Are You Sure You Want To Create New Employee Bank Details")
-    this.employeesService.PostEmployeeNewBankData(this.newArray)
-    this.resetingCreatForm()
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Save'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.employeesService.PostEmployeeNewBankData(this.newArray)
+        this.resetingCreatForm()
+        Swal.fire(
+          'Saved',
+          'Your Changes Are Saved',
+          'success'
+        )
+      }
+    })
   }
 
  

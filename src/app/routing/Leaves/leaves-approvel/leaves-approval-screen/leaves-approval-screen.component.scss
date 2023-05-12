@@ -1,14 +1,14 @@
 
- 
+
  .laps-container{
-    background-color: #1d3c41;
+    background-color: #343a40;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 40px;
-    border-radius: 5px;
-    border-bottom-left-radius: none;
-    border-bottom-right-radius: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
 }
 .laps-caption-content1{
     display: flex;
@@ -16,32 +16,49 @@
     align-items: center;
     margin-left: 15px;
 }
+.laps-buttons-container{
 
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    display: flex;
+    margin-right: -6px;
+
+
+}
 .laps-title{
-    font-size: 13px ;
-    font-weight: 600;
+    font-size: 15px ;
+    font-weight: 550;
     color: #ffffff;
 }
 .creat-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 25px;
     color: white !important;
    padding: 5px;
    font-size: 12px;
    width: 80px;
-   background-color: #5bc0de;
+   background-color: #3B82F6;
    margin-right: 12px;
-   border-radius: 8px;
+   border-radius: 6px;
    outline: none;
    border: none;
+}
+// .icon{
+   
 
+//  }
+
+.btn-text{
+    margin-top: 15px;
 }
 .laps-contnt-container{
     height: 340px;
     border: 1px solid #333;
-    border-radius: 5px;
-    border-top: none;
-    border-top-left-radius: none !important;
-    border-top-right-radius: none !important;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     padding: 15px;
     flex-wrap: wrap;
     display: flex;
@@ -66,8 +83,8 @@
     color: #1d3c41;
 }
 .laps-input-fields{
-    font-size: 16px;
-    height: 35px;
+    font-size: 14px;
+    height: 33px;
     border: 1px solid #d7dfe9;
    font-weight: 500;
     border-radius: 3px;
@@ -76,6 +93,7 @@
     /* box-shadow: 1px 1px 1px 1px black inset; */
     /* -webkit-tap-highlight-color: rgba(0,0,0,0); */
 }
+
 .disabledButton{
    cursor: not-allowed;
    font-weight: 500;
