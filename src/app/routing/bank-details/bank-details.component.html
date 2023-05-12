@@ -4,12 +4,13 @@
         
         <input class="caption-search-input" type="text" [(ngModel)]="employeeSearchText" (input)="dt.filterGlobal(employeeSearchText, 'contains')" placeholder="Search Employee" />
         <!-- <input class="caption-search-input" type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search Employee" /> -->
-
-
     </div>
     
 
-    <button class="creat-button"  routerLink="../create-bank-details" (click)="onCLickcreate()"> <i class="pi pi-plus"></i> Create New</button>
+    <button  class="creat-button"  routerLink="../create-bank-details" (click)="onCLickcreate()">
+        <i class="pi pi-plus icon" style="font-size: 0.7rem;margin-top: 4px;"></i> 
+        <p class="btn-text">Create</p>
+    </button>
 </div>
 
 <div class="table-bottom-container">

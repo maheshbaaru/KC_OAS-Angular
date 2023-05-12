@@ -4,14 +4,13 @@
 }
 
 .ebd-container{
-    background-color: #1d3c41;
+    background-color: rgb(121, 121, 128);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 40px;
-    border-radius: 5px;
-    border-bottom-left-radius: none;
-    border-bottom-right-radius: none;
+    height: 50px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .ebd-caption-content1{
     display: flex;
@@ -21,30 +20,44 @@
 }
 
 .ebd-title{
-    font-size: 13px ;
-    font-weight: 600;
+    font-size: 16px ;
+    font-weight: 550;
     color: #ffffff;
+    margin-top: 16px;
+}
+.ebd-buttons-container{
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    display: flex;
+    margin-right: -6px;
+
 }
 .creat-button{
+    display: flex;
+    justify-content: center;
     height: 25px;
     color: white !important;
-   padding: 5px;
+   padding-top: 2px;
    font-size: 12px;
-   width: 80px;
-   background-color: #5bc0de;
-   margin-right: 12px;
-   border-radius: 8px;
+   width: 120px;
+   background-color: #3B82F6;
+   margin-right: 18px;
+   border-radius: 6px;
    outline: none;
    border: none;
 
 }
+.btn-text{
+    font-size: 14px;
+}
 .ebd-contnt-container{
     height: 240px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    border-top: none;
-    border-top-left-radius: none !important;
-    border-top-right-radius: none !important;
+    border: 1px solid rgb(121, 121, 128);
+   
+    /* border-top: none; */
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     padding: 15px;
     flex-wrap: wrap;
     display: flex;
@@ -52,7 +65,6 @@
 .input-container{
     display: flex;
     flex-direction: column;
-
     width: 31%;
     padding: 7px;
     margin: 10px;

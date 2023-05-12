@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Employee } from 'src/app/Modesls/employeBankInterface';
 import { EmployeService } from 'src/app/services/employeBankService';
 
+
 @Component({
   selector: 'app-create-bank-details',
   templateUrl: './create-bank-details.component.html',

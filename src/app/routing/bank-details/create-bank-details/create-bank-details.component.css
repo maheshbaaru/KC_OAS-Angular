@@ -1,14 +1,13 @@
 
  
  .cbd-container{
-    background-color: #1d3c41;
+    background-color:  rgb(121, 121, 128);
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 40px;
-    border-radius: 5px;
-    border-bottom-left-radius: none;
-    border-bottom-right-radius: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .cbd-caption-content1{
     display: flex;
@@ -18,30 +17,43 @@
 }
 
 .cbd-title{
-    font-size: 13px ;
-    font-weight: 600;
+    margin-top: 16px;
+    font-size: 16px ;
+    font-weight: 550;
     color: #ffffff;
 }
+.cbd-buttons-container{
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    display: flex;
+    /* margin-right: -6px; */
+}
 .creat-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 25px;
     color: white !important;
    padding: 5px;
    font-size: 12px;
    width: 80px;
-   background-color: #5bc0de;
+   background-color: #3B82F6;
    margin-right: 12px;
-   border-radius: 8px;
+   border-radius: 6px;
    outline: none;
    border: none;
 
 }
+.btn-text{
+    margin-top: 14px;
+}
 .cbd-contnt-container{
     height: 240px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    border-top: none;
-    border-top-left-radius: none !important;
-    border-top-right-radius: none !important;
+    border: 1px solid rgb(121, 121, 128);
+
+    border-bottom-left-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
     padding: 15px;
     flex-wrap: wrap;
     display: flex;
