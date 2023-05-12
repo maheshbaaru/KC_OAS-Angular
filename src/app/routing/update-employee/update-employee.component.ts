@@ -8,12 +8,21 @@ import { Roles } from '../Admin/create-new-employee/create-new-employee.componen
   styleUrls: ['./update-employee.component.css']
 })
 export class UpdateEmployeeComponent {
-  shifts: Shifts[];
-  roles: Roles[];
+  shifts: Shifts[] | any;
+  roles: Roles[] | any;
   constructor(private _service: EmployeeService) {
 
   }
   ngOnInit() {
+    this._service.getShifts().subscribe(data => {
+      this.shifts = data;
+      console.log(this.shifts);
+
+    });
+    this._service.getDesignationRoles().subscribe(data => {
+      this.roles = data;
+      console.log(this.roles);
+    })
     //   this.Shifts=["selectShift","FirstShift","SecondShift"];
     //   this.roles=[ "Accountant",
     //   "InVoiceSpecialist",
@@ -32,13 +41,14 @@ export class UpdateEmployeeComponent {
     //    "Sr.QA"
     //   ];
     // }
-
-  
-
-
-
-
-
+  }
+  ngAfterViewInit() {
 
   }
+
+
+
+
+
+
 }

@@ -6,8 +6,15 @@
             <h1 class="laps-title mt-3">APPROVAL SCREEN</h1>
         </div>
         <div class="laps-buttons-container">
-            <button class="creat-button" routerLink="../../leavesApprov"> <i class="pi pi-arrow-left"></i> Back</button>
-            <button class="creat-button" form="myForm" (click)="onSave()"> <i class="pi pi-check" ></i> Save</button>
+            <button class="creat-button" routerLink="../../leavesApprov"> 
+                <i class="pi pi-arrow-left icon" style="font-size: 0.7rem;margin-top: 3px;"></i> 
+                <p class="btn-text">Back</p>
+
+            </button>
+            <button class="creat-button" form="myForm" (click)="onSave()"> 
+                <i class="pi pi-check icon" style="font-size: 0.7rem;margin-top: 3px;"></i> 
+                <p class="btn-text">Save</p>
+            </button>
         </div>
     </div>
     <!-- routerLink="../bankDetails" -->
@@ -19,7 +26,7 @@
                 </label>
                  <select name="leaveType" id="leaveType" class="laps-input-fields" (change)="onSelectLeaveTye($event.target)">
                      <!-- <option  selected="Default" value="SELECT EMPLOYEE">SELECT LEAVE</option> -->
-                     <option value={{leavetype.leaveTypeName}} *ngFor="let leavetype of leaveType">{{leavetype.leaveTypeName}}</option>
+                     <option  value={{leavetype.leaveTypeName}} *ngFor="let leavetype of leaveType">{{leavetype.leaveTypeName}}</option>
                  </select>  
                 
         </div>
@@ -28,7 +35,7 @@
                  <label for="EmpId" class="label mb-2">
                     EmpId<span class="laps-empClass">*</span>
                 </label>
-                 <select name="EmpId" id="EmpId" class="laps-input-fields disabledButton" disabled>
+                 <select name="EmpId" id="EmpId" class="laps-input-fields disabledButton" style="font-size: small;" disabled>
                      <option>{{speficEmployeeLeaveData.firstName}} {{speficEmployeeLeaveData.lastName}}</option>
                  </select>  
         </div>
@@ -81,7 +88,7 @@
             <label for="StatusId" class="label mb-2">
                Status ID<span class="laps-empClass">*</span>
            </label>
-            <select name="StatusId" id="StatusId" class="laps-input-fields" (change)="onSelectStatusType($event.target)">
+            <select name="StatusId" id="StatusId" class="laps-input-fields" (change)="onSelectStatusType($event.target)" style="font-size: small;">
                 <option value={{status.statusType}} *ngFor="let status of statusId">{{status.statusType}}</option>
             </select>  
         </div>

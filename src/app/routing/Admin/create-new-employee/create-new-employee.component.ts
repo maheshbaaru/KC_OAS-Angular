@@ -8,9 +8,11 @@ import {
 } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee.service';
 export interface Shifts {
+  shiftId: number;
   name: string;
 }
 export interface Roles {
+  designationId: number;
   name: string;
 }
 @Component({
@@ -34,10 +36,6 @@ export class CreateNewEmployeeComponent {
 
   ngOnInit() {
     this.empForm = this.fb.group({
-      // employeeID: new FormControl({
-      //   value: '',
-      //   disabled: false
-      // }, Validators.required),
       employeeID: [''],
       firstName: [''],
       lastName: [''],
