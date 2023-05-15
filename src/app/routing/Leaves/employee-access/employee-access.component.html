@@ -14,7 +14,7 @@
   <p-divider></p-divider>
   <div class="body">
   <div class="card">
-    <p-table [value]="empAccess"   [paginator]="true" [rows]="10" [showCurrentPageReport]="true" styleClass="p-datatable-sm p-datatable-gridlines">
+    <p-table [value]="empAccess"   [paginator]="true" [rows]="10" [showCurrentPageReport]="true" [tableStyle]="{'min-height': '20rem'}" styleClass="p-datatable-sm p-datatable-gridlines">
       <ng-template pTemplate="header">
         <tr>
           <th>Emp ID</th>

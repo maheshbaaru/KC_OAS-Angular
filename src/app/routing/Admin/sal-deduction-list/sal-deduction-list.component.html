@@ -1,6 +1,6 @@
 <p-panel header="Salary Deduction List" class="border-900" >
 
-  <p-table #dt1 [columns]="cols" [value]="employeeList" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['Name','empId','taxType','amount','effectedMonth','noOfLopdays']" responsiveLayout="scroll" *ngIf="employeeList?.length>0;else message">
+  <p-table #dt1 [columns]="cols" [value]="employeeList" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" scrollHeight="250px"  [tableStyle]="{'min-height': '20rem'}" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['Name','empId','taxType','amount','effectedMonth','noOfLopdays']"  *ngIf="employeeList?.length>0;else message">
 
 
     <ng-template pTemplate="caption" >
