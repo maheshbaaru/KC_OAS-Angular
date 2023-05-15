@@ -65,6 +65,10 @@ export class UpdateprofileComponent {
         value: '',
         disabled: false,
       }),
+      id: new FormControl({
+        value: '',
+        disabled: false,
+      }),
     });
 
     this.formdataget();
@@ -74,11 +78,11 @@ export class UpdateprofileComponent {
     let data: any = window.sessionStorage.getItem('loggedinUser');
     let userdata = JSON.parse(data);
 
-    this.service.getEmployeeList().subscribe((data1: any) => {
-      console.log(data1);
+    this.service.getEmployeeList().subscribe((logindata: any) => {
+      console.log(logindata);
     //  this.updateform.get('email')?.setValue(data.email);
     this.updateform.patchValue(userdata);
-    // this.updateform.get('email')?.setValue(userdata.email)
+    this.updateform.get('email')?.setValue(userdata.email)
     if (!userdata.isActive) this.updateform.controls['isActive'].disable();
      });
     // formdataget() {

@@ -45,7 +45,10 @@ const routes: Routes = [
     children: [
       { path: 'updateprofile', component: UpdateprofileComponent },
       { path: 'salary-details', component: SalaryDetailsComponent },
-      { path: 'create-new-salary-details', component: CreateNewSalaryDetailsComponent, },
+      {
+        path: 'create-new-salary-details',
+        component: CreateNewSalaryDetailsComponent,
+      },
       { path: 'create-designation', component: CreateDesignationComponent },
       { path: 'changepassword', component: ChangepasswordComponent },
       { path: 'create-taxtype', component: CreateTaxtypeComponent },
@@ -57,24 +60,24 @@ const routes: Routes = [
       { path: 'profile-photo', component: ProfilePhotoComponent },
       { path: 'DeductionList/:id', component: SalDeductionListComponent },
       { path: 'leavesApprov', component: LeavesApprovelComponent },
-
       { path: 'approval-screen/:id', component: LeavesApprovalScreenComponent },
-
       { path: 'access', component: EmployeeAccessComponent },
       { path: 'apply', component: ApplyLeavesComponent },
       { path: 'Employees', component: EmployeesComponent },
       { path: 'paySlip', component: PaySlipComponent },
-      { path: 'create-new-salary-details', component: CreateNewSalaryDetailsComponent },
+      {
+        path: 'create-new-salary-details',
+        component: CreateNewSalaryDetailsComponent,
+      },
       { path: 'create-leave', component: CreateLeaveComponent },
       { path: 'cretenewemployee', component: CreateNewEmployeeComponent },
       { path: 'updatephoto', component: UpdatephotoComponent },
       { path: 'updateemployee/:id', component: UpdateEmployeeComponent },
       { path: 'employee-leaves', component: EmployeeLeavesComponent },
-      
       { path: 'bankDetails', component: BankDetailsComponent },
       { path: 'create-bank-details', component: CreateBankDetailsComponent },
       { path: 'edit-bank-details/:id', component: EditBankDetailsComponent },
-      { path: 'updateSalaryDetails/:id', component: SalarydisplyComponent }
+      { path: 'updateSalaryDetails/:id', component: SalarydisplyComponent },
     ],
   },
 
@@ -86,4 +89,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
