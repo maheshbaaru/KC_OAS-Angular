@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee.service';
 export interface Shifts {
-  shiftId: number;
+  //shiftId: number;
   name: string;
 }
 export interface Roles {
@@ -21,10 +21,11 @@ export interface Roles {
   styleUrls: ['./create-new-employee.component.css'],
 })
 export class CreateNewEmployeeComponent {
-  roles: any;
+  //roles: any;
+  roles: Roles[];
   selectedrole: any;
-  // shifts: Shifts[];
-  Shifts: any;
+  Shifts: Shifts[];
+  //Shifts: any;
   save_button: Boolean = false;
   empForm: FormGroup;
 
@@ -49,12 +50,12 @@ export class CreateNewEmployeeComponent {
       Password: [''],
     });
 
-    // this.empServ.getShifts().subscribe((res) => {
-    //   this.Shifts = res;
-    // });
-    // this.empServ.getDesignationRoles().subscribe((res) => {
-    //   this.roles = res;
-    // });
+    this.empServ.getShifts().subscribe((res) => {
+      this.Shifts = res;
+    });
+    this.empServ.getDesignationRoles().subscribe((res) => {
+      this.roles = res;
+    });
   }
 
   ngAfterViewInit(data: any) {
@@ -76,7 +77,8 @@ export class CreateNewEmployeeComponent {
     debugger;
     let data = JSON.stringify(this.empForm.value);
     //  this.empServ.postEmp(data);
-    // this.empServ.createEmployee(data.firstName)
+   // this.empServ.createEmployee(data.firstName)
+    this.empServ.createEmployee(data);
   }
   onchange() {
     console.log(this.empForm.invalid, this.empForm.status);

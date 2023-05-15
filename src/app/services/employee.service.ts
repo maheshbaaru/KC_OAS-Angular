@@ -93,7 +93,7 @@ export class EmployeeService {
   getShifts(): Observable<any[]> {
     return new Observable((observer) => {
       this.http
-        .get(`https://localhost:7236/TblShiftControllerAPI`)
+        .get(`https://localhost:7236/GetTblShifts`)
         .subscribe((data) => {
           const res = Object.values(data);
           observer.next(res);
@@ -101,6 +101,7 @@ export class EmployeeService {
         });
     });
   }
+
   getDesignationRoles(): Observable<any[]> {
     return new Observable((observer) => {
       this.http
@@ -113,22 +114,35 @@ export class EmployeeService {
         });
     });
   }
-  createEmployee(
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string,
-    isActive: boolean,
-    EmployeeId: number,
-    panNumber: string,
-    shiftId: number,
-    doj: Date,
-    designationID: number
-  ): Observable<any[]> {
-    return this.http.post<any>(
-      `${this.API_CALL}/AddEmployee?FirstName=${firstName}&LastName=${lastName}&Email=${email}&Password=${password}&IsActive=${isActive}&EmployeeId=${EmployeeId}&PanNumber=${panNumber}&ShiftId=${shiftId}&Doj=${doj}&DesignationId=${designationID}`,
-      this.httpOptions
-    );
-  }
+  //createEmployee(
+  // firstName: string,
+  // lastName: string,
+  // email: string,
+  // password: string,
+  // isActive: boolean,
+  // EmployeeId: number,
+  // panNumber: string,
+  // shiftId: number,
+  // doj: Date,
+  // designationID: number
+  //  obj: any
+  //): Observable<any[]> {
+  //debugger;
+  // return this.http.post<any>(
+  //`${this.API_CALL}/AddEmployee?FirstName=${firstName}&LastName=${lastName}&Email=${email}&Password=${password}&IsActive=${isActive}&EmployeeId=${EmployeeId}&PanNumber=${panNumber}&ShiftId=${shiftId}&Doj=${doj}&DesignationId=${designationID}`,
+  //`${this.API_CALL}/AddEmployee`, obj,
+  // this.httpOptions
+  // );
+  // console.log('${this.API_CALL}/AddEmployee');
+  // }
 
+  createEmployee(obj: any) {
+    debugger
+    this.http.post('https://localhost:7236/AddEmployee',obj, this.httpOptions
+      )
+      .subscribe((result) => {
+        const resultData = Object.values(result);
+        console.log(resultData);
+      });
+  }
 }
