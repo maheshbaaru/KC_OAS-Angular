@@ -5,7 +5,7 @@
     <input type="text"  class="h-1rem" style="margin-left:10px;" pInputText placeholder="Search Employee" (input)="table.filterGlobal($any($event.target).value,'contains')"    />
   </div>
   <div class="col-sm-6" style="text-align:right">
-    <button pButton class="h-1rem" routerLink="../cretenewemployee" class="h-1rem p-button-success"style="float: right;font-size: small;font-weight: 500;margin-right:10px;">+ CREATE NEW</button>  
+    <button pButton class="h-1rem" routerLink="../cretenewemployee" class="h-1rem p-button-success"style="float: right;font-size: small;font-weight: 500;margin-right:10px;">+ CREATE NEW</button>
 </div>
   </ng-template>
   <!-- <p-table #table [columns]="cols" [value]="empdata" [tableStyle]="{'min-width': '50rem'}"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines"   [globalFilterFields]="['employeeID','firstName','lastName','designationName','email','IsActive','panNumber','isActive','shiftName']">
@@ -28,7 +28,7 @@
   </ng-template>
 
 </p-table> -->
-<p-table #table  [value]="empdata" [tableStyle]="{'min-width': '50rem'}"   [rowsPerPageOptions]="[10, 25, 50]"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines"   [globalFilterFields]="['employeeID','firstName','lastName']">
+<p-table #table  [value]="empdata" [tableStyle]="{'min-height': '20rem'}"   [rowsPerPageOptions]="[10, 25, 50]"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines"   [globalFilterFields]="['employeeID','firstName','lastName']">
 
   <ng-template pTemplate="header">
     <tr>
@@ -96,6 +96,6 @@
 <td>{{Employee.shiftName}}</td>
   </tr>
 </ng-template>
-</p-table> 
+</p-table>
 </p-panel>
 
