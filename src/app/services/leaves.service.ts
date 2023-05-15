@@ -25,7 +25,9 @@ export class LeavesService {
     return this.http.get(`${this.API_CALL}/LeavesApproval`);
   }
 
-  applyleave() {
+  applyleave(
+   data:any ) {
+    return this.http.post(`https://localhost:7236/ApplyLeave`,this.httpOptions)
     // return this.http.post(`https://localhost:7236/SubmitLeaves`);
   }
   employeeLeaves(
@@ -43,4 +45,7 @@ export class LeavesService {
   getEmployeeLeaves(): Observable<any[]> {
     return this.http.get<any>(`${this.API_CALL}/getEmployeesLeaves`);
   }
+
+
+
 }
