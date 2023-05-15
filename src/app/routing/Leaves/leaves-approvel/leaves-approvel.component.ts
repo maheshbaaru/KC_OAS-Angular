@@ -10,6 +10,11 @@ interface StatusType {
 interface EmployeeName {
   Name: string;
 }
+
+interface employeName{
+  firstName:string;
+  lastName:string;
+}
 @Component({
   selector: 'app-leaves-approvel',
   templateUrl: './leaves-approvel.component.html',
@@ -20,6 +25,9 @@ export class LeavesApprovelComponent {
   empForm: FormGroup;
   names: EmployeeName[];
   statusTypes: any;
+
+  employees: any;
+  employeeName: any;
   constructor(
     private http: HttpClient,
     private _fb: FormBuilder,
@@ -33,6 +41,7 @@ export class LeavesApprovelComponent {
     //   { name: 'Declined' },
 
     // ];
+
     this.empForm = this._fb.group({
       name: '',
       Salary: '',
@@ -42,11 +51,30 @@ export class LeavesApprovelComponent {
   }
   ngOnInit() {
     this.empservice.appliedLeaves().subscribe((data) => {
-      // console.log(data)
+      //  console.log(data)
       this.leavesApproved = data;
     });
+
+    this.empservice.getAllEmployees().subscribe((res)=>{
+      this.employees= res
+      const employeeData = this.employees.map((emp:any)=>({
+        ...emp,
+        Name: `${emp.firstName}${emp.lastName}`,
+      }))
+      this.employeeName = employeeData
+  })
+  
   }
+
+
+
   ngAfterViewInit() {
+
     this.leaveSer.getStatus().subscribe((res) => (this.statusTypes = res));
+
   }
+
+  // ngDoCheck(){
+  //   console.log(this.employeeName)
+  // }
 }

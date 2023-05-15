@@ -20,27 +20,27 @@
     <form class="cbd-contnt-container" id="myForm" #myForm="ngForm">
         
         <div class="cbd-input-container" >
-                 <label for="EmpId" class="cbd-label">
+                 <label for="EmpId" class="label">
                     EmpId<span class="cbd-empClass">*</span>
                 </label>
-                 <select name="EmpId" id="EmpId" class="cbd-input-fields" [(ngModel)]="employeDetails.EmpNameById">
-                     <option  selected="Default" value="SELECT EMPLOYEE">SELECT EMPLOYEE</option>
-                     <option  *ngFor="let empname of  employeess" >{{empname.firstName}} {{empname.lastName}}</option>
+                 <select name="EmpId" id="EmpId" class="cbd-input-fields " [(ngModel)]="employeDetails.EmpNameById">
+                     <option class="emp-option" selected="Default" >Select Employee</option>
+                     <option  class="emp-option" *ngFor="let empname of  employeess" >{{empname.firstName}} {{empname.lastName}}</option>
                  </select>  
                 
              </div>
        <div class="cbd-input-container">
-            <label for="accno" class="label">ACCNO<span class="cbd-empClass">*</span></label>
-            <input type="text" id="accno" class="cbd-input-fields" placeholder="ENTER ACCOUNT NUMBER" name="ACCNO" [(ngModel)]="employeDetails.ACCNO"/>
+            <label for="accno" class="label">Acc No<span class="cbd-empClass">*</span></label>
+            <input type="text" id="accno" class="cbd-input-fields" placeholder="Enter Account Number" name="ACCNO" [(ngModel)]="employeDetails.ACCNO"/>
        </div>
   
        <div class="cbd-input-container">
-            <label for="accname" class="label">ACCNAME<span class="cbd-empClass">*</span></label>
-            <input type="text" id="accname" class="cbd-input-fields" placeholder="ENTER HOLDER NAME" name="ACCNO" [(ngModel)]="employeDetails.ACCNAME"/>
+            <label for="accname" class="label">Acc Name<span class="cbd-empClass">*</span></label>
+            <input type="text" id="accname" class="cbd-input-fields" placeholder="Enter Holder Name" name="ACCNO" [(ngModel)]="employeDetails.ACCNAME"/>
        </div>
   
        <div class="cbd-input-container">
-            <label for="bankname" class="label ">BankName<span class="cbd-empClass">*</span></label>
+            <label for="bankname" class="label ">Bank Name<span class="cbd-empClass">*</span></label>
             <input type="text" id="bankname" class="cbd-input-fields disabledButton" disabled value="Kotak Bank" name="BankName" />
        </div>
     
