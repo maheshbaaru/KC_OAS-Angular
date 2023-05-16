@@ -5,7 +5,7 @@
         </div>
         <div class="col-sm-6" style="text-align:right">
           <p-toast position="top-center" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
-            <button pButton class="h-1rem" style="float: right;margin-right:5px; font-size: smaller;" type="submit" (click)="saveEmpLeaves()"><i
+            <button pButton class="h-1rem p-button-success" style="float: right;margin-right:5px; font-size: smaller;" type="submit" (click)="saveEmpLeaves()"><i
                     class="pi pi-check icon"></i>SUBMIT</button>
         </div>
     </ng-template>
@@ -34,7 +34,7 @@
             <div class="cont2">
                 <label for="designation-input" class="input-styling" required>No. of Leaves
                 </label>
-                <input id="designation-input" type="input" placeholder="Number of leaves" pInputText
+                <input id="designation-input" class="h-2rem" type="input" placeholder="Number of leaves" pInputText
                     formControlName="noOfLeaves" />
             </div>
         </form>
