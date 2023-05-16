@@ -37,25 +37,38 @@ export class CreateNewEmployeeComponent {
 
   ngOnInit() {
     this.empForm = this.fb.group({
-      employeeID: [''],
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      panNumber: [''],
-      designationName: [''],
-      shiftName: [''],
-      isActive: [''],
-      doj: [''],
-      designationID: [''],
-      Password: [''],
+      // employeeID: [''],
+      // firstName: [''],
+      // lastName: [''],
+      // email: [''],
+      // panNumber: [''],
+      // designationName: [''],
+      // shiftName: [''],
+      // isActive: [''],
+      // doj: [''],
+      // designationID: [''],
+      // Password: [''],
+      employeeID: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      panNumber: '',
+      designationName: '',
+      shiftName: '',
+      isActive: '',
+      doj: '',
+      designationID: '',
+      Password: '',
     });
 
     this.empServ.getShifts().subscribe((res) => {
       this.Shifts = res;
+      console.log(this.Shifts);
     });
     this.empServ.getDesignationRoles().subscribe((res) => {
       this.roles = res;
     });
+    console.log(this.roles);
   }
 
   ngAfterViewInit(data: any) {
@@ -76,8 +89,8 @@ export class CreateNewEmployeeComponent {
     console.log(this.empForm.value);
     debugger;
     let data = JSON.stringify(this.empForm.value);
-    //  this.empServ.postEmp(data);
-   // this.empServ.createEmployee(data.firstName)
+    //this.empServ.postEmp(data);
+    //this.empServ.createEmployee(data.FirstName);
     this.empServ.createEmployee(data);
   }
   onchange() {

@@ -26,16 +26,16 @@ export class EmployeeService {
   getEmp() {
     return this.http.get(`${this.API_CALL}/SalaryDeductions`);
   }
-  postEmp(data: any) {
-    debugger;
-    // return this.http.post(`https://localhost:7236/AddEmployee`, data);
-    return this.http
-      .post(`${this.API_CALL}/createEmployee`, data)
-      .subscribe((result) => {
-        //const resultData = Object.values(result);
-        console.log(result);
-      });
-  }
+  //postEmp(data: any) {
+  // debugger;
+  // return this.http.post(`https://localhost:7236/AddEmployee`, data);
+  // return this.http
+  //   .post(`${this.API_CALL}/createEmployee`, data)
+  //  .subscribe((result) => {
+  //const resultData = Object.values(result);
+  // console.log(result);
+  // });
+  // }
   getUsers() {
     return this.http.get(`${this.API_CALL}/GetEmployeeTbls`);
   }
@@ -114,35 +114,34 @@ export class EmployeeService {
         });
     });
   }
-  //createEmployee(
-  // firstName: string,
-  // lastName: string,
-  // email: string,
-  // password: string,
-  // isActive: boolean,
-  // EmployeeId: number,
-  // panNumber: string,
-  // shiftId: number,
-  // doj: Date,
-  // designationID: number
-  //  obj: any
-  //): Observable<any[]> {
-  //debugger;
-  // return this.http.post<any>(
-  //`${this.API_CALL}/AddEmployee?FirstName=${firstName}&LastName=${lastName}&Email=${email}&Password=${password}&IsActive=${isActive}&EmployeeId=${EmployeeId}&PanNumber=${panNumber}&ShiftId=${shiftId}&Doj=${doj}&DesignationId=${designationID}`,
-  //`${this.API_CALL}/AddEmployee`, obj,
+  // createEmployee(
+  //   firstName: string,
+  //   lastName: string,
+  //   email: string,
+  //   password: string,
+  //   isActive: boolean,
+  //   EmployeeId: number,
+  //   panNumber: string,
+  //   shiftId: number,
+  //   doj: Date,
+  //   designationID: number
+
+  // ): Observable<any[]> {
+  //   debugger;
+  //return this.http.post<any>(
+  // `${this.API_CALL}/AddEmployee?FirstName=${firstName}&LastName=${lastName}&Email=${email}&Password=${password}&IsActive=${isActive}&EmployeeId=${EmployeeId}&PanNumber=${panNumber}&ShiftId=${shiftId}&Doj=${doj}&DesignationId=${designationID}`,
   // this.httpOptions
   // );
-  // console.log('${this.API_CALL}/AddEmployee');
-  // }
+  //}
 
   createEmployee(obj: any) {
     debugger
-    this.http.post('https://localhost:7236/AddEmployee',obj, this.httpOptions
-      )
+    this.http.post('https://localhost:7236/AddEmployee', JSON.stringify(obj), this.httpOptions
+    )
       .subscribe((result) => {
         const resultData = Object.values(result);
         console.log(resultData);
       });
   }
+
 }
