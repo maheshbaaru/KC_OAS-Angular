@@ -48,7 +48,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     .form-styles{
         display:flex;
         flex-direction: row;
-        
+    
       
       }
 
@@ -112,4 +112,17 @@ td{
     position: relative;
     overflow: hidden;
     font-size: smaller;
+}
+
+
+.p-panel-content {
+    min-height: 30vh;
+  padding-top: 50px !important;
+  padding-bottom: 50px !important;
+    border: 1px solid #dee2e6;
+    background: #ffffff;
+    color: #495057;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-top: 0 none;
 }
