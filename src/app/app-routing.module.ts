@@ -28,7 +28,7 @@ import { EmployeeLeavesComponent } from './routing/Leaves/employee-leaves/employ
 import { BankDetailsComponent } from './routing/bank-details/bank-details.component';
 import { CreateBankDetailsComponent } from './routing/bank-details/create-bank-details/create-bank-details.component';
 import { EditBankDetailsComponent } from './routing/edit-bank-details/edit-bank-details.component';
-import { CreateLeaveComponent } from './routing/create-leave/create-leave.component';
+import { CreateLeaveComponent } from './routing/Leaves/create-leave/create-leave.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { SalarydisplyComponent } from './routing/salarydisply/salarydisply.component';
 import { LeavesApprovalScreenComponent } from './routing/Leaves/leaves-approvel/leaves-approval-screen/leaves-approval-screen.component';

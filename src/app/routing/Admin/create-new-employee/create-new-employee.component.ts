@@ -38,27 +38,7 @@ export class CreateNewEmployeeComponent {
 
   ngOnInit() {
     this.empForm = this.fb.group({
-      // employeeID: [''],
-      // firstName: [''],
-      // lastName: [''],
-      // email: [''],
-      // panNumber: [''],
-      // designationName: [''],
-      // shiftName: [''],
-      // isActive: [''],
-      // doj: [''],
-      // // designationID: [''],
-      // Password: [''],
-      // employeeID: '',
-      // firstName: '',
-      // lastName: '',
-      // email: '',
-      // panNumber: '',
-      // designationName: '',
-      // shiftName: '',
-      // isActive: '',
-      // doj: '',
-      // Password: '',
+      
       employeeID: [''],
       firstName: [''],
       lastName: [''],
@@ -69,37 +49,37 @@ export class CreateNewEmployeeComponent {
       isActive: [''],
       doj: [''],
       Password: [''],
+      // employeeID: '',
+      // firstName: '',
+      // lastName: '',
+      // email: '',
+      // panNumber: '',
+      // designationName: '',
+      // shiftName: '',
+      // isActive: '',
+      // doj: '',
+      // designationID: '',
+      // Password: '',
     });
 
     this.empServ.getShifts().subscribe((res) => {
       this.Shifts = res;
-      //console.log(this.Shifts);
     });
     this.empServ.getDesignationRoles().subscribe((res) => {
       this.roles = res;
     });
-    // console.log(this.roles);
   }
 
-  //ngAfterViewInit(data: any) {
-  // this.empServ.postEmp(data).subscribe((data: any) => {
-  //   this.roles = data;
-  // });
-  // this.empServ.getShifts().subscribe((res) => {
-  //   this.Shifts = res;
-  // });
-  // this.empServ.createEmployee()
+  
 
 
 
 
-
-  // }
+  
   save() {
     debugger;
     console.log(this.empForm);
     console.log(this.empForm.value);
-
     // let data = JSON.stringify(this.empForm.value);
     //this.empServ.postEmp(data);
     this.empServ.createEmployee(
@@ -115,7 +95,6 @@ export class CreateNewEmployeeComponent {
       this.empForm.value.designationName.id
 
     );
-    // this.empServ.createEmployee(data);
   }
   onchange() {
     console.log(this.empForm.invalid, this.empForm.status);
