@@ -14,7 +14,7 @@
       </button>
       <button
         pButton
-        class="h-1rem  p-button-success"
+        class="h-1rem p-button-success"
         style="float: right; margin-right: 5px; font-size: smaller"
         type="submit"
         [disabled]="save_button"
@@ -24,7 +24,7 @@
       </button>
     </div>
   </ng-template>
-  <form [formGroup]="empForm" >
+  <form [formGroup]="empForm">
     <div class="row">
       <div class="col-md-4">
         <div class="col-12 md:col-4">
@@ -73,10 +73,10 @@
           <br />
 
           <p-checkbox
-            name="group1"
             formControlName="isActive"
-            checked="isActive"
-            inputId="any"
+            name="active"
+            inputId="ia"
+            [binary]="true"
           ></p-checkbox>
           <label for="any">IsActive<span class="required">*</span></label>
         </div>
