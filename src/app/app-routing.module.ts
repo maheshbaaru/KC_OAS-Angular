@@ -57,9 +57,7 @@ const routes: Routes = [
       { path: 'profile-photo', component: ProfilePhotoComponent },
       { path: 'DeductionList/:id', component: SalDeductionListComponent },
       { path: 'leavesApprov', component: LeavesApprovelComponent },
-
       { path: 'approval-screen/:id', component: LeavesApprovalScreenComponent },
-
       { path: 'access', component: EmployeeAccessComponent },
       { path: 'apply', component: ApplyLeavesComponent },
       { path: 'Employees', component: EmployeesComponent },
@@ -70,7 +68,6 @@ const routes: Routes = [
       { path: 'updatephoto', component: UpdatephotoComponent },
       { path: 'updateemployee/:id', component: UpdateEmployeeComponent },
       { path: 'employee-leaves', component: EmployeeLeavesComponent },
-      
       { path: 'bankDetails', component: BankDetailsComponent },
       { path: 'create-bank-details', component: CreateBankDetailsComponent },
       { path: 'edit-bank-details/:id', component: EditBankDetailsComponent },

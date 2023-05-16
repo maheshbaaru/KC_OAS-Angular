@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -7,8 +7,10 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { DatePipe, formatDate } from '@angular/common';
 
 import { LeavesService } from 'src/app/services/leaves.service';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 
 interface LeaveType {
   name: string;
@@ -27,6 +29,7 @@ export class CreateLeaveComponent {
   ToDate: any;
   StatusId: any;
   Comments: any;
+  id:any;
   // empForm = new  FormGroup({
   //   empId: new FormControl('', [Validators.required]),
   //   leaveTypeId: new FormControl('', [Validators.required]),
@@ -41,15 +44,18 @@ export class CreateLeaveComponent {
     private _leaveservice: LeavesService,
     private formBuilder: FormBuilder,
     private messageServ: MessageService,
-    private route:Router
+    private route:Router,  @Inject(LOCALE_ID) public local: string,
   ) {}
 
   ngOnInit(): void {
     this._leaveservice
       .getLeaveType()
       .subscribe((res) => (this.leaveTypes = res));
+      
     this.empForm = this.formBuilder.group({
-      LeaveTypeId: new FormControl({
+    
+    
+      leaveTypeId: new FormControl({
         value: '',
         disabled: false,
       }),
@@ -76,15 +82,19 @@ export class CreateLeaveComponent {
   onFormSubmit() {
    
     console.log(this.empForm.value)
+     const diffTime = Math.abs(this.empForm.value.ToDate.getTime() - this.empForm.value.FromDate.getTime());
 
-    this.leaveTypeId = this.leaveTypes = this.empForm.value.leaveType;
-    this.FromDate = this.empForm.value.FromDate;
-    this.ToDate = this.empForm.value.ToDate;
-    this.StatusId = this.empForm.value.ToDate;
-    this.Comments = this.empForm.value.ToDate;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+console.log(diffDays)
+  
+    this.leaveTypeId = this.empForm.value.leaveTypeId.id;
+    this.FromDate = formatDate(this.empForm.value.FromDate, 'YYYY-MM-dd', this.local);
+    this.ToDate = formatDate(this.empForm.value.ToDate,'YYYY-MM-dd', this.local);
+    this.StatusId = this.empForm.value.StatusId;
+    this.Comments = this.empForm.value.Comments;
 
-    this._leaveservice.applyleave(this.leaveTypeId,this.FromDate,this.ToDate,this.StatusId,this.Comments).subscribe((res: any) => {
-      console.log(res);
+    this._leaveservice.applyleave(this.leaveTypeId,this.FromDate,this.ToDate,this.StatusId,this.Comments,diffDays).subscribe((res: any) => {
+      // console.log(res);
       if (res !== null && res !== res.statusText && res !== res.type) {
         this.messageServ.add({
           severity: 'success',
@@ -97,8 +107,12 @@ export class CreateLeaveComponent {
           summary: 'Error',
           detail: 'Please gave EmployeeLeaves data',
         });
-        this.empForm.reset();
+      
       }
+
     });
+    this.empForm.reset();
+    this.route.navigate(['/navbar']);
+      
   }
 }
