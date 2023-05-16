@@ -18,24 +18,7 @@ export class UpdateEmployeeComponent {
   }
   ngOnInit() {
     let id = this.active.snapshot.params['id'];
-    //   this.Shifts=["selectShift","FirstShift","SecondShift"];
-    //   this.roles=[ "Accountant",
-    //   "InVoiceSpecialist",
-    //    "HRExecutive",
-    //    "QALead",
-    //    "SoftWareDeveloper",
-    //    "SoftwareEngineer",
-    //    "SoftwareTrainee",
-    //   "QALead",
-    //    "QA Trainee",
-    //    "Tech Lead",
-    //   "UI Designer",
-    //    "Sr.SoftwareDeveloper",
-    //   "Project Manager",
-    //    "Sr.SoftwareEngineer",
-    //    "Sr.QA"
-    //   ];
-    // }
+   
     this._service.getDesignationRoles().subscribe(data => {
       this.roles = data;
 
@@ -46,15 +29,6 @@ export class UpdateEmployeeComponent {
       this.shifts = data;
       console.log(this.shifts);
     })
-
-
-
-
   }
-
-
-
-
-
 
 }

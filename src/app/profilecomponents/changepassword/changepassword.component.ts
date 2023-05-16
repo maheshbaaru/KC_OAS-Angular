@@ -4,7 +4,7 @@ import namesData from 'src/assets/data/namesData.json';
 import { OnInit, ViewChild } from '@angular/core';
 // import { EmployeeData, Representative } from 'src/app/employee';
 import { Table } from 'primeng/table';
-import{EmployeeData,Representative} from 'src/app/Modesls/employee'
+import { EmployeeData, Representative } from 'src/app/Modesls/employee'
 
 import { SalaryService } from '../../services/salary.service';
 import salary from 'src/assets/data/salary.json';
