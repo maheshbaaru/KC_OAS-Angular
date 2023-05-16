@@ -6,7 +6,7 @@
     <div class="col-sm-6" style="text-align:right">
       <button pButton class="h-1rem" style="float: right; font-size: smaller;" routerLink="/navbar/apply"><i
           class="pi pi-arrow-left icon"></i>BACK</button>
-      <button pButton class="h-1rem" style="float: right;margin-right:5px; font-size: smaller;" type="submit"
+      <button pButton class="h-1rem" style="float: right;margin-right:5px; font-size: smaller;margin-right:10px;" type="submit"
         (click)="onFormSubmit()"><i class="pi pi-check icon"></i>SAVE</button>
     </div>
   </ng-template>
@@ -37,13 +37,13 @@
         <label for="designation-input" class="input-styling" required>Status
           <span class="required">*</span>
         </label>
-        <input id="designation-input" type="input" placeholder="NEW" pInputText formControlName="Salary" />
+        <input id="designation-input" type="input" placeholder="New" pInputText formControlName="Salary" />
       </div>
       <div class="cont2">
         <label for="designation-input" class="input-styling" required>Comments
           <span class="required">*</span>
         </label>
-        <input id="designation-input" type="input" placeholder="ENTER COMMENTS" pInputText formControlName="Salary" />
+        <input id="designation-input" type="input" placeholder="Enter Comments" pInputText formControlName="Salary" />
       </div>
     </form>
   </div>

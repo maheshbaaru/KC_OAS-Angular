@@ -1,28 +1,31 @@
 <div class="caption-container">
     <div class="caption-content1">
         <h1 class="bank-details-title">BANK DETAILS</h1>
-
+        
         <input class="caption-search-input" type="text" [(ngModel)]="employeeSearchText" (input)="dt.filterGlobal(employeeSearchText, 'contains')" placeholder="Search Employee" />
         <!-- <input class="caption-search-input" type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search Employee" /> -->
     </div>
+    
 
-
-    <button  class="creat-button"  routerLink="../create-bank-details" (click)="onCLickcreate()">
+    <!-- <button  class="creat-button"  routerLink="../create-bank-details" (click)="onCLickcreate()">
         <i class="pi pi-plus icon" style="font-size: 0.7rem;margin-top: 4px;"></i>
         <p class="btn-text">Create</p>
-    </button>
+    </button> -->
+    <div class="col-sm-6" style="text-align:right">
+        <button pButton routerLink="../create-bank-details" class="h-1rem p-button-success"style="float: right;font-size: small;font-weight: 500;margin-right:10px;">+ CREATE NEW</button>  
+</div>
 </div>
 
 <div class="table-bottom-container">
-    <p-table
+    <p-table 
         #dt [value]="employees" [(selection)]="selectedCustomers" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
-        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [tableStyle]="{'min-height': '20rem'}"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [filterDelay]="0" styleClass="p-datatable-gridlines" [globalFilterFields]="['empId','accno','firstName','lastName','bankName']">
             <!-- <ng-template pTemplate="caption">
-
+                
             </ng-template> -->
-
+            
             <ng-template pTemplate="header">
                 <tr >
                     <!-- <th style="width: 3rem"></th> -->
@@ -30,49 +33,49 @@
                         <div class="p-d-flex p-jc-between p-ai-center th-div">
                             Emp ID
                              <p-columnFilter type="text" field="employee.name" display="menu">
-                             </p-columnFilter>
+                             </p-columnFilter> 
                         </div>
-
+                        
                     </th>
-
+                    
                     <th >
                         <div class="p-d-flex p-jc-between p-ai-center th-div">
                             Account No
                             <p-columnFilter type="text" field="employee.name" display="menu">
-                            </p-columnFilter>
+                            </p-columnFilter> 
                        </div>
                     </th>
-
+                    
                     <th >
                         <div class="p-d-flex p-jc-between p-ai-center th-div">
-                            Account Holder Name
+                            Account Holder Name 
                             <p-columnFilter type="text" field="employee.name" display="menu">
-                            </p-columnFilter>
+                            </p-columnFilter> 
                        </div>
                     </th>
-
+                    
                     <th >
                         <div class="p-d-flex p-jc-between p-ai-center th-div">
-                            Bank Name
+                            Bank Name 
                             <p-columnFilter type="text" field="country.name" display="menu" class="filter-container">
-                            </p-columnFilter>
+                            </p-columnFilter> 
                        </div>
                     </th>
-
+                    
                 </tr>
-
+                
             </ng-template>
-
+            
             <ng-template pTemplate="body" let-employee>
-
+                
                 <tr class="p-selectable-row">
-
+                   
                     <td>
                         <!-- <a routerLink="'../edit-bank-details',employee.EmpId" class="empId">
-
+                            
                             KC{{employee.EmpId<100?'0'+employee.EmpId:employee.EmpId}}
                         </a> -->
-
+                        
                         <a [routerLink]="['../edit-bank-details', employee.empId]" class="empId">
                             KC{{employee.empId<100?'0'+employee.empId:employee.empId}}
                         </a>
@@ -91,10 +94,10 @@
                         {{employee.bankName}}
                     </td>
                 </tr>
-
+            
             </ng-template>
-
-
+            
+            
             <ng-template pTemplate="emptymessage">
                 <tr>
                     <td colspan="8">No Employees found.</td>

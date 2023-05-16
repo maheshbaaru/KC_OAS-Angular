@@ -34,6 +34,7 @@ export class CreateNewSalaryDetailsComponent {
     if (this.empForm.valid) {
       this._service.CreatenewSalaryDetails(this.empForm.value);
     }
+    this.empForm.reset();
     this.router.navigate(['/salary-details']);
   }
 
