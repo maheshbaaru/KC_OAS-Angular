@@ -16,7 +16,7 @@
         <label for="designation-input" class="input-styling" required>Leave Type
           <span class="required">*</span>
         </label>
-        <p-dropdown [options]="leaveTypes" placeholder="SELECT LEAVE TYPE" optionLabel="name" [showClear]="true"
+        <p-dropdown [options]="leaveTypes" placeholder="Select Leave Type" optionLabel="name" [showClear]="true"
           formControlName="name"></p-dropdown>
       </div>
       <div class="cont2">
@@ -38,12 +38,14 @@
           <span class="required">*</span>
         </label>
         <input id="designation-input" type="input" placeholder="NEW" pInputText formControlName="Salary" />
+        <input id="designation-input"  class="h-2rem" type="input" placeholder="New" pInputText formControlName="Salary" />
       </div>
       <div class="cont2">
         <label for="designation-input" class="input-styling" required>Comments
           <span class="required">*</span>
         </label>
         <input id="designation-input" type="input" placeholder="ENTER COMMENTS" pInputText formControlName="Salary" />
+        <input id="designation-input" type="input" class="h-2rem" placeholder="Enter Comments" pInputText formControlName="Salary" />
       </div>
     </form>
   </div>
