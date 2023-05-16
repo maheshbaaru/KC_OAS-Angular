@@ -49,6 +49,17 @@ export class CreateNewEmployeeComponent {
       isActive: [''],
       doj: [''],
       Password: [''],
+      // employeeID: '',
+      // firstName: '',
+      // lastName: '',
+      // email: '',
+      // panNumber: '',
+      // designationName: '',
+      // shiftName: '',
+      // isActive: '',
+      // doj: '',
+      // designationID: '',
+      // Password: '',
     });
 
     this.empServ.getShifts().subscribe((res) => {
