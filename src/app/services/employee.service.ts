@@ -108,7 +108,6 @@ export class EmployeeService {
         .get(`https://localhost:7236/GetDesignations`)
         .subscribe((result) => {
           const resultData = Object.values(result);
-
           observer.next(resultData);
           observer.complete();
         });
@@ -118,7 +117,6 @@ export class EmployeeService {
     debugger;
     const { Id, FirstName, LastName, Email, Password, IsActive, EmployeeId, PanNumber, ShiftId, Doj } = obj;
     return this.http.post<any>(
-
       `${this.API_CALL}/AddEmployee?FirstName=${FirstName}&LastName=${LastName}&email=${Email}&password=${Password}&isActive=${IsActive}&EmployeeId=${EmployeeId}&//panNumber=${PanNumber}&shiftId=${ShiftId}&doj=${Doj}&id=${Id}`,
       this.httpOptions
     );

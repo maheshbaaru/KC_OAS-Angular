@@ -82,15 +82,12 @@ export class CreateNewEmployeeComponent {
       PanNumber: this.empForm.value.panNumber,
       ShiftId: this.empForm.value.shiftName.shiftId,
       Doj: this.empForm.value.doj
-
-
     }
     console.log(obj)
     // let data = JSON.stringify(this.empForm.value);
     //this.empServ.postEmp(data);
     this.empServ.createEmployee(obj).subscribe((d) => {
       console.log(d);
-
     });
   }
   onchange() {
