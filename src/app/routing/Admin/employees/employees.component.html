@@ -28,7 +28,9 @@
   </ng-template>
 
 </p-table> -->
-<p-table #table  [value]="empdata" [tableStyle]="{'min-width': '50rem'}"   [rowsPerPageOptions]="[10, 25, 50]"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines"   [globalFilterFields]="['employeeID','firstName','lastName']">
+<p-table #table  [value]="empdata" [tableStyle]="{'min-width': '50rem'}"   [rowsPerPageOptions]="[10, 25, 50]"  [paginator]="true" [rows]="10" styleClass="p-datatable-gridlines" 
+  [globalFilterFields]="['employeeID','firstName','lastName','email','designationName','panNumber','isActive','shiftName']"
+  >
 
   <ng-template pTemplate="header">
     <tr>
@@ -36,50 +38,50 @@
         <th>
             <div class="p-d-flex p-jc-between p-ai-center">
                 Emp ID
-                <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                <p-columnFilter type="text" field="employeeID" display="menu"></p-columnFilter>
             </div>
 
         </th>
         <th><div class="p-d-flex p-jc-between p-ai-center">
           FirstName
-            <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+            <p-columnFilter type="text" field="firstName" display="menu"></p-columnFilter>
         </div></th>
         <th>
             <div class="p-d-flex p-jc-between p-ai-center">
               LastName
-                <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                <p-columnFilter type="text" field="lastName" display="menu"></p-columnFilter>
             </div>
 
         </th>
         <th>
             <div class="p-d-flex p-jc-between p-ai-center">
                 Email
-                <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                <p-columnFilter type="text" field="email" display="menu"></p-columnFilter>
             </div>
 
         </th>
         <th>
             <div class="p-d-flex p-jc-between p-ai-center">
                Designation
-                <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                <p-columnFilter type="text" field="designationName" display="menu"></p-columnFilter>
             </div>
         </th>
         <th>
           <div class="p-d-flex p-jc-between p-ai-center">
              Pan Number
-              <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+              <p-columnFilter type="text" field="panNumber" display="menu"></p-columnFilter>
           </div>
       </th>
       <th>
         <div class="p-d-flex p-jc-between p-ai-center">
          IsActive
-            <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+            <p-columnFilter type="text" field="isActive" display="menu"></p-columnFilter>
         </div>
     </th>
     <th>
       <div class="p-d-flex p-jc-between p-ai-center">
    Shift
-          <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+          <p-columnFilter type="text" field="shiftName" display="menu"></p-columnFilter>
       </div>
   </th>
     </tr>

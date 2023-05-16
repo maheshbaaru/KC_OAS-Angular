@@ -94,7 +94,7 @@
         [rows]="10" [showCurrentPageReport]="true"  
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
         [rowsPerPageOptions]="[10,25,50]" 
-        [globalFilterFields]="['EmpId','Name','LeaveType','NoDays','FDate','Tdate','AppliedOn','status']" 
+        [globalFilterFields]="['id','empName','leaveTypeId','numOfDays','fromDate','toDate','appliedOn','statusId','comments','adminComments']" 
         responsiveLayout="scroll">
 
 
@@ -105,69 +105,69 @@
         <th>
           <div class="p-d-flex p-jc-between p-ai-center">
           Emp ID
-          <p-columnFilter type="text" field="EmpId" display="menu"></p-columnFilter>
+          <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
 
         </div>
         </th>
         <th>
           <div class="p-d-flex p-jc-between p-ai-center">
             Emp Name
-            <p-columnFilter type="text" field="Name" display="menu"></p-columnFilter>
+            <p-columnFilter type="text" field="empName" display="menu"></p-columnFilter>
           </div>
         </th>
         <th>
           <div class="p-d-flex p-jc-between p-ai-center">
           Leave Type
-          <p-columnFilter type="text" field="LeaveType" display="menu"></p-columnFilter>
+          <p-columnFilter type="text" field="leaveTypeId" display="menu"></p-columnFilter>
 
         </div>
         </th>
         <th>
           <div class="p-d-flex p-jc-between p-ai-center">
           Num Of Days
-          <p-columnFilter type="text" field="NoDays" display="menu"></p-columnFilter>
+          <p-columnFilter type="text" field="numOfDays" display="menu"></p-columnFilter>
 
         </div>
         </th>
         <th>
           <div class="p-d-flex p-jc-between p-ai-center">
           From Date
-          <p-columnFilter type="text" field="FDate" display="menu"></p-columnFilter>
+          <p-columnFilter type="text" field="fromDate" display="menu"></p-columnFilter>
 
         </div>
         </th>
         <th>
           <div class="p-d-flex p-jc-between p-ai-center">
           To Date
-          <p-columnFilter type="text" field="Tdate" display="menu"></p-columnFilter>
+          <p-columnFilter type="text" field="toDate" display="menu"></p-columnFilter>
 
         </div>
         </th>
         <th>
           <div class="p-d-flex p-jc-between p-ai-center">
           Applied On
-          <p-columnFilter type="text" field="AppliedOn" display="menu"></p-columnFilter>
+          <p-columnFilter type="text" field="appliedOn" display="menu"></p-columnFilter>
 
         </div>
         </th>
         <th>
           <div class="p-d-flex p-jc-between p-ai-center">
           Status
-          <p-columnFilter type="text" field="status" display="menu"></p-columnFilter>
+          <p-columnFilter type="text" field="statusId" display="menu"></p-columnFilter>
 
         </div>
         </th>
         <th>
           <div class="p-d-flex p-jc-between p-ai-center">
           Comments
-          <p-columnFilter type="text" field="comment" display="menu"></p-columnFilter>
+          <p-columnFilter type="text" field="comments" display="menu"></p-columnFilter>
 
         </div>
         </th>
         <th>
           <div class="p-d-flex p-jc-between p-ai-center">
           Admin Comments
-          <p-columnFilter type="text" field="AComments" display="menu"></p-columnFilter>
+          <p-columnFilter type="text" field="adminComments" display="menu"></p-columnFilter>
 
         </div>
         </th>

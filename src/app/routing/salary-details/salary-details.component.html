@@ -16,39 +16,40 @@
             <button pButton routerLink="../create-new-salary-details" class="h-1rem p-button-success"style="float: right;font-size: small;font-weight: 500;margin-right:10px;">+ CREATE NEW</button>  
     </div>
     </ng-template> 
-    <p-table #dt [value]="empSalDetails" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10"  styleClass="p-datatable-gridlines"   [globalFilterFields]="['FirstName','empId','firstName','nextRevisedDate','lastRevisedDate','salary']">
+    <p-table #dt [value]="empSalDetails" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10"  styleClass="p-datatable-gridlines"   
+    [globalFilterFields]="['empId','firstName','salary','lastRevisedDate','nextRevisedDate']">
     <ng-template pTemplate="header">
         <tr>
 
             <th>
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Employee ID
-                    <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                    <p-columnFilter type="text" field="empId" display="menu"></p-columnFilter>
                 </div>
 
             </th>
             <th><div class="p-d-flex p-jc-between p-ai-center">
                 Employee name
-                <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                <p-columnFilter type="text" field="firstName" display="menu"></p-columnFilter>
             </div></th>
             <th>
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Salary
-                    <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                    <p-columnFilter type="text" field="salary" display="menu"></p-columnFilter>
                 </div>
 
             </th>
             <th>
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Last Revised Date
-                    <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                    <p-columnFilter type="text" field="lastRevisedDate" display="menu"></p-columnFilter>
                 </div>
 
             </th>
             <th>
                 <div class="p-d-flex p-jc-between p-ai-center">
                     Next Revised Date
-                    <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                    <p-columnFilter type="text" field="nextRevisedDate" display="menu"></p-columnFilter>
                 </div>
             </th>
         </tr>
