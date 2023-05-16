@@ -113,6 +113,20 @@ export class EmployeeService {
         });
     });
   }
+
+  getAllEmployees(): Observable<any[]> {
+    return new Observable((observer) => {
+      this.http
+        .get("https://localhost:7236/GetEmployeeTbls")
+        .subscribe((result) => {
+          const resultData = Object.values(result);
+
+          observer.next(resultData);
+          observer.complete();
+        });
+    });
+  }
+
   createEmployee(
     firstName: string,
     lastName: string,

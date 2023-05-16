@@ -58,9 +58,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
  .p-panel .p-panel-header{
     background-color:rgb(121, 121, 128) !important;
     padding:0.5rem !important;
+
    
 
 } 
+
 b, strong {
     font-weight:500 !important;
     font-size: small;
@@ -77,4 +79,7 @@ th{
 }
 td{
     font-size: small;
+}
+table{
+    min-height: 40vh;
 }
