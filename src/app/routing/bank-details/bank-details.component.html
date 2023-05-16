@@ -20,8 +20,10 @@
     <p-table 
         #dt [value]="employees" [(selection)]="selectedCustomers" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
-        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [filterDelay]="0" styleClass="p-datatable-gridlines" [globalFilterFields]="['empId','accno','firstName','lastName','bankName']">
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [tableStyle]="{'min-height': '20rem'}"
+        [filterDelay]="0" styleClass="p-datatable-gridlines" 
+        [globalFilterFields]="['empId','accno','firstName','lastName','bankName']">
+>>>>>>> Stashed changes
             <!-- <ng-template pTemplate="caption">
                 
             </ng-template> -->
@@ -33,7 +35,7 @@
                         <div class="p-d-flex p-jc-between p-ai-center th-div">
                             Emp ID
                              <p-columnFilter type="text" field="employee.name" display="menu">
-                             </p-columnFilter> 
+                             </p-columnFilter>
                         </div>
                         
                     </th>
