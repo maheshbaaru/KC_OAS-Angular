@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import namesData from 'src/assets/data/namesData.json';
 import { OnInit, ViewChild } from '@angular/core';
 import { EmployeeData, Representative } from 'src/app/Modesls/employee';
@@ -51,11 +51,14 @@ export class EmployeeLeavesComponent {
     //   { name: 'Optional' },
     // ];
     this.empForm = this._fb.group({
-      name: [null, Validators.required],
-
-      leaveType: [null, Validators.required],
-      year: [null, Validators.required],
-      noOfLeaves: [null, Validators.required],
+      name: null,
+      // Salary: '',
+      // LastRevisedDate: '',
+      // NextRevisedDate: '',
+      leaveType: null,
+      year: null,
+      noOfLeaves: null,
+      remainLeaves: null,
     });
   }
 
@@ -64,9 +67,7 @@ export class EmployeeLeavesComponent {
   // representatives: Representative[] = [];
   // @ViewChild('dt')
   // table!: Table;
-  onChange() {
-    console.log(this.empForm);
-  }
+
   ngOnInit() {
     // let loogedUser: any = window.sessionStorage.getItem('loggedinUser');
     // loogedUser = JSON.parse(loogedUser);
@@ -127,6 +128,5 @@ export class EmployeeLeavesComponent {
           });
         }
       });
-    this.empForm.reset();
   }
 }

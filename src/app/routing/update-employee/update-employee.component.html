@@ -1,71 +1,107 @@
-<p-panel  >
+<p-panel>
   <ng-template pTemplate="header">
-    <div  class="col -md-6" style="text-align:left">
-    <strong>UPDATE EMPLOYEE </strong>
-  </div>
-      <div class="col-sm-6" style="text-align:right">
-      <button pButton type="button" label="Back"  icon=" pi pi-arrow-left" iconPos="left"   routerLink= "/navbar/Employees" class="p-button-sm h-2rem"  ></button>&nbsp;
-      <button pButton type="button" label="Save"   icon="pi pi-check" iconPos="left" class="p-button-sm h-2rem"></button>
+    <div class="col -md-6" style="text-align: left">
+      <strong>UPDATE EMPLOYEE </strong>
+    </div>
+    <div class="col-sm-6" style="text-align: right">
+      <button
+        pButton
+        type="button"
+        label="Back"
+        icon=" pi pi-arrow-left"
+        iconPos="left"
+        routerLink="/navbar/Employees"
+        class="p-button-sm h-2rem"
+      ></button
+      >&nbsp;
+      <button
+        pButton
+        type="button"
+        label="Save"
+        icon="pi pi-check"
+        iconPos="left"
+        class="p-button-sm h-2rem"
+      ></button>
+    </div>
+  </ng-template>
 
-  </div>
-  </ng-template> 
   <div class="row">
     <div class="col-md-4">
-  <div class="col-12 md:col-4">
-    <label >EmployeeID<span class="required">*</span></label>
-    <input type="text" pInputText class="p-inputtext-normal h-2rem"  > 
-    <br>
-    <br>
+      <div class="col-12 md:col-4">
+        <label>EmployeeID<span class="required">*</span></label>
+        <input type="text" pInputText class="p-inputtext-normal h-2rem" />
+        <br />
+        <br />
 
-    <label >Email<span class="required">*</span></label >
-    <input type="text" class="p-inputtext-normal h-2rem"  pInputText >
-    <br>
-    <br>
+        <label>Email<span class="required">*</span></label>
+        <input type="text" class="p-inputtext-normal h-2rem" pInputText />
+        <br />
+        <br />
 
-    <label >DesignationID<span  class="required ">*</span></label>
-    <!-- <p-dropdown [options]="roles"  ></p-dropdown> -->
-     <p-dropdown   [options]="roles" placeholder="SelectRole" class="h-2rem"></p-dropdown>   
-    
-    <br>
-    <br>
+        <label>DesignationID<span class="required">*</span></label>
+        <!-- <p-dropdown [options]="roles"  ></p-dropdown> -->
+        <p-dropdown
+          [options]="roles"
+          placeholder="SelectRole"
+          class="h-2rem"
+          [(ngModel)]="selectedValue"
+          optionLabel="name"
+        ></p-dropdown>
 
-    <p-checkbox name="group1" value="IsActive" inputId="any"></p-checkbox>
-    <label for="any">IsActive<span class="required ">*</span></label>
+        <br />
+        <br />
 
-</div>
-</div>
-<div class="col-md-4">
-<div class="col-12 md:col-4">
-  <label >FirstName<span class="required">*</span></label>
-  <input type="text" pInputText class="p-inputtext-normal h-2rem"  > 
-  <br>
-  <br>
+        <p-checkbox name="group1" value="IsActive" inputId="any"></p-checkbox>
+        <label for="any">IsActive<span class="required">*</span></label>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-12 md:col-4">
+        <label>FirstName<span class="required">*</span></label>
+        <input type="text" pInputText class="p-inputtext-normal h-2rem" />
+        <br />
+        <br />
 
-  <label>PanNumber<span class="required">*</span></label>
-  <input type="text" class="required" class="p-inputtext-normal h-2rem"  pInputText >
-  <br>
-  <br>
+        <label>PanNumber<span class="required">*</span></label>
+        <input
+          type="text"
+          class="required"
+          class="p-inputtext-normal h-2rem"
+          pInputText
+        />
+        <br />
+        <br />
 
-  <label>ShiftId<span class="required">*</span></label>
-  <p-dropdown  [options]="shifts"></p-dropdown>
+        <label>ShiftId<span class="required">*</span></label>
+        <p-dropdown
+          [options]="shifts"
+          placeholder="SelectShift"
+          class="h-2rem"
+          [(ngModel)]="selectedShift"
+          optionLabel="shiftName"
+        ></p-dropdown>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-12 md:col-4">
+        <label>LastName<span class="required">*</span></label>
+        <input type="text" class="p-inputtext-normal h-2rem" pInputText />
+        <br />
+        <br />
+
+        <label>Password<span class="required">*</span></label>
+        <input
+          type="text"
+          class="p-inputtext-normal h-2rem"
+          required
+          pInputText
+        />
+        <br />
+        <br />
+
+        <label>DOJ<span class="required">*</span></label>
+        <input type="text" class="p-inputtext-normal h-2rem" pInputText />
+      </div>
+    </div>
   </div>
-</div>
-<div class="col-md-4">
-<div class="col-12 md:col-4">
-  <label>LastName<span class="required">*</span></label>
-  <input type="text"  class="p-inputtext-normal h-2rem"  pInputText > 
-  <br>
-  <br>
-
-  <label >Password<span class="required">*</span></label>
-  <input type="text"  class="p-inputtext-normal h-2rem" required pInputText >
-  <br>
-  <br>
-
-  <label>DOJ<span class="required">*</span></label>
-  <input type="text"  class="p-inputtext-normal h-2rem"  pInputText > 
-</div>
-</div>
-</div>
-
 </p-panel>

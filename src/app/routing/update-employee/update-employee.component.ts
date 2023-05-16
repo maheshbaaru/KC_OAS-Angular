@@ -9,13 +9,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./update-employee.component.css']
 })
 export class UpdateEmployeeComponent {
-  shifts: Shifts[] |any;
-  roles: Roles[] | any;
-  constructor(private _service: EmployeeService,private active:ActivatedRoute) {
+  selectedValue: any;
+  selectedShift: any;
+  shifts: any;
+  roles: any;
+  constructor(private _service: EmployeeService, private active: ActivatedRoute) {
 
   }
   ngOnInit() {
-    let id=this.active.snapshot.params['id'];   
+    let id = this.active.snapshot.params['id'];
     //   this.Shifts=["selectShift","FirstShift","SecondShift"];
     //   this.roles=[ "Accountant",
     //   "InVoiceSpecialist",
@@ -34,23 +36,23 @@ export class UpdateEmployeeComponent {
     //    "Sr.QA"
     //   ];
     // }
+    this._service.getDesignationRoles().subscribe(data => {
+      this.roles = data;
 
-// this._service.getShifts().subscribe(data=>{
-//    this.shifts=JSON.stringify(data);
-//    console.log(this.shifts);
+      console.log(this.roles);
+    })
 
-
-  //})
-
-
-
-
+    this._service.getShifts().subscribe(data => {
+      this.shifts = data;
+      console.log(this.shifts);
+    })
 
 
 
 
   }
-  
+
+
 
 
 

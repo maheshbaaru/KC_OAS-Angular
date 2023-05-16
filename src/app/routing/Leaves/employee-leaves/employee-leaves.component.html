@@ -5,7 +5,7 @@
         </div>
         <div class="col-sm-6" style="text-align:right">
           <p-toast position="top-center" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
-            <button pButton class="h-1rem p-button-success" style="float: right;margin-right:5px; font-size: smaller;" type="submit" (click)="saveEmpLeaves()" [disabled]="empForm.invalid"><i
+            <button pButton class="h-1rem" style="float: right;margin-right:5px; font-size: smaller;" type="submit" (click)="saveEmpLeaves()"><i
                     class="pi pi-check icon"></i>SUBMIT</button>
         </div>
     </ng-template>
@@ -16,55 +16,52 @@
                     <span class="required">*</span>
                 </label>
                 <p-dropdown [options]="employeeName" placeholder="Select Employee" optionLabel="Name" [showClear]="true"
-                    formControlName="name" name="name"></p-dropdown>
+                    formControlName="name"></p-dropdown>
             </div>
             <div class="cont2 ">
                 <label for="designation-input" class="input-styling" required>Leave Type
                     <span class="required">*</span>
                 </label>
-                <p-dropdown [options]="leaveTypes" optionLabel="name" placeholder="Select Leave Type"  [showClear]="true"
-                    formControlName="leaveType" name="leaveType"></p-dropdown>
+                <p-dropdown [options]="leaveTypes" optionLabel="name" placeholder="Select Leave Type" optionLabel="name" [showClear]="true"
+                    formControlName="leaveType"></p-dropdown>
             </div>
             <div class="cont2">
                 <label for="designation-input" class="input-styling" required>Year
                 </label>
                 <p-calendar [showIcon]="true" view="year" dateFormat="yy" id="designation-input" inputId="yearpicker" placeholder="YYYY"
-                    formControlName="year" name="year"></p-calendar>
+                    formControlName="year"></p-calendar>
             </div>
             <div class="cont2">
                 <label for="designation-input" class="input-styling" required>No. of Leaves
                 </label>
                 <input id="designation-input" type="input" placeholder="Number of leaves" pInputText
-                   name="noOfLeaves" (change)="onChange()"formControlName="noOfLeaves" name="noOfLeaves"/>
-            </div>
-            <div *ngIf="empForm.invalid && (empForm.dirty || empForm.touched)"
-            class="alert ">
+                    formControlName="noOfLeaves" />
             </div>
         </form>
     </div>
-    <p-table #dt [value]="employeeLeavs" dataKey="id" styleClass="p-datatable-customers" [tableStyle]="{'min-height': '20rem'}" [rowHover]="true" [rows]="10"
+    <p-table #dt [value]="employeeLeavs" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10"
         [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
         styleClass="p-datatable-gridlines"
-        [globalFilterFields]="['empId','empName','numOfLeaves']">
+        [globalFilterFields]="['sample.EmployeeId','Name','Salary','LastRevisedDate','NextRevisedDate']">
         <ng-template pTemplate="header">
             <tr>
                 <th>
                     <div class="p-d-flex p-jc-between p-ai-center">
                         Employee ID
-                        <p-columnFilter type="text" field="empId" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="p-d-flex p-jc-between p-ai-center">
                         Employee name
-                        <p-columnFilter type="text" field="empName" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="p-d-flex p-jc-between p-ai-center">
                         Num of Leaves
-                        <p-columnFilter type="text" field="numOfLeaves" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
                     </div>
                 </th>
             </tr>
