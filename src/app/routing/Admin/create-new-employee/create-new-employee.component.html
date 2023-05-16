@@ -24,7 +24,7 @@
       </button>
     </div>
   </ng-template>
-  <form [formGroup]="empForm">
+  <form [formGroup]="empForm" >
     <div class="row">
       <div class="col-md-4">
         <div class="col-12 md:col-4">
@@ -63,6 +63,7 @@
           >
           <p-dropdown
             [options]="roles"
+            name="designationName"
             formControlName="designationName"
             optionLabel="name"
             placeholder="Select Role"
@@ -74,7 +75,7 @@
           <p-checkbox
             name="group1"
             formControlName="isActive"
-            value="IsActive"
+            checked="isActive"
             inputId="any"
           ></p-checkbox>
           <label for="any">IsActive<span class="required">*</span></label>
@@ -115,6 +116,7 @@
 
           <p-dropdown
             [options]="Shifts"
+            name="shiftName"
             optionLabel="shiftName"
             formControlName="shiftName"
             placeholder="Select Shift"

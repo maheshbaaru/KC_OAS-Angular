@@ -38,17 +38,17 @@ export class CreateNewEmployeeComponent {
 
   ngOnInit() {
     this.empForm = this.fb.group({
-      employeeID: [''],
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      panNumber: [''],
-      designationName: [''],
-      shiftName: [''],
-      isActive: [''],
-      doj: [''],
-      // designationID: [''],
-      Password: [''],
+      // employeeID: [''],
+      // firstName: [''],
+      // lastName: [''],
+      // email: [''],
+      // panNumber: [''],
+      // designationName: [''],
+      // shiftName: [''],
+      // isActive: [''],
+      // doj: [''],
+      // // designationID: [''],
+      // Password: [''],
       // employeeID: '',
       // firstName: '',
       // lastName: '',
@@ -58,40 +58,52 @@ export class CreateNewEmployeeComponent {
       // shiftName: '',
       // isActive: '',
       // doj: '',
-      // designationID: '',
       // Password: '',
+      employeeID: [''],
+      firstName: [''],
+      lastName: [''],
+      email: [''],
+      panNumber: [''],
+      designationName: [''],
+      shiftName: [''],
+      isActive: [''],
+      doj: [''],
+      Password: [''],
     });
 
     this.empServ.getShifts().subscribe((res) => {
       this.Shifts = res;
-      console.log(this.Shifts);
+      //console.log(this.Shifts);
     });
     this.empServ.getDesignationRoles().subscribe((res) => {
       this.roles = res;
     });
-    console.log(this.roles);
+    // console.log(this.roles);
   }
 
-  ngAfterViewInit(data: any) {
-    // this.empServ.postEmp(data).subscribe((data: any) => {
-    //   this.roles = data;
-    // });
-    // this.empServ.getShifts().subscribe((res) => {
-    //   this.Shifts = res;
-    // });
-    // this.empServ.createEmployee()
+  //ngAfterViewInit(data: any) {
+  // this.empServ.postEmp(data).subscribe((data: any) => {
+  //   this.roles = data;
+  // });
+  // this.empServ.getShifts().subscribe((res) => {
+  //   this.Shifts = res;
+  // });
+  // this.empServ.createEmployee()
 
 
 
 
 
-  }
+  // }
   save() {
-    console.log(this.empForm.value);
     debugger;
-    let data = JSON.stringify(this.empForm.value);
+    console.log(this.empForm);
+    console.log(this.empForm.value);
+
+    // let data = JSON.stringify(this.empForm.value);
     //this.empServ.postEmp(data);
-    this.empServ.createEmployee(this.empForm.value.firstName,
+    this.empServ.createEmployee(
+      this.empForm.value.firstName,
       this.empForm.value.lastName,
       this.empForm.value.email,
       this.empForm.value.password,

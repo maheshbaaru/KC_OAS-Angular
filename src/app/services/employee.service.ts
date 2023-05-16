@@ -124,14 +124,17 @@ export class EmployeeService {
     panNumber: string,
     shiftId: number,
     doj: Date,
-    designationID: number
+    id: number
 
   ): Observable<any[]> {
     debugger;
-  return this.http.post<any>(
-  `${this.API_CALL}/AddEmployee?FirstName=${firstName}&LastName=${lastName}&Email=${email}&Password=${password}&IsActive=${isActive}&EmployeeId=${EmployeeId}&PanNumber=${panNumber}&ShiftId=${shiftId}&Doj=${doj}&DesignationId=${designationID}`,
-  this.httpOptions
-  );
+    return this.http.post<any>(
+      // `${this.API_CALL}/AddEmployee?FirstName=${firstName}&LastName=${lastName}&Email=${email}&Password=${password}&IsActive=${isActive}&EmployeeId=${EmployeeId}&PanNumber=${panNumber}&ShiftId=${shiftId}&Doj=${doj}&DesignationId=${designationID}`,
+
+
+      `https://localhost:7236/AddEmployee?firstName=${firstName}&lastName=${lastName}&email=${email}&password=${password}&isActive=${isActive}&EmployeeId=${EmployeeId}&panNumber=${panNumber}&shiftId=${shiftId}&doj=${doj}&id=${id}`,
+      this.httpOptions
+    );
   }
 
   // createEmployee(obj: any) {
