@@ -9,20 +9,67 @@
 
       <form [formGroup]="empForm" class=" form-styles cont  ">
 
+        <!-- empId Filter -->
           <div class="cont2 ">
               <label for="designation-input" class="input-styling" required>EmpID
                   <span class="required">*</span>
               </label>
-              <p-dropdown [options]="names" placeholder="Select Employee" optionLabel="name" [showClear]="true"
-                  formControlName="name"></p-dropdown>
+              <p-dropdown
+                 [options]="employeeName" 
+                 placeholder="Select Employee" 
+                 optionLabel="Name" 
+                 [showClear]="true"
+                  formControlName="name"
+                  (onChange)="dt1.filter($event.value, employeeName.Name, 'equals')"
+                  >
+                </p-dropdown>
+
+
+                <!-- <p-columnFilter field="Name" matchMode="equals" display="menu"   [showOperator]="false" [showMatchModes]="false"> 
+                  <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                      <p-dropdown [ngModel]="value" [options]="employeeName"  placeholder="Any">
+                          <ng-template let-option pTemplate="item">
+                              {{option.Name}}
+                          </ng-template>
+                      </p-dropdown>
+                  </ng-template>
+              </p-columnFilter> -->
+
+              <!-- <p-columnFilter field="Name" matchMode="equals" [showMenu]="true">
+              <ng-template
+                pTemplate="filter"
+                let-value
+                let-filter="filterCallback"
+              >
+                <p-dropdown
+                [ngModel]="value"
+                 [options]="employeeName" 
+                 (onChange)="filter($event.value)"
+                 placeholder="Select Employee" 
+                 [showClear]="true"
+                 optionLabel="Name" 
+                  >
+                  <ng-template let-option pTemplate="item">
+                    <p-tag [value]="option.Name"></p-tag>
+                </ng-template>
+                </p-dropdown>
+              </ng-template>
+            </p-columnFilter> -->
+
+            
           </div>
+
+          <!-- Status Id Filter -->
           <div class="cont2 ">
               <label for="designation-input" class="input-styling" required>Status ID
 
               </label>
-              <p-dropdown [options]="statusTypes" placeholder="Select Status Type" optionLabel="name"
-                  [showClear]="true" formControlName="name"></p-dropdown>
+              <p-dropdown 
+              [options]="statusTypes" 
+              placeholder="Select Status Type" optionLabel="name"
+              [showClear]="true" formControlName="name"></p-dropdown>
           </div>
+
 
           <div class="cont2">
               <label for="designation-input" class="input-styling" required>From Date
@@ -40,7 +87,15 @@
 
 </div>
 
-  <p-table #dt1 [value]="leavesApproved" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['Name','EmpId','LeaveType','NoDays','FDate','Tdate','AppliedOn','status']" responsiveLayout="scroll">
+  <p-table 
+        #dt1 [value]="leavesApproved" 
+        styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" 
+        [tableStyle]="{'min-height': '20rem'}" [paginator]="true" 
+        [rows]="10" [showCurrentPageReport]="true"  
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
+        [rowsPerPageOptions]="[10,25,50]" 
+        [globalFilterFields]="['EmpId','Name','LeaveType','NoDays','FDate','Tdate','AppliedOn','status']" 
+        responsiveLayout="scroll">
 
 
 

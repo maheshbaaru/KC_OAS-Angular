@@ -41,46 +41,95 @@
     
     </form>
   </div> -->
-  
 
-
-
-
-
-
-
-  <p-panel  >
-    <ng-template pTemplate="header" >
-      <div  class="col -md-6" style="text-align:left">
+<p-panel>
+  <ng-template pTemplate="header">
+    <div class="col -md-6" style="text-align: left">
       <strong>CREATE BANK DETAILS</strong>
     </div>
-        <div class="col-sm-6" style="text-align:right">
-          <button pButton class="h-1rem" style="float: right; font-size: smaller;margin-right:10px;" routerLink="../bankDetails"><i class="pi pi-arrow-left icon"></i>BACK</button>
-          <button pButton class="h-1rem p-button-success" style="float: right;margin-right:5px; font-size: smaller;"  type="submit"  (click)="savingForm()" form="myForm" ><i class="pi pi-check icon"></i>SAVE</button>
+    <div class="col-sm-6" style="text-align: right">
+      <button
+        pButton
+        class="h-1rem"
+        style="float: right; font-size: smaller; margin-right: 10px"
+        routerLink="../bankDetails"
+      >
+        <i class="pi pi-arrow-left icon"></i>BACK
+      </button>
+      <button
+        pButton
+        class="h-1rem p-button-success"
+        style="float: right; margin-right: 5px; font-size: smaller"
+        type="submit"
+        (click)="savingForm()"
+        form="myForm"
+      >
+        <i class="pi pi-check icon"></i>SAVE
+      </button>
     </div>
-    </ng-template> 
-    <div class="row">   
-      <form  id="myForm" #myForm="ngForm" class=" form-styles cont  " (submit)="savingForm()">
-        <div class="cont2 ">
-         <label for="designation-input" class="input-styling" required >EmpID
-             <span class="required">*</span>
-          </label>
-          <p-dropdown [options]="employeess" placeholder="Select Employee" optionLabel="firstName"
-          [showClear]="true"  formControlName="name" ></p-dropdown>
-        </div>
-        <div  class="cont2">
-            <label for="accno" class="input-styling">Acc No<span class="required">*</span></label>
-            <input type="text" pInputText id="accno" class="h-2rem" placeholder="Enter Account Number" name="ACCNO" [(ngModel)]="employeDetails.ACCNO"/>
-        </div>
-        <div  class="cont2">
-            <label for="accname" class="input-styling">Acc Name<span class="required">*</span></label>
-            <input type="text" id="accname" pInputText class="h-2rem" placeholder="Enter Holder Name" name="ACCNO" />
-        </div>
-        <div  class="cont2">
-          <label for="bankname" class="input-styling">Bank Name<span class="required">*</span></label>
-          <input type="text" pInputText id="bankname" class="h-2rem disabledButton" disabled value="Kotak Bank" name="BankName" />
-        </div>
-      </form>
+  </ng-template>
+  <div class="row">
+    <form
+      id="myForm"
+      #myForm="ngForm"
+      class="form-styles cont"
+      (submit)="savingForm()"
+    >
+      <div class="cont2">
+        <label for="designation-input" class="input-styling" required
+          >EmpID
+          <span class="required">*</span>
+        </label>
+        <p-dropdown
+          [options]="employeess"
+          placeholder="Select Employee"
+          optionLabel="firstName"
+          [showClear]="true"
+          formControlName="name"
+        ></p-dropdown>
+      </div>
+      <div class="cont2">
+        <label for="accno" class="input-styling"
+          >Acc No<span class="required">*</span></label
+        >
+        <input
+          type="text"
+          pInputText
+          id="accno"
+          class="h-2rem"
+          placeholder="Enter Account Number"
+          name="ACCNO"
+          formControlName="ACCNO"
+        />
+      </div>
+      <div class="cont2">
+        <label for="accname" class="input-styling"
+          >Acc Name<span class="required">*</span></label
+        >
+        <input
+          type="text"
+          id="accname"
+          pInputText
+          class="h-2rem"
+          placeholder="Enter Holder Name"
+          name="ACCNO"
+          formControlName="ACCNAME"
+        />
+      </div>
+      <div class="cont2">
+        <label for="bankname" class="input-styling"
+          >Bank Name<span class="required">*</span></label
+        >
+        <input
+          type="text"
+          pInputText
+          id="bankname"
+          class="h-2rem disabledButton"
+          disabled
+          value="Kotak Bank"
+          name="BankName"
+        />
+      </div>
+    </form>
   </div>
-  </p-panel>
-  
+</p-panel>

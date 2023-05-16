@@ -26,16 +26,16 @@ export class EmployeeService {
   getEmp() {
     return this.http.get(`${this.API_CALL}/SalaryDeductions`);
   }
-  //postEmp(data: any) {
-  // debugger;
-  // return this.http.post(`https://localhost:7236/AddEmployee`, data);
-  // return this.http
-  //   .post(`${this.API_CALL}/createEmployee`, data)
-  //  .subscribe((result) => {
-  //const resultData = Object.values(result);
-  // console.log(result);
-  // });
-  // }
+  postEmp(data: any) {
+    debugger;
+    // return this.http.post(`https://localhost:7236/AddEmployee`, data);
+    return this.http
+      .post(`${this.API_CALL}/createEmployee`, data)
+      .subscribe((result) => {
+        //const resultData = Object.values(result);
+        console.log(result);
+      });
+  }
   getUsers() {
     return this.http.get(`${this.API_CALL}/GetEmployeeTbls`);
   }
@@ -93,7 +93,7 @@ export class EmployeeService {
   getShifts(): Observable<any[]> {
     return new Observable((observer) => {
       this.http
-        .get(`https://localhost:7236/GetTblShifts`)
+        .get(`https://localhost:7236/TblShiftControllerAPI`)
         .subscribe((data) => {
           const res = Object.values(data);
           observer.next(res);
@@ -101,11 +101,22 @@ export class EmployeeService {
         });
     });
   }
-
   getDesignationRoles(): Observable<any[]> {
     return new Observable((observer) => {
       this.http
         .get(`https://localhost:7236/GetDesignations`)
+        .subscribe((result) => {
+          const resultData = Object.values(result);
+          observer.next(resultData);
+          observer.complete();
+        });
+    });
+  }
+
+  getAllEmployees(): Observable<any[]> {
+    return new Observable((observer) => {
+      this.http
+        .get("https://localhost:7236/GetEmployeeTbls")
         .subscribe((result) => {
           const resultData = Object.values(result);
 
@@ -114,28 +125,14 @@ export class EmployeeService {
         });
     });
   }
-  createEmployee(
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string,
-    isActive: boolean,
-    EmployeeId: number,
-    panNumber: string,
-    shiftId: number,
-    doj: Date,
-    id: number
 
-  ): Observable<any[]> {
-    debugger;
+  createEmployee(obj: any): Observable<any[]> {
+    const { Id, FirstName, LastName, Email, Password, IsActive, EmployeeId, PanNumber, ShiftId, Doj } = obj;
     return this.http.post<any>(
-      // `${this.API_CALL}/AddEmployee?FirstName=${firstName}&LastName=${lastName}&Email=${email}&Password=${password}&IsActive=${isActive}&EmployeeId=${EmployeeId}&PanNumber=${panNumber}&ShiftId=${shiftId}&Doj=${doj}&DesignationId=${designationID}`,
+      `${this.API_CALL}/AddEmployee?FirstName=${FirstName}&LastName=${LastName}&email=${Email}&password=${Password}&isActive=${IsActive}&EmployeeId=${EmployeeId}&//panNumber=${PanNumber}&shiftId=${ShiftId}&doj=${Doj}&id=${Id}`, this.httpOptions);
 
-
-      `https://localhost:7236/AddEmployee?firstName=${firstName}&lastName=${lastName}&email=${email}&password=${password}&isActive=${isActive}&EmployeeId=${EmployeeId}&panNumber=${panNumber}&shiftId=${shiftId}&doj=${doj}&id=${id}`,
-      this.httpOptions
-    );
   }
+}
 
   // createEmployee(obj: any) {
   //   debugger
@@ -147,4 +144,4 @@ export class EmployeeService {
   //     });
   // }
 
-}
+

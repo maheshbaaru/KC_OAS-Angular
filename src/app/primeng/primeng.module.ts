@@ -24,6 +24,7 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { ConfirmationService } from 'primeng/api';
 import { DividerModule } from 'primeng/divider';
 import { ToastModule } from 'primeng/toast';
+import { TagModule } from 'primeng/tag';
 
 const primeNg: any = [
   CheckboxModule,
@@ -51,6 +52,7 @@ const primeNg: any = [
   PanelModule,
   DropdownModule,
   CalendarModule,
+  TagModule
 ];
 
 @NgModule({

@@ -38,7 +38,7 @@ export class CreateNewEmployeeComponent {
 
   ngOnInit() {
     this.empForm = this.fb.group({
-      
+
       employeeID: [''],
       firstName: [''],
       lastName: [''],
@@ -46,7 +46,7 @@ export class CreateNewEmployeeComponent {
       panNumber: [''],
       designationName: [''],
       shiftName: [''],
-      isActive: [''],
+      isActive: new FormControl<string | null>(null),
       doj: [''],
       Password: [''],
       // employeeID: '',
@@ -61,7 +61,6 @@ export class CreateNewEmployeeComponent {
       // designationID: '',
       // Password: '',
     });
-
     this.empServ.getShifts().subscribe((res) => {
       this.Shifts = res;
     });
@@ -69,32 +68,27 @@ export class CreateNewEmployeeComponent {
       this.roles = res;
     });
   }
-
-  
-
-
-
-
-  
   save() {
     debugger;
-    console.log(this.empForm);
     console.log(this.empForm.value);
+    let obj = {
+      Id: this.empForm.value.employeeID,
+      FirstName: this.empForm.value.firstName,
+      LastName: this.empForm.value.lastName,
+      Email: this.empForm.value.email,
+      Password: this.empForm.value.Password,
+      IsActive: this.empForm.value.isActive,
+      EmployeeId: this.empForm.value.employeeID,
+      PanNumber: this.empForm.value.panNumber,
+      ShiftId: this.empForm.value.shiftName.shiftId,
+      Doj: this.empForm.value.doj
+    }
+    console.log(obj)
     // let data = JSON.stringify(this.empForm.value);
     //this.empServ.postEmp(data);
-    this.empServ.createEmployee(
-      this.empForm.value.firstName,
-      this.empForm.value.lastName,
-      this.empForm.value.email,
-      this.empForm.value.password,
-      this.empForm.value.isActive,
-      this.empForm.value.EmployeeId,
-      this.empForm.value.panNumber,
-      this.empForm.value.shiftName.shiftId,
-      this.empForm.value.doj,
-      this.empForm.value.designationName.id
-
-    );
+    this.empServ.createEmployee(obj).subscribe((d) => {
+      console.log(d);
+    });
   }
   onchange() {
     console.log(this.empForm.invalid, this.empForm.status);
