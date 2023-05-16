@@ -51,11 +51,6 @@ export class LoginComponent {
     this.rememberMe = false;
   }
 
-
-  
-
- 
-
   onSubmit() {
 
     this.password = 'password'

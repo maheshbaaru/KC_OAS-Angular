@@ -20,8 +20,10 @@
     <p-table 
         #dt [value]="employees" [(selection)]="selectedCustomers" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
-        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [filterDelay]="0" styleClass="p-datatable-gridlines" [globalFilterFields]="['empId','accno','firstName','lastName','bankName']">
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [tableStyle]="{'min-height': '20rem'}"
+        [filterDelay]="0" styleClass="p-datatable-gridlines" 
+        [globalFilterFields]="['empId','accno','firstName','lastName','bankName']">
+
             <!-- <ng-template pTemplate="caption">
                 
             </ng-template> -->
@@ -32,8 +34,8 @@
                     <th >
                         <div class="p-d-flex p-jc-between p-ai-center th-div">
                             Emp ID
-                             <p-columnFilter type="text" field="employee.name" display="menu">
-                             </p-columnFilter> 
+                             <p-columnFilter type="text" field="empId" display="menu">
+                             </p-columnFilter>
                         </div>
                         
                     </th>
@@ -41,7 +43,7 @@
                     <th >
                         <div class="p-d-flex p-jc-between p-ai-center th-div">
                             Account No
-                            <p-columnFilter type="text" field="employee.name" display="menu">
+                            <p-columnFilter type="text" field="accno" display="menu">
                             </p-columnFilter> 
                        </div>
                     </th>
@@ -49,7 +51,7 @@
                     <th >
                         <div class="p-d-flex p-jc-between p-ai-center th-div">
                             Account Holder Name 
-                            <p-columnFilter type="text" field="employee.name" display="menu">
+                            <p-columnFilter type="text" field="firstName" display="menu">
                             </p-columnFilter> 
                        </div>
                     </th>
@@ -57,7 +59,7 @@
                     <th >
                         <div class="p-d-flex p-jc-between p-ai-center th-div">
                             Bank Name 
-                            <p-columnFilter type="text" field="country.name" display="menu" class="filter-container">
+                            <p-columnFilter type="text" field="bankName" display="menu" class="filter-container">
                             </p-columnFilter> 
                        </div>
                     </th>
