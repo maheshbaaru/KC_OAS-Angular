@@ -21,13 +21,14 @@ export interface Roles {
   styleUrls: ['./create-new-employee.component.css'],
 })
 export class CreateNewEmployeeComponent {
-  //roles: any;
-  roles: Roles[];
-  selectedrole: any;
-  Shifts: Shifts[];
-  //Shifts: any;
+  roles: any;
+  //roles: Roles[];
+
+  //Shifts: Shifts[];
+  Shifts: any;
   save_button: Boolean = false;
   empForm: FormGroup;
+
 
   constructor(
     private empServ: EmployeeService,
@@ -37,28 +38,28 @@ export class CreateNewEmployeeComponent {
 
   ngOnInit() {
     this.empForm = this.fb.group({
-      // employeeID: [''],
-      // firstName: [''],
-      // lastName: [''],
-      // email: [''],
-      // panNumber: [''],
-      // designationName: [''],
-      // shiftName: [''],
-      // isActive: [''],
-      // doj: [''],
+      employeeID: [''],
+      firstName: [''],
+      lastName: [''],
+      email: [''],
+      panNumber: [''],
+      designationName: [''],
+      shiftName: [''],
+      isActive: [''],
+      doj: [''],
       // designationID: [''],
-      // Password: [''],
-      employeeID: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      panNumber: '',
-      designationName: '',
-      shiftName: '',
-      isActive: '',
-      doj: '',
-      designationID: '',
-      Password: '',
+      Password: [''],
+      // employeeID: '',
+      // firstName: '',
+      // lastName: '',
+      // email: '',
+      // panNumber: '',
+      // designationName: '',
+      // shiftName: '',
+      // isActive: '',
+      // doj: '',
+      // designationID: '',
+      // Password: '',
     });
 
     this.empServ.getShifts().subscribe((res) => {
@@ -90,8 +91,19 @@ export class CreateNewEmployeeComponent {
     debugger;
     let data = JSON.stringify(this.empForm.value);
     //this.empServ.postEmp(data);
-    //this.empServ.createEmployee(data.FirstName);
-    this.empServ.createEmployee(data);
+    this.empServ.createEmployee(this.empForm.value.firstName,
+      this.empForm.value.lastName,
+      this.empForm.value.email,
+      this.empForm.value.password,
+      this.empForm.value.isActive,
+      this.empForm.value.EmployeeId,
+      this.empForm.value.panNumber,
+      this.empForm.value.shiftName.shiftId,
+      this.empForm.value.doj,
+      this.empForm.value.designationName.id
+
+    );
+    // this.empServ.createEmployee(data);
   }
   onchange() {
     console.log(this.empForm.invalid, this.empForm.status);
