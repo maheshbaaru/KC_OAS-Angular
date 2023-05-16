@@ -90,6 +90,7 @@ b, strong {
 .p-panel .p-panel-header .p-panel-title {
     font-weight: 700;
     color: aliceblue;
+   
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -98,4 +99,8 @@ th{
 }
 td{
     font-size: small;
+}
+.p-panel .p-panel-header {
+    background-color: rgb(121, 121, 128) !important;
+    padding: 0.1rem !important;
 }
