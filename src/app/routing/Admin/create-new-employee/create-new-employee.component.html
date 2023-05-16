@@ -24,149 +24,10 @@
       </button>
     </div>
   </ng-template>
-  <!-- <form [formGroup]="empForm">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="col-12 md:col-4">
-          <h3>EmployeeID<span class="required">*</span></h3>
-          <input
-            (change)="onchange()"
-            type="text"
-            formControlName="employeeID"
-            pInputText
-            class="p-inputtext-normal h-2rem"
-            placeholder="Enter Employee ID"
-            required
-          />
-          <br />
-          <br />
-
-          <h3>Email<span class="required">*</span></h3>
-          <input
-            type="text"
-            (change)="onchange()"
-            formControlName="email"
-            class="p-inputtext-normal h-2rem"
-            required
-            pInputText
-            placeholder="Enter Email"
-          />
-          <br />
-          <br />
-
-          <h3>DesignationID<span class="required">*</span></h3>
-
-          <p-dropdown
-            [options]="roles"
-            formControlName="designationName"
-            optionLabel="name"
-            placeholder="Select Role"
-          ></p-dropdown> -->
-
-  <!-- </p-dropdown> -->
-  <!-- <p-dropdown [options]="roles" [(ngModel)]="selectedrole"  placeholder="Select Role" [group]="true">
-      <ng-template let-group pTemplate="group">
-        <div class="p-d-flex p-ai-center">
-          <span>{{group.name}}</span>
-        </div>
-      </ng-template>
-    </p-dropdown> -->
-  <!-- <br />
-          <br />
-
-          <p-checkbox
-            name="group1"
-            formControlName="isActive"
-            value="IsActive"
-            inputId="any"
-          ></p-checkbox>
-          <label for="any">IsActive<span class="required">*</span></label>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="col-12 md:col-4">
-          <h3>FirstName<span class="required">*</span></h3>
-          <input
-            type="text"
-            pInputText
-            formControlName="firstName"
-            class="p-inputtext-normal h-2rem"
-            required
-            placeholder="Enter First Name"
-          />
-          <br />
-          <br />
-
-          <h3>PanNumber</h3>
-          <input
-            type="text"
-            formControlName="panNumber"
-            class="p-inputtext-normal h-2rem"
-            pInputText
-            placeholder="Enter PAN Number"
-          />
-          <br />
-          <br />
-
-          <h3>ShiftId<span class="required">*</span></h3>
-          <p-dropdown
-            [options]="Shifts"
-            optionLabel="shiftName"
-            formControlName="shiftName"
-            placeholder="Select Shift"
-          ></p-dropdown> -->
-  <!-- <p-dropdown [options]="Shifts"   placeholder="Select Shift"    [group]="true">
-    <ng-template let-group pTemplate="group">
-      <div class="p-d-flex p-ai-center">
-        <span>{{group.name}}</span>
-      </div>
-    </ng-template>
-  </p-dropdown> -->
-  <!-- </div>
-      </div>
-      <div class="col-md-4">
-        <div class="col-12 md:col-4">
-          <h3>LastName<span class="required">*</span></h3>
-          <input
-            type="text"
-            formControlName="lastName"
-            class="p-inputtext-normal h-2rem"
-            required
-            pInputText
-            placeholder="Enter Last Name"
-          />
-          <br />
-          <br />
-
-          <h3>Password<span class="required">*</span></h3>
-          <input
-            type="text"
-            formControlName="Password"
-            class="p-inputtext-normal h-2rem"
-            required
-            pInputText
-            placeholder="Enter Password"
-          />
-          <br />
-          <br /> -->
-
-  <!-- <h3 >DOJ<span class="required">*</span></h3>
-  <input type="text"  class="p-inputtext-normal h-2rem" formControlName="doj" pInputText placeholder="DD/MM/YYYY"> -->
-
-  <!-- <label for="dateofjoining-input" class="input-styling" required>DOJ
-            <span class="required">*</span> </label>
-          <p-calendar [showIcon]="true"  id="dateofjoining-input" placeholder="DD-MM-YYYY"
-            formControlName="doj" ></p-calendar>
-        </div>
-      </div>
-    </div>
-  </form> -->
-
   <form [formGroup]="empForm">
     <div class="row">
       <div class="col-md-4">
         <div class="col-12 md:col-4">
-          <!-- <h3>EmployeeID<span class="required">*</span></h3> -->
           <label for="employeeID" class="input-styling"
             >EmployeeID <span class="required">*</span></label
           >
@@ -182,7 +43,6 @@
           <br />
           <br />
 
-          <!-- <h3>Email<span class="required">*</span></h3> -->
           <label for="email" class="input-styling"
             >Email <span class="required">*</span></label
           >
@@ -198,7 +58,6 @@
           <br />
           <br />
 
-          <!-- <h3>DesignationID<span class="required">*</span></h3> -->
           <label for="designationName" class="input-styling"
             >DesignationID <span class="required">*</span></label
           >
@@ -223,7 +82,6 @@
       </div>
       <div class="col-md-4">
         <div class="col-12 md:col-4">
-          <!-- <h3>FirstName<span class="required">*</span></h3> -->
           <label for="firstName" class="input-styling"
             >FirstName <span class="required">*</span></label
           >
@@ -238,8 +96,6 @@
           <br />
           <br />
 
-          <!-- <h3>PanNumber</h3> -->
-
           <label for="panNumber" class="input-styling"
             >PanNumber <span class="required">*</span></label
           >
@@ -253,7 +109,6 @@
           <br />
           <br />
 
-          <!-- <h3>ShiftId<span class="required">*</span></h3> -->
           <label for="shiftName" class="input-styling"
             >ShiftId <span class="required">*</span></label
           >
@@ -268,7 +123,6 @@
       </div>
       <div class="col-md-4">
         <div class="col-12 md:col-4">
-          <!-- <h3>LastName<span class="required">*</span></h3> -->
           <label for="lastName" class="input-styling" required
             >LastName<span class="required">*</span>
           </label>
@@ -282,9 +136,6 @@
           />
           <br />
           <br />
-
-          <!-- <h3>Password<span class="required">*</span></h3> -->
-
           <label for="Password" class="input-styling" required
             >Password<span class="required">*</span>
           </label>
