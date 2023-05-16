@@ -81,17 +81,17 @@
       <form [formGroup]="form">
         <div class="formgrid grid">
           <div class="field col-4">
-            <label class="p-mb-3" for="taxTayes">TaxTypeId
+            <label  for="taxTayes">TaxTypeId
               <span class="text-red-500" required>*</span>
             </label>
-            <p-dropdown [options]="taxTaypes" placeholder="SELECT TAX TYPE" id="TaxTypeId" name="TaxTypeId"
+            <p-dropdown [options]="taxTaypes" placeholder="Select tax type" id="TaxTypeId" name="TaxTypeId"
            optionLabel="type" [showClear]="true" filterBy="type" [filter]="true"
               formControlName="TaxTypeId"></p-dropdown>
           </div>
 
           <div class="field col-4">
             <label for="name">EmpId
-              <span class="text-red-500" required>*</span>
+              <span class="required" required>*</span>
             </label>
             <p-dropdown [options]="users" placeholder="EmpId" [filter]="true" optionLabel="firstName" [showClear]="true"
               [filter]="true" filterBy="firstName" name="EmpId" formControlName="EmpId">
@@ -109,14 +109,14 @@
               <span class="text-red-500" required>*</span>
             </label>
             <p-inputNumber id="Amount" mode="currency" currency="INR" locale="en-US" autofocus 
-              name="Amount" formControlName="Amount"></p-inputNumber>
+              name="Amount" formControlName="Amount"  class="h-2rem"></p-inputNumber>
           </div>
 
           <div class="col-6 mr-5" style="width: 15rem">
-            <label for="LOPDAYS">No of LOP DAYS
+            <label for="LOPDAYS">No of LOP Days
               <span class="text-red-500" required>*</span>
             </label>
-            <input type="text" pInputText id="LOPDAYS" placeholder="NO OF LOP DAY'S" required autofocus name="LOPDAYS"
+            <input type="text" pInputText id="LOPDAYS" placeholder="No of LOP Days" required class="h-2rem" autofocus name="LOPDAYS"
               formControlName="LOPDAYS" />
           </div>
           <div class="col-6" style="width: 15rem">
@@ -124,7 +124,7 @@
               <span class="text-red-500" required>*</span>
             </label>
             <p-calendar [disabledDates]="invalidDates" [showIcon]="true" view="month" inputId="Month" dateFormat="mm.yy"
-              [required]="true" name="Month" formControlName="Month"></p-calendar>
+              [required]="true" name="Month" formControlName="Month" placeholder="MM-YYYY"></p-calendar>
           </div>
         </div>
         <div *ngIf="form.invalid && (form.dirty || form.touched)" class="alert"></div>

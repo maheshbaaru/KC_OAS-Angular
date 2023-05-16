@@ -1,4 +1,4 @@
-
+/* 
  
  .cbd-container{
     background-color:  rgb(121, 121, 128);
@@ -27,7 +27,7 @@
     align-items: center;
     width: 170px;
     display: flex;
-    /* margin-right: -6px; */
+    
 }
 .creat-button{
     display: flex;
@@ -85,9 +85,8 @@
     border-radius: 3px;
     padding: 8px 16px 8px 16px;
     max-width: 350px;
-    /* box-shadow: 1px 1px 1px 1px black inset; */
-    /* -webkit-tap-highlight-color: rgba(0,0,0,0); */
-}
+   
+} */
 .disabledButton{
    cursor: not-allowed;
    font-weight: 500;

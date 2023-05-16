@@ -25,7 +25,10 @@ export class LeavesService {
     return this.http.get(`${this.API_CALL}/LeavesApproval`);
   }
 
-  applyleave() {
+  applyleave( LeaveTypeId:number,FromDate:string,ToDate:string,StatusId:number,Comments:string) {
+    let data: any = window.sessionStorage.getItem('auth-user');
+    let userdata = JSON.parse(data);
+    return this.http.post(`${this.API_CALL}/ApplyLeave?EmpId=${userdata.empId}&LeaveTypeId=${LeaveTypeId}&FromDate=${FromDate}&ToDate=${ToDate}&Comments=${Comments}&StatusId=${StatusId}`,this.httpOptions)
     // return this.http.post(`https://localhost:7236/SubmitLeaves`);
   }
   employeeLeaves(
