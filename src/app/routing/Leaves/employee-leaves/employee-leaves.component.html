@@ -43,25 +43,25 @@
         [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
         styleClass="p-datatable-gridlines"
-        [globalFilterFields]="['sample.EmployeeId','Name','Salary','LastRevisedDate','NextRevisedDate']">
+        [globalFilterFields]="['empId','empName','numOfLeaves']">
         <ng-template pTemplate="header">
             <tr>
                 <th>
                     <div class="p-d-flex p-jc-between p-ai-center">
                         Employee ID
-                        <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="empId" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="p-d-flex p-jc-between p-ai-center">
                         Employee name
-                        <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="empName" display="menu"></p-columnFilter>
                     </div>
                 </th>
                 <th>
                     <div class="p-d-flex p-jc-between p-ai-center">
                         Num of Leaves
-                        <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                        <p-columnFilter type="text" field="numOfLeaves" display="menu"></p-columnFilter>
                     </div>
                 </th>
             </tr>
