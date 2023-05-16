@@ -26,16 +26,16 @@ export class EmployeeService {
   getEmp() {
     return this.http.get(`${this.API_CALL}/SalaryDeductions`);
   }
-  //postEmp(data: any) {
-  // debugger;
-  // return this.http.post(`https://localhost:7236/AddEmployee`, data);
-  // return this.http
-  //   .post(`${this.API_CALL}/createEmployee`, data)
-  //  .subscribe((result) => {
-  //const resultData = Object.values(result);
-  // console.log(result);
-  // });
-  // }
+  postEmp(data: any) {
+    debugger;
+    // return this.http.post(`https://localhost:7236/AddEmployee`, data);
+    return this.http
+      .post(`${this.API_CALL}/createEmployee`, data)
+      .subscribe((result) => {
+        //const resultData = Object.values(result);
+        console.log(result);
+      });
+  }
   getUsers() {
     return this.http.get(`${this.API_CALL}/GetEmployeeTbls`);
   }
@@ -93,7 +93,7 @@ export class EmployeeService {
   getShifts(): Observable<any[]> {
     return new Observable((observer) => {
       this.http
-        .get(`https://localhost:7236/GetTblShifts`)
+        .get(`https://localhost:7236/TblShiftControllerAPI`)
         .subscribe((data) => {
           const res = Object.values(data);
           observer.next(res);
@@ -101,7 +101,6 @@ export class EmployeeService {
         });
     });
   }
-
   getDesignationRoles(): Observable<any[]> {
     return new Observable((observer) => {
       this.http
@@ -114,13 +113,36 @@ export class EmployeeService {
         });
     });
   }
+
+  getAllEmployees(): Observable<any[]> {
+    return new Observable((observer) => {
+      this.http
+        .get("https://localhost:7236/GetEmployeeTbls")
+        .subscribe((result) => {
+          const resultData = Object.values(result);
+
+          observer.next(resultData);
+          observer.complete();
+        });
+    });
+  }
+
   createEmployee(obj: any): Observable<any[]> {
-    debugger;
     const { Id, FirstName, LastName, Email, Password, IsActive, EmployeeId, PanNumber, ShiftId, Doj } = obj;
     return this.http.post<any>(
-
-      `${this.API_CALL}/AddEmployee?FirstName=${FirstName}&LastName=${LastName}&email=${Email}&password=${Password}&isActive=${IsActive}&EmployeeId=${EmployeeId}&//panNumber=${PanNumber}&shiftId=${ShiftId}&doj=${Doj}&id=${Id}`,
-      this.httpOptions
-    );
+    `${this.API_CALL}/AddEmployee?FirstName=${FirstName}&LastName=${LastName}&email=${Email}&password=${Password}&isActive=${IsActive}&EmployeeId=${EmployeeId}&//panNumber=${PanNumber}&shiftId=${ShiftId}&doj=${Doj}&id=${Id}`,this.httpOptions);
+    
+     }
   }
-}
+
+  // createEmployee(obj: any) {
+  //   debugger
+  //   this.http.post('https://localhost:7236/AddEmployee', JSON.stringify(obj), this.httpOptions
+  //   )
+  //     .subscribe((result) => {
+  //       const resultData = Object.values(result);
+  //       console.log(resultData);
+  //     });
+  // }
+
+
