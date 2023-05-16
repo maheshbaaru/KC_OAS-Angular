@@ -26,16 +26,16 @@ export class EmployeeService {
   getEmp() {
     return this.http.get(`${this.API_CALL}/SalaryDeductions`);
   }
-  postEmp(data: any) {
-    debugger;
-    // return this.http.post(`https://localhost:7236/AddEmployee`, data);
-    return this.http
-      .post(`${this.API_CALL}/createEmployee`, data)
-      .subscribe((result) => {
-        //const resultData = Object.values(result);
-        console.log(result);
-      });
-  }
+  //postEmp(data: any) {
+  // debugger;
+  // return this.http.post(`https://localhost:7236/AddEmployee`, data);
+  // return this.http
+  //   .post(`${this.API_CALL}/createEmployee`, data)
+  //  .subscribe((result) => {
+  //const resultData = Object.values(result);
+  // console.log(result);
+  // });
+  // }
   getUsers() {
     return this.http.get(`${this.API_CALL}/GetEmployeeTbls`);
   }
@@ -93,7 +93,7 @@ export class EmployeeService {
   getShifts(): Observable<any[]> {
     return new Observable((observer) => {
       this.http
-        .get(`https://localhost:7236/TblShiftControllerAPI`)
+        .get(`https://localhost:7236/GetTblShifts`)
         .subscribe((data) => {
           const res = Object.values(data);
           observer.next(res);
@@ -101,6 +101,7 @@ export class EmployeeService {
         });
     });
   }
+
   getDesignationRoles(): Observable<any[]> {
     return new Observable((observer) => {
       this.http
@@ -113,20 +114,6 @@ export class EmployeeService {
         });
     });
   }
-
-  getAllEmployees(): Observable<any[]> {
-    return new Observable((observer) => {
-      this.http
-        .get("https://localhost:7236/GetEmployeeTbls")
-        .subscribe((result) => {
-          const resultData = Object.values(result);
-
-          observer.next(resultData);
-          observer.complete();
-        });
-    });
-  }
-
   createEmployee(
     firstName: string,
     lastName: string,
@@ -138,11 +125,23 @@ export class EmployeeService {
     shiftId: number,
     doj: Date,
     designationID: number
+
   ): Observable<any[]> {
-    return this.http.post<any>(
-      `${this.API_CALL}/AddEmployee?FirstName=${firstName}&LastName=${lastName}&Email=${email}&Password=${password}&IsActive=${isActive}&EmployeeId=${EmployeeId}&PanNumber=${panNumber}&ShiftId=${shiftId}&Doj=${doj}&DesignationId=${designationID}`,
-      this.httpOptions
-    );
+    debugger;
+  return this.http.post<any>(
+  `${this.API_CALL}/AddEmployee?FirstName=${firstName}&LastName=${lastName}&Email=${email}&Password=${password}&IsActive=${isActive}&EmployeeId=${EmployeeId}&PanNumber=${panNumber}&ShiftId=${shiftId}&Doj=${doj}&DesignationId=${designationID}`,
+  this.httpOptions
+  );
   }
+
+  // createEmployee(obj: any) {
+  //   debugger
+  //   this.http.post('https://localhost:7236/AddEmployee', JSON.stringify(obj), this.httpOptions
+  //   )
+  //     .subscribe((result) => {
+  //       const resultData = Object.values(result);
+  //       console.log(resultData);
+  //     });
+  // }
 
 }

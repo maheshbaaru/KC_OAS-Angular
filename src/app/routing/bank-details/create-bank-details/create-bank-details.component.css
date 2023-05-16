@@ -1,4 +1,4 @@
-
+/* 
  
  .cbd-container{
     background-color:  rgb(121, 121, 128);
@@ -18,8 +18,8 @@
 
 .cbd-title{
     margin-top: 16px;
-    font-size: 14px ;
-    font-weight: 400;
+    font-size: 16px ;
+    font-weight: 550;
     color: #ffffff;
 }
 .cbd-buttons-container{
@@ -27,7 +27,7 @@
     align-items: center;
     width: 170px;
     display: flex;
-    /* margin-right: -6px; */
+    
 }
 .creat-button{
     display: flex;
@@ -58,10 +58,6 @@
     flex-wrap: wrap;
     display: flex;
 }
-.emp-option{
-    font-weight: 400;
-    font-size: 14px;
-}
 .cbd-input-container{
     display: flex;
     flex-direction: column;
@@ -89,9 +85,8 @@
     border-radius: 3px;
     padding: 8px 16px 8px 16px;
     max-width: 350px;
-    /* box-shadow: 1px 1px 1px 1px black inset; */
-    /* -webkit-tap-highlight-color: rgba(0,0,0,0); */
-}
+   
+} */
 .disabledButton{
    cursor: not-allowed;
    font-weight: 500;

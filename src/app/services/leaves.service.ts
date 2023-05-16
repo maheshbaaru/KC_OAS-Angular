@@ -46,7 +46,4 @@ export class LeavesService {
   getEmployeeLeaves(): Observable<any[]> {
     return this.http.get<any>(`${this.API_CALL}/getEmployeesLeaves`);
   }
-
-
-
 }

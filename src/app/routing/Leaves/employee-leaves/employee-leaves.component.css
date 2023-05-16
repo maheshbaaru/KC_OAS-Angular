@@ -21,16 +21,12 @@ input{
   
 }
 .cont2{
-    display: flex;
-    flex-direction: column;
-    margin: 13px;
-    padding: 13px;
-    /* display:flex;
+    display:flex;
     flex-direction: column;
     margin:40px;
     margin-top:30px !important;
     margin-bottom: 30px !important;
-    padding-bottom: 40px; */
+    padding-bottom: 40px;
 }
 
 
