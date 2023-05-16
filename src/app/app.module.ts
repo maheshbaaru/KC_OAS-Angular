@@ -50,7 +50,7 @@ import { BankDetailsComponent } from './routing/bank-details/bank-details.compon
 import { CreateBankDetailsComponent } from './routing/bank-details/create-bank-details/create-bank-details.component';
 import { EditBankDetailsComponent } from './routing/edit-bank-details/edit-bank-details.component';
 import { EmployeService } from './services/employeBankService';
-import { CreateLeaveComponent } from './routing/create-leave/create-leave.component';
+import { CreateLeaveComponent } from './routing/Leaves/create-leave/create-leave.component';
 import { LeavesApprovalScreenComponent } from './routing/Leaves/leaves-approvel/leaves-approval-screen/leaves-approval-screen.component';
 
 @NgModule({
