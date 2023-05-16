@@ -25,7 +25,7 @@
     </div>
   </ng-template>
 
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-4">
       <div class="col-12 md:col-4">
         <label>EmployeeID<span class="required">*</span></label>
@@ -102,5 +102,101 @@
         <input type="text" class="p-inputtext-normal h-2rem" pInputText />
       </div>
     </div>
-  </div>
+  </div> -->
+
+  <form>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="col-12 md:col-4">
+          <label for="employeeID" class="input-styling"
+            >EmployeeID <span class="required">*</span></label
+          >
+          <input type="text" pInputText class="p-inputtext-normal h-2rem" />
+          <br />
+          <br />
+
+          <label for="email" class="input-styling"
+            >Email <span class="required">*</span></label
+          >
+          <input type="text" class="p-inputtext-normal h-2rem" pInputText />
+          <br />
+          <br />
+
+          <label for="designationName" class="input-styling"
+            >DesignationID <span class="required">*</span></label
+          >
+          <p-dropdown
+            [options]="roles"
+            name="designationName"
+            formControlName="designationName"
+            optionLabel="name"
+            placeholder="Select Role"
+          ></p-dropdown>
+
+          <br />
+          <br />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="col-12 md:col-4">
+          <label for="firstName" class="input-styling"
+            >FirstName <span class="required">*</span></label
+          >
+          <input type="text" pInputText class="p-inputtext-normal h-2rem" />
+          <br />
+          <br />
+
+          <label for="panNumber" class="input-styling"
+            >PanNumber <span class="required">*</span></label
+          >
+          <input
+            type="text"
+            class="required"
+            class="p-inputtext-normal h-2rem"
+            pInputText
+          />
+          <br />
+          <br />
+
+          <label for="shiftName" class="input-styling"
+            >ShiftId <span class="required">*</span></label
+          >
+
+          <p-dropdown
+            [options]="shifts"
+            name="shiftName"
+            optionLabel="shiftName"
+            formControlName="shiftName"
+            placeholder="Select Shift"
+          ></p-dropdown>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="col-12 md:col-4">
+          <label for="lastName" class="input-styling" required
+            >LastName<span class="required">*</span>
+          </label>
+          <input type="text" class="p-inputtext-normal h-2rem" pInputText />
+          <br />
+          <br />
+          <label for="Password" class="input-styling" required
+            >Password<span class="required">*</span>
+          </label>
+          <input
+            type="text"
+            class="p-inputtext-normal h-2rem"
+            required
+            pInputText
+          />
+          <br />
+          <br />
+
+          <label for="dateofjoining-input" class="input-styling" required
+            >DOJ <span class="required">*</span>
+          </label>
+          <input type="text" class="p-inputtext-normal h-2rem" pInputText />
+        </div>
+      </div>
+    </div>
+  </form>
 </p-panel>
