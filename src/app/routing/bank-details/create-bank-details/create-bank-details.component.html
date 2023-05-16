@@ -70,11 +70,11 @@
         </div>
         <div  class="cont2">
             <label for="accno" class="input-styling">Acc No<span class="required">*</span></label>
-            <input type="text" pInputText id="accno" class="h-2rem" placeholder="Enter Account Number" name="ACCNO" [(ngModel)]="employeDetails.ACCNO"/>
+            <input type="text" pInputText id="accno" class="h-2rem" placeholder="Enter Account Number" name="ACCNO" formControlName="ACCNO" />
         </div>
         <div  class="cont2">
             <label for="accname" class="input-styling">Acc Name<span class="required">*</span></label>
-            <input type="text" id="accname" pInputText class="h-2rem" placeholder="Enter Holder Name" name="ACCNO" />
+            <input type="text" id="accname" pInputText class="h-2rem" placeholder="Enter Holder Name" name="ACCNO" formControlName="ACCNAME" />
         </div>
         <div  class="cont2">
           <label for="bankname" class="input-styling">Bank Name<span class="required">*</span></label>
