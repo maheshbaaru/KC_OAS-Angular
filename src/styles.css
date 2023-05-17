@@ -116,9 +116,8 @@ td{
 
 
 .p-panel-content {
-    min-height: 30vh;
-  padding-top: 40px !important;
-  padding-bottom: 50px !important;
+    min-height: 20vh;
+ 
     border: 1px solid #dee2e6;
     background: #ffffff;
     color: #495057;
