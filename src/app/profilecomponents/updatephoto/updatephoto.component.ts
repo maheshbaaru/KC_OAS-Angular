@@ -1,5 +1,5 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Observable, Subscriber } from 'rxjs';
@@ -14,67 +14,71 @@ import { StorageService } from 'src/app/services/storage.service';
   providers: [MessageService],
 })
 export class UpdatephotoComponent {
-
-
-  myImage!:Observable<any>
-  base64code!:any
+  myImage!: Observable<any>;
+  base64code!: any;
   selectedFiles?: FileList;
-data:any 
-  imageInfos:any;
+  data: any;
+  imageInfos: any;
   currentFile?: File;
   progress = 0;
   message = '';
   preview = '';
   empdata: any;
+  image: string = '';
 
+  onChange = ($event: Event) => {
+    console.log($event);
 
-  onChange=($event:Event)=>{
-    debugger
-    const target=$event.target as HTMLInputElement;
-    const file:File=(target.files as FileList)[0];
-    console.log(file)
-    this.convertToBase64(file)
+    debugger;
+    const target = $event.target as HTMLInputElement;
+    const file = (target.files as FileList)[0];
+    console.log(file.name);
+    this.image = file.name;
+    this.profileServ.updatePhoto(this.image, 112).subscribe(res=>console.log(res));
+    this.convertToBase64(file);
+  };
+
+  convertToBase64(file: File) {
+    const observable = new Observable((subscriber: Subscriber<any>) => {
+      this.readFile(file, subscriber);
+    });
+    observable.subscribe((d) => {
+      console.log(d);
+    });
+  }
+  readFile(file: File, subscriber: Subscriber<any>) {
+    const filereader = new FileReader();
+
+    filereader.readAsDataURL(file);
+
+    filereader.onload = () => {
+      subscriber.next(filereader.result);
+      subscriber.complete();
+    };
+    filereader.onerror = () => {
+      subscriber.error();
+      subscriber.complete();
+    };
   }
 
-    convertToBase64(file:File){
-      const observable=new Observable((subscriber:Subscriber<any>)=>{
-        this.readFile(file,subscriber)
-      })
-      observable.subscribe((d)=>{
-        console.log(d)
-      })
-    }
-    readFile(file:File,subscriber:Subscriber<any>){
-      const filereader=new FileReader();
-
-      filereader.readAsDataURL(file)
-
-      filereader.onload=()=>{
-        subscriber.next(filereader.result);
-        subscriber.complete()
-      }
-      filereader.onerror=()=>{
-         subscriber.error()
-         subscriber.complete()
-      }
-    }
- 
   public updateform: FormGroup;
- 
-  constructor(private messageService: MessageService ,
-     private service: EmployeedDataService ,
-     private formBuilder: FormBuilder,
-     private profileServ: ProfileService,
-     private storageService: StorageService,) {}
+
+  constructor(
+    private messageService: MessageService,
+    private service: EmployeedDataService,
+    private formBuilder: FormBuilder,
+    private profileServ: ProfileService,
+    private storageService: StorageService
+  ) {}
 
   ngOnInit(): void {
     let emp: any = window.sessionStorage.getItem('loggedinUser');
-    this.empdata = JSON.parse(emp)
+    this.empdata = JSON.parse(emp);
+
     // this.profileServ.addprofilephoto(EmpId,Id).subscribe((data:any)=>{
     //   this.preview= 'data:image/jpg;base64,'+data.photo});
+  }
 
-   }
-  
   onUpload(event: any) {
     this.messageService.add({
       severity: 'info',
@@ -103,7 +107,7 @@ data:any
     }
   }
 
-  upload( ): void {
+  upload(): void {
     this.progress = 0;
 
     if (this.selectedFiles) {
@@ -111,31 +115,36 @@ data:any
 
       if (file) {
         this.currentFile = file;
-      
-      console.log(this.currentFile)
 
-     this.profileServ.addprofilephoto({'EmpId': this.empdata.employeeID, 'Photo': this.preview }).subscribe({
-      next: (event: any) => {
-            // if (event.type === HttpEventType.UploadProgress) {
-            //   this.progress = Math.round((100 * event.loaded) / event.total);
-            // } else if (event instanceof HttpResponse) {
-            //   this.message = event.body.message;
-            //   this.imageInfos = this.profileServ.addprofilephoto(EmpId,Id);
-            // }
-          },
-          error: (err: any) => {
-            console.log(err);
-            this.progress = 0;
+        console.log(this.currentFile);
 
-            if (err.error && err.error.message) {
-              this.message = err.error.message;
-            } else {
-              this.message = 'Could not upload the image!';
-            }
+        this.profileServ
+          .addprofilephoto({
+            EmpId: this.empdata.employeeID,
+            Photo: this.preview,
+          })
+          .subscribe({
+            next: (event: any) => {
+              // if (event.type === HttpEventType.UploadProgress) {
+              //   this.progress = Math.round((100 * event.loaded) / event.total);
+              // } else if (event instanceof HttpResponse) {
+              //   this.message = event.body.message;
+              //   this.imageInfos = this.profileServ.addprofilephoto(EmpId,Id);
+              // }
+            },
+            error: (err: any) => {
+              console.log(err);
+              this.progress = 0;
 
-            this.currentFile = undefined;
-          },
-        });
+              if (err.error && err.error.message) {
+                this.message = err.error.message;
+              } else {
+                this.message = 'Could not upload the image!';
+              }
+
+              this.currentFile = undefined;
+            },
+          });
       }
 
       this.selectedFiles = undefined;
