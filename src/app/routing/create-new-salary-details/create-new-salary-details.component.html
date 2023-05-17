@@ -4,12 +4,25 @@
     <strong>CREATE SALARY DETAILS </strong>
   </div>
       <div class="col-sm-6" style="text-align:right">
-        <button pButton class="h-1rem" style="float: right; font-size: smaller;margin-right:10px;" routerLink="/navbar/salary-details"><i class="pi pi-arrow-left icon"></i>BACK</button>
-        <button pButton class="h-1rem p-button-success" style="float: right;margin-right:5px; font-size: smaller;"  type="submit" (click)="onFormSubmit()" ><i class="pi pi-check icon"></i>SAVE</button>
+        <button pButton class="h-1rem" style="float: right; font-size: smaller;margin-right:10px;" 
+        routerLink="/navbar/salary-details"><i class="pi pi-arrow-left icon"></i>BACK</button>
+        
+        
+        <button 
+          pButton class="h-1rem p-button-success"
+         style="float: right;margin-right:5px; font-size: smaller;" 
+         type="submit" (click)="onFormSubmit()" >
+         <i class="pi pi-check icon"></i>SAVE</button>
   </div>
   </ng-template> 
+  
+  
   <div class="row">   
-    <form  [formGroup]="empForm" class=" form-styles cont  " (submit)="onFormSubmit()" >
+    <form 
+     [formGroup]="empForm" 
+     class="form-styles cont"
+      (submit)="onFormSubmit()" >
+      
       <div class="cont2 ">
        <label for="designation-input" class="input-styling" required >EmpID
            <span class="required">*</span>

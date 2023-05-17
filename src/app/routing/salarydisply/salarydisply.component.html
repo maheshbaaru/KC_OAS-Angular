@@ -9,38 +9,39 @@
 </div>
 </ng-template>
 
-<p-table #dt [value]="resultData"   [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="50"  styleClass="p-datatable-gridlines"   [globalFilterFields]="['FirstName','empId','firstName','nextRevisedDate','lastRevisedDate','salary']">
+<p-table #dt [value]="resultData"   [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="50"  styleClass="p-datatable-gridlines"  
+ [globalFilterFields]="['firstName','salary','lastRevisedDate','nextRevisedDate','modifiedDate']">
   <ng-template pTemplate="header">
       <tr>
 
           <th><div class="p-d-flex p-jc-between p-ai-center">
               Employee name
-              <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+              <p-columnFilter type="text" field="firstName" display="menu"></p-columnFilter>
           </div></th>
           <th>
               <div class="p-d-flex p-jc-between p-ai-center">
                   Salary
-                  <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                  <p-columnFilter type="text" field="salary" display="menu"></p-columnFilter>
               </div>
 
           </th>
           <th>
               <div class="p-d-flex p-jc-between p-ai-center">
                   Last Revised Date
-                  <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                  <p-columnFilter type="text" field="lastRevisedDate" display="menu"></p-columnFilter>
               </div>
 
           </th>
           <th>
               <div class="p-d-flex p-jc-between p-ai-center">
                   Next Revised Date
-                  <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                  <p-columnFilter type="text" field="nextRevisedDate" display="menu"></p-columnFilter>
               </div>
           </th>
           <th>
             <div class="p-d-flex p-jc-between p-ai-center">
                 Modified Date
-                <p-columnFilter type="text" field="country.name" display="menu"></p-columnFilter>
+                <p-columnFilter type="text" field="modifiedDate" display="menu"></p-columnFilter>
             </div>
         </th>
       </tr>
