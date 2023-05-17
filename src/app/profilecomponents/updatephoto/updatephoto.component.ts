@@ -27,14 +27,10 @@ export class UpdatephotoComponent {
   image: string = '';
 
   onChange = ($event: Event) => {
-    console.log($event);
-
-    debugger;
     const target = $event.target as HTMLInputElement;
     const file = (target.files as FileList)[0];
-    console.log(file.name);
-    this.image = file.name;
-    this.profileServ.updatePhoto(this.image, 112).subscribe(res=>console.log(res));
+    this.image = target.value;
+
     this.convertToBase64(file);
   };
 
@@ -43,7 +39,7 @@ export class UpdatephotoComponent {
       this.readFile(file, subscriber);
     });
     observable.subscribe((d) => {
-      console.log(d);
+      this.preview = d;
     });
   }
   readFile(file: File, subscriber: Subscriber<any>) {
@@ -79,7 +75,15 @@ export class UpdatephotoComponent {
     //   this.preview= 'data:image/jpg;base64,'+data.photo});
   }
 
-  onUpload(event: any) {
+  upload() {
+    this.image = this.image.replace('fakepath\\', '');
+
+    let loogedUser: any = window.sessionStorage.getItem('auth-user');
+
+    loogedUser = JSON.parse(loogedUser);
+    this.profileServ
+      .updatePhoto(this.image, loogedUser.employeeID * 1)
+      .subscribe((res) => console.log(res));
     this.messageService.add({
       severity: 'info',
       summary: 'Success',
@@ -99,7 +103,6 @@ export class UpdatephotoComponent {
         this.data = file;
         const reader = new FileReader();
         reader.onload = (e: any) => {
-          console.log(e.target.result);
           this.preview = e.target.result;
         };
         reader.readAsDataURL(this.data);
@@ -107,47 +110,47 @@ export class UpdatephotoComponent {
     }
   }
 
-  upload(): void {
-    this.progress = 0;
+  // upload(): void {
+  //   this.progress = 0;
 
-    if (this.selectedFiles) {
-      const file: File | null = this.selectedFiles.item(0);
+  //   if (this.selectedFiles) {
+  //     const file: File | null = this.selectedFiles.item(0);
 
-      if (file) {
-        this.currentFile = file;
+  //     if (file) {
+  //       this.currentFile = file;
 
-        console.log(this.currentFile);
+  //       console.log(this.currentFile);
 
-        this.profileServ
-          .addprofilephoto({
-            EmpId: this.empdata.employeeID,
-            Photo: this.preview,
-          })
-          .subscribe({
-            next: (event: any) => {
-              // if (event.type === HttpEventType.UploadProgress) {
-              //   this.progress = Math.round((100 * event.loaded) / event.total);
-              // } else if (event instanceof HttpResponse) {
-              //   this.message = event.body.message;
-              //   this.imageInfos = this.profileServ.addprofilephoto(EmpId,Id);
-              // }
-            },
-            error: (err: any) => {
-              console.log(err);
-              this.progress = 0;
+  //       this.profileServ
+  //         .addprofilephoto({
+  //           EmpId: this.empdata.employeeID,
+  //           Photo: this.preview,
+  //         })
+  //         .subscribe({
+  //           next: (event: any) => {
+  //             // if (event.type === HttpEventType.UploadProgress) {
+  //             //   this.progress = Math.round((100 * event.loaded) / event.total);
+  //             // } else if (event instanceof HttpResponse) {
+  //             //   this.message = event.body.message;
+  //             //   this.imageInfos = this.profileServ.addprofilephoto(EmpId,Id);
+  //             // }
+  //           },
+  //           error: (err: any) => {
+  //             console.log(err);
+  //             this.progress = 0;
 
-              if (err.error && err.error.message) {
-                this.message = err.error.message;
-              } else {
-                this.message = 'Could not upload the image!';
-              }
+  //             if (err.error && err.error.message) {
+  //               this.message = err.error.message;
+  //             } else {
+  //               this.message = 'Could not upload the image!';
+  //             }
 
-              this.currentFile = undefined;
-            },
-          });
-      }
+  //             this.currentFile = undefined;
+  //           },
+  //         });
+  //     }
 
-      this.selectedFiles = undefined;
-    }
-  }
+  //     this.selectedFiles = undefined;
+  //   }
+  // }
 }
