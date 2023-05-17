@@ -1,5 +1,5 @@
-<!-- 
-<div class="create-bank-container">
+
+ <!-- <div class="create-bank-container">
     
     <div class="cbd-container">
         <div class="cbd-caption-content1">
@@ -8,7 +8,7 @@
    
         <div class="col-sm-6" style="text-align:right">
             <button pButton class="h-1rem" style="float: right; font-size: smaller;margin-right:10px;" routerLink="../bankDetails"><i class="pi pi-arrow-left icon"></i>BACK</button>
-            <button pButton  style="float: right;margin-right:5px; font-size: smaller;" class="h-1rem p-button-success"  type="submit"   (click)="savingForm()" form="myForm" ><i class="pi pi-check icon"></i>SAVE</button>
+            <button pButton  style="float: right;margin-right:5px; font-size: smaller;" class="h-1rem p-button-success"  type="submit"   (click)="onFormSubmit()" form="myForm" ><i class="pi pi-check icon"></i>SAVE</button>
           </div>
     </div>
     
@@ -40,7 +40,7 @@
        </div>
     
     </form>
-  </div> -->
+  </div>  -->
 
 <p-panel>
   <ng-template pTemplate="header">
@@ -61,19 +61,22 @@
         class="h-1rem p-button-success"
         style="float: right; margin-right: 5px; font-size: smaller"
         type="submit"
-        (click)="savingForm()"
+        (click)="onFormSubmit()"
         form="myForm"
       >
         <i class="pi pi-check icon"></i>SAVE
       </button>
     </div>
   </ng-template>
+  
+  
   <div class="row">
     <form
+    [formGroup]="employeDetails" 
       id="myForm"
       #myForm="ngForm"
       class="form-styles cont"
-      (submit)="savingForm()"
+      (submit)="onFormSubmit()"
     >
       <div class="cont2">
         <label for="designation-input" class="input-styling" required
@@ -81,11 +84,11 @@
           <span class="required">*</span>
         </label>
         <p-dropdown
-          [options]="employeess"
+          [options]="employeNameArray"
           placeholder="Select Employee"
-          optionLabel="firstName"
+          optionLabel="Name"
           [showClear]="true"
-          formControlName="name"
+          formControlName="EmpNameById"
         ></p-dropdown>
       </div>
       <div class="cont2">
@@ -112,7 +115,7 @@
           pInputText
           class="h-2rem"
           placeholder="Enter Holder Name"
-          name="ACCNO"
+          name="ACCNAME"
           formControlName="ACCNAME"
         />
       </div>

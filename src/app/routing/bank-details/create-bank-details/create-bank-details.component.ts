@@ -1,9 +1,12 @@
+import { map } from 'rxjs';
+import { employees } from './../../../Modesls/Employees';
 
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Employee } from 'src/app/Modesls/employeBankInterface';
 import { EmployeService } from 'src/app/services/employeBankService';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -12,69 +15,67 @@ import { EmployeService } from 'src/app/services/employeBankService';
   styleUrls: ['./create-bank-details.component.css']
 })
 export class CreateBankDetailsComponent implements OnInit {
-  
-
-  constructor(private employeesService: EmployeService,
-    private router: Router) { }
-
-
-    ngOnInit() {
-      this.employeesService.getEmployeeData().subscribe(result => {
-        this.employeess = result
-      })
-
-    }
-
-  
+  employeDetails:FormGroup
   employeess: Employee[] | any;
-
-  employeDetails = {
-    EmpNameById: '',
-    ACCNO: '',
-    ACCNAME: '',
-    BankName: "Kotak Bank",
-    EmpId: ''
-  }
-  
+  employeNameArray:any
   accno: string = ''
   idArray: Employee[] | any
   newArray: Employee[] | any
   firstname: string[];
 
-  resetingCreatForm() {
-    this.employeDetails = {
-      EmpNameById: 'SELECT EMPLOYEE',
-      ACCNO: '',
-      ACCNAME: '',
-      BankName: "Kotak Bank",
-      EmpId: ''
+  constructor(
+    private _fb: FormBuilder,
+    private employeesService: EmployeService,
+    private router: Router,
+    ) { 
+      this.form()
     }
-  }
 
-  savingForm() {
-  
-    this.firstname=this.employeDetails.EmpNameById.split(" ")
-   
-    this.idArray = this.employeess.find(
-        (e:any)=>
-        e.lastName ===this.firstname.reverse()[0]
-        )
+    form() {
+      this.employeDetails = this._fb.group({
+        EmpNameById:new FormControl('') ,
+        ACCNO: new FormControl(''),
+        ACCNAME: new FormControl(''),
+        BankName: "Kotak Bank",
+        EmpId: new FormControl('')
+      })
+    }
+
+    ngOnInit() {
+      this.employeesService.getEmployeeData().subscribe(result => {
+        this.employeess = result
+        const employeeresponse = this.employeess.map((e:any)=>({
+          ...e,
+          Name:`${(e.firstName).trimEnd()} ${e.lastName}`
+        }))
+        this.employeNameArray= employeeresponse
+      })
+     
+    }
+
+  onFormSubmit() {
+    if(this.employeDetails.valid){
+
+      this.firstname=this.employeDetails.value.EmpNameById.Name.split(" ")
+      
+      this.idArray = this.employeNameArray.find(
+            (e:any)=>
+            e.lastName ===this.firstname.reverse()[0]
+            )
+
     this.newArray = {
-      "id":this.idArray.id,
-      "empId": this.idArray.empId?this.idArray.empId:"",
-      "accno": this.employeDetails.ACCNO,
+       "id":this.idArray.id,
+      "empId": this.idArray.empId,
+      "accno": this.employeDetails.value.ACCNO,
       "bankName": "Kotak Bank",
-      "accname": this.employeDetails.ACCNAME,
+      "accname": this.employeDetails.value.ACCNAME,
     }
     alert("Are You Sure You Want To Create New Employee Bank Details")
+
     this.employeesService.PostEmployeeNewBankData(this.newArray)
-    this.resetingCreatForm()
+    this.form()
+    }
+    
   }
-
- 
-
-  // onClickBack(){
-  //   this.router.navigate(['../bankDetails'])
-  // }
 }
 
