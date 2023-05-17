@@ -27,7 +27,7 @@
 
 } */
 
-.form-control {
+/* .form-control {
 
    width: 50px;
    height: 38px;
@@ -47,7 +47,7 @@
    min-width: 82px;
    height: 34px;
 
-} 
+}  */
 
 
 /* @media screen and (min-width: 600px) {
@@ -58,7 +58,7 @@
 } */
 
 
- .p-panel-header {
+ /* .p-panel-header {
 
       border: 1px solid #dee2e6;
       padding: 6px;
@@ -73,10 +73,14 @@ label {
    font-weight: bold;
    font-family: Poppins-Regular;
 
-}
+} */
 
 /* .checkbox{
    font-family: Poppins-Regular;
    margin-right: 51px;
    padding: 29px;
 }  */
+
+input{
+   height: 2rem;
+}
