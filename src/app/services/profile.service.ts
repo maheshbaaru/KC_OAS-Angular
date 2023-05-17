@@ -23,10 +23,10 @@ export class ProfileService {
       `https://localhost:7236/GetProfilePhoto?EmpId=${loogedUser.employeeID}`
     );
   }
-  addprofilephoto(data: any) {
+  addprofilephoto(image: string, EmpId: number) {
     let loogedUser: any = window.sessionStorage.getItem('auth-user');
     loogedUser = JSON.parse(loogedUser);
-    return this.http.post(`https://localhost:7236/AddProfilePhoto`, data);
+    return this.http.post(`https://localhost:7236/AddProfilePhoto?EmpId=${EmpId}&image=${image}`,  this.httpOptions);
   }
   updatePhoto(image: string, EmpId: number) {
     return this.http.put(

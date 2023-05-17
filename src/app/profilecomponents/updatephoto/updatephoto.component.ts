@@ -25,6 +25,7 @@ export class UpdatephotoComponent {
   preview = '';
   empdata: any;
   image: string = '';
+  EmpId:number
 
   onChange = ($event: Event) => {
     const target = $event.target as HTMLInputElement;
@@ -76,6 +77,20 @@ export class UpdatephotoComponent {
   }
 
   upload() {
+    let profilepic = window.sessionStorage.getItem('profilePic')||"";
+    profilepic=JSON.parse(profilepic)
+    if(!profilepic){
+      this.image = this.image.replace('fakepath\\', '');
+      let loogedUser: any = window.sessionStorage.getItem('auth-user');
+
+      loogedUser = JSON.parse(loogedUser);
+      this.profileServ.addprofilephoto(this.image,loogedUser.employeeID * 1).subscribe((res: any) => {
+    console.log(res);
+    })
+
+    }else{
+
+    
     this.image = this.image.replace('fakepath\\', '');
 
     let loogedUser: any = window.sessionStorage.getItem('auth-user');
@@ -89,7 +104,10 @@ export class UpdatephotoComponent {
       summary: 'Success',
       detail: 'File Uploaded with Basic Mode',
     });
+
   }
+  }
+
 
   selectFile(event: any): void {
     this.message = '';
