@@ -125,3 +125,6 @@ td{
     border-bottom-left-radius: 6px;
     border-top: 0 none;
 }
+table{
+    min-height: 30vh;
+}

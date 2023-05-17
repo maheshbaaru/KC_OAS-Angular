@@ -5,15 +5,19 @@
   </div>
      
   </ng-template> 
-  <div class="col-12 md:col-4">
-    <h5>Select Month & Year<span class="required">*</span></h5>
-    
-    <p-calendar [(ngModel)]="date" view="month" dateFormat="mm/yy" [yearNavigator]="true"   placeholder="MM/YYYY"  yearRange="2000:2030" [readonlyInput]="true" inputId="monthpicker"></p-calendar>     
-    <br/>
-    <br/>
+  <div class="col-md-4 p-4">
+    <div class="cont2">
+      <label class="input-styling">Select Month & Year<span class="required">*</span></label>
+      
+      <p-calendar [(ngModel)]="date" view="month" dateFormat="mm/yy" [yearNavigator]="true"   placeholder="MM/YYYY"  yearRange="2000:2030" [readonlyInput]="true" inputId="monthpicker"></p-calendar> 
+    </div>
+
  
       <!-- <button pButton  (click)="Alert()" class="h-1rem p-button-success"style="float: right;font-size: small;font-weight: 500;margin-right:10px;">SUBMIT</button>   -->
-
-    <button pButton  type="button"  (click)="Alert()" class=" p-button-success  h-1rem" style="font-weight: 500;font-size:small;">SUBMIT</button>
-    </div>
+<div style="margin-left:38px;">
+  <button pButton  type="button"  (click)="Alert()" class=" p-button-success  h-1rem" style="font-weight: 500;font-size:small;">SUBMIT</button>
+</div>
+  
+    
+  </div>
 </p-panel>
