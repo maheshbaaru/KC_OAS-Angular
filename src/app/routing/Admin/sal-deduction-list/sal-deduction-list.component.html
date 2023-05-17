@@ -1,77 +1,33 @@
-<p-panel header="Salary Deduction List" class="border-900" >
-
+<p-panel >
+  <ng-template pTemplate="header">
+    <div  class="col -md-6" style="text-align:left">
+    <strong>SALARY DEDUCTION LIST  </strong> 
+  </div>
+      <div class="col-sm-6" style="text-align:right">
+          <button pButton routerLink="/navbar/salDeduction" icon="pi pi-arrow-left icon" class="h-1rem p-button "style="float: right;font-size: small;font-weight: 500;margin-right:10px;">BACK</button>  
+  </div>
+  </ng-template> 
   <p-table #dt1 [columns]="cols" [value]="employeeList" styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]" [globalFilterFields]="['Name','empId','taxType','amount','effectedMonth','noOfLopdays']" responsiveLayout="scroll" *ngIf="employeeList?.length>0;else message">
-
-
-    <ng-template pTemplate="caption" >
-      <div class="table-header">
-          Employee List
-          <span class="align-content-end " style="float: right;">
-            <a>
-            <button pButton pRipple label="Back"  icon="pi pi-arrow-left" class="p-button-success h-1rem" routerLink="/navbar/salDeduction" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"></button>
-          </a>
-          </span>
-      </div>
-  </ng-template>
-
     <ng-template pTemplate="header" let-columns>
       <tr>
         <th *ngFor="let col of columns">
           <div class="p-d-flex p-jc-between p-ai-center">
          {{col.header}}
           <p-columnFilter type="text" [field]="col.field" display="menu"></p-columnFilter>
-
-        </div>
-        <!-- </th>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-           TaxTypes
-            <p-columnFilter type="text" field="Name" display="menu"></p-columnFilter>
-          </div>
-        </th>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-          Amount
-          <p-columnFilter type="text" field="EmployeeId" display="menu"></p-columnFilter>
-
-        </div>
-        </th>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-          EffectedMonth
-          <p-columnFilter type="text" field="EmployeeId" display="menu"></p-columnFilter>
-
-        </div>
-        </th>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-          No Of LOP Days
-          <p-columnFilter type="text" field="EmployeeId" display="menu"></p-columnFilter>
-
-        </div>
-        </th> -->
+        </div> 
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
       <tr>
         <td class="idStyle"  *ngFor="let col of columns">{{rowData[col.field]}}</td>
-        <!-- <td>{{emp.taxTypeId}}</td>
-        <td>{{emp.amount}}</td>
-        <td>{{emp.effectedMonth}}</td>
-        <td>{{emp.noOfLopdays}}</td> -->
-
       </tr>
     </ng-template>
-
-
   </p-table>
   <ng-template    #message>
-
     <tr class="card">
       <td class="flex flex-wrap align-items-center justify-content-center card-container font-normal font-italic">{{'Data Not Available'}}</td>
     </tr>
   </ng-template>
-
 </p-panel>
 
 
