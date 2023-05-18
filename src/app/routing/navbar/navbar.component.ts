@@ -28,8 +28,7 @@ export class NavbarComponent implements OnInit {
     private storageService: StorageService,
     private authService: AuthguardService,
     private profileServ: ProfileService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();

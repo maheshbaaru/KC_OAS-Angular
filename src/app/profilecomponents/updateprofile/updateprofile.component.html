@@ -102,179 +102,96 @@
 
 
 <p-panel>
-    <ng-template pTemplate="header">
-      <div class="col -md-6" style="text-align: left">
-        <strong>UPDATE PROFILE</strong>
-      </div>
-      <div class="col-sm-6" style="text-align: right">
-        <button
-          pButton
-          class="h-1rem"
-          style="float: right; font-size: smaller; margin-right: 10px"
-          routerLink="../Employees"
-        >
-          <i class="pi pi-arrow-left icon"></i>BACK
-        </button>
-        <button
-          pButton
-          class="h-1rem p-button-success"
-          style="float: right; margin-right: 5px; font-size: smaller"
-          type="submit"
-          
-        >
-          <i class="pi pi-check icon"></i>SAVE
-        </button>
-      </div>
-    </ng-template>
-    <form [formGroup]="updateform">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="col-12 md:col-4">
-            <label for="employeeID" class="input-styling"
-              >EmployeeID <span class="required">*</span></label
-            >
-            <input
-             
-              type="text"
-              formControlName="employeeID"
-              pInputText
-              class="p-inputtext-normal h-2rem"
-              placeholder="Enter Employee ID"
-              required
-            />
-            <br />
-            <br />
-  
-            <label for="email" class="input-styling"
-              >Email <span class="required">*</span></label
-            >
-            <input
-              type="text"
-           
-              formControlName="email"
-              class="p-inputtext-normal h-2rem"
-              required
-              pInputText
-              placeholder="Enter Email"
-            />
-            <br />
-            <br />
-  
-            <label for="designationName" class="input-styling"
-              >DesignationID <span class="required">*</span></label
-            >
-            <p-dropdown
-              
-              name="designationName"
-              formControlName="designationName"
-              optionLabel="name"
-              placeholder="Select Role"
-            ></p-dropdown>
-  
-            <br />
-            <br />
-  
-            <p-checkbox
-              formControlName="isActive"
-              name="active"
-              inputId="ia"
-              [binary]="true"
-            ></p-checkbox>
-            <label for="any">IsActive<span class="required">*</span></label>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="col-12 md:col-4">
-            <label for="firstName" class="input-styling"
-              >FirstName <span class="required">*</span></label
-            >
-            <input
-              type="text"
-              pInputText
-              formControlName="firstName"
-              class="p-inputtext-normal h-2rem"
-              required
-              placeholder="Enter First Name"
-            />
-            <br />
-            <br />
-  
-            <label for="panNumber" class="input-styling"
-              >PanNumber <span class="required">*</span></label
-            >
-            <input
-              type="text"
-              formControlName="panNumber"
-              class="p-inputtext-normal h-2rem"
-              pInputText
-              placeholder="Enter PAN Number"
-            />
-            <br />
-            <br />
-  
-            <label for="shiftName" class="input-styling"
-              >ShiftId <span class="required">*</span></label
-            >
-  
-            <p-dropdown
-            
-              name="shiftName"
-              optionLabel="shiftName"
-              formControlName="shiftName"
-              placeholder="Select Shift"
-            ></p-dropdown>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="col-12 md:col-4">
-            <label for="lastName" class="input-styling" required
-              >LastName<span class="required">*</span>
-            </label>
-            <input
-              type="text"
-              formControlName="lastName"
-              class="p-inputtext-normal h-2rem"
-              required
-              pInputText
-              placeholder="Enter Last Name"
-            />
-            <br />
-            <br />
-            <label for="Password" class="input-styling" required
-              >Password<span class="required">*</span>
-            </label>
-            <input
-              type="text"
-              formControlName="Password"
-              class="p-inputtext-normal h-2rem"
-              required
-              pInputText
-              placeholder="Enter Password"
-            />
-            <br />
-            <br />
-  
-            <label for="dateofjoining-input" class="input-styling" required
-              >DOJ <span class="required">*</span>
-            </label>
-            <p-calendar
-              id="dateofjoining-input"
-              placeholder="DD-MM-YYYY"
-              formControlName="doj"
-            ></p-calendar>
-          </div>
+  <ng-template pTemplate="header">
+    <div class="col -md-6" style="text-align: left">
+      <strong>UPDATE PROFILE</strong>
+    </div>
+    <div class="col-sm-6" style="text-align: right">
+      <button pButton class="h-1rem" style="float: right; font-size: smaller; margin-right: 10px"
+        routerLink="../Employees">
+        <i class="pi pi-arrow-left icon"></i>BACK
+      </button>
+      <button pButton class="h-1rem p-button-success" style="float: right; margin-right: 5px; font-size: smaller"
+        type="submit" >
+        <i class="pi pi-check icon" ></i>SAVE
+      </button>
+    </div>
+  </ng-template>
+  <form [formGroup]="updateform">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="col-12 md:col-4">
+          <label for="employeeID" class="input-styling">EmployeeID <span class="required">*</span></label>
+          <input type="text" formControlName="employeeID" pInputText class="p-inputtext-normal h-2rem"
+            placeholder="Enter Employee ID" required />
+          <br />
+          <br />
+
+          <label for="email" class="input-styling">Email <span class="required">*</span></label>
+          <input type="text" formControlName="email" class="p-inputtext-normal h-2rem" required pInputText
+            placeholder="Enter Email" />
+          <br />
+          <br />
+
+          <label for="designationName" class="input-styling">DesignationID <span class="required">*</span></label>
+          <p-dropdown name="designationName" formControlName="designationName" optionLabel="name"
+            placeholder="Select Role"></p-dropdown>
+
+          <br />
+          <br />
+
+          <!-- <p-checkbox formControlName="isActive" name="active" inputId="ia" [binary]="true"></p-checkbox>
+          <label for="any">IsActive<span class="required">*</span></label> -->
         </div>
       </div>
-    </form>
-  </p-panel>
-  
+      <div class="col-md-4">
+        <div class="col-12 md:col-4">
+          <label for="firstName" class="input-styling">FirstName <span class="required">*</span></label>
+          <input type="text" pInputText formControlName="firstName" class="p-inputtext-normal h-2rem" required
+            placeholder="Enter First Name" />
+          <br />
+          <br />
 
+          <label for="panNumber" class="input-styling">PanNumber <span class="required">*</span></label>
+          <input type="text" formControlName="panNumber" class="p-inputtext-normal h-2rem" pInputText
+            placeholder="Enter PAN Number" />
+          <br />
+          <br />
 
+          <label for="shiftName" class="input-styling">ShiftId <span class="required">*</span></label>
 
+          <p-dropdown name="shiftName"  formControlName="shiftName"
+            placeholder="Select Shift"></p-dropdown>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="col-12 md:col-4">
+          <label for="lastName" class="input-styling" required>LastName<span class="required">*</span>
+          </label>
+          <input type="text" formControlName="lastName" class="p-inputtext-normal h-2rem" required pInputText
+            placeholder="Enter Last Name" />
+          <br />
+          <br />
+          <!-- <label for="Password" class="input-styling" required>Password<span class="required">*</span>
+          </label>
+          <input type="text" formControlName="Password" class="p-inputtext-normal h-2rem" required pInputText
+            placeholder="Enter Password" />
+          <br />
+          <br /> -->
 
+          <label for="dateofjoining-input" class="input-styling" required>DOJ <span class="required">*</span>
+          </label>
+          <p-calendar id="dateofjoining-input" optionLabel="doj" placeholder="DD-MM-YYYY" formControlName="doj"></p-calendar>
 
-
-
-
-
-
+          <br />
+          <br />
+<div class="checkbox">
+  <p-checkbox formControlName="isActive" name="active" inputId="ia" [binary]="true"></p-checkbox>
+          <label for="any" style="padding-left: 8px;">IsActive<span class="required">*</span></label>
+</div>
+        
+        </div>
+      </div>
+    </div>
+  </form>
+</p-panel>

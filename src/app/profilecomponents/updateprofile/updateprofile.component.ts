@@ -47,11 +47,11 @@ export class UpdateprofileComponent {
       }),
       designationName: new FormControl({
         value: '',
-        disabled: false,
+        disabled: true ,
       }),
       shiftName: new FormControl({
         value: '',
-        disabled: false,
+        disabled: true,
       }),
       isActive: new FormControl({
         value: '',
@@ -63,7 +63,7 @@ export class UpdateprofileComponent {
       }),
       designationID: new FormControl({
         value: '',
-        disabled: false,
+        disabled: true ,
       }),
     });
 
@@ -73,27 +73,29 @@ export class UpdateprofileComponent {
   formdataget() {
     let data: any = window.sessionStorage.getItem('loggedinUser');
     let userdata = JSON.parse(data);
-
     this.service.getEmployeeList().subscribe((data1: any) => {
       console.log(data1);
     //  this.updateform.get('email')?.setValue(data.email);
     this.updateform.patchValue(userdata);
-    // this.updateform.get('email')?.setValue(userdata.email)
+    this.updateform.get('email')?.setValue(userdata.email)
     if (!userdata.isActive) this.updateform.controls['isActive'].disable();
      });
-    // formdataget() {
+ 
+   
+  }
+
+    //  formdataget() {
     //   this.service.getEmployeeList().subscribe((data1: any) => {
     //     console.log(data1);
     //     this.updateform.setValue(data1);
     //     if (!data1.isActive) this.updateform.controls['isActive'].disable();
     //   });
     // }
-  
-    // formdatpost() {
-    //   this.designatonservice.postdesignation((data: any) => {
-    //     console.log(data);
-    //     this.dendata = data;
-    //   });
-    // }
-  }
+  // upadteprofile() {
+  //   // this.designatonservice.postdesignation((data: any) => {
+  //   //   console.log(data);
+  //   //   this.dendata = data;
+  //   // });
+  //   this.router.navigate(['./Employees'])
+  // }
 }
