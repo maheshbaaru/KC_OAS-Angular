@@ -34,7 +34,13 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
     this.profileServ.getloggedInProfile().subscribe((blob:any)=>{
-      this.profilePic= 'data:image/jpg;base64,'+blob.photo});
+      this.profilePic= 'data:image/jpg;base64,'+blob.photo
+      if(blob.photo){
+        window.sessionStorage.setItem('profilePic', 'true' );
+      }else{
+        window.sessionStorage.setItem('profilePic', 'false' );
+      }
+    });
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
       if (user.designationID == 1 || user.designationID == 11) {

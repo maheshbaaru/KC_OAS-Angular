@@ -78,7 +78,7 @@
                 <div class="nav-item" routerLinkActive="active" (mouseout)="$event.stopPropagation()">
                     <a class="nav-link customizing" #levelTWoTrigger="matMenuTrigger"
                         (mouseenter)="levelTWoTrigger.openMenu()" [matMenuTriggerFor]="levelTWo"style="font-family:sans-serif;">Welcome {{name}} <img
-                            src="{{profilePic}}" class="profile-class" alt=" " /> </a>
+                            src="{{profilePic}}" class="profile-class" width="50px"height="50px" alt=" " /> </a>
                     <mat-menu #levelTWo="matMenu" direction="down" yPosition="below">
 
                         <span (mouseleave)="levelTWoTrigger.closeMenu()">

@@ -1,10 +1,20 @@
 
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { map, first } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeService } from 'src/app/services/employeBankService';
+
+
+export interface EmployeeInterFace{
+  accname?:string,
+  accno?:string,
+  bankName?:string,
+  empId?:null,
+  firstName?:string,
+  id?:null,
+  lastName?:string
+}
+
 
 @Component({
   selector: 'edit-bank-details',
@@ -19,36 +29,26 @@ export class EditBankDetailsComponent implements OnInit{
     private employeeService: EmployeService
     ){}
 
- 
+    employeess: EmployeeInterFace[] | any;
+    employeeNameArray:any
+
   ngOnInit(): void {
   
     this.activeRoutIdFunction()
       this.employeeService.getSpecifiEmployeeDataById().subscribe((result:any)=>{
-        this.speficEmployeeDat={
-          id:result[0],
-          empId:result[1],
-          accNo:result[2],
-          accName:result[4],
-          BankName:result[3],
-          firstName:result[5],
-          lastName:result[6]
-        };
-         
+        this.employeess=result
+
+        const newEmpData= this.employeess.map((e:any)=>({
+          ...e,
+          Name:`${e.firstName} ${e.lastName}`
+        }))
+        this.employeeNameArray=newEmpData[0]
+  
     })
 
   }
   activedRouteId: string | null;
-  // employees: any;
-  speficEmployeeDat={
-    id:null,
-    empId:null,
-    accNo:null,
-    BankName:"",
-    accName:"",
-    firstName:"",
-    lastName:""
-  } 
-
+  employees: any;
   activeRoutIdFunction(){
     const activatedRouteId = this.route.snapshot.paramMap.get('id')
     return this.employeeService.id(activatedRouteId)
@@ -56,30 +56,13 @@ export class EditBankDetailsComponent implements OnInit{
 
   onClickSave(){
     const postData={
-      id:this.speficEmployeeDat.id,
-      empId:this.speficEmployeeDat.empId,
-      accno:this.speficEmployeeDat.accNo,
-      bankName:this.speficEmployeeDat.BankName,
-      accname:this.speficEmployeeDat.accName,
+      id:this.employeeNameArray.id,
+      empId:this.employeeNameArray.empId,
+      accno:this.employeeNameArray.accno,
+      bankName:this.employeeNameArray.bankName,
+      accname:this.employeeNameArray.accname,
       
     }
-    // console.log(postData)
-
-    this.employeeService.updateEmployeeBankData(postData)
+   this.employeeService.updateEmployeeBankData(postData)
   }
 }
-
-
- // this.route.params.subscribe(
-  //   (params: Params) => {
-  //     console.log(params['id']);
-  //   }
-  // );
-// const id: Observable<string> = this.route.params.pipe(map(p => p['id']));
-
-
-
-
-// onClickback(){
-// this.router.navigate(['/BankDetails'])
-// }

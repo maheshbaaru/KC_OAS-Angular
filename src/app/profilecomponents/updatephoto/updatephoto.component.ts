@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Observable, Subscriber } from 'rxjs';
+import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 import { ProfileService } from 'src/app/services/profile.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-updatephoto',
@@ -21,27 +24,8 @@ export class UpdatephotoComponent {
   preview = '';
   empdata: any;
   image: string = '';
+  EmpId: number;
 
-  constructor(
-    private messageService: MessageService,
-    private profileServ: ProfileService
-  ) {}
-
-  ngOnInit(): void {}
-
-  upload() {
-    this.image = this.image.replace('fakepath\\', '');
-    let loogedUser: any = window.sessionStorage.getItem('auth-user');
-    loogedUser = JSON.parse(loogedUser);
-    this.profileServ
-      .updatePhoto(this.image, loogedUser.employeeID * 1)
-      .subscribe((res) => console.log(res));
-    this.messageService.add({
-      severity: 'info',
-      summary: 'Success',
-      detail: 'File Uploaded with Basic Mode',
-    });
-  }
   onChange = ($event: Event) => {
     const target = $event.target as HTMLInputElement;
     const file = (target.files as FileList)[0];
@@ -72,5 +56,53 @@ export class UpdatephotoComponent {
       subscriber.error();
       subscriber.complete();
     };
+  }
+
+  public updateform: FormGroup;
+
+  constructor(
+    private messageService: MessageService,
+    private service: EmployeedDataService,
+    private formBuilder: FormBuilder,
+    private profileServ: ProfileService,
+    private storageService: StorageService
+  ) {}
+
+  ngOnInit(): void {
+    let emp: any = window.sessionStorage.getItem('loggedinUser');
+    this.empdata = JSON.parse(emp);
+
+    // this.profileServ.addprofilephoto(EmpId,Id).subscribe((data:any)=>{
+    //   this.preview= 'data:image/jpg;base64,'+data.photo});
+  }
+
+  upload() {
+    let profilepic = window.sessionStorage.getItem('profilePic') || '';
+    profilepic = JSON.parse(profilepic);
+    if (!profilepic) {
+      this.image = this.image.replace('fakepath\\', '');
+      let loogedUser: any = window.sessionStorage.getItem('auth-user');
+
+      loogedUser = JSON.parse(loogedUser);
+      this.profileServ
+        .addprofilephoto(this.image, loogedUser.employeeID * 1)
+        .subscribe((res: any) => {
+          console.log(res);
+        });
+    } else {
+      this.image = this.image.replace('fakepath\\', '');
+
+      let loogedUser: any = window.sessionStorage.getItem('auth-user');
+
+      loogedUser = JSON.parse(loogedUser);
+      this.profileServ
+        .updatePhoto(this.image, loogedUser.employeeID * 1)
+        .subscribe((res) => console.log(res));
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Success',
+        detail: 'File Uploaded with Basic Mode',
+      });
+    }
   }
 }
