@@ -7,9 +7,20 @@ label {
 
  .preview {
     max-width: 200px;
+    max-height: 300px;
   }
   
 
+  /* img {
+    border-radius: 25%;
+  } */
+
+  .fileupload{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+ 
   /* .col-8 {
    
     display: flex;

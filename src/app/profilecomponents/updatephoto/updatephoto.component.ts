@@ -1,6 +1,5 @@
-import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Observable, Subscriber } from 'rxjs';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
@@ -25,7 +24,7 @@ export class UpdatephotoComponent {
   preview = '';
   empdata: any;
   image: string = '';
-  EmpId:number
+  EmpId: number;
 
   onChange = ($event: Event) => {
     const target = $event.target as HTMLInputElement;
@@ -43,6 +42,7 @@ export class UpdatephotoComponent {
       this.preview = d;
     });
   }
+
   readFile(file: File, subscriber: Subscriber<any>) {
     const filereader = new FileReader();
 
@@ -77,98 +77,32 @@ export class UpdatephotoComponent {
   }
 
   upload() {
-    let profilepic = window.sessionStorage.getItem('profilePic')||"";
-    profilepic=JSON.parse(profilepic)
-    if(!profilepic){
+    let profilepic = window.sessionStorage.getItem('profilePic') || '';
+    profilepic = JSON.parse(profilepic);
+    if (!profilepic) {
       this.image = this.image.replace('fakepath\\', '');
       let loogedUser: any = window.sessionStorage.getItem('auth-user');
 
       loogedUser = JSON.parse(loogedUser);
-      this.profileServ.addprofilephoto(this.image,loogedUser.employeeID * 1).subscribe((res: any) => {
-    console.log(res);
-    })
+      this.profileServ
+        .addprofilephoto(this.image, loogedUser.employeeID * 1)
+        .subscribe((res: any) => {
+          console.log(res);
+        });
+    } else {
+      this.image = this.image.replace('fakepath\\', '');
 
-    }else{
+      let loogedUser: any = window.sessionStorage.getItem('auth-user');
 
-    
-    this.image = this.image.replace('fakepath\\', '');
-
-    let loogedUser: any = window.sessionStorage.getItem('auth-user');
-
-    loogedUser = JSON.parse(loogedUser);
-    this.profileServ
-      .updatePhoto(this.image, loogedUser.employeeID * 1)
-      .subscribe((res) => console.log(res));
-    this.messageService.add({
-      severity: 'info',
-      summary: 'Success',
-      detail: 'File Uploaded with Basic Mode',
-    });
-
-  }
-  }
-
-
-  selectFile(event: any): void {
-    this.message = '';
-    this.preview = '';
-    this.progress = 0;
-    this.selectedFiles = event.target.files;
-    if (this.selectedFiles) {
-      const file: File | null = this.selectedFiles.item(0);
-      if (file) {
-        this.preview = '';
-        this.data = file;
-        const reader = new FileReader();
-        reader.onload = (e: any) => {
-          this.preview = e.target.result;
-        };
-        reader.readAsDataURL(this.data);
-      }
+      loogedUser = JSON.parse(loogedUser);
+      this.profileServ
+        .updatePhoto(this.image, loogedUser.employeeID * 1)
+        .subscribe((res) => console.log(res));
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Success',
+        detail: 'File Uploaded with Basic Mode',
+      });
     }
   }
-
-  // upload(): void {
-  //   this.progress = 0;
-
-  //   if (this.selectedFiles) {
-  //     const file: File | null = this.selectedFiles.item(0);
-
-  //     if (file) {
-  //       this.currentFile = file;
-
-  //       console.log(this.currentFile);
-
-  //       this.profileServ
-  //         .addprofilephoto({
-  //           EmpId: this.empdata.employeeID,
-  //           Photo: this.preview,
-  //         })
-  //         .subscribe({
-  //           next: (event: any) => {
-  //             // if (event.type === HttpEventType.UploadProgress) {
-  //             //   this.progress = Math.round((100 * event.loaded) / event.total);
-  //             // } else if (event instanceof HttpResponse) {
-  //             //   this.message = event.body.message;
-  //             //   this.imageInfos = this.profileServ.addprofilephoto(EmpId,Id);
-  //             // }
-  //           },
-  //           error: (err: any) => {
-  //             console.log(err);
-  //             this.progress = 0;
-
-  //             if (err.error && err.error.message) {
-  //               this.message = err.error.message;
-  //             } else {
-  //               this.message = 'Could not upload the image!';
-  //             }
-
-  //             this.currentFile = undefined;
-  //           },
-  //         });
-  //     }
-
-  //     this.selectedFiles = undefined;
-  //   }
-  // }
 }
