@@ -22,22 +22,22 @@
     <div class="ebd-contnt-container">
        <div class="input-container">
         <label for="EmpId" class="label">EmpId <span class="empClass">*</span></label>
-        <input type="text" id="EmpId" class="input-fields disabledButton" disabled value="speficEmployeeDat.ACCNAME" [(ngModel)]="speficEmployeeDat.firstName +' '+ speficEmployeeDat.lastName"/>
+        <input type="text" id="EmpId" class="input-fields disabledButton" disabled value="employeeNameArray.Name" [(ngModel)]="employeeNameArray.Name"/>
        </div>
 
        <div class="input-container">
         <label for="accno" class="label">ACCNO </label>
-        <input type="text" id="accno" class="input-fields" [(ngModel)]="speficEmployeeDat.accNo"/>
+        <input type="text" id="accno" class="input-fields" [(ngModel)]="employeeNameArray.accno"/>
        </div>
 
        <div class="input-container">
         <label for="accname" class="label">ACCNAME</label>
-        <input type="text" id="accname" class="input-fields" [(ngModel)]="speficEmployeeDat.accName"/>
+        <input type="text" id="accname" class="input-fields disabledButton" disabled [(ngModel)]="employeeNameArray.accname"/>
        </div>
 
        <div class="input-container">
         <label for="bankname" class="label">BankName</label>
-        <input type="text" id="bankname" class="input-fields disabledButton" disabled value="Kotak mahindra" [(ngModel)]="speficEmployeeDat.BankName"/>
+        <input type="text" id="bankname" class="input-fields disabledButton" disabled value="Kotak mahindra" [(ngModel)]="employeeNameArray.bankName"/>
        </div>
     </div>
 
