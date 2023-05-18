@@ -63,8 +63,29 @@ export class UpdateprofileComponent {
       }),
       designationID: new FormControl({
         value: '',
-        disabled: true ,
+        disabled: false,
       }),
+      isLocked: new FormControl({
+        value: '',
+        disabled: false,
+      }),
+      name: new FormControl({
+        value: '',
+        disabled: false,
+      }),
+      password: new FormControl({
+        value: '',
+        disabled: false,
+      }),
+      shiftId: new FormControl({
+        value: '',
+        disabled: true,
+      }),
+      
+      
+
+     
+   
     });
 
     this.formdataget();
@@ -75,10 +96,11 @@ export class UpdateprofileComponent {
     let userdata = JSON.parse(data);
     this.service.getEmployeeList().subscribe((data1: any) => {
       console.log(data1);
+      // this.updateform = data.filter((dat: any) => dat.empId == data.id * 1);
+      // this.empdata = data.filter((dat: any) => dat.empId == userdata.id * 1);
     //  this.updateform.get('email')?.setValue(data.email);
     this.updateform.patchValue(userdata);
-    this.updateform.get('email')?.setValue(userdata.email)
-    if (!userdata.isActive) this.updateform.controls['isActive'].disable();
+     if (!userdata.isActive) this.updateform.controls['isActive'].disable();
      });
  
    
