@@ -11,9 +11,9 @@ label {
   }
   
 
-  /* img {
-    border-radius: 25%;
-  } */
+  img {
+    border-radius: 30%;
+  }
 
   .fileupload{
     display: flex;
