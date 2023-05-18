@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import namesData from 'src/assets/data/namesData.json';
 import { OnInit, ViewChild } from '@angular/core';
 // import { EmployeeData, Representative } from 'src/app/employee';
 import { Table } from 'primeng/table';
-import { EmployeeData, Representative } from 'src/app/Modesls/employee'
+import { EmployeeData, Representative } from 'src/app/Modesls/employee';
 
 import { SalaryService } from '../../services/salary.service';
 import salary from 'src/assets/data/salary.json';
 import { from } from 'rxjs';
+import { HttpClientService } from 'src/app/services/http-client.service';
+import { MessageService } from 'primeng/api';
 
 interface EmployeeName {
   Name: string;
@@ -26,11 +28,20 @@ interface LeaveType {
 export class ChangepasswordComponent {
   employees: EmployeeData[] | any;
   leaveTypes: LeaveType[];
-
+  designationID: number;
+  employeeID: number;
   names: EmployeeName[];
-  empForm: FormGroup;
+  isActive: boolean;
+  logedUser: any;
 
-  constructor(private _fb: FormBuilder, private salaryService: SalaryService) {
+  // empForm: FormGroup;
+  form: FormGroup;
+  constructor(
+    private _fb: FormBuilder,
+    private salaryService: SalaryService,
+    private httpService: HttpClientService,
+    private messageSer: MessageService
+  ) {
     this.names = namesData;
     this.leaveTypes = [
       { name: 'Casual' },
@@ -39,11 +50,65 @@ export class ChangepasswordComponent {
       { name: 'Compensation' },
       { name: 'Optional' },
     ];
-    this.empForm = this._fb.group({
-      name: '',
-      Salary: '',
-      LastRevisedDate: '',
-      NextRevisedDate: '',
+    this.form = this._fb.group({
+      oldPass: [null, Validators.required],
+      newPass: [
+        null,
+        [
+          Validators.required,
+          Validators.pattern(
+            /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
+          ),
+          Validators.minLength(8),
+        ],
+      ],
+      confirmPass: [
+        null,
+        [
+          Validators.required,
+          Validators.pattern(
+            /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
+          ),
+          Validators.minLength(8),
+        ],
+      ],
+    });
+  }
+  formSubmit() {
+    debugger;
+    console.log(this.form.value);
+    let logedUser: any = window.sessionStorage.getItem('auth-user');
+    logedUser = JSON.parse(logedUser);
+    this.designationID = logedUser.designationID;
+    this.employeeID = logedUser.employeeID * 1;
+    this.isActive = logedUser.isActive;
+
+    const oldPassword = atob(logedUser.password);
+    this.logedUser = oldPassword;
+    // console.log(oldPassword);
+    if (
+      oldPassword === this.form.value.oldPass &&
+      this.form.value.newPass !== this.form.value.oldPass &&
+      this.form.value.newPass === this.form.value.confirmPass
+    ) {
+      const finalPass = btoa(this.form.value.confirmPass);
+      console.log(finalPass);
+      this.httpService
+        .updatePassword(finalPass, this.employeeID)
+        .subscribe((res: any) => {
+          if (res === true) {
+            return this.messageSer.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Your Password Saved Successfully',
+            });
+          }
+        });
+    }
+    return this.messageSer.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: 'You Password Not Saved',
     });
   }
 }

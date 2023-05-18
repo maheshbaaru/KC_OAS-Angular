@@ -98,7 +98,6 @@ export class SalDeductionComponent {
     this.submitted = false;
   }
   save() {
-    debugger;
     // this.salDeductionServ.AddDeduction();
     console.log(this.form);
 
@@ -126,17 +125,13 @@ export class SalDeductionComponent {
             detail: 'Employee SalaryDeduction saved',
           });
         }
-
-        if (this.taxType === '' && this.taxType === null) {
-          this.messageSer.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: 'Please gave Employee SalaryDeduction details',
-          });
-        }
       });
-    //
     this.form.reset();
+    return this.messageSer.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: 'Please gave Employee SalaryDeduction details',
+    });
   }
   ngAfterViewInit() {
     this.salDeductionServ

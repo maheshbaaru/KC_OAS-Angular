@@ -42,4 +42,13 @@ export class HttpClientService {
       this.httpOptions
     );
   }
+
+  updatePassword(password: string, empId: number): Observable<any[]> {
+    //https://localhost:7236/UpdateEmployeeTbl?IsActive=true&EmployeeId=112&PanNumber=HSCBC1S&ShiftId=1&DesignationId=4;
+    //https://localhost:7236/UpdateEmployeeTbl?Password=ultralow&EmployeeId=112
+    return this.http.put<any>(
+      `${this.API_CALL}/UpdateEmployeeTbl?Password=${password}&EmployeeId=${empId}`,
+      httpOptions
+    );
+  }
 }
