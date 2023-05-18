@@ -4,67 +4,22 @@
       <strong>UPDATE PROFILE PHOTO </strong>
     </div>
     <div class="col-sm-6" style="text-align:right">
-      <button pButton class="h-1rem p-button-success" (click)="upload()" style="float: right;margin-right:5px; font-size: smaller;" ><i
-          class="pi pi-check icon"></i>UPLOAD</button>
+      <button pButton class="h-1rem p-button-success" (click)="upload()"
+        style="float: right;margin-right:5px; font-size: smaller;"><i class="pi pi-check icon"></i>UPLOAD</button>
     </div>
   </ng-template>
   <div class="row">
     <div class="row">
-      <div class="col-8 p-6">
+      <div class=fileupload>
         <label class="btn btn-default p-0">
-          <!-- 
-          <mat-form-field>
-            <div>
-              <mat-toolbar>
-                <input matInput [value]="selectedFileNames.length ? selectedFileNames : 'Select Images'" />
-          
-                <button
-                  mat-flat-button
-                  color="primary"
-                  [disabled]="!selectedFiles"
-                  (click)="uploadFiles()"
-                >
-                  Upload
-                </button>
-              </mat-toolbar>
-          
-              <input
-                type="file"
-                id="fileInput"
-                name="fileInput"
-                accept="image/*" multiple 
-                (change)="selectFiles($event)"
-              />
-            </div>
-          </mat-form-field> -->
-          <!-- <p-fileUpload  mode="basic" 
-          accept="image/*"  chooseLabel="Choose File" ></p-fileUpload> -->
-          <input type="file"  (change)="onChange($event)" />
-          </label>
+
+          <input type="file" (change)="onChange($event)" />
+        </label>
         <div>
-           <img src="{{preview}}"  class="preview"/>
+          <img src="{{preview}}" class="preview" />
         </div>
       </div>
-      <!-- <div class="col-4">
-        <button class="btn btn-success btn-sm float-right" [disabled]="!selectedFiles" >
-          Upload
-        </button>
-      </div> -->
+
     </div>
-    <!-- 
-    <form class=" form-styles cont  " [formGroup]="updateform">
-      <div class="cont2 ">
-        <label for="designation-input" class="input-styling" required>EmpID
-          <span class="required">*</span>
-        </label>
-        <input id="designation-input" formControlName="id" type="input" pInputText />
-      </div>
-      <div class="cont2">
-        <label for="designation-input" class="input-styling" required>Photo
-          <span class="required">*</span>
-        </label>
-        <p-fileUpload #fubauto mode="basic" name="demo[]" url="https://localhost:7236/UpdateProfilePhoto"
-          accept="image/*" [auto]="true" chooseLabel="Browse" (onUpload)="onUpload($event)"></p-fileUpload>
-      </div>
-    </form> -->
+
   </div>
