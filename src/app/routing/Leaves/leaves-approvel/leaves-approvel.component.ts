@@ -1,3 +1,4 @@
+import { map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -22,11 +23,15 @@ interface employeName{
 })
 export class LeavesApprovelComponent {
   leavesApproved: any;
+
+  httpstoredData:any
   empForm: FormGroup;
   names: EmployeeName[];
   statusTypes: any;
 
-  employeeSearchText:string
+  filterfromdate:any
+
+  employeeSearchText:string;
   employees: any;
   employeeName: any;
   constructor(
@@ -50,14 +55,17 @@ export class LeavesApprovelComponent {
       NextRevisedDate: '',
     });
   }
+
   ngOnInit() {
     this.empservice.appliedLeaves().subscribe((data) => {
-      //  console.log(data)
+       console.log(data)
       this.leavesApproved = data;
+      this.httpstoredData = data;
     });
 
     this.empservice.getAllEmployees().subscribe((res)=>{
       this.employees= res
+      // console.log(res)
       const employeeData = this.employees.map((emp:any)=>({
         ...emp,
         Name: `${emp.firstName}${emp.lastName}`,
@@ -67,7 +75,9 @@ export class LeavesApprovelComponent {
   
   }
 
-
+// ngDoCheck(){
+//   console.log(this.filterfromdate)
+// }
 
   ngAfterViewInit() {
 
@@ -75,11 +85,63 @@ export class LeavesApprovelComponent {
 
   }
 
-  // ngDoCheck(){
-  //   console.log(this.leavesApproved)
-  // }
+  empfilterTable(event:any){
+    if(event === null){
+      this.leavesApproved=this.httpstoredData
 
-  getSeverity(status: any) {
-    
-}
+    }
+    const empnameData = this.leavesApproved.filter((e:any)=>(
+      e.empName==event.Name
+    ))
+
+    if(empnameData.length!==0){
+      this.leavesApproved=empnameData
+    }
+    else{
+      this.leavesApproved={}
+    }
+  }
+
+  statusFilterTable(event:any){
+    if(event === null){
+      this.leavesApproved=this.httpstoredData
+
+    }
+      console.log(event)
+      const statusData = this.leavesApproved.filter((e:any)=>(
+        e.statusId==event.id
+      ))
+
+      if(statusData.length!==0){
+        this.leavesApproved=statusData
+      }
+      else{
+        this.leavesApproved={}
+      }
+      console.log(statusData)
+  }
+
+  fromcalenderFilterTable(event:any,date:any){
+
+    const newDate = new Date(date.inputFieldValue);
+    const formattedDate = newDate.toISOString();
+    const FinalDate = formattedDate.replace(/Z$/, "").split('T')[0];
+
+    console.log(FinalDate);
+    const fromDateData = this.leavesApproved.filter((e:any)=>(
+      (e.fromDate).split('T')[0]===FinalDate
+      ))
+      const mappeddata = this.leavesApproved.map((e:any)=>(
+        console.log(e.fromDate)
+      ))
+      console.log(fromDateData);
+  
+  }
+
+  tocalenderFilterTable(event:any,date:any){
+
+    // const fromDateData = this.leavesApproved.filter((e:any)=>(
+    //   e.fromDate==date
+    //   ))
+  }
 }

@@ -15,48 +15,16 @@
                   <span class="required">*</span>
               </label>
               <p-dropdown
-                 [options]="employeeName" 
-                 placeholder="Select Employee" 
-                 optionLabel="Name" 
-                 [showClear]="true"
-                  formControlName="empName"
-                  (onChange)="dt1.filter($event.value, employeeName.Name, 'equals')"
-                  >
-                </p-dropdown>
+              [options]="employeeName" 
+              placeholder="Select Employee" 
+              optionLabel="Name" 
+              [showClear]="true"
+                formControlName="empName"
+                (onChange)=empfilterTable($event.value)
+                >
+              </p-dropdown>
 
-
-                <!-- <p-columnFilter field="Name" matchMode="equals" display="menu"   [showOperator]="false" [showMatchModes]="false"> 
-                  <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                      <p-dropdown [ngModel]="value" [options]="employeeName"  placeholder="Any">
-                          <ng-template let-option pTemplate="item">
-                              {{option.Name}}
-                          </ng-template>
-                      </p-dropdown>
-                  </ng-template>
-              </p-columnFilter> -->
-
-              <!-- <p-columnFilter field="Name" matchMode="equals" [showMenu]="true">
-              <ng-template
-                pTemplate="filter"
-                let-value
-                let-filter="filterCallback"
-              >
-                <p-dropdown
-                [ngModel]="value"
-                 [options]="employeeName" 
-                 (onChange)="filter($event.value)"
-                 placeholder="Select Employee" 
-                 [showClear]="true"
-                 optionLabel="Name" 
-                  >
-                  <ng-template let-option pTemplate="item">
-                    <p-tag [value]="option.Name"></p-tag>
-                </ng-template>
-                </p-dropdown>
-              </ng-template>
-            </p-columnFilter> -->
-
-            
+              <!-- (onChange)="dt1.filter($event.value, employeeName.Name, 'equal')" -->
           </div>
 
           <!-- Status Id Filter -->
@@ -67,19 +35,39 @@
               <p-dropdown 
               [options]="statusTypes" 
               placeholder="Select Status Type" optionLabel="name"
-              [showClear]="true" formControlName="name"></p-dropdown>
+              [showClear]="true" formControlName="name"
+              (onChange)="statusFilterTable($event.value)"
+              ></p-dropdown>
           </div>
 
 
           <div class="cont2">
               <label for="designation-input" class="input-styling" required>From Date
               </label>
-              <p-calendar [showIcon]="true"  id="designation-input" placeholder="DD/MM/YYYY" name="year"  formControlName="year"></p-calendar>
+              <p-calendar 
+              [showIcon]="true"  
+              id="designation-input" 
+              placeholder="DD/MM/YYYY"
+               name="year" 
+                formControlName="year" 
+                [(ngModel)]="filterfromdate" 
+                (click)="fromcalenderFilterTable($event, fromCalender)"
+                #fromCalender
+                >
+              </p-calendar>
           </div>
           <div class="cont2">
             <label for="designation-input" class="input-styling" required>To Date
             </label>
-            <p-calendar [showIcon]="true"  id="designation-input" placeholder="DD/MM/YYYY" name="yearTo" formControlName="yearTo"></p-calendar>
+            <p-calendar
+             [showIcon]="true" 
+             id="designation-input"
+              placeholder="DD/MM/YYYY" 
+              name="yearTo" 
+              formControlName="yearTo"
+              (click)="tocalenderFilterTable($event, toCalender)"
+              #toCalender
+              ></p-calendar>
         </div>
 
       </form>
