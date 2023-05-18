@@ -12,7 +12,7 @@ import { AuthguardService } from 'src/app/services/authguard.service';
 })
 export class UpdateprofileComponent {
   empdata: any;
-  dendata: any;
+
   public updateform: FormGroup;
 
   constructor(
@@ -59,32 +59,8 @@ export class UpdateprofileComponent {
       }),
       doj: new FormControl({
         value: '',
-        disabled: false,
-      }),
-      designationID: new FormControl({
-        value: '',
-        disabled: false,
-      }),
-      isLocked: new FormControl({
-        value: '',
-        disabled: false,
-      }),
-      name: new FormControl({
-        value: '',
-        disabled: false,
-      }),
-      password: new FormControl({
-        value: '',
-        disabled: false,
-      }),
-      shiftId: new FormControl({
-        value: '',
         disabled: true,
       }),
-      
-      
-
-     
    
     });
 
@@ -94,14 +70,17 @@ export class UpdateprofileComponent {
   formdataget() {
     let data: any = window.sessionStorage.getItem('loggedinUser');
     let userdata = JSON.parse(data);
-    this.service.getEmployeeList().subscribe((data1: any) => {
-      console.log(data1);
-      // this.updateform = data.filter((dat: any) => dat.empId == data.id * 1);
-      // this.empdata = data.filter((dat: any) => dat.empId == userdata.id * 1);
-    //  this.updateform.get('email')?.setValue(data.email);
     this.updateform.patchValue(userdata);
+    console.log(data);
      if (!userdata.isActive) this.updateform.controls['isActive'].disable();
-     });
+    // this.service.getEmployeeList().subscribe((data1: any) => {
+    //   console.log(data1);
+    //   // this.updateform = data.filter((dat: any) => dat.empId == data.id * 1);
+    //   // this.empdata = data.filter((dat: any) => dat.empId == userdata.id * 1);
+    // //  this.updateform.get('email')?.setValue(data.email);
+    // this.updateform.patchValue(userdata);
+    //  if (!userdata.isActive) this.updateform.controls['isActive'].disable();
+    //  });
  
    
   }

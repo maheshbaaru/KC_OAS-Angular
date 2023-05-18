@@ -20,6 +20,10 @@
     margin: 30px;
 }
 
+
+img {
+    border-radius: 50%;
+  }
 /* .navbar-nav .mr-auto{
     margin: 15px;
 } */
@@ -29,7 +33,7 @@
 .mat-toolbar.mat-primary {
     /* background: #495cc5;  */
     /* background: #3f51b5; */
-    background: black;
+    background: rgb(139, 136, 136);
     color: #fff;
 }
 
