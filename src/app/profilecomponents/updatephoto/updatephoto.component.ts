@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { Observable, Subscriber } from 'rxjs';
+import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 import { ProfileService } from 'src/app/services/profile.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -81,12 +81,15 @@ export class UpdatephotoComponent {
     profilepic = JSON.parse(profilepic);
     if (!profilepic) {
       this.image = this.image.replace('fakepath\\', '');
+
       let loogedUser: any = window.sessionStorage.getItem('auth-user');
 
       loogedUser = JSON.parse(loogedUser);
       this.profileServ
         .addprofilephoto(this.image, loogedUser.employeeID * 1)
         .subscribe((res: any) => {
+          this.profileServ.userPhoto.next(this.preview);
+
           console.log(res);
         });
     } else {
@@ -97,7 +100,10 @@ export class UpdatephotoComponent {
       loogedUser = JSON.parse(loogedUser);
       this.profileServ
         .updatePhoto(this.image, loogedUser.employeeID * 1)
-        .subscribe((res) => console.log(res));
+        .subscribe((res) => {
+          this.profileServ.userPhoto.next(this.preview);
+          res;
+        });
       this.messageService.add({
         severity: 'info',
         summary: 'Success',

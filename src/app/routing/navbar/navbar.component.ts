@@ -32,12 +32,14 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
-    this.profileServ.getloggedInProfile().subscribe((blob:any)=>{
-      this.profilePic= 'data:image/jpg;base64,'+blob.photo
-      if(blob.photo){
-        window.sessionStorage.setItem('profilePic', 'true' );
-      }else{
-        window.sessionStorage.setItem('profilePic', 'false' );
+    this.profileServ.getloggedInProfile().subscribe((blob: any) => {
+      this.profilePic = 'data:image/jpg;base64,' + blob.photo;
+      console.log(this.profilePic);
+
+      if (blob.photo) {
+        window.sessionStorage.setItem('profilePic', 'true');
+      } else {
+        window.sessionStorage.setItem('profilePic', 'false');
       }
     });
     if (this.isLoggedIn) {
@@ -46,7 +48,6 @@ export class NavbarComponent implements OnInit {
         this.roles = ['ROLE_ADMIN'];
         this.authService.GetDashboarddetails().subscribe({
           next: (data: any) => {
-           
             this.PendingLeaves = data.approvalCount;
             this.UpComingRevision = data.revisedCount;
             this.ActiveEmploye = data.employeeCount;
@@ -60,7 +61,7 @@ export class NavbarComponent implements OnInit {
       }
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-      window.sessionStorage.setItem('isAdmin', this.showAdminBoard+"");
+      window.sessionStorage.setItem('isAdmin', this.showAdminBoard + '');
       this.username = user.name;
       this.name = this.username;
     }
@@ -77,5 +78,9 @@ export class NavbarComponent implements OnInit {
     this.storageService.clean();
     this.router.navigate(['/login']);
   }
-
+  ngAfterViewInit() {
+    this.profileServ.userPhoto.subscribe((res) => {
+      this.profilePic = res;
+    });
+  }
 }

@@ -18,16 +18,13 @@ export class EmployeedDataService {
       httpOptions
     );
   }
-  CreatenewSalaryDetails(data: any) {
-    this.http
+  CreatenewSalaryDetails(Eid:number,Salary: number,LastRevisedDate:Date,NextRevisedDate:Date) {
+   return this.http
       .post(
-        'https://localhost:7236/createNewSalary',
-        JSON.stringify(data),
+        `https://localhost:7236/createNewSalary?EmpId=${Eid}&Salary=${Salary}&LastRevisedDate=${LastRevisedDate}&NextRevisedDate=${NextRevisedDate}`,
+       
         httpOptions
       )
-      .subscribe((result) => {
-        const resultData = Object.values(result);
-        console.log(resultData);
-      });
+    
   }
 }

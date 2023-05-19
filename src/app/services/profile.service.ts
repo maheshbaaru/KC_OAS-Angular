@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +13,7 @@ export class ProfileService {
   };
 
   constructor(private http: HttpClient) {}
+  public userPhoto = new BehaviorSubject<any>('');
   getImages() {
     return this.http.get('https://localhost:7236/GetProfilePhotos');
   }
@@ -26,7 +27,10 @@ export class ProfileService {
   addprofilephoto(image: string, EmpId: number) {
     let loogedUser: any = window.sessionStorage.getItem('auth-user');
     loogedUser = JSON.parse(loogedUser);
-    return this.http.post(`https://localhost:7236/AddProfilePhoto?EmpId=${EmpId}&image=${image}`,  this.httpOptions);
+    return this.http.post(
+      `https://localhost:7236/AddProfilePhoto?EmpId=${EmpId}&image=${image}`,
+      this.httpOptions
+    );
   }
   updatePhoto(image: string, EmpId: number) {
     return this.http.put(

@@ -50,7 +50,7 @@
                                 <button mat-menu-item [routerLink]="['Employees']"
                                     (click)="hideHome()"><mat-icon>people</mat-icon>Employees</button>
                                 <button mat-menu-item [routerLink]="['salDeduction']"><img src="assets/rupe.png"
-                                        alt="profile-pic" style="padding-right: 14px;">Salary
+                                        alt="profile-pic"  style="padding-right:20px;height:20px;">Salary
                                     Deductions</button>
                                 <button mat-menu-item
                                     [routerLink]="['create-designation']"><mat-icon>add_circle</mat-icon>
@@ -63,7 +63,7 @@
                                     Bank
                                     Details</button>
                                 <button mat-menu-item [routerLink]="['salary-details']"><img src="assets/rupe.png"
-                                        alt="profile-pic" style="padding-right: 14px;">Salary
+                                        alt="profile-pic" style="padding-right: 20px;height:20px;">Salary
                                     Details</button>
                             </span>
                         </mat-menu>
@@ -80,8 +80,7 @@
 
                 <div class="nav-item" routerLinkActive="active" (mouseout)="$event.stopPropagation()">
                     <a class="nav-link customizing" #levelTWoTrigger="matMenuTrigger"
-                        (mouseenter)="levelTWoTrigger.openMenu()" [matMenuTriggerFor]="levelTWo"style="font-family:sans-serif;">Welcome {{name}} <img
-                            src="{{profilePic}}" class="profile-class" width="50px"height="50px" alt=" " /> </a>
+                        (mouseenter)="levelTWoTrigger.openMenu()" [matMenuTriggerFor]="levelTWo"style="font-family:sans-serif;">Welcome {{name}} <img src="{{profilePic}}" class="profile-class" width="50px"height="50px" alt=" " /> </a>
                     <mat-menu #levelTWo="matMenu" direction="down" yPosition="below">
 
                         <span (mouseleave)="levelTWoTrigger.closeMenu()">
