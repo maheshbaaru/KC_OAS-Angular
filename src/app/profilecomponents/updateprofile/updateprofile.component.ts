@@ -92,11 +92,11 @@ export class UpdateprofileComponent {
     //     if (!data1.isActive) this.updateform.controls['isActive'].disable();
     //   });
     // }
-  // upadteprofile() {
-  //   // this.designatonservice.postdesignation((data: any) => {
-  //   //   console.log(data);
-  //   //   this.dendata = data;
-  //   // });
-  //   this.router.navigate(['./Employees'])
-  // }
+  upadteprofile() {
+    // this.designatonservice.postdesignation((data: any) => {
+    //   console.log(data);
+    //   this.dendata = data;
+    // });
+    this.router.navigate(['./Employees'])
+  }
 }
