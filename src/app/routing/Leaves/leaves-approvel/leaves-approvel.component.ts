@@ -1,4 +1,4 @@
-import { map } from 'rxjs';
+
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -34,6 +34,7 @@ export class LeavesApprovelComponent {
   employeeSearchText:string;
   employees: any;
   employeeName: any;
+
   constructor(
     private http: HttpClient,
     private _fb: FormBuilder,
@@ -118,30 +119,67 @@ export class LeavesApprovelComponent {
       else{
         this.leavesApproved={}
       }
-      console.log(statusData)
   }
 
   fromcalenderFilterTable(event:any,date:any){
 
-    const newDate = new Date(date.inputFieldValue);
-    const formattedDate = newDate.toISOString();
-    const FinalDate = formattedDate.replace(/Z$/, "").split('T')[0];
+    if(date.inputFieldValue===""){
+      this.leavesApproved=this.httpstoredData
+    }
 
-    console.log(FinalDate);
-    const fromDateData = this.leavesApproved.filter((e:any)=>(
-      (e.fromDate).split('T')[0]===FinalDate
-      ))
-      const mappeddata = this.leavesApproved.map((e:any)=>(
-        console.log(e.fromDate)
-      ))
-      console.log(fromDateData);
-  
+  var fromDateDataMap = this.leavesApproved.filter((e:any)=>{
+   if(e.fromDate===null){
+    return null;
+   }
+   else{
+    return e.fromDate.split("T")[0] ===date.inputFieldValue
+   }
+  })
+
+  if(fromDateDataMap.length> 0){
+    this.leavesApproved=fromDateDataMap
+   }
+  else{
+    this.leavesApproved=this.httpstoredData
+    // this.leavesApproved={
+
+    // }
   }
 
-  tocalenderFilterTable(event:any,date:any){
-
-    // const fromDateData = this.leavesApproved.filter((e:any)=>(
-    //   e.fromDate==date
-    //   ))
   }
+
+
+  tocalenderFilterTable(event:any,toDate:any){
+
+    if(toDate.inputFieldValue===""){
+      this.leavesApproved=this.httpstoredData
+    }
+
+  var toDateData = this.leavesApproved.filter((e:any)=>{
+        if(e.toDate===null){
+          return null;
+        }
+        else{
+          return e.toDate.split("T")[0] ===toDate.inputFieldValue
+        }
+  })
+
+  if(toDateData.length> 0){
+    this.leavesApproved=toDateData
+    // console.log("it go failed")
+  }else{
+    this.leavesApproved=this.httpstoredData
+  }
+    
+   
+  }
+
+
+  // const newDate = new Date(date.inputFieldValue);
+    // const formattedDate = newDate.toISOString();
+    // const FinalDate = formattedDate.replace(/Z$/, "").split('T')[0];
+    
+    // console.log(event);
+    // console.log(FinalDate);
+   
 }

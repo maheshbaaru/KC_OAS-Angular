@@ -32,7 +32,7 @@
               <label for="designation-input" class="input-styling" required>Status ID
 
               </label>
-              <p-dropdown 
+              <p-dropdown  
               [options]="statusTypes" 
               placeholder="Select Status Type" optionLabel="name"
               [showClear]="true" formControlName="name"
@@ -47,10 +47,10 @@
               <p-calendar 
               [showIcon]="true"  
               id="designation-input" 
+              dateFormat="yy-mm-dd"
               placeholder="DD/MM/YYYY"
                name="year" 
                 formControlName="year" 
-                [(ngModel)]="filterfromdate" 
                 (click)="fromcalenderFilterTable($event, fromCalender)"
                 #fromCalender
                 >
@@ -64,6 +64,7 @@
              id="designation-input"
               placeholder="DD/MM/YYYY" 
               name="yearTo" 
+              dateFormat="yy-mm-dd"
               formControlName="yearTo"
               (click)="tocalenderFilterTable($event, toCalender)"
               #toCalender
