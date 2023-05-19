@@ -111,7 +111,8 @@
         routerLink="../Employees">
         <i class="pi pi-arrow-left icon"></i>BACK
       </button>
-      <button pButton class="h-1rem p-button-success" style="float: right; margin-right: 5px; font-size: smaller"
+  
+    <button pButton class="h-1rem p-button-success"  style="float: right; margin-right: 5px; font-size: smaller" (click)=" upadteprofile()"
         type="submit" >
         <i class="pi pi-check icon" ></i>SAVE
       </button>
@@ -134,8 +135,8 @@
           <br />
 
           <label for="designationName" class="input-styling">DesignationID <span class="required">*</span></label>
-          <p-dropdown name="designationName" formControlName="designationName" optionLabel="name"
-            placeholder="Select Role"></p-dropdown>
+          <input type="text" formControlName="designationName" class="p-inputtext-normal h-2rem" required pInputText
+          placeholder="Enter designationName" />
 
           <br />
           <br />
@@ -159,9 +160,10 @@
           <br />
 
           <label for="shiftName" class="input-styling">ShiftId <span class="required">*</span></label>
-
-          <p-dropdown name="shiftName"  formControlName="shiftName"
-            placeholder="Select Shift"></p-dropdown>
+          <input type="text" formControlName="shiftName" class="p-inputtext-normal h-2rem" pInputText
+          />
+          <!-- <p-dropdown name="shiftName"  formControlName="shiftName"
+            placeholder="Select Shift"></p-dropdown> -->
         </div>
       </div>
       <div class="col-md-4">
@@ -181,7 +183,9 @@
 
           <label for="dateofjoining-input" class="input-styling" required>DOJ <span class="required">*</span>
           </label>
-          <p-calendar id="dateofjoining-input" optionLabel="doj" placeholder="DD-MM-YYYY" formControlName="doj"></p-calendar>
+          <input type="calender" formControlName="doj" class="p-inputtext-normal h-2rem" required pInputText
+          placeholder="Enter DD-MM-YYYY" />
+          <!-- <p-calendar id="dateofjoining-input" placeholder="DD-MM-YYYY" formControlName="doj"></p-calendar> -->
 
           <br />
           <br />

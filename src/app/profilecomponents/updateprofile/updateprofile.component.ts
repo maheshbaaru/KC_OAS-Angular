@@ -12,8 +12,6 @@ import { AuthguardService } from 'src/app/services/authguard.service';
 })
 export class UpdateprofileComponent {
   empdata: any;
-  dendata: any;
-  updatePhoto: any;
   public updateform: FormGroup;
 
   constructor(
@@ -60,10 +58,6 @@ export class UpdateprofileComponent {
       }),
       doj: new FormControl({
         value: '',
-        disabled: false,
-      }),
-      designationID: new FormControl({
-        value: '',
         disabled: true,
       }),
     });
@@ -75,13 +69,17 @@ export class UpdateprofileComponent {
     console.log(this.updateform);
     let data: any = window.sessionStorage.getItem('loggedinUser');
     let userdata = JSON.parse(data);
-    this.service.getEmployeeList().subscribe((data1: any) => {
-      console.log(data1);
-      //  this.updateform.get('email')?.setValue(data.email);
-      this.updateform.patchValue(userdata);
-      this.updateform.get('email')?.setValue(userdata.email);
-      if (!userdata.isActive) this.updateform.controls['isActive'].disable();
-    });
+    this.updateform.patchValue(userdata);
+    console.log(data);
+    if (!userdata.isActive) this.updateform.controls['isActive'].disable();
+    // this.service.getEmployeeList().subscribe((data1: any) => {
+    //   console.log(data1);
+    //   // this.updateform = data.filter((dat: any) => dat.empId == data.id * 1);
+    //   // this.empdata = data.filter((dat: any) => dat.empId == userdata.id * 1);
+    // //  this.updateform.get('email')?.setValue(data.email);
+    // this.updateform.patchValue(userdata);
+    //  if (!userdata.isActive) this.updateform.controls['isActive'].disable();
+    //  });
   }
 
   //  formdataget() {
@@ -91,11 +89,11 @@ export class UpdateprofileComponent {
   //     if (!data1.isActive) this.updateform.controls['isActive'].disable();
   //   });
   // }
-  // upadteprofile() {
-  //   // this.designatonservice.postdesignation((data: any) => {
-  //   //   console.log(data);
-  //   //   this.dendata = data;
-  //   // });
-  //   this.router.navigate(['./Employees'])
-  // }
+  upadteprofile() {
+    // this.designatonservice.postdesignation((data: any) => {
+    //   console.log(data);
+    //   this.dendata = data;
+    // });
+    this.router.navigate(['./Employees']);
+  }
 }

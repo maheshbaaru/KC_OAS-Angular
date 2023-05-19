@@ -128,3 +128,8 @@ td{
 table{
     min-height: 30vh;
 }
+
+.p-dropdown.p-dropdown-clearable .p-dropdown-label {
+    padding-top:3px;
+ 
+}
