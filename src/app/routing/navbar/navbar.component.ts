@@ -80,7 +80,9 @@ export class NavbarComponent implements OnInit {
   }
   ngAfterViewInit() {
     this.profileServ.userPhoto.subscribe((res) => {
-      this.profilePic = res;
+      if (res) {
+        this.profilePic = res;
+      }
     });
   }
 }
