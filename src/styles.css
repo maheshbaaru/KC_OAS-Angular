@@ -133,3 +133,11 @@ table{
     padding-top:3px;
  
 }
+
+.mat-mdc-menu-content .mat-mdc-menu-item .mdc-list-item__primary-text{
+    font-size: 12px;
+}
+.mat-icon{
+    font-size: 18px;
+    padding-top:3px;
+}
