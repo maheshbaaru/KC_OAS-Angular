@@ -64,11 +64,14 @@ export class EmployeeService {
   }
 
   getSpecifiEmployeeLeavesDataById(): Observable<any[]> {
+    debugger;
     return new Observable((observer) => {
+
       this.http
         .get(`https://localhost:7236/GetSpecificEmpLeave?id=${this.currentid}`)
         .subscribe((result) => {
           const resultData = Object.values(result);
+          console.log(resultData);
 
           observer.next(resultData);
           observer.complete();
@@ -77,8 +80,6 @@ export class EmployeeService {
   }
 
   updateLeavesApprovalData(updateData: any) {
-    // debugger;
-
     const body = JSON.stringify(updateData);
 
     return this.http
@@ -90,40 +91,20 @@ export class EmployeeService {
         const resultData = Object.values(result);
       });
   }
-  getShifts(): Observable<any[]> {
-    return new Observable((observer) => {
-      this.http
-        .get(`https://localhost:7236/TblShiftControllerAPI`)
-        .subscribe((data) => {
-          const res = Object.values(data);
-          observer.next(res);
-          observer.complete();
-        });
-    });
+  getShifts(): Observable<any> {
+    return this.http
+      .get(`https://localhost:7236/GetTblShifts`);
+
   }
-  getDesignationRoles(): Observable<any[]> {
-    return new Observable((observer) => {
-      this.http
-        .get(`https://localhost:7236/GetDesignations`)
-        .subscribe((result) => {
-          const resultData = Object.values(result);
-          observer.next(resultData);
-          observer.complete();
-        });
-    });
+  getDesignationRoles(): Observable<any> {
+    return this.http.get(`https://localhost:7236/GetDesignations`);
+
   }
 
-  getAllEmployees(): Observable<any[]> {
-    return new Observable((observer) => {
-      this.http
-        .get("https://localhost:7236/GetEmployeeTbls")
-        .subscribe((result) => {
-          const resultData = Object.values(result);
+  getAllEmployees(): Observable<any> {
+    return this.http.get(`https://localhost:7236/GetEmployeeTbls`);
 
-          observer.next(resultData);
-          observer.complete();
-        });
-    });
+
   }
 
   createEmployee(obj: any): Observable<any[]> {
@@ -132,16 +113,14 @@ export class EmployeeService {
       `${this.API_CALL}/AddEmployee?FirstName=${FirstName}&LastName=${LastName}&email=${Email}&password=${Password}&isActive=${IsActive}&EmployeeId=${EmployeeId}&//panNumber=${PanNumber}&shiftId=${ShiftId}&doj=${Doj}&id=${Id}`, this.httpOptions);
 
   }
-}
-
-  // createEmployee(obj: any) {
-  //   debugger
-  //   this.http.post('https://localhost:7236/AddEmployee', JSON.stringify(obj), this.httpOptions
-  //   )
-  //     .subscribe((result) => {
-  //       const resultData = Object.values(result);
-  //       console.log(resultData);
-  //     });
+  getSpecificEmployeeById(id: any): Observable<any> {
+    return this.http.get(`https://localhost:7236/GetEmployeeById?id=` + id);
+  }
+  // UpdateEmployeeData(updatedData: any) {
+  //   debugger;
+  //   const body = JSON.stringify(updatedData);
+  //   return this.http.put<any>(`https://localhost:7236/UpdateEmployeeTbl?Id=${updatedData.EmployeeId}&Email=${updatedData.Email}&FirstName=${updatedData.FirstName}&LastName=${updatedData.LastName}&Password=${updatedData.Password}&PanNumber=${updatedData.PanNumber}&DesignationId=${updatedData.DesignationId}&ShiftId=${updatedData.ShiftId}&Doj=${updatedData.Doj}`, this.httpOptions).subscribe((result) => {
+  //     const resultData = Object.values(result)
+  //   })
   // }
-
-
+}

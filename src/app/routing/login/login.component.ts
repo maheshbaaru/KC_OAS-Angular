@@ -62,7 +62,7 @@ export class LoginComponent {
           x.id==data.id)));
           window.sessionStorage.setItem('EmployeeList',JSON.stringify(data1));
         });
-        console.log('data',data)
+        //console.log('data',data)
         if (data != '' && data != null) {
 
           this.storageService.saveUser(data);
