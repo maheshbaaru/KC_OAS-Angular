@@ -17,14 +17,17 @@ export class EmployeeAccessComponent {
 
   ngOnInit() {
  
-    let loogedUser: any = window.sessionStorage.getItem('auth-user')
-    loogedUser = JSON.parse(loogedUser)
-    this.empServe.getUsers().subscribe((data: any) => {
+    // let loogedUser: any = window.sessionStorage.getItem('auth-user')
+    // loogedUser = JSON.parse(loogedUser)
+    // debugger
+    // this.empServe.getUsers().subscribe((data: any) => {
+    // return data;
+   
+    // this.empAccess = data.filter((dat: any) => dat.id == loogedUser.employeeID* 1);
+    // console.log(this.empAccess);
     
-    this.employeeLeavs = data.filter((dat: any) => dat.Id == loogedUser.employeeID * 1);
-    });
+    // });
   }
- 
   ngAfterViewInit() {
     return this.empServe.getUsers().subscribe((res) => (this.empAccess = res));
   }

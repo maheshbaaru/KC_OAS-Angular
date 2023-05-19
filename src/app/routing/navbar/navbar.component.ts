@@ -34,6 +34,8 @@ export class NavbarComponent implements OnInit {
     this.isLoggedIn = this.storageService.isLoggedIn();
     this.profileServ.getloggedInProfile().subscribe((blob:any)=>{
       this.profilePic= 'data:image/jpg;base64,'+blob.photo
+      console.log(this.profilePic);
+      
       if(blob.photo){
         window.sessionStorage.setItem('profilePic', 'true' );
       }else{
