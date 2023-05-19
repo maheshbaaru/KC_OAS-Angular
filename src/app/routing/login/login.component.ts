@@ -31,14 +31,14 @@ export class LoginComponent {
   loginForm: any;
 
 
-  
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthguardService,
     private storageService: StorageService,
     private router: Router,
     private service: EmployeedDataService
-  ) {}
+  ) { }
 
 
 
@@ -54,15 +54,14 @@ export class LoginComponent {
   onSubmit() {
 
     this.password = 'password'
- const { username, password,rememberMe} = this.form;
+    const { username, password, rememberMe } = this.form;
     this.authService.login(username, password).subscribe({
       next: (data: any) => {
         this.service.getEmployeeList().subscribe((data1: any) => {
-          window.sessionStorage.setItem('loggedinUser', JSON.stringify(data1.find((x:any)=>
-          x.id==data.id)));
-          window.sessionStorage.setItem('EmployeeList',JSON.stringify(data1));
+          window.sessionStorage.setItem('loggedinUser', JSON.stringify(data1.find((x: any) =>
+            x.id == data.id)));
+          window.sessionStorage.setItem('EmployeeList', JSON.stringify(data1));
         });
-        //console.log('data',data)
         if (data != '' && data != null) {
 
           this.storageService.saveUser(data);
@@ -78,14 +77,14 @@ export class LoginComponent {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       },
-      
+
     });
-    if(rememberMe) {
+    if (rememberMe) {
       sessionStorage.setItem('rememberMe', 'yes')
     }
   }
 
- 
+
   reloadPage(): void {
     window.location.reload();
   }

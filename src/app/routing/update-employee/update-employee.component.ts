@@ -4,7 +4,6 @@ import { EmployeeService } from 'src/app/services/employee.service';
 import { Shifts } from '../Admin/create-new-employee/create-new-employee.component';
 import { Roles } from '../Admin/create-new-employee/create-new-employee.component';
 import { ActivatedRoute } from '@angular/router';
-import { Form, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-update-employee',
   templateUrl: './update-employee.component.html',
@@ -26,7 +25,7 @@ export class UpdateEmployeeComponent {
   selectedShiftId: any
   checked: any;
 
-  constructor(private _service: EmployeeService, private active: ActivatedRoute, private fb: FormBuilder) {
+  constructor(private _service: EmployeeService, private active: ActivatedRoute) {
 
   }
   ngOnInit() {
