@@ -29,24 +29,42 @@
         </label>
         <p-dropdown [options]="names" placeholder="Select Employee" optionLabel="name"
         [showClear]="true"  formControlName="EmpId"  ></p-dropdown>
+        <div *ngIf="submitted && f['EmpId'].errors" class="alert alert-danger">
+
+          <div *ngIf="f['EmpId'].errors['required']">ID field required</div>
+          
+          </div>
       </div>
       <div  class="cont2">
        <label for="designation-input" class="input-styling" required  >Salary
            <span class="required">*</span>
         </label>
-        <input id="designation-input" class="h-2rem" type="input" placeholder="Enter Salary" pInputText formControlName="Salary"/>
+        <input id="designation-input" class="h-2rem" type="input" placeholder="Enter Salary" pInputText formControlName="Salary"  />
+        <div *ngIf="submitted && f['Salary'].errors" class="alert alert-danger">
+          <div *ngIf="f['Salary'].errors['required']">Salary is required</div>
+          </div>
       </div>
       <div  class="cont2">
        <label for="designation-input" class="input-styling" required>Last Revised Date
            <span class="required">*</span>
         </label>
         <p-calendar [showIcon]="true"  id="designation-input" placeholder="DD-MM-YYYY"  formControlName="LastRevisedDate"></p-calendar>
+        <div *ngIf="submitted && f['LastRevisedDate'].errors" class="alert alert-danger">
+
+          <div *ngIf="f['LastRevisedDate'].errors['required']">Date field required</div>
+          
+          </div>
       </div>
       <div  class="cont2">
        <label for="designation-input" class="input-styling" required>Next Revised Date
            <span class="required">*</span>
         </label>
         <p-calendar [showIcon]="true"  id="designation-input" placeholder="DD-MM-YYYY"  formControlName="NextRevisedDate"></p-calendar>
+        <div *ngIf="submitted && f['NextRevisedDate'].errors" class="alert alert-danger">
+
+          <div *ngIf="f['NextRevisedDate'].errors['required']">Date field required</div>
+          
+          </div>
       </div>
     </form>
 </div>

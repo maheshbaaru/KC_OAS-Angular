@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
@@ -11,10 +11,12 @@ import { SalarydeductionlistService } from 'src/app/services/salarydeductionlist
   templateUrl: './create-designation.component.html',
   styleUrls: ['./create-designation.component.css'],
 })
-export class CreateDesignationComponent {
+export class CreateDesignationComponent implements OnInit{
   addDesinations: any;
+  DsgForm: FormGroup;
+  submitted = false;
   constructor(
-    fb: FormBuilder,
+     private _fb: FormBuilder,
     private router: Router,
     private service: EmployeedDataService,
     private dgnservice: HttpClientService,
@@ -22,14 +24,22 @@ export class CreateDesignationComponent {
     private salDeductionServe: SalarydeductionlistService,
     private messageService: MessageService
   ) {
-    this.form = fb.group({
-      name: [null, Validators.required],
-    });
+    
   }
+
+
+ ngOnInit() {
+    this.DsgForm = this._fb.group({
+      name: [null, Validators.required],
+    });  
+  }
+  get d() { return this.DsgForm.controls; }
+  
 
   submit() {}
   public form: FormGroup;
   addDesignation() {
+    this.submitted=true;
     debugger;
     this.addDesinations = this.form.value;
 

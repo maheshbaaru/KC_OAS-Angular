@@ -12,12 +12,16 @@
     </div>
   </ng-template>
   <div class="row">
-    <form class=" form-styles cont  " [formGroup]="form">
+    <form class=" form-styles cont  " [formGroup]="form"  #tax="ngForm">
       <div>
         <label for="designation-input" class="input-styling" required>Type
           <span class="required">*</span>
         </label>
         <input id="designation-input" class="h-2rem" type="input" placeholder="Enter Tax Type" pInputText name="tax" formControlName="tax" />
+        <div  *ngIf="tax.invalid && (tax.dirty ||tax.touched)"
+        >
+         <p class="alert alert-danger">* tax input is required</p>
+       </div>
       </div>
     </form>
   </div>

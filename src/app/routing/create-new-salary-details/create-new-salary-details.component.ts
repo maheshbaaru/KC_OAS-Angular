@@ -23,6 +23,7 @@ export class CreateNewSalaryDetailsComponent {
   LastRevisedDate: any;
   NextRevisedDate: any;
   Eid: any;
+  submitted = false;
 
   constructor(
     private _fb: FormBuilder,
@@ -30,6 +31,11 @@ export class CreateNewSalaryDetailsComponent {
     private router: Router,
     @Inject(LOCALE_ID) public local: string,
   ) {
+    
+  }
+
+
+  ngOnInit() {
     this.empForm = this._fb.group({
       EmpId: [null, Validators.required],
     
@@ -37,27 +43,8 @@ export class CreateNewSalaryDetailsComponent {
       LastRevisedDate:  [null, Validators.required],
       NextRevisedDate:  [null, Validators.required],
     });
-  }
 
-  onFormSubmit() {
-this .EmpId=this.empForm.value.EmpId.employeeID;
-this.Eid=this.EmpId.replace('KC0',"");
 
-console.log(this.Eid);
-    this.Salary = this.empForm.value.Salary;
-    (this.LastRevisedDate  = formatDate(this.empForm.value.LastRevisedDate, 'YYYY-MM-dd', this.local)),
-    (this.NextRevisedDate  = formatDate(this.empForm.value.NextRevisedDate, 'YYYY-MM-dd', this.local))
-    this._service.CreatenewSalaryDetails(this.Eid, this.Salary,this.LastRevisedDate,this.NextRevisedDate);
-
-    if (this.empForm.valid) {
-      this._service.CreatenewSalaryDetails(this.Eid, this.Salary,this.LastRevisedDate,this.NextRevisedDate).subscribe(res=>{
-        console.log(res)
-      });
-    }
-    this.empForm.reset();
-  }
-
-  ngOnInit() {
     this._service.getEmployeeList().subscribe((data) => {
       this.names = data.filter((item: any) => {
         return item.firstName + item.lastName;
@@ -65,8 +52,28 @@ console.log(this.Eid);
     });
   }
 
+  get f() { return this.empForm.controls; }
 
 
+  onFormSubmit() {
+    this.submitted=true;
+    this .EmpId=this.empForm.value.EmpId.employeeID;
+    this.Eid=this.EmpId.replace('KC0',"");
+    
+    console.log(this.Eid);
+        this.Salary = this.empForm.value.Salary;
+        (this.LastRevisedDate  = formatDate(this.empForm.value.LastRevisedDate, 'YYYY-MM-dd', this.local)),
+        (this.NextRevisedDate  = formatDate(this.empForm.value.NextRevisedDate, 'YYYY-MM-dd', this.local))
+        this._service.CreatenewSalaryDetails(this.Eid, this.Salary,this.LastRevisedDate,this.NextRevisedDate);
+    
+        if (this.empForm.valid) {
+          this._service.CreatenewSalaryDetails(this.Eid, this.Salary,this.LastRevisedDate,this.NextRevisedDate).subscribe(res=>{
+            console.log(res)
+          });
+        }
+        this.empForm.reset();
+      }
+    
  
   
   

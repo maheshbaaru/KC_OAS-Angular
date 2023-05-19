@@ -5,6 +5,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .required{
     color: red;
+
 }
 ::placeholder{
     font-size: medium;
@@ -116,7 +117,7 @@ td{
 
 
 .p-panel-content {
-    min-height: 20vh;
+
  
     border: 1px solid #dee2e6;
     background: #ffffff;
@@ -140,4 +141,11 @@ table{
 .mat-icon{
     font-size: 18px;
     padding-top:3px;
+}
+.alert.alert-danger{
+ padding: 0px;
+    color: crimson;
+background-color: transparent;
+border: transparent;
+
 }
