@@ -54,7 +54,7 @@ export class SalDeductionComponent {
       EmpId: [null, Validators.required],
       Amount: [null, Validators.required],
       LOPDAYS: [null, Validators.required],
-      Month: [[], Validators.required],
+      Month: [null, Validators.required],
     });
   }
   ngOnInit() {
@@ -99,33 +99,43 @@ export class SalDeductionComponent {
   }
   save() {
     // this.salDeductionServ.AddDeduction();
-    console.log(this.form);
-
-    this.taxType = this.form.value.TaxTypeId.id;
-    this.employeeId = this.form.value.EmpId.employeeId;
-    this.selectedAmount = this.form.value.Amount;
-    this.selectedLOP = this.form.value.LOPDAYS;
-    (this.month = formatDate(this.form.value.Month, 'YYYY-MM-dd', this.local)),
-      (this.description = this.form.value.TaxTypeId.type);
-    this.salDeductionServ
-      .AddDeduction(
-        this.employeeId,
-        this.taxType,
-        this.selectedAmount,
-        this.month,
-        this.selectedLOP,
-        this.description
-      )
-      .subscribe((res: any) => {
-        console.log(res);
-        if (res !== null && res !== res.statusText && res !== res.type) {
-          this.messageSer.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: 'Employee SalaryDeduction saved',
-          });
-        }
-      });
+    if (this.form.invalid) {
+      for (const control of Object.keys(this.form.controls)) {
+        this.form.controls[control].markAsTouched();
+        this.form.controls[control].markAsDirty();
+      }
+      return;
+    } else if (this.form.valid) {
+      this.taxType = this.form.value.TaxTypeId.id;
+      this.employeeId = this.form.value.EmpId.employeeId;
+      this.selectedAmount = this.form.value.Amount;
+      this.selectedLOP = this.form.value.LOPDAYS;
+      (this.month = formatDate(
+        this.form.value.Month,
+        'YYYY-MM-dd',
+        this.local
+      )),
+        (this.description = this.form.value.TaxTypeId.type);
+      this.salDeductionServ
+        .AddDeduction(
+          this.employeeId,
+          this.taxType,
+          this.selectedAmount,
+          this.month,
+          this.selectedLOP,
+          this.description
+        )
+        .subscribe((res: any) => {
+          console.log(res);
+          if (res !== null && res !== res.statusText && res !== res.type) {
+            this.messageSer.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Employee SalaryDeduction saved',
+            });
+          }
+        });
+    }
     this.form.reset();
     return this.messageSer.add({
       severity: 'error',

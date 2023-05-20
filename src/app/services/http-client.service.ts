@@ -38,7 +38,7 @@ export class HttpClientService {
   }
   AddTaxType(type: string): Observable<any[]> {
     return this.http.post<any>(
-      `${this.API_CALL}/GetTblTaxDeduction?Type=${type}`,
+      `${this.API_CALL}/AddTblTaxDeduction?Type=${type}`,
       this.httpOptions
     );
   }

@@ -11,58 +11,55 @@ import { SalarydeductionlistService } from 'src/app/services/salarydeductionlist
   templateUrl: './create-designation.component.html',
   styleUrls: ['./create-designation.component.css'],
 })
-export class CreateDesignationComponent implements OnInit{
+export class CreateDesignationComponent implements OnInit {
   addDesinations: any;
   DsgForm: FormGroup;
   submitted = false;
   constructor(
-     private _fb: FormBuilder,
+    private _fb: FormBuilder,
     private router: Router,
     private service: EmployeedDataService,
     private dgnservice: HttpClientService,
     private formBuilder: FormBuilder,
     private salDeductionServe: SalarydeductionlistService,
     private messageService: MessageService
-  ) {
-    
-  }
+  ) {}
 
-
- ngOnInit() {
+  ngOnInit() {
     this.DsgForm = this._fb.group({
       name: [null, Validators.required],
-    });  
+    });
   }
-  get d() { return this.DsgForm.controls; }
-  
+  get d() {
+    return this.DsgForm.controls;
+  }
 
   submit() {}
   public form: FormGroup;
   addDesignation() {
-    this.submitted=true;
-    debugger;
-    this.addDesinations = this.form.value;
+    if (this.DsgForm.invalid) {
+      for (const control of Object.keys(this.DsgForm.controls)) {
+        this.DsgForm.controls[control].markAsTouched();
+        this.DsgForm.controls[control].markAsDirty();
+      }
+      return;
+    } else if (this.DsgForm.valid) {
+      this.addDesinations = this.DsgForm.value;
 
-    this.salDeductionServe
-      .AddDesignation(this.addDesinations.name)
-      .subscribe((res: any) => {
+      this.salDeductionServe
+        .AddDesignation(this.addDesinations.name)
+        .subscribe((res: any) => {
+          if (res) {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Designation saved',
+            });
+          }
+        });
+    }
 
-        if (res.status !== null && this.addDesinations.name !== '') {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: 'Designation saved',
-          });
-        } else {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: 'Please gave a Designation',
-          });
-        }
-      });
-
-    this.form.reset();
-    this.router.navigate(['/navbar'])
+    this.DsgForm.reset();
+    this.router.navigate(['/navbar']);
   }
 }

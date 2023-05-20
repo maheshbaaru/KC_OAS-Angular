@@ -25,7 +25,8 @@ import { ConfirmationService } from 'primeng/api';
 import { DividerModule } from 'primeng/divider';
 import { ToastModule } from 'primeng/toast';
 import { TagModule } from 'primeng/tag';
-
+import { FileUploadModule } from 'primeng/fileupload';
+import { MessageModule } from 'primeng/message';
 const primeNg: any = [
   CheckboxModule,
   InputTextModule,
@@ -51,8 +52,9 @@ const primeNg: any = [
   ToastModule,
   PanelModule,
   DropdownModule,
-  CalendarModule,
-  TagModule
+  TagModule,
+  FileUploadModule,
+  MessageModule,
 ];
 
 @NgModule({

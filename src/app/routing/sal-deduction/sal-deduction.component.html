@@ -13,7 +13,7 @@
     <div class="col-sm-6" style="text-align: right">
       <button
         pButton
-      
+
         (click)="openNew()"
         class="h-1rem p-button-success"
         style="
@@ -21,7 +21,7 @@
           font-size: small;
           font-weight: 500;
           margin-right:10px;
-       
+
         "
       >
         + CREATE NEW
@@ -34,19 +34,7 @@
     [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [rowsPerPageOptions]="[10, 25, 50]" [globalFilterFields]="['employeeId', 'Name']" responsiveLayout="scroll">
     <ng-template pTemplate="right"> </ng-template>
-    <!-- <ng-template pTemplate="caption">
-    <div class="p-d-flex">
-     
-            <span class="p-input-icon-left p-ml-auto " >
 
-              <i class="pi pi-search"></i>
-              <input class="h-2rem" pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')" placeholder="Search Employee"/>
-            </span>
-            <span [style]="{'float':'right'}" >
-              <button pButton pRipple label="New" styleClass="p-button-sm" icon="pi pi-plus  " class="p-button-success mr-2 h-1rem" (click)="openNew()"></button>
-            </span>
-    </div>
-  </ng-template> -->
 
     <ng-template pTemplate="header" let-columns>
       <tr>
@@ -56,12 +44,7 @@
             <p-columnFilter type="text" [field]="col.field" display="menu"></p-columnFilter>
           </div>
         </th>
-        <!-- <th>
-        <div class="p-d-flex p-jc-between p-ai-center">
-          Name
-          <p-columnFilter type="text" field="Name" display="menu"></p-columnFilter>
-        </div>
-      </th> -->
+
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
@@ -71,11 +54,11 @@
             [routerLink]="['../DeductionList', rowData.employeeId]">{{ rowData.employeeId }}</a>
           <div *ngIf="col.field != 'employeeId'">{{ rowData[col.field] }}</div>
         </td>
-        <!-- <td >{{emp.Name}}</td> -->
+
       </tr>
     </ng-template>
   </p-table>
-  
+
   <p-dialog [(visible)]="productDialog" [style]="{ width: '850px', height: '700px' }" header="Create" [modal]="true"
     styleClass="p-fluid">
     <ng-template pTemplate="content p-p-4">
@@ -85,9 +68,12 @@
             <label  for="taxTayes">TaxTypeId
               <span class="text-red-500" required>*</span>
             </label>
-            <p-dropdown [options]="taxTaypes" placeholder="Select tax type" id="TaxTypeId" name="TaxTypeId"
+            <p-dropdown [options]="taxTaypes" placeholder="Select tax type" id="TaxTypeId"
            optionLabel="type" [showClear]="true" filterBy="type" [filter]="true"
               formControlName="TaxTypeId"></p-dropdown>
+            <small class="text-danger text-center"  *ngIf="!form.get('TaxTypeId')?.valid &&(form.get('TaxTypeId')?.touched||form.get('TaxTypeId')?.dirty)">please select a TaxType</small>
+
+
           </div>
 
           <div class="field col-4">
@@ -95,40 +81,46 @@
               <span class="required" required>*</span>
             </label>
             <p-dropdown [options]="users" placeholder="EmpId" [filter]="true" optionLabel="firstName" [showClear]="true"
-              [filter]="true" filterBy="firstName" name="EmpId" formControlName="EmpId">
-              <!-- <ng-template let-group pTemplate="group">
-            <div class="p-d-flex p-ai-center">
+              [filter]="true" filterBy="firstName"  formControlName="EmpId">
 
-              <option>{{group.firstName}} {{group.lastName}}</option>
-            </div>
-          </ng-template> -->
             </p-dropdown>
+            <small class="text-danger  align-items-center" *ngIf="!form.get('EmpId')?.valid &&(form.get('EmpId')?.touched||form.get('EmpId')?.dirty)">please select a Name</small>
+
           </div>
 
           <div class="field col-4" [style]="{ width: '14rem' }">
             <label class="p-mb-3">Amount
               <span class="text-red-500" required>*</span>
             </label>
-            <p-inputNumber id="Amount" mode="currency" currency="INR" locale="en-US" autofocus 
-              name="Amount" formControlName="Amount"  class="h-2rem"></p-inputNumber>
+            <p-inputNumber id="Amount" mode="currency" currency="INR" locale="en-US" autofocus placeholder="Amount"
+               formControlName="Amount"  class="h-2rem" [class.is-invalid]="form.get('Amount')?.invalid && (form.get('Amount')?.dirty || form.get('Amount')?.touched)">
+               </p-inputNumber>
+
+               <small class="text-danger "  *ngIf="!form.get('Amount')?.valid &&(form.get('Amount')?.touched||form.get('Amount')?.dirty)">
+
+                please give a Amount</small>
+
           </div>
 
           <div class="col-6 mr-5" style="width: 15rem">
             <label for="LOPDAYS">No of LOP Days
               <span class="text-red-500" required>*</span>
             </label>
-            <input type="text" pInputText id="LOPDAYS" placeholder="No of LOP Days" required class="h-2rem" autofocus name="LOPDAYS"
+            <input type="text" pInputText id="LOPDAYS" placeholder="No of LOP Days" required class="h-2rem" autofocus
               formControlName="LOPDAYS" />
+              <small class="text-danger " *ngIf="!form.get('LOPDAYS')?.valid &&(form.get('LOPDAYS')?.touched||form.get('LOPDAYS')?.dirty)">please give LOP DAYS</small>
           </div>
-          <div class="col-6" style="width: 15rem">
+          <div class="col-6 ng-dirty ng-invalid mr-2 " style="width: 15rem">
             <label for="Month">Effected Month
               <span class="text-red-500" required>*</span>
             </label>
-            <p-calendar [disabledDates]="invalidDates" [showIcon]="true" view="month" inputId="Month" dateFormat="mm.yy"
-              [required]="true" name="Month" formControlName="Month" placeholder="MM-YYYY"></p-calendar>
+            <p-calendar   [disabledDates]="invalidDates"  view="month" inputId="Month" dateFormat="mm.yy"
+              [required]="true" formControlName="Month" placeholder="Month" ></p-calendar>
+              <small class="text-danger " *ngIf="!form.get('Month')?.valid &&(form.get('Month')?.touched||form.get('Month')?.dirty)">please select a Month</small>
           </div>
         </div>
-        <div *ngIf="form.invalid && (form.dirty || form.touched)" class="alert"></div>
+
+
       </form>
     </ng-template>
 
@@ -137,7 +129,7 @@
         [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
       <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
       <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" id="save" type="submit"
-        (click)="save()" [disabled]="!form.valid"></button>
+        (click)="save()" ></button>
     </ng-template>
   </p-dialog>
 </p-panel>

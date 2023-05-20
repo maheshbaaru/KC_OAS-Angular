@@ -21,24 +21,23 @@ export class CreateTaxtypeComponent {
     });
   }
   AddTaxType() {
-    this.taxType = this.form.value;
-    this.httpClient.AddTaxType(this.taxType.tax).subscribe((res:any) => {
-      console.log(res);
-      if(res!==null&&res!==res.statusText&&res!==res.type
-
-        )
-      this.messageService.add({
-        severity: 'success',
-        summary: 'Success',
-        detail: 'TaxType saved',
-      });
-    });
-
-    if (this.taxType === '' && this.taxType === null) {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Please gave a TaxType',
+    if (this.form.invalid) {
+      for (const control of Object.keys(this.form.controls)) {
+        this.form.controls[control].markAsTouched();
+        this.form.controls[control].markAsDirty();
+      }
+      return;
+    } else if (this.form.valid) {
+      this.taxType = this.form.value;
+      this.httpClient.AddTaxType(this.taxType.tax).subscribe((res: any) => {
+        console.log(res);
+        if (res) {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'TaxType saved',
+          });
+        }
       });
     }
 

@@ -12,27 +12,25 @@
   </ng-template>
   <div class="row">
 
-    <form  class=" form-styles cont  " [formGroup]="DsgForm" (submit)="addDesignation()">
+    <form  class=" form-styles cont  " [formGroup]="DsgForm" >
 
 
       <div  >
        <label for="designation-input" class="input-styling" required  >Name
            <span class="required">*</span>
         </label>
-        <input id="designation-input" class="designation h-2rem" type="input"  placeholder="Enter Designation" pInputText name="name" formControlName="name" />
+        <input id="designation-input" class="designation h-2rem" type="input"  placeholder="Enter Designation" pInputText  formControlName="name" />
+        <small class="text-danger "   *ngIf="!DsgForm.get('name')?.valid &&(DsgForm.get('name')?.touched||DsgForm.get('name')?.dirty)">please Add Designation</small>
 
-        <!-- <div  *ngIf="DsgForm.invalid && (DsgForm.dirty || DsgForm.touched)"
-       >
-        <p class="alert alert-danger">* Designation input is required</p>
-      </div> -->
 
-      
-      <div *ngIf="submitted && d['name'].errors" class="alert alert-danger">
+
+
+      <!-- <div *ngIf="submitted && d['name'].errors" class="alert alert-danger">
 
         <div *ngIf="d['name'].errors['required']">ID field required</div>
-        
-        </div>
-      
+
+        </div> -->
+
 </div>
 
     </form>
