@@ -16,178 +16,15 @@
       >&nbsp;
       <button
         pButton
-        type="button"
+        type="subit"
         label="Save"
-        (click)="onClickSave()"
         icon="pi pi-check"
         iconPos="left"
         class="p-button-sm h-2rem"
       ></button>
     </div>
   </ng-template>
-  <div class="row">
-    <div class="col-md-4">
-      <div class="col-12 md:col-4">
-        <label for="employeeID" class="input-styling"
-          >EmployeeID <span class="required">*</span></label
-        >
-        <input
-          type="text"
-          pInputText
-          class="p-inputtext-normal h-2rem"
-          [value]="employeeID"
-          disabled
-          style="cursor: not-allowed"
-        />
-        <br />
-        <br />
-
-        <label for="email" class="input-styling"
-          >Email <span class="required">*</span></label
-        >
-        <input
-          type="text"
-          class="p-inputtext-normal h-2rem"
-          id="email"
-          pInputText
-          [value]="Email"
-        />
-        <br />
-        <br />
-
-        <label for="designationName" class="input-styling"
-          >DesignationID <span class="required">*</span></label
-        >
-
-        <p-dropdown
-          [options]="roles"
-          optionLabel="name"
-          [(ngModel)]="SelectedDesignation"
-          id="role"
-        ></p-dropdown>
-
-        <br />
-        <br />
-        <p-checkbox
-          [(ngModel)]="checked"
-          [binary]="true"
-          inputId="binary"
-        ></p-checkbox>
-        <label for="any">IsActive<span class="required">*</span></label>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="col-12 md:col-4">
-        <label for="firstName" class="input-styling"
-          >FirstName <span class="required">*</span></label
-        >
-        <input
-          type="text"
-          pInputText
-          class="p-inputtext-normal h-2rem"
-          [value]="FirstName"
-          id="first"
-        />
-        <br />
-        <br />
-
-        <label for="panNumber" class="input-styling"
-          >PanNumber <span class="required">*</span></label
-        >
-        <input
-          type="text"
-          class="required"
-          class="p-inputtext-normal h-2rem"
-          pInputText
-          [value]="PanNumber"
-          id="panno"
-        />
-        <br />
-        <br />
-
-        <label for="shiftName" class="input-styling"
-          >ShiftId <span class="required">*</span></label
-        >
-
-        <p-dropdown
-          [options]="shifts"
-          name="shiftName"
-          optionLabel="shiftName"
-          [(ngModel)]="selectedShiftId"
-          placeholder="Select Shift"
-          id="shift"
-        ></p-dropdown>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="col-12 md:col-4">
-        <label for="lastName" class="input-styling" required
-          >LastName<span class="required">*</span>
-        </label>
-        <input
-          type="text"
-          class="p-inputtext-normal h-2rem"
-          pInputText
-          [value]="LastName"
-          id="last"
-        />
-        <br />
-        <br />
-        <label for="Password" class="input-styling" required
-          >Password<span class="required">*</span>
-        </label>
-        <input
-          type="text"
-          class="p-inputtext-normal h-2rem"
-          required
-          pInputText
-        />
-        <br />
-        <br />
-
-        <label for="dateofjoining-input" class="input-styling" required
-          >DOJ <span class="required">*</span>
-        </label>
-        <input
-          type="text"
-          class="p-inputtext-normal h-2rem"
-          pInputText
-          [value]="Doj"
-          id="doj"
-        />
-      </div>
-    </div>
-  </div>
-</p-panel>
-
-<!-- <p-panel>
-  <ng-template pTemplate="header">
-    <div class="col -md-6" style="text-align: left">
-      <strong>UPDATE EMPLOYEE </strong>
-    </div>
-    <div class="col-sm-6" style="text-align: right">
-      <button
-        pButton
-        type="button"
-        label="Back"
-        icon=" pi pi-arrow-left"
-        iconPos="left"
-        routerLink="/navbar/Employees"
-        class="p-button-sm h-2rem"
-      ></button
-      >&nbsp;
-      <button
-        pButton
-        type="button"
-        label="Save"
-        (click)="onClickSave()"
-        icon="pi pi-check"
-        iconPos="left"
-        class="p-button-sm h-2rem"
-      ></button>
-    </div>
-  </ng-template>
-  <form [formGroup]="updateForm">
+  <form [formGroup]="updatedForm">
     <div class="row">
       <div class="col-md-4">
         <div class="col-12 md:col-4">
@@ -199,8 +36,7 @@
             pInputText
             class="p-inputtext-normal h-2rem"
             style="cursor: not-allowed"
-            [(ngModel)]="employeeID"
-            formControlName="employeeId"
+            formControlName="employeeID"
           />
           <br />
           <br />
@@ -211,10 +47,8 @@
           <input
             type="text"
             class="p-inputtext-normal h-2rem"
-            id="email"
             pInputText
-            [(ngModel)]="Email"
-            formControlName="email"
+            formControlName="Email"
           />
           <br />
           <br />
@@ -222,22 +56,20 @@
           <label for="designationName" class="input-styling"
             >DesignationID <span class="required">*</span></label
           >
-
           <p-dropdown
             [options]="roles"
+            name="name"
             optionLabel="name"
-            [(ngModel)]="SelectedDesignation"
-            id="role"
-            formControlName="Selecteddesignation"
+            placeholder="Select Designation"
+            formControlName="DesignationId"
+            dataKey="id"
           ></p-dropdown>
-
           <br />
           <br />
           <p-checkbox
-            [(ngModel)]="checked"
             [binary]="true"
             inputId="binary"
-            formControlName="isActive"
+            formControlName="checked"
           ></p-checkbox>
           <label for="any">IsActive<span class="required">*</span></label>
         </div>
@@ -251,9 +83,7 @@
             type="text"
             pInputText
             class="p-inputtext-normal h-2rem"
-            [(ngModel)]="FirstName"
-            id="first"
-            formControlName="firstName"
+            formControlName="FirstName"
           />
           <br />
           <br />
@@ -266,8 +96,6 @@
             class="required"
             class="p-inputtext-normal h-2rem"
             pInputText
-            [(ngModel)]="PanNumber"
-            id="panno"
             formControlName="PanNumber"
           />
           <br />
@@ -281,10 +109,9 @@
             [options]="shifts"
             name="shiftName"
             optionLabel="shiftName"
-            [(ngModel)]="selectedShiftId"
             placeholder="Select Shift"
-            id="shift"
-            formControlName="shift"
+            formControlName="shiftId"
+            dataKey="shiftId"
           ></p-dropdown>
         </div>
       </div>
@@ -297,9 +124,7 @@
             type="text"
             class="p-inputtext-normal h-2rem"
             pInputText
-            [(ngModel)]="LastName"
-            id="last"
-            formControlName="lastname"
+            formControlName="LastName"
           />
           <br />
           <br />
@@ -322,12 +147,10 @@
             type="text"
             class="p-inputtext-normal h-2rem"
             pInputText
-            [(ngModel)]="Doj"
-            formControlName="doj"
-            id="doj"
+            formControlName="DOJ"
           />
         </div>
       </div>
     </div>
   </form>
-</p-panel> -->
+</p-panel>
