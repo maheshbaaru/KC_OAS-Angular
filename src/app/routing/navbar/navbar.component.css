@@ -20,8 +20,9 @@
 .profile{
     margin: 30px;
 }
-img{
+img:hover{
 border-radius: 30%;
+transform:scale(2.5);
 }
 /* 
 .div-img{
@@ -41,8 +42,8 @@ border-radius: 30%;
 }
 img:hover{
     transform:scale(2.5);
-} */
-/* .navbar-nav .mr-auto{
+} 
+.navbar-nav .mr-auto{
     margin: 15px;
 } */
 

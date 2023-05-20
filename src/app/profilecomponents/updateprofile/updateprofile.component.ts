@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 import { HttpClientService } from 'src/app/services/http-client.service';
-import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthguardService } from 'src/app/services/authguard.service';
 
 @Component({
@@ -24,31 +24,31 @@ export class UpdateprofileComponent {
 
   ngOnInit(): void {
     this.updateform = this.formBuilder.group({
-      employeeID: new FormControl({
+      employeeID: [new FormControl({
         value: '',
         disabled: false,
-      }),
-      firstName: new FormControl({
+      }),Validators.required],
+      firstName: [new FormControl({
         value: '',
         disabled: false,
-      }),
-      lastName: new FormControl({
+      }),Validators.required],
+      lastName:[ new FormControl({
         value: '',
         disabled: false,
-      }),
-      email: new FormControl({
+      }),Validators.required],
+      email: [new FormControl({
         value: '',
         disabled: false,
-      }),
-      panNumber: new FormControl({
+      }),Validators.required],
+      panNumber:[new FormControl({
         value: '',
         disabled: false,
-      }),
+      }),Validators.required],
       designationName: new FormControl({
         value: '',
         disabled: true,
       }),
-      shiftName: new FormControl({
+      shiftName:new FormControl({
         value: '',
         disabled: true,
       }),
@@ -89,11 +89,9 @@ export class UpdateprofileComponent {
   //     if (!data1.isActive) this.updateform.controls['isActive'].disable();
   //   });
   // }
-  upadteprofile() {
-    // this.designatonservice.postdesignation((data: any) => {
-    //   console.log(data);
-    //   this.dendata = data;
-    // });
+  upadteprofile(updateData: any) {
+console.log(updateData);
+    this.service.updateprofile(updateData);
     this.router.navigate(['./Employees']);
   }
 }

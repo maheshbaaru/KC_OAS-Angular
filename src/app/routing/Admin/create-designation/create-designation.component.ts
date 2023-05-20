@@ -63,5 +63,6 @@ export class CreateDesignationComponent implements OnInit{
       });
 
     this.form.reset();
+    this.router.navigate(['/navbar'])
   }
 }

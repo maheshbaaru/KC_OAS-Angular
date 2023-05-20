@@ -27,4 +27,18 @@ export class EmployeedDataService {
       )
     
   }
+
+
+
+  updateprofile(updateData: any){
+
+    const body = JSON.stringify(updateData);
+    this.http.put(`https://localhost:7236/UpdateEmployeeTbl?Id=${updateData.id}&PanNumber=${updateData.PanNumber}
+    &FirstName=${updateData.FirstName}
+    &LastName=${updateData.PanNumber}
+    &Email=${updateData.PanNumber}&EmployeeId=${updateData.EmployeeId}`,
+    httpOptions)  .subscribe((result) => {
+      const resultData = Object.values(result);
+    });
+  }
 }

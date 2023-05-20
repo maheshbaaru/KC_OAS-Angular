@@ -112,7 +112,7 @@
         <i class="pi pi-arrow-left icon"></i>BACK
       </button>
   
-    <button pButton class="h-1rem p-button-success"  style="float: right; margin-right: 5px; font-size: smaller" (click)=" upadteprofile()"
+    <button pButton class="h-1rem p-button-success"  style="float: right; margin-right: 5px; font-size: smaller" (click)=" upadteprofile($event)"
         type="submit" >
         <i class="pi pi-check icon" ></i>SAVE
       </button>
@@ -170,7 +170,7 @@
         <div class="col-12 md:col-4">
           <label for="lastName" class="input-styling" required>LastName<span class="required">*</span>
           </label>
-          <input type="text" formControlName="lastName" class="p-inputtext-normal h-2rem" required pInputText
+          <input type="text" formControlName="lastName" [disabled]="true"  class="p-inputtext-normal h-2rem" required pInputText
             placeholder="Enter Last Name" />
           <br />
           <br />
@@ -183,7 +183,7 @@
 
           <label for="dateofjoining-input" class="input-styling" required>DOJ <span class="required">*</span>
           </label>
-          <input type="calender" formControlName="doj" class="p-inputtext-normal h-2rem" required pInputText
+          <input type="calender" formControlName="doj"  class="p-inputtext-normal h-2rem" required pInputText
           placeholder="Enter DD-MM-YYYY" />
           <!-- <p-calendar id="dateofjoining-input" placeholder="DD-MM-YYYY" formControlName="doj"></p-calendar> -->
 

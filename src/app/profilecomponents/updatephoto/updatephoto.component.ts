@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
@@ -33,6 +34,7 @@ export class UpdatephotoComponent {
 
     this.convertToBase64(file);
   };
+  fileupload: any;
 
   convertToBase64(file: File) {
     const observable = new Observable((subscriber: Subscriber<any>) => {
@@ -65,7 +67,7 @@ export class UpdatephotoComponent {
     private service: EmployeedDataService,
     private formBuilder: FormBuilder,
     private profileServ: ProfileService,
-    private storageService: StorageService
+    private storageService: StorageService,private route:Router
   ) {}
 
   ngOnInit(): void {
@@ -92,7 +94,8 @@ export class UpdatephotoComponent {
 
           console.log(res);
         });
-    } else {
+    }
+     else {
       this.image = this.image.replace('fakepath\\', '');
 
       let loogedUser: any = window.sessionStorage.getItem('auth-user');
@@ -109,6 +112,10 @@ export class UpdatephotoComponent {
         summary: 'Success',
         detail: 'File Uploaded with Basic Mode',
       });
+      
     }
+  
+    this.route.navigate(['/navbar']);
   }
+ 
 }
