@@ -4,25 +4,25 @@
     <strong>CREATE SALARY DETAILS </strong>
   </div>
       <div class="col-sm-6" style="text-align:right">
-        <button pButton class="h-1rem" style="float: right; font-size: smaller;margin-right:10px;" 
+        <button pButton class="h-1rem" style="float: right; font-size: smaller;margin-right:10px;"
         routerLink="/navbar/salary-details"><i class="pi pi-arrow-left icon"></i>BACK</button>
-        
-        
-        <button 
+
+
+        <button
           pButton class="h-1rem p-button-success"
-         style="float: right;margin-right:5px; font-size: smaller;" 
+         style="float: right;margin-right:5px; font-size: smaller;"
          type="submit" (click)="onFormSubmit()" >
          <i class="pi pi-check icon"></i>SAVE</button>
   </div>
-  </ng-template> 
-  
-  
-  <div class="row">   
-    <form 
-     [formGroup]="empForm" 
+  </ng-template>
+
+
+  <div class="row">
+    <form
+     [formGroup]="empForm"
      class="form-styles cont"
       (submit)="onFormSubmit()" >
-      
+
       <div class="cont2 ">
        <label for="designation-input" class="input-styling" required >EmpID
            <span class="required">*</span>
@@ -31,8 +31,8 @@
         [showClear]="true"  formControlName="EmpId"  ></p-dropdown>
         <div *ngIf="submitted && f['EmpId'].errors" class="alert alert-danger">
 
-          <div *ngIf="f['EmpId'].errors['required']">ID field required</div>
-          
+          <div *ngIf="f['EmpId'].errors['required']">Name is required</div>
+
           </div>
       </div>
       <div  class="cont2">
@@ -51,8 +51,8 @@
         <p-calendar [showIcon]="true"  id="designation-input" placeholder="DD-MM-YYYY"  formControlName="LastRevisedDate"></p-calendar>
         <div *ngIf="submitted && f['LastRevisedDate'].errors" class="alert alert-danger">
 
-          <div *ngIf="f['LastRevisedDate'].errors['required']">Date field required</div>
-          
+          <div *ngIf="f['LastRevisedDate'].errors['required']">Date is required</div>
+
           </div>
       </div>
       <div  class="cont2">
@@ -63,7 +63,7 @@
         <div *ngIf="submitted && f['NextRevisedDate'].errors" class="alert alert-danger">
 
           <div *ngIf="f['NextRevisedDate'].errors['required']">Date field required</div>
-          
+
           </div>
       </div>
     </form>
