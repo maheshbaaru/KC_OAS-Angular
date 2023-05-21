@@ -18,13 +18,18 @@
         pButton
         type="subit"
         label="Save"
+        (click)="onSubmit(f.value)"
         icon="pi pi-check"
         iconPos="left"
         class="p-button-sm h-2rem"
       ></button>
     </div>
   </ng-template>
-  <form [formGroup]="updatedForm">
+  <form
+    [formGroup]="updatedForm"
+    #f="ngForm"
+    (ngSubmit)="onSubmit(f.form.value)"
+  >
     <div class="row">
       <div class="col-md-4">
         <div class="col-12 md:col-4">
