@@ -15,8 +15,10 @@ export class UpdateEmployeeComponent {
   shifts: any;
   roles: any;
   Result: any;
-
+  newArray: any;
   updatedForm: FormGroup;
+  designationId: Date;
+  form: any;
   constructor(private _service: EmployeeService, private active: ActivatedRoute, private fb: FormBuilder) {
     this.updatedForm = this.fb.group({
       employeeID: new FormControl({
@@ -88,6 +90,7 @@ export class UpdateEmployeeComponent {
       })
     })
     console.log(this.updatedForm);
+
   }
 
   // onSubmit() {
@@ -95,7 +98,28 @@ export class UpdateEmployeeComponent {
   //   this._service.UpdateEmployeeData(this.updatedForm.value);
   // }
 
+  //}
+
+
+
+  onSubmit(form: any) {
+    debugger;
+    console.log(form);
+    // const postdata = {
+    //   employeeId: this.form.employeeID,
+    //   email: this.form.Email,
+    //   firstName: this.form.FirstName,
+    //   lastName: this.form.LastName,
+    //   //Password: this.form.Password,
+    //   panNumber: this.form.PanNumber,
+    //   designationId: this.form.DesignationId.find((item: any) => item.id == this.updatedForm.controls['designationID']),
+    //   shiftId: this.form.shiftId.find((item: any) => item.shiftId == this.updatedForm.controls['shiftId']),
+    //   Doj: this.form.DOJ,
+    //   isActive: this.form.checked
+    // };
+    this._service.UpdateEmployeeData(form).subscribe(res => {
+      console.log(res);
+    })
+    this.form.reset();
+  }
 }
-
-
-
