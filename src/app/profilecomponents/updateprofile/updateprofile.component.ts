@@ -24,26 +24,11 @@ export class UpdateprofileComponent {
 
   ngOnInit(): void {
     this.updateform = this.formBuilder.group({
-      employeeID: [new FormControl({
-        value: '',
-        disabled: false,
-      }),Validators.required],
-      firstName: [new FormControl({
-        value: '',
-        disabled: false,
-      }),Validators.required],
-      lastName:[ new FormControl({
-        value: '',
-        disabled: false,
-      }),Validators.required],
-      email: [new FormControl({
-        value: '',
-        disabled: false,
-      }),Validators.required],
-      panNumber:[new FormControl({
-        value: '',
-        disabled: false,
-      }),Validators.required],
+      employeeID: ["",Validators.required],
+      firstName: ["",Validators.required],
+      lastName:["",Validators.required],
+      email: ["",Validators.required],
+      panNumber:["",Validators.required],
       designationName: new FormControl({
         value: '',
         disabled: true,
@@ -69,12 +54,12 @@ export class UpdateprofileComponent {
     // console.log(this.updateform);
     let data: any = window.sessionStorage.getItem('loggedinUser');
     this.userdata = JSON.parse(data);
-    // this.updateform.patchValue(this.userdata);
+     this.updateform.patchValue(this.userdata);
     console.log(data);
-    this.service.getEmployeeById(this.userdata.id).subscribe(res=>{
-      let userdata = JSON.parse(res);
-      this.updateform.patchValue(userdata)
-    })
+    // this.service.getEmployeeById(this.userdata.id).subscribe(res=>{
+    //   let userdata = JSON.parse(res);
+    //   this.updateform.patchValue(userdata)
+    // })
     // if (!this.userdata.isActive) this.updateform.controls['isActive'].disable();
     // this.service.getEmployeeList().subscribe((data1: any) => {
     //   console.log(data1);
