@@ -13,6 +13,8 @@
          style="float: right;margin-right:5px; font-size: smaller;"
          type="submit" (click)="onFormSubmit()" >
          <i class="pi pi-check icon"></i>SAVE</button>
+         <p-toast position="top-center" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'"
+         [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
   </div>
   </ng-template>
 
@@ -29,11 +31,8 @@
         </label>
         <p-dropdown [options]="names" placeholder="Select Employee" optionLabel="name"
         [showClear]="true"  formControlName="EmpId"  ></p-dropdown>
-        <div *ngIf="submitted && f['EmpId'].errors" class="alert alert-danger">
-
-          <div *ngIf="f['EmpId'].errors['required']">Name is required</div>
-
-          </div>
+        <small class="text-danger "  *ngIf="!empForm.get('EmpId')?.valid &&(empForm.get('EmpId')?.touched||empForm.get('EmpId')?.dirty)">Name is required
+        </small>
       </div>
       <div class="cont2" [style]="{ width: '14rem' }">
         <label class="p-mb-4 mb-2">Salary
@@ -54,22 +53,16 @@
            <span class="required">*</span>
         </label>
         <p-calendar [showIcon]="true"  id="designation-input" placeholder="DD-MM-YYYY"  formControlName="LastRevisedDate"></p-calendar>
-        <div *ngIf="submitted && f['LastRevisedDate'].errors" class="alert alert-danger">
-
-          <div *ngIf="f['LastRevisedDate'].errors['required']">Date is required</div>
-
-          </div>
+        <small class="text-danger "  *ngIf="!empForm.get('LastRevisedDate')?.valid &&(empForm.get('LastRevisedDate')?.touched||empForm.get('LastRevisedDate')?.dirty)">LastRevisedDate is required
+        </small>
       </div>
       <div  class="cont2">
        <label for="designation-input" class="input-styling" required>Next Revised Date
            <span class="required">*</span>
         </label>
         <p-calendar [showIcon]="true"  id="designation-input" placeholder="DD-MM-YYYY"  formControlName="NextRevisedDate"></p-calendar>
-        <div *ngIf="submitted && f['NextRevisedDate'].errors" class="alert alert-danger">
-
-          <div *ngIf="f['NextRevisedDate'].errors['required']">Date field required</div>
-
-          </div>
+        <small class="text-danger "  *ngIf="!empForm.get('NextRevisedDate')?.valid &&(empForm.get('NextRevisedDate')?.touched||empForm.get('NextRevisedDate')?.dirty)">NextRevisedDate is required
+        </small>
       </div>
     </form>
 </div>

@@ -30,9 +30,13 @@ export class UpdatephotoComponent {
   onChange = ($event: Event) => {
     const target = $event.target as HTMLInputElement;
     const file = (target.files as FileList)[0];
-    this.image = target.value;
+    if (file) {
+      this.image = target.value;
 
-    this.convertToBase64(file);
+      this.convertToBase64(file);
+    } else {
+      return console.log('error');
+    }
   };
   fileupload: any;
 
@@ -67,7 +71,8 @@ export class UpdatephotoComponent {
     private service: EmployeedDataService,
     private formBuilder: FormBuilder,
     private profileServ: ProfileService,
-    private storageService: StorageService,private route:Router
+    private storageService: StorageService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -81,6 +86,7 @@ export class UpdatephotoComponent {
   upload() {
     let profilepic = window.sessionStorage.getItem('profilePic') || '';
     profilepic = JSON.parse(profilepic);
+
     if (!profilepic) {
       this.image = this.image.replace('fakepath\\', '');
 
@@ -94,8 +100,7 @@ export class UpdatephotoComponent {
 
           console.log(res);
         });
-    }
-     else {
+    } else {
       this.image = this.image.replace('fakepath\\', '');
 
       let loogedUser: any = window.sessionStorage.getItem('auth-user');
@@ -112,10 +117,8 @@ export class UpdatephotoComponent {
         summary: 'Success',
         detail: 'File Uploaded with Basic Mode',
       });
-      
     }
-  
+
     this.route.navigate(['/navbar']);
   }
- 
 }

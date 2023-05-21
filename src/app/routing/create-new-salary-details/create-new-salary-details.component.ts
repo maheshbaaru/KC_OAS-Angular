@@ -59,7 +59,6 @@ export class CreateNewSalaryDetailsComponent {
   }
 
   onFormSubmit() {
-    this.submitted = true;
     if (this.empForm.invalid) {
       for (const control of Object.keys(this.empForm.controls)) {
         this.empForm.controls[control].markAsTouched();
@@ -91,10 +90,10 @@ export class CreateNewSalaryDetailsComponent {
         )
         .subscribe((res) => {
           if (res) {
-            this.messageService.add({
+            return this.messageService.add({
               severity: 'success',
               summary: 'Success',
-              detail: 'TaxType saved',
+              detail: ' New Salary details saved',
             });
           }
         });
