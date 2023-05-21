@@ -40,8 +40,8 @@
         </label>
         <p-calendar [showIcon]="true" id="designation-input" placeholder="DD-MM-YYYY"
           formControlName="ToDate" max="maxDate"  [ngClass]="{ 'is-invalid': submitted && f['ToDate'].errors }"></p-calendar>
-          <div *ngIf="submitted && f['FromDate'].errors" class="invalid-feedback">
-            <div *ngIf="f['FromDate'].errors['required']">ToDate is required</div>
+          <div *ngIf="submitted && f['ToDate'].errors" class="invalid-feedback">
+            <div *ngIf="f['ToDate'].errors['required']">ToDate is required</div>
           </div>
       </div>
       <div class="cont2">

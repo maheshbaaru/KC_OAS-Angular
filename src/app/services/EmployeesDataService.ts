@@ -30,15 +30,23 @@ export class EmployeedDataService {
 
 
 
-  updateprofile(updateData: any){
+  updateprofile(updateData: any,id:any){
 
     const body = JSON.stringify(updateData);
-    this.http.put(`https://localhost:7236/UpdateEmployeeTbl?Id=${updateData.id}&PanNumber=${updateData.PanNumber}
-    &FirstName=${updateData.FirstName}
-    &LastName=${updateData.PanNumber}
-    &Email=${updateData.PanNumber}&EmployeeId=${updateData.EmployeeId}`,
+    this.http.put(`https://localhost:7236/UpdateEmployeeTbl?Id=${id}&PanNumber=${updateData.panNumber}
+    &FirstName=${updateData.firstName}
+    &LastName=${updateData.lastName}
+    &Email=${updateData.email}&EmployeeId=${updateData.employeeID}`,
     httpOptions)  .subscribe((result) => {
-      const resultData = Object.values(result);
+      // const resultData = Object.values(result);
+      console.log(result);
+      
     });
+  }
+  getEmployeeById(id:any) {
+    return this.http.get<any>(
+      environment.API_URL + environment.BASE_URL + 'GetEmployeeById?id=' + id,
+      httpOptions
+    );
   }
 }

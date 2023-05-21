@@ -64,14 +64,18 @@ export class UpdateprofileComponent {
 
     this.formdataget();
   }
-
+  userdata: any;
   formdataget() {
-    console.log(this.updateform);
+    // console.log(this.updateform);
     let data: any = window.sessionStorage.getItem('loggedinUser');
-    let userdata = JSON.parse(data);
-    this.updateform.patchValue(userdata);
+    this.userdata = JSON.parse(data);
+    // this.updateform.patchValue(this.userdata);
     console.log(data);
-    if (!userdata.isActive) this.updateform.controls['isActive'].disable();
+    this.service.getEmployeeById(this.userdata.id).subscribe(res=>{
+      let userdata = JSON.parse(res);
+      this.updateform.patchValue(userdata)
+    })
+    // if (!this.userdata.isActive) this.updateform.controls['isActive'].disable();
     // this.service.getEmployeeList().subscribe((data1: any) => {
     //   console.log(data1);
     //   // this.updateform = data.filter((dat: any) => dat.empId == data.id * 1);
@@ -90,8 +94,10 @@ export class UpdateprofileComponent {
   //   });
   // }
   upadteprofile(updateData: any) {
-console.log(updateData);
-    this.service.updateprofile(updateData);
+    this.service.updateprofile(this.updateform.value,this.userdata.id);
+    this.service.getEmployeeById(this.userdata.id).subscribe(res=>{
+      this.updateform.patchValue(res)
+    })
     this.router.navigate(['./Employees']);
   }
 }
