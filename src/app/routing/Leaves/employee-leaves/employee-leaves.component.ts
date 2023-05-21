@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import namesData from 'src/assets/data/namesData.json';
 import { OnInit, ViewChild } from '@angular/core';
 import { EmployeeData, Representative } from 'src/app/Modesls/employee';
@@ -36,6 +36,9 @@ export class EmployeeLeavesComponent {
   year: any;
   remainLeaves: any;
   employeeName: any;
+
+  public updateform: FormGroup;
+
   constructor(
     private _fb: FormBuilder,
 
@@ -69,6 +72,14 @@ export class EmployeeLeavesComponent {
   // table!: Table;
 
   ngOnInit() {
+
+    this.updateform = this._fb.group({
+      name: ["",Validators.required],
+      leaveType: ["",Validators.required],
+      year: ["",Validators.required],
+      noOfLeaves: ["",Validators.required],
+
+    });
     // let loogedUser: any = window.sessionStorage.getItem('loggedinUser');
     // loogedUser = JSON.parse(loogedUser);
     // this.empservice.applyleave(loogedUser.id).subscribe((data: any) => {
