@@ -35,15 +35,20 @@
 
           </div>
       </div>
-      <div  class="cont2">
-       <label for="designation-input" class="input-styling" required  >Salary
-           <span class="required">*</span>
+      <div class="cont2" [style]="{ width: '14rem' }">
+        <label class="p-mb-4 mb-2">Salary
+          <span class="required" required>*</span>
         </label>
-        <input id="designation-input" class="h-2rem" type="input" placeholder="Enter Salary" pInputText formControlName="Salary"  />
-        <div *ngIf="submitted && f['Salary'].errors" class="alert alert-danger">
-          <div *ngIf="f['Salary'].errors['required']">Salary is required</div>
-          </div>
+        <p-inputNumber id="Salary"  mode="currency" currency="INR" locale="en-US" autofocus placeholder="Salary"
+           formControlName="Salary"  class="h-2rem" >
+           </p-inputNumber>
+
+           <small class="text-danger "  *ngIf="!empForm.get('Salary')?.valid &&(empForm.get('Salary')?.touched||empForm.get('Salary')?.dirty)">
+
+            Salary is required</small>
+
       </div>
+
       <div  class="cont2">
        <label for="designation-input" class="input-styling" required>Last Revised Date
            <span class="required">*</span>
