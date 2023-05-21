@@ -1,47 +1,3 @@
-
- <!-- <div class="create-bank-container">
-    
-    <div class="cbd-container">
-        <div class="cbd-caption-content1">
-            <h1 class="cbd-title">CREATE BANK DETAILS</h1>
-        </div>
-   
-        <div class="col-sm-6" style="text-align:right">
-            <button pButton class="h-1rem" style="float: right; font-size: smaller;margin-right:10px;" routerLink="../bankDetails"><i class="pi pi-arrow-left icon"></i>BACK</button>
-            <button pButton  style="float: right;margin-right:5px; font-size: smaller;" class="h-1rem p-button-success"  type="submit"   (click)="onFormSubmit()" form="myForm" ><i class="pi pi-check icon"></i>SAVE</button>
-          </div>
-    </div>
-    
-    <form class="cbd-contnt-container" id="myForm" #myForm="ngForm">
-        
-        <div class="cbd-input-container" >
-                 <label for="EmpId" class="cbd-label">
-                    EmpId<span class="cbd-empClass">*</span>
-                </label>
-                 <select name="EmpId" id="EmpId" class="cbd-input-fields" [(ngModel)]="employeDetails.EmpNameById">
-                     <option  selected="Default" value="SELECT EMPLOYEE">SELECT EMPLOYEE</option>
-                     <option  *ngFor="let empname of  employeess" >{{empname.firstName}} {{empname.lastName}}</option>
-                 </select>  
-                
-             </div>
-       <div class="cbd-input-container">
-            <label for="accno" class="label">ACCNO<span class="cbd-empClass">*</span></label>
-            <input type="text" id="accno" class="cbd-input-fields" placeholder="ENTER ACCOUNT NUMBER" name="ACCNO" [(ngModel)]="employeDetails.ACCNO"/>
-       </div>
-  
-       <div class="cbd-input-container">
-            <label for="accname" class="label">ACCNAME<span class="cbd-empClass">*</span></label>
-            <input type="text" id="accname" class="cbd-input-fields" placeholder="ENTER HOLDER NAME" name="ACCNO" [(ngModel)]="employeDetails.ACCNAME"/>
-       </div>
-  
-       <div class="cbd-input-container">
-            <label for="bankname" class="label ">BankName<span class="cbd-empClass">*</span></label>
-            <input type="text" id="bankname" class="cbd-input-fields disabledButton" disabled value="Kotak Bank" name="BankName" />
-       </div>
-    
-    </form>
-  </div>  -->
-
 <p-panel>
   <ng-template pTemplate="header">
     <div class="col -md-6" style="text-align: left">
@@ -75,11 +31,13 @@
     [formGroup]="employeDetails" 
       id="myForm"
       #myForm="ngForm"
+
       class="form-styles cont"
-      (submit)="onFormSubmit()"
+      (ngSubmit)="onFormSubmit()"
     >
-      <div class="cont2">
-        <label for="designation-input" class="input-styling" required
+      <div class="cont2" >
+        
+        <label for="designation-input" class="input-styling" 
           >EmpID
           <span class="required">*</span>
         </label>
@@ -88,9 +46,21 @@
           placeholder="Select Employee"
           optionLabel="Name"
           [showClear]="true"
+          name="EmpNameById"
           formControlName="EmpNameById"
-        ></p-dropdown>
-      </div>
+          [ngClass]="{'error':submitted && f['EmpNameById'].errors}"
+          [@shakeAnimation]=" !(submitted && f['EmpNameById'].errors) ?'valid':'invalid'"
+          ></p-dropdown>
+          
+          <div *ngIf="submitted && f['EmpNameById'].errors" class="alert alert-danger">
+            <div *ngIf="f['EmpNameById'].errors['required']">EmpID field required</div>
+          </div>
+      
+        </div>
+
+    
+
+
       <div class="cont2">
         <label for="accno" class="input-styling"
           >Acc No<span class="required">*</span></label
@@ -103,8 +73,19 @@
           placeholder="Enter Account Number"
           name="ACCNO"
           formControlName="ACCNO"
+          [pattern]="integerRegex"
+          [ngClass]="{'error':submitted && f['EmpNameById'].errors}"
+          [@shakeAnimation]=" !(submitted && f['ACCNO'].errors) ?'valid':'invalid'"
         />
+        <div *ngIf="submitted && f['ACCNO'].errors" class="alert alert-danger" style="max-width: 230px;">
+          <span *ngIf="f['ACCNO'].errors?.['required']">Account number is required.</span> <br>
+          <span *ngIf="f['ACCNO'].errors?.['pattern']">Please provide valid acc no !!</span> <br>
+          <span *ngIf="f['ACCNO'].errors?.['maxlength']">Account number cannot exceed 15 characters.</span> <br>
+          <span *ngIf="f['ACCNO'].errors?.['minlength']">Account number must be at least 5 characters long.</span> <br>
+        </div>
       </div>
+
+
       <div class="cont2">
         <label for="accname" class="input-styling"
           >Acc Name<span class="required">*</span></label
@@ -117,8 +98,19 @@
           placeholder="Enter Holder Name"
           name="ACCNAME"
           formControlName="ACCNAME"
+          [ngClass]="{'error':submitted && f['EmpNameById'].errors}"
+          [@shakeAnimation]=" !(submitted && f['ACCNAME'].errors) ?'valid':'invalid'"
         />
+
+        <div *ngIf="submitted && f['ACCNAME'].errors" class="alert alert-danger" style="max-width: 230px;">
+
+          <span *ngIf="f['ACCNAME'].errors['required']">Acc Name field is required</span>
+          <span *ngIf="f['ACCNAME'].errors['word']">Acc Name field should contain only words</span>
+          
+          </div>
       </div>
+
+
       <div class="cont2">
         <label for="bankname" class="input-styling"
           >Bank Name<span class="required">*</span></label

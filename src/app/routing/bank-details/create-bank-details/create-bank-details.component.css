@@ -1,94 +1,17 @@
-/* 
- 
- .cbd-container{
-    background-color:  rgb(121, 121, 128);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 40px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-.cbd-caption-content1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 15px;
-}
 
-.cbd-title{
-    margin-top: 16px;
-    font-size: 16px ;
-    font-weight: 550;
-    color: #ffffff;
-}
-.cbd-buttons-container{
-    justify-content: center;
-    align-items: center;
-    width: 170px;
-    display: flex;
-    
-}
-.creat-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 25px;
-    color: white !important;
-   padding: 5px;
-   font-size: 12px;
-   width: 80px;
-   background-color: #3B82F6;
-   margin-right: 12px;
-   border-radius: 6px;
-   outline: none;
-   border: none;
-
-}
-.btn-text{
-    margin-top: 14px;
-}
-.cbd-contnt-container{
-    height: 240px;
-    border: 1px solid rgb(121, 121, 128);
-
-    border-bottom-left-radius: 5px !important;
-    border-bottom-right-radius: 5px !important;
-    padding: 15px;
-    flex-wrap: wrap;
-    display: flex;
-}
-.cbd-input-container{
-    display: flex;
-    flex-direction: column;
-
-    width: 31%;
-    padding: 7px;
-    margin: 10px;
-
-}
-.cbd-empClass{
-    color: red;
-    font-weight: 600;
-}
-.cbd-label{
-    margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 16px;
-    color: #1d3c41;
-}
-.cbd-input-fields{
-    font-size: 16px;
-    height: 35px;
-    border: 1px solid #d7dfe9;
-   font-weight: 500;
-    border-radius: 3px;
-    padding: 8px 16px 8px 16px;
-    max-width: 350px;
-   
-} */
 .disabledButton{
    cursor: not-allowed;
    font-weight: 500;
    font-size: 16px;
 }
+
+.invalid {
+    border-color: red;
+  }
+
+  .error{
+    border: 1px solid red !important;
+    border-radius: 5px;
+}
+
+

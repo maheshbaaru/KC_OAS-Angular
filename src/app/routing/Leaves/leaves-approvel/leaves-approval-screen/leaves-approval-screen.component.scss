@@ -27,8 +27,8 @@
 
 }
 .laps-title{
-    font-size: 15px ;
-    font-weight: 550;
+    font-size: 14px ;
+    font-weight: 500;
     color: #ffffff;
 }
 .creat-button{
@@ -51,7 +51,8 @@
     margin-top: 15px;
 }
 .laps-contnt-container{
-    height: 340px;
+    min-height: 340px;
+    margin-bottom: 15px;
     border: 1px solid rgb(121, 121, 128);;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -75,7 +76,7 @@
 .laps-label{
     margin-bottom: 8px;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     color: #1d3c41;
 }
 .laps-input-fields{
@@ -89,9 +90,61 @@
     /* box-shadow: 1px 1px 1px 1px black inset; */
     /* -webkit-tap-highlight-color: rgba(0,0,0,0); */
 }
+.laps-input-fields-2{
+    font-size: 14px;
+    font-weight: 500;
+}
 
 .disabledButton{
    cursor: not-allowed;
    font-weight: 500;
    font-size: 16px;
 }
+
+.error{
+    border: 1px solid red !important;
+    border-radius: 5px;
+}
+
+
+.success-toast {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgb(0, 128, 68);
+    color: white;
+    width: 300px !important; 
+    height: 60px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+   padding-top: 30px;
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+    text-align: center;
+  }
+  
+  .success-toast:hover {
+    opacity: 1;
+  }
+
+  .toast-appear {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+    animation: toastAnimation 0.5s;
+  }
+  
+  @keyframes toastAnimation {
+    0% {
+      transform: translateY(-50%) scale(0.8);
+      opacity: 0;
+    }
+    30% {
+      transform: translateY(-50%) scale(1.05);
+    }
+    100% {
+      transform: translateY(-50%) scale(1);
+      opacity: 1;
+    }
+  }
