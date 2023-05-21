@@ -75,40 +75,41 @@ export class ChangepasswordComponent {
     });
   }
   formSubmit() {
-    debugger;
-    console.log(this.form.value);
-    let logedUser: any = window.sessionStorage.getItem('auth-user');
-    logedUser = JSON.parse(logedUser);
-    this.designationID = logedUser.designationID;
-    this.employeeID = logedUser.employeeID * 1;
-    this.isActive = logedUser.isActive;
+    if (this.form.invalid) {
+      for (const control of Object.keys(this.form.controls)) {
+        this.form.controls[control].markAsTouched();
+        this.form.controls[control].markAsDirty();
+      }
+      return;
+    } else if (this.form.valid) {
+      let logedUser: any = window.sessionStorage.getItem('auth-user');
+      logedUser = JSON.parse(logedUser);
+      this.designationID = logedUser.designationID;
+      this.employeeID = logedUser.employeeID * 1;
+      this.isActive = logedUser.isActive;
 
-    const oldPassword = atob(logedUser.password);
-    this.logedUser = oldPassword;
-    // console.log(oldPassword);
-    if (
-      oldPassword === this.form.value.oldPass &&
-      this.form.value.newPass !== this.form.value.oldPass &&
-      this.form.value.newPass === this.form.value.confirmPass
-    ) {
-      const finalPass = btoa(this.form.value.confirmPass);
-      console.log(finalPass);
-      this.httpService
-        .updatePassword(finalPass, this.employeeID)
-        .subscribe((res: any) => {
-          if (res === true) {
-            return this.messageSer.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: 'Your Password Saved Successfully',
-            });
-          }
-        });
+      const oldPassword = atob(logedUser.password);
+      this.logedUser = oldPassword;
+
+      if (
+        oldPassword === this.form.value.oldPass &&
+        this.form.value.newPass !== this.form.value.oldPass &&
+        this.form.value.newPass === this.form.value.confirmPass
+      ) {
+        const finalPass = btoa(this.form.value.confirmPass);
+        this.httpService
+          .updatePassword(finalPass, this.employeeID)
+          .subscribe((res: any) => {
+            if (res) {
+              return this.messageSer.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'Your Password Saved Successfully',
+              });
+            }
+          });
+      }
     }
-    return this.messageSer.add({
-      severity: 'error',
-      summary: 'Error',
-      detail: 'You Password Not Saved',
-    });
+    this.form.reset();
   }
 }
