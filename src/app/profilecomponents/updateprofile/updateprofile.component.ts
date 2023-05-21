@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 import { HttpClientService } from 'src/app/services/http-client.service';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthguardService } from 'src/app/services/authguard.service';
 
 @Component({
@@ -12,6 +12,7 @@ import { AuthguardService } from 'src/app/services/authguard.service';
 })
 export class UpdateprofileComponent {
   empdata: any;
+  submitted = false;
   public updateform: FormGroup;
 
   constructor(
@@ -22,18 +23,22 @@ export class UpdateprofileComponent {
     private authServ: AuthguardService
   ) {}
 
+  get f(): { [key: string]: AbstractControl } {
+    return this.updateform.controls;
+  }
+
   ngOnInit(): void {
     this.updateform = this.formBuilder.group({
-      employeeID: ["",Validators.required],
+      employeeId: ["",Validators.required],
       firstName: ["",Validators.required],
       lastName:["",Validators.required],
       email: ["",Validators.required],
       panNumber:["",Validators.required],
-      designationName: new FormControl({
+      designationId: new FormControl({
         value: '',
         disabled: true,
       }),
-      shiftName:new FormControl({
+      shiftId:new FormControl({
         value: '',
         disabled: true,
       }),
@@ -51,24 +56,21 @@ export class UpdateprofileComponent {
   }
   userdata: any;
   formdataget() {
-    // console.log(this.updateform);
+    console.log('coming here');
     let data: any = window.sessionStorage.getItem('loggedinUser');
     this.userdata = JSON.parse(data);
-     this.updateform.patchValue(this.userdata);
-    console.log(data);
-    // this.service.getEmployeeById(this.userdata.id).subscribe(res=>{
-    //   let userdata = JSON.parse(res);
-    //   this.updateform.patchValue(userdata)
-    // })
-    // if (!this.userdata.isActive) this.updateform.controls['isActive'].disable();
+    //  this.updateform.patchValue(this.userdata);
+    // console.log(data);
+    this.GetEmployee();
+    if (!this.userdata.isActive) this.updateform.controls['isActive'].disable();
     // this.service.getEmployeeList().subscribe((data1: any) => {
     //   console.log(data1);
-    //   // this.updateform = data.filter((dat: any) => dat.empId == data.id * 1);
-    //   // this.empdata = data.filter((dat: any) => dat.empId == userdata.id * 1);
-    // //  this.updateform.get('email')?.setValue(data.email);
-    // this.updateform.patchValue(userdata);
-    //  if (!userdata.isActive) this.updateform.controls['isActive'].disable();
-    //  });
+    //  this.updateform = data1.filter((dat: any) => dat.empId == data1.id * 1);
+    // this.empdata = data.filter((dat: any) => dat.empId == this.userdata.id * 1);
+    // // //  this.updateform.get('email')?.setValue(data.email);
+    // this.updateform.patchValue(this.userdata);
+    // //  if (!userdata.isActive) this.updateform.controls['isActive'].disable();
+    // });
   }
 
   //  formdataget() {
@@ -79,10 +81,24 @@ export class UpdateprofileComponent {
   //   });
   // }
   upadteprofile(updateData: any) {
-    this.service.updateprofile(this.updateform.value,this.userdata.id);
+    if(!this.updateform.invalid){
+      this.service.updateprofile(this.updateform.value,this.userdata.id).subscribe(res=>{
+        if(res){
+          this.GetEmployee();
+        }
+      })
+      this.submitted = true;
+      this.router.navigate(['./Employees']);
+    }
+  }
+
+  GetEmployee(){
     this.service.getEmployeeById(this.userdata.id).subscribe(res=>{
-      this.updateform.patchValue(res)
+      this.updateform.patchValue(res);
+      this.submitted = true;
+      for (const control of Object.keys(this.updateform.controls)) {
+        this.updateform.controls[control].markAsTouched();
+      }
     })
-    this.router.navigate(['./Employees']);
   }
 }

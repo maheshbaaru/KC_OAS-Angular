@@ -112,7 +112,7 @@
         <i class="pi pi-arrow-left icon"></i>BACK
       </button>
   
-    <button pButton class="h-1rem p-button-success"  style="float: right; margin-right: 5px; font-size: smaller" (click)=" upadteprofile($event)"
+    <button pButton [disabled]="updateform.invalid" class="h-1rem p-button-success"  style="float: right; margin-right: 5px; font-size: smaller" (click)=" upadteprofile($event)"
         type="submit" >
         <i class="pi pi-check icon" ></i>SAVE
       </button>
@@ -122,22 +122,30 @@
     <div class="row">
       <div class="col-md-4">
         <div class="col-12 md:col-4">
-          <label for="employeeID" class="input-styling">EmployeeID <span class="required">*</span></label>
-          <input type="text" formControlName="employeeID" pInputText class="p-inputtext-normal h-2rem"
-            placeholder="Enter Employee ID" required />
+          <label for="employeeId" class="input-styling">EmployeeID <span class="required">*</span></label>
+          <input type="text" formControlName="employeeId" pInputText class="p-inputtext-normal h-2rem"
+            placeholder="Enter Employee ID" required [ngClass]="{ 'is-invalid': submitted && f['employeeId'].errors }" />
+            <div *ngIf="submitted && f['employeeId'].errors" class="invalid-feedback">
+              <div *ngIf="f['employeeId'].errors['required']">EmployeeID is required</div>
+            </div>
           <br />
           <br />
 
           <label for="email" class="input-styling">Email <span class="required">*</span></label>
           <input type="text" formControlName="email" class="p-inputtext-normal h-2rem" required pInputText
-            placeholder="Enter Email" />
+            placeholder="Enter Email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"/>
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+              <div *ngIf="f['email'].errors['required']">ToDate is required</div>
+            </div>
           <br />
           <br />
 
-          <label for="designationName" class="input-styling">DesignationID <span class="required">*</span></label>
-          <input type="text" formControlName="designationName" class="p-inputtext-normal h-2rem" required pInputText
-          placeholder="Enter designationName" />
-
+          <label for="designationId" class="input-styling">DesignationID <span class="required">*</span></label>
+          <input type="text" formControlName="designationId" class="p-inputtext-normal h-2rem" required pInputText
+          placeholder="Enter designationId" [ngClass]="{ 'is-invalid': submitted && f['designationId'].errors }"/>
+          <div *ngIf="submitted && f['designationId'].errors" class="invalid-feedback">
+            <div *ngIf="f['designationId'].errors['required']">ToDate is required</div>
+          </div>
           <br />
           <br />
 
@@ -149,19 +157,29 @@
         <div class="col-12 md:col-4">
           <label for="firstName" class="input-styling">FirstName <span class="required">*</span></label>
           <input type="text" pInputText formControlName="firstName" class="p-inputtext-normal h-2rem" required
-            placeholder="Enter First Name" />
+            placeholder="Enter First Name" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors } "/>
+            <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+              <div *ngIf="f['firstName'].errors['required']">firstName is required</div>
+            </div>
           <br />
           <br />
 
           <label for="panNumber" class="input-styling">PanNumber <span class="required">*</span></label>
           <input type="text" formControlName="panNumber" class="p-inputtext-normal h-2rem" pInputText
-            placeholder="Enter PAN Number" />
+            placeholder="Enter PAN Number" [ngClass]="{ 'is-invalid': submitted && f['panNumber'].errors }"/>
+            <div *ngIf="submitted && f['panNumber'].errors" class="invalid-feedback">
+              <div *ngIf="f['panNumber'].errors['required']">PanNumber is required</div>
+            </div>
           <br />
           <br />
 
-          <label for="shiftName" class="input-styling">ShiftId <span class="required">*</span></label>
-          <input type="text" formControlName="shiftName" class="p-inputtext-normal h-2rem" pInputText
+          <label for="shiftId" class="input-styling">ShiftId <span class="required">*</span></label>
+          <input type="text" formControlName="shiftId" class="p-inputtext-normal h-2rem" pInputText
+          [ngClass]="{ 'is-invalid': submitted && f['shiftId'].errors }"
           />
+          <div *ngIf="submitted && f['shiftId'].errors" class="invalid-feedback">
+            <div *ngIf="f['shiftId'].errors['required']">shiftName is required</div>
+          </div>
           <!-- <p-dropdown name="shiftName"  formControlName="shiftName"
             placeholder="Select Shift"></p-dropdown> -->
         </div>
@@ -171,7 +189,10 @@
           <label for="lastName" class="input-styling" required>LastName<span class="required">*</span>
           </label>
           <input type="text" formControlName="lastName" [disabled]="true"  class="p-inputtext-normal h-2rem" required pInputText
-            placeholder="Enter Last Name" />
+            placeholder="Enter Last Name"  [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }"/>
+            <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+              <div *ngIf="f['lastName'].errors['required']">lastName is required</div>
+            </div>
           <br />
           <br />
           <!-- <label for="Password" class="input-styling" required>Password<span class="required">*</span>
