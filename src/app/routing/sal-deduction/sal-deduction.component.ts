@@ -6,6 +6,7 @@ import { DatePipe, formatDate } from '@angular/common';
 import { Inject, LOCALE_ID } from '@angular/core';
 import { from } from 'rxjs';
 import { MessageService } from 'primeng/api';
+import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 
 export interface TaxTayes {
   id?: number;
@@ -37,6 +38,7 @@ export class SalDeductionComponent {
   public form: FormGroup;
   constructor(
     private employeeSer: EmployeeService,
+    private employeeDetailServ: EmployeedDataService,
     private salDeductionServ: SalarydeductionlistService,
     private fb: FormBuilder,
     @Inject(LOCALE_ID) public local: string,
@@ -98,7 +100,6 @@ export class SalDeductionComponent {
     this.submitted = false;
   }
   save() {
-    // this.salDeductionServ.AddDeduction();
     if (this.form.invalid) {
       for (const control of Object.keys(this.form.controls)) {
         this.form.controls[control].markAsTouched();
@@ -126,8 +127,7 @@ export class SalDeductionComponent {
           this.description
         )
         .subscribe((res: any) => {
-          console.log(res);
-          if (res !== null && res !== res.statusText && res !== res.type) {
+          if (res) {
             this.messageSer.add({
               severity: 'success',
               summary: 'Success',
@@ -137,11 +137,6 @@ export class SalDeductionComponent {
         });
     }
     this.form.reset();
-    return this.messageSer.add({
-      severity: 'error',
-      summary: 'Error',
-      detail: 'Please gave Employee SalaryDeduction details',
-    });
   }
   ngAfterViewInit() {
     this.salDeductionServ

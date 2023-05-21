@@ -20,16 +20,7 @@
            <span class="required">*</span>
         </label>
         <input id="designation-input" class="designation h-2rem" type="input"  placeholder="Enter Designation" pInputText  formControlName="name" />
-        <small class="text-danger "   *ngIf="!DsgForm.get('name')?.valid &&(DsgForm.get('name')?.touched||DsgForm.get('name')?.dirty)">please Add Designation</small>
-
-
-
-
-      <!-- <div *ngIf="submitted && d['name'].errors" class="alert alert-danger">
-
-        <div *ngIf="d['name'].errors['required']">ID field required</div>
-
-        </div> -->
+        <small class="text-danger "   *ngIf="!DsgForm.get('name')?.valid &&(DsgForm.get('name')?.touched||DsgForm.get('name')?.dirty)">Designation is required</small>
 
 </div>
 

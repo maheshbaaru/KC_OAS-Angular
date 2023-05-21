@@ -71,7 +71,7 @@
             <p-dropdown [options]="taxTaypes" placeholder="Select tax type" id="TaxTypeId"
            optionLabel="type" [showClear]="true" filterBy="type" [filter]="true"
               formControlName="TaxTypeId"></p-dropdown>
-            <small class="text-danger text-center"  *ngIf="!form.get('TaxTypeId')?.valid &&(form.get('TaxTypeId')?.touched||form.get('TaxTypeId')?.dirty)">please select a TaxType</small>
+            <small class="text-danger text-center"  *ngIf="!form.get('TaxTypeId')?.valid &&(form.get('TaxTypeId')?.touched||form.get('TaxTypeId')?.dirty)">TaxType is required</small>
 
 
           </div>
@@ -84,7 +84,7 @@
               [filter]="true" filterBy="firstName"  formControlName="EmpId">
 
             </p-dropdown>
-            <small class="text-danger  align-items-center" *ngIf="!form.get('EmpId')?.valid &&(form.get('EmpId')?.touched||form.get('EmpId')?.dirty)">please select a Name</small>
+            <small class="text-danger  align-items-center" *ngIf="!form.get('EmpId')?.valid &&(form.get('EmpId')?.touched||form.get('EmpId')?.dirty)">Name is required</small>
 
           </div>
 
@@ -98,7 +98,7 @@
 
                <small class="text-danger "  *ngIf="!form.get('Amount')?.valid &&(form.get('Amount')?.touched||form.get('Amount')?.dirty)">
 
-                please give a Amount</small>
+                Amount is required</small>
 
           </div>
 
@@ -108,7 +108,7 @@
             </label>
             <input type="text" pInputText id="LOPDAYS" placeholder="No of LOP Days" required class="h-2rem" autofocus
               formControlName="LOPDAYS" />
-              <small class="text-danger " *ngIf="!form.get('LOPDAYS')?.valid &&(form.get('LOPDAYS')?.touched||form.get('LOPDAYS')?.dirty)">please give LOP DAYS</small>
+              <small class="text-danger " *ngIf="!form.get('LOPDAYS')?.valid &&(form.get('LOPDAYS')?.touched||form.get('LOPDAYS')?.dirty)">LOP DAYS is required</small>
           </div>
           <div class="col-6 ng-dirty ng-invalid mr-2 " style="width: 15rem">
             <label for="Month">Effected Month
@@ -116,7 +116,7 @@
             </label>
             <p-calendar   [disabledDates]="invalidDates"  view="month" inputId="Month" dateFormat="mm.yy"
               [required]="true" formControlName="Month" placeholder="Month" ></p-calendar>
-              <small class="text-danger " *ngIf="!form.get('Month')?.valid &&(form.get('Month')?.touched||form.get('Month')?.dirty)">please select a Month</small>
+              <small class="text-danger " *ngIf="!form.get('Month')?.valid &&(form.get('Month')?.touched||form.get('Month')?.dirty)">Month is required</small>
           </div>
         </div>
 

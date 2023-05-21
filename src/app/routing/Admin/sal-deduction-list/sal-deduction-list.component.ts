@@ -14,9 +14,7 @@ export class SalDeductionListComponent {
   constructor(
     private active: ActivatedRoute,
     private employeeSer: EmployeeService
-  ) {
-    console.log(this.active);
-  }
+  ) {}
   ngOnInit() {
     this.cols = [
       { field: 'empId', header: 'EmployeeId' },
