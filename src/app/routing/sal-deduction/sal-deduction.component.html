@@ -106,7 +106,7 @@
             <label for="LOPDAYS">No of LOP Days
               <span class="text-red-500" required>*</span>
             </label>
-            <input type="text" pInputText id="LOPDAYS" placeholder="No of LOP Days" required class="h-2rem" autofocus
+            <input type="number" pInputText id="LOPDAYS" placeholder="No of LOP Days" required class="h-2rem" autofocus
               formControlName="LOPDAYS" />
               <small class="text-danger " *ngIf="!form.get('LOPDAYS')?.valid &&(form.get('LOPDAYS')?.touched||form.get('LOPDAYS')?.dirty)">LOP DAYS is required</small>
           </div>
