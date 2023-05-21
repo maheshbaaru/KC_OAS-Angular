@@ -1,7 +1,6 @@
-<!-- saleem changes -->
 
 <div class="edit-bank-container">
-    
+    <div id="success-toast" class="success-toast"></div>
     <div class="ebd-container">
         <div class="ebd-caption-content1">
             <h1 class="ebd-title">UPDATE BANK DETAILS</h1>
@@ -11,7 +10,7 @@
                  <i class="pi pi-arrow-left icon" style="font-size: 0.7rem;margin-top: 4px;"></i> 
                  <p class="btn-text">Back</p>
             </button>
-            <button class="creat-button" (click)="onClickSave()"> 
+            <button class="creat-button" (click)="onClickSave(register.form.valid)" > 
                 <i class="pi pi-check icon" style="font-size: 0.7rem;margin-top: 5px;"></i> 
                 <p class="btn-text">Save</p>
 
@@ -19,27 +18,91 @@
         </div>
     </div>
 
-    <div class="ebd-contnt-container">
-       <div class="input-container">
-        <label for="EmpId" class="label">EmpId <span class="empClass">*</span></label>
-        <input type="text" id="EmpId" class="input-fields disabledButton" disabled value="employeeNameArray.Name" [(ngModel)]="employeeNameArray.Name"/>
+    <form  class="ebd-contnt-container"  #register="ngForm" (ngSubmit)="onClickSave(register.form.valid)" >
+       
+        <div class="cont2" >
+            <label for="EmpId" class="input-styling" 
+              >EmpId
+              <span class="required">*</span>
+            </label>
+        
+        <input 
+        type="text"
+         id="EmpId" 
+         pInputText
+         class="h-2rem"
+         style="cursor: not-allowed;"
+         disabled value="employeeNameArray.Name" 
+         [(ngModel)]="employeeNameArray.Name" 
+         name="empId"/>
        </div>
 
-       <div class="input-container">
-        <label for="accno" class="label">ACCNO </label>
-        <input type="text" id="accno" class="input-fields" [(ngModel)]="employeeNameArray.accno"/>
+
+
+       <div class="cont2" >
+        <label for="accno" class="input-styling" 
+              >ACCNO
+            </label>
+        
+        <input 
+        type="text"
+         id="accno" 
+         pInputText
+         class="h-2rem"
+         [(ngModel)]="employeeNameArray.accno"
+         name="accno"
+         #accno="ngModel"
+         required maxlength="15" minlength="5"
+          [ngClass]="{'error':submited && accno.errors}"
+          [pattern]="integerRegex"
+          [@shakeAnimation]=" !(submited && accno.errors) ?'valid':'invalid'"
+         />
+         
+         <div *ngIf="submited && accno.errors" class="alert alert-danger" style="max-width: 230px;">
+             <span *ngIf="accno.errors?.['required']">Account number is required.</span> <br>
+             <span *ngIf="accno.errors?.['pattern']">Please provide valid acc no !!</span> <br>
+             <span *ngIf="accno.errors?.['maxlength']">Account number cannot exceed 15 characters.</span> <br>
+             <span *ngIf="accno.errors?.['minlength']">Account number must be at least 5 characters long.</span> <br>
+         </div>
        </div>
 
-       <div class="input-container">
-        <label for="accname" class="label">ACCNAME</label>
-        <input type="text" id="accname" class="input-fields disabledButton" disabled [(ngModel)]="employeeNameArray.accname"/>
+
+       <div class="cont2" >
+        <label for="accname" class="input-styling" 
+              >ACCNAME
+            </label>
+       
+        <input
+         type="text" 
+         id="accname"
+         pInputText
+         class="h-2rem"
+         style="cursor: not-allowed;"
+          disabled 
+          [(ngModel)]="employeeNameArray.accname"
+          name="accname"
+          #accname="ngModel"
+         
+           />
        </div>
 
-       <div class="input-container">
-        <label for="bankname" class="label">BankName</label>
-        <input type="text" id="bankname" class="input-fields disabledButton" disabled value="Kotak mahindra" [(ngModel)]="employeeNameArray.bankName"/>
+       <div class="cont2" >
+        <label for="bankname" class="input-styling" 
+              >BankName
+            </label>
+        
+        <input
+         type="text" 
+         id="bankname" 
+         pInputText
+         class="h-2rem"
+         style="cursor: not-allowed;"
+          disabled value="Kotak mahindra" 
+          [(ngModel)]="employeeNameArray.bankName"
+          name="bankname"
+          />
        </div>
-    </div>
+    </form>
 
     
 </div>

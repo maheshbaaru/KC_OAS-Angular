@@ -63,13 +63,12 @@ export class EmployeeService {
   }
 
   getSpecifiEmployeeLeavesDataById(): Observable<any[]> {
-    debugger;
+
     return new Observable((observer) => {
       this.http
         .get(`https://localhost:7236/GetSpecificEmpLeave?id=${this.currentid}`)
         .subscribe((result) => {
           const resultData = Object.values(result);
-          console.log(resultData);
 
           observer.next(resultData);
           observer.complete();
