@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
@@ -11,9 +16,9 @@ import { StorageService } from 'src/app/services/storage.service';
   selector: 'app-updatephoto',
   templateUrl: './updatephoto.component.html',
   styleUrls: ['./updatephoto.component.css'],
-  providers: [MessageService],
 })
 export class UpdatephotoComponent {
+  myReactiveForm: FormGroup;
   myImage!: Observable<any>;
   base64code!: any;
   selectedFiles?: FileList;
@@ -30,13 +35,8 @@ export class UpdatephotoComponent {
   onChange = ($event: Event) => {
     const target = $event.target as HTMLInputElement;
     const file = (target.files as FileList)[0];
-    if (file) {
-      this.image = target.value;
-
-      this.convertToBase64(file);
-    } else {
-      return console.log('error');
-    }
+    this.image = target.value;
+    this.convertToBase64(file);
   };
   fileupload: any;
 
@@ -78,7 +78,9 @@ export class UpdatephotoComponent {
   ngOnInit(): void {
     let emp: any = window.sessionStorage.getItem('loggedinUser');
     this.empdata = JSON.parse(emp);
-
+    this.myReactiveForm = new FormGroup({
+      photo: new FormControl(null, Validators.required),
+    });
     // this.profileServ.addprofilephoto(EmpId,Id).subscribe((data:any)=>{
     //   this.preview= 'data:image/jpg;base64,'+data.photo});
   }
@@ -86,39 +88,47 @@ export class UpdatephotoComponent {
   upload() {
     let profilepic = window.sessionStorage.getItem('profilePic') || '';
     profilepic = JSON.parse(profilepic);
+    if (this.myReactiveForm.invalid) {
+      for (const control of Object.keys(this.myReactiveForm.controls)) {
+        this.myReactiveForm.controls[control].markAsTouched();
+        this.myReactiveForm.controls[control].markAsDirty();
+      }
+      return;
+    } else if (this.myReactiveForm.valid) {
+      if (!profilepic) {
+        this.image = this.image.replace('fakepath\\', '');
 
-    if (!profilepic) {
-      this.image = this.image.replace('fakepath\\', '');
+        let loogedUser: any = window.sessionStorage.getItem('auth-user');
 
-      let loogedUser: any = window.sessionStorage.getItem('auth-user');
+        loogedUser = JSON.parse(loogedUser);
+        this.profileServ
+          .addprofilephoto(this.image, loogedUser.employeeID * 1)
+          .subscribe((res: any) => {
+            this.profileServ.userPhoto.next(this.preview);
 
-      loogedUser = JSON.parse(loogedUser);
-      this.profileServ
-        .addprofilephoto(this.image, loogedUser.employeeID * 1)
-        .subscribe((res: any) => {
-          this.profileServ.userPhoto.next(this.preview);
+            console.log(res);
+          });
+      } else {
+        this.image = this.image.replace('fakepath\\', '');
 
-          console.log(res);
-        });
-    } else {
-      this.image = this.image.replace('fakepath\\', '');
+        let loogedUser: any = window.sessionStorage.getItem('auth-user');
 
-      let loogedUser: any = window.sessionStorage.getItem('auth-user');
-
-      loogedUser = JSON.parse(loogedUser);
-      this.profileServ
-        .updatePhoto(this.image, loogedUser.employeeID * 1)
-        .subscribe((res) => {
-          this.profileServ.userPhoto.next(this.preview);
-          res;
-        });
-      this.messageService.add({
-        severity: 'info',
-        summary: 'Success',
-        detail: 'File Uploaded with Basic Mode',
-      });
+        loogedUser = JSON.parse(loogedUser);
+        this.profileServ
+          .updatePhoto(this.image, loogedUser.employeeID * 1)
+          .subscribe((res) => {
+            this.profileServ.userPhoto.next(this.preview);
+            if (res) {
+              return this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'Photo Uploaded.',
+              });
+            }
+          });
+      }
     }
-
+    this.myReactiveForm.reset();
     this.route.navigate(['/navbar']);
   }
 }

@@ -6,14 +6,19 @@
     <div class="col-sm-6" style="text-align:right">
       <button pButton class="h-1rem p-button-success" (click)="upload()"
         style="float: right;margin-right:5px; font-size: smaller;"><i class="pi pi-check icon"></i>UPLOAD</button>
+        <p-toast position="top-center" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
+
     </div>
   </ng-template>
   <div class="row p-5">
+    <form [formGroup]="myReactiveForm">
     <div class="row">
       <div class=fileupload>
-        <label class="btn btn-default p-0">
+        <label class="btn btn-default p-0">Photo
+            <span class="required">*</span>
+          <input type="file" (change)="onChange($event)" formControlName="photo"/>
+        <small class="text-danger "   *ngIf="!myReactiveForm.get('photo')?.valid &&(myReactiveForm.get('photo')?.touched||myReactiveForm.get('photo')?.dirty)">Photo is required</small>
 
-          <input type="file" (change)="onChange($event)" />
         </label>
         <div>
           <img src="{{preview}}" class="preview" />
@@ -21,5 +26,5 @@
       </div>
 
     </div>
-
+  </form>
   </div>
