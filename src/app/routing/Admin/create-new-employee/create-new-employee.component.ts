@@ -1,8 +1,7 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import {
-  Form,
+  EmailValidator,
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
@@ -33,33 +32,23 @@ export class CreateNewEmployeeComponent {
   constructor(
     private empServ: EmployeeService,
     private fb: FormBuilder,
-    private cd: ChangeDetectorRef
+   
   ) { }
 
   ngOnInit() {
     this.empForm = this.fb.group({
 
-      employeeID: [''],
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      panNumber: [''],
-      designationName: [''],
-      shiftName: [''],
-      isActive: new FormControl<string | null>(null),
-      doj: [''],
-      Password: [''],
-      // employeeID: '',
-      // firstName: '',
-      // lastName: '',
-      // email: '',
-      // panNumber: '',
-      // designationName: '',
-      // shiftName: '',
-      // isActive: '',
-      // doj: '',
-      // designationID: '',
-      // Password: '',
+      employeeID: [null, Validators.required],
+      firstName: [null, Validators.required],
+      lastName: [null, Validators.required],
+      email: [null, Validators.required,EmailValidator],
+      panNumber: [null, Validators.required],
+      designationName: [null, Validators.required],
+      shiftName: [null, Validators.required],
+      isActive: [null, Validators.required],
+      doj: [null, Validators.required],
+      Password: [null, Validators.required],
+   
     });
     this.empServ.getShifts().subscribe((res) => {
       this.Shifts = res;
@@ -68,9 +57,21 @@ export class CreateNewEmployeeComponent {
       this.roles = res;
     });
   }
+
+  get f() {
+    return this.empForm.controls;
+  }
+
   save() {
-    debugger;
-    console.log(this.empForm.value);
+    if (this.empForm.invalid) {
+      for (const control of Object.keys(this.empForm.controls)) {
+        this.empForm.controls[control].markAsTouched();
+        this.empForm.controls[control].markAsDirty();
+      }
+    }else if(
+      this.empForm.valid
+    ){ 
+  
     let obj = {
       Id: this.empForm.value.employeeID,
       FirstName: this.empForm.value.firstName,
@@ -83,15 +84,19 @@ export class CreateNewEmployeeComponent {
       ShiftId: this.empForm.value.shiftName.shiftId,
       Doj: this.empForm.value.doj
     }
-    console.log(obj)
+  
     // let data = JSON.stringify(this.empForm.value);
     //this.empServ.postEmp(data);
     this.empServ.createEmployee(obj).subscribe((d) => {
       console.log(d);
+      
     });
   }
+}
   onchange() {
-    console.log(this.empForm.invalid, this.empForm.status);
     this.save_button = this.empForm.valid;
   }
 }
+
+
+

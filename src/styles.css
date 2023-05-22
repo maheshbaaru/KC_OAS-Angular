@@ -149,3 +149,7 @@ background-color: transparent;
 border: transparent;
 
 }
+.text-danger{
+    font-size: smaller;
+    width:120px;
+}
