@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import { EmployeeService } from 'src/app/services/employee.service';
 export interface Shifts {
   //shiftId: number;
@@ -28,27 +29,31 @@ export class CreateNewEmployeeComponent {
   save_button: Boolean = false;
   empForm: FormGroup;
 
-
   constructor(
     private empServ: EmployeeService,
     private fb: FormBuilder,
-   
-  ) { }
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
     this.empForm = this.fb.group({
-
       employeeID: [null, Validators.required],
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
-      email: [null, [Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      email: [
+        null,
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        ],
+      ],
       panNumber: [null, Validators.required],
       designationName: [null, Validators.required],
       shiftName: [null, Validators.required],
       isActive: [null, Validators.required],
       doj: [null, Validators.required],
       Password: [null, Validators.required],
-   
     });
     this.empServ.getShifts().subscribe((res) => {
       this.Shifts = res;
@@ -68,35 +73,35 @@ export class CreateNewEmployeeComponent {
         this.empForm.controls[control].markAsTouched();
         this.empForm.controls[control].markAsDirty();
       }
-    }else if(
-      this.empForm.valid
-    ){ 
-  
-    let obj = {
-      Id: this.empForm.value.employeeID,
-      FirstName: this.empForm.value.firstName,
-      LastName: this.empForm.value.lastName,
-      Email: this.empForm.value.email,
-      Password: this.empForm.value.Password,
-      IsActive: this.empForm.value.isActive,
-      EmployeeId: this.empForm.value.employeeID,
-      PanNumber: this.empForm.value.panNumber,
-      ShiftId: this.empForm.value.shiftName.shiftId,
-      Doj: this.empForm.value.doj
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'pleses fill the required fields',
+        sticky: true,
+      });
+      return;
+    } else if (this.empForm.valid) {
+      let obj = {
+        Id: this.empForm.value.employeeID,
+        FirstName: this.empForm.value.firstName,
+        LastName: this.empForm.value.lastName,
+        Email: this.empForm.value.email,
+        Password: this.empForm.value.Password,
+        IsActive: this.empForm.value.isActive,
+        EmployeeId: this.empForm.value.employeeID,
+        PanNumber: this.empForm.value.panNumber,
+        ShiftId: this.empForm.value.shiftName.shiftId,
+        Doj: this.empForm.value.doj,
+      };
+
+      // let data = JSON.stringify(this.empForm.value);
+      //this.empServ.postEmp(data);
+      this.empServ.createEmployee(obj).subscribe((d) => {
+        console.log(d);
+      });
     }
-  
-    // let data = JSON.stringify(this.empForm.value);
-    //this.empServ.postEmp(data);
-    this.empServ.createEmployee(obj).subscribe((d) => {
-      console.log(d);
-      
-    });
   }
-}
   onchange() {
     this.save_button = this.empForm.valid;
   }
 }
-
-
-
