@@ -2,8 +2,16 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 import { HttpClientService } from 'src/app/services/http-client.service';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { AuthguardService } from 'src/app/services/authguard.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-updateprofile',
@@ -20,7 +28,8 @@ export class UpdateprofileComponent {
     private service: EmployeedDataService,
     private designatonservice: HttpClientService,
     private formBuilder: FormBuilder,
-    private authServ: AuthguardService
+    private authServ: AuthguardService,
+    private messageService: MessageService
   ) {}
 
   get f(): { [key: string]: AbstractControl } {
@@ -29,16 +38,16 @@ export class UpdateprofileComponent {
 
   ngOnInit(): void {
     this.updateform = this.formBuilder.group({
-      employeeId: ["",Validators.required],
-      firstName: ["",Validators.required],
-      lastName:["",Validators.required],
-      email: ["",Validators.required],
-      panNumber:["",Validators.required],
+      employeeId: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      panNumber: ['', Validators.required],
       designationId: new FormControl({
         value: '',
         disabled: true,
       }),
-      shiftId:new FormControl({
+      shiftId: new FormControl({
         value: '',
         disabled: true,
       }),
@@ -81,24 +90,44 @@ export class UpdateprofileComponent {
   //   });
   // }
   upadteprofile(updateData: any) {
-    if(!this.updateform.invalid){
-      this.service.updateprofile(this.updateform.value,this.userdata.id).subscribe(res=>{
-        if(res){
-          this.GetEmployee();
-        }
-      })
+    if (this.updateform.invalid) {
+      for (const control of Object.keys(this.updateform.controls)) {
+        this.updateform.controls[control].markAsTouched();
+        this.updateform.controls[control].markAsDirty();
+      }
+
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'pleses fill the required fields',
+        sticky: true,
+      });
+      return;
+    } else if (this.updateform.valid) {
+      this.service
+        .updateprofile(this.updateform.value, this.userdata.id)
+        .subscribe((res) => {
+          if (res) {
+            this.GetEmployee();
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Designation saved',
+            });
+          }
+        });
       this.submitted = true;
       this.router.navigate(['./Employees']);
     }
   }
 
-  GetEmployee(){
-    this.service.getEmployeeById(this.userdata.id).subscribe(res=>{
+  GetEmployee() {
+    this.service.getEmployeeById(this.userdata.id).subscribe((res) => {
       this.updateform.patchValue(res);
       this.submitted = true;
       for (const control of Object.keys(this.updateform.controls)) {
         this.updateform.controls[control].markAsTouched();
       }
-    })
+    });
   }
 }

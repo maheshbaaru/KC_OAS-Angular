@@ -13,5 +13,19 @@
     padding-right:5px;
 }
 
+.taxtype-content-container{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.taxtype-input-field{
+    display: flex;
+    flex-direction: column;
+
+    height: 50%;
+    padding-top: 7px;
+}
+
 
 

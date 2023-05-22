@@ -1,24 +1,34 @@
 
+
  <div class="laps-main-container">
-  <div id="success-toast" class="success-toast"></div>
     <div class="laps-container">
         <div class="laps-caption-content1">
             <h1 class="laps-title mt-3">APPROVAL SCREEN</h1>
         </div>
         <div class="laps-buttons-container">
+         
+          <p-toast ></p-toast>
             <button class="creat-button" routerLink="../../leavesApprov"> 
                 <i class="pi pi-arrow-left icon" style="font-size: 0.7rem;margin-top: 3px;"></i> 
                 <p class="btn-text">Back</p>
 
             </button>
-            <button class="creat-button" form="myForm" (click)="onSave(myForm.form.valid)"> 
+            <button 
+            class="creat-button" 
+            form="myForm" 
+            type="submit" 
+            >
                 <i class="pi pi-check icon" style="font-size: 0.7rem;margin-top: 3px;"></i> 
                 <p class="btn-text">Save</p>
             </button>
         </div>
     </div>
     
-    <form class="laps-contnt-container" id="myForm" #myForm="ngForm" (ngSubmit)="onSave(myForm.form.valid)">
+    <form 
+    class="laps-contnt-container"
+     id="myForm" 
+     #myForm="ngForm"
+      (ngSubmit)="onSave(myForm.form.valid)">
         <div class="cont2" >
         
             <label for="designation-input" class="input-styling" 
@@ -41,7 +51,7 @@
             
             
               <div *ngIf="isSubmited && leaveTypeDropdown.errors" class="alert alert-danger">
-                <span *ngIf="leaveTypeDropdown.errors?.['required']">Leave type is required.</span>
+                <span style="font-size: 12px;" *ngIf="leaveTypeDropdown.errors?.['required']">Leave type is required.</span>
               </div>
 
 
@@ -176,7 +186,7 @@
 
               
               <div *ngIf="isSubmited && statusType.errors" class="alert alert-danger">
-                <span *ngIf="statusType.errors?.['required']">Status type is required.</span>
+                <span style="font-size: 12px;" *ngIf="statusType.errors?.['required']">Status type is required.</span>
               </div>
 
 

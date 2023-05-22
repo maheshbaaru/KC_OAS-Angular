@@ -98,6 +98,13 @@ export class CreateNewEmployeeComponent {
       //this.empServ.postEmp(data);
       this.empServ.createEmployee(obj).subscribe((d) => {
         console.log(d);
+        if (d) {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'TaxType saved',
+          });
+        }
       });
     }
   }

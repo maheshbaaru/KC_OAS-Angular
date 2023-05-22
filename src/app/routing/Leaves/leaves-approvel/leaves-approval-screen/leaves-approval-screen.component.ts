@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { LeavesService } from 'src/app/services/leaves.service';
+import { MessageService } from 'primeng/api';
 
 interface statustype {
   statusType: string;
@@ -84,6 +85,7 @@ export class LeavesApprovalScreenComponent {
      private leaveSer: LeavesService,
      private empservice: EmployeeService,
      private route:ActivatedRoute,
+     private messageService: MessageService
      ){ 
   }
 
@@ -190,23 +192,24 @@ export class LeavesApprovalScreenComponent {
     {leaveTypeName:"Compansation"},
     {leaveTypeName:"Optional"},
   ]
-  showSuccessToast(event:any) {
-    const toast = document.getElementById("success-toast") || null;
-    if (toast) {
-      toast.textContent = "Success!";
-      toast.style.display = "block";
-      toast.style.position = "fixed";
-      toast.style.top = "10px";
-      toast.style.right = "10px";
-      toast.classList.add("toast-appear");
-      setTimeout(() => {
-        toast.classList.remove("toast-appear");
-        toast.style.display = "none";
-      }, 2000);
-    }
-  }
+  // showSuccessToast(event:any) {
+  //   const toast = document.getElementById("success-toast") || null;
+  //   if (toast) {
+  //     toast.textContent = "Success!";
+  //     toast.style.display = "block";
+  //     toast.style.position = "fixed";
+  //     toast.style.top = "10px";
+  //     toast.style.right = "10px";
+  //     toast.classList.add("toast-appear");
+  //     setTimeout(() => {
+  //       toast.classList.remove("toast-appear");
+  //       toast.style.display = "none";
+  //     }, 2000);
+  //   }
+  // }
 
   onSave(event:any){
+    console.log("toast")
     if(event){
       this.isSubmited=true
       let leaveTypeid= null
@@ -253,39 +256,28 @@ export class LeavesApprovalScreenComponent {
           
         }
         this.empservice.updateLeavesApprovalData(postData)
-
-        if(event){
-          this.showSuccessToast(event);
-          }else{
-          const successToast = document.getElementById("success-toast");
-          if (successToast) {
-            successToast.style.display = "none";
-            successToast.style.backgroundColor = "none";
-          }
-        }
+        console.log("error")
+        this.messageService.add({
+           severity: 'success',
+            summary: 'Success',
+             detail: 'SuccessFully changed Leave Type and Status Id'
+           });
     }
     else{
+      this.messageService.add({
+        severity: 'error', 
+        summary: 'Error', 
+        detail: 'Please Select Required Fields'
+        });
       this.isSubmited=false
+      
       setTimeout(() => {
         this.isSubmited=true
       }, 400);
-      // console.log("form not valid")
-      // console.log(event)
+
     }
-    // console.log(typeof(this.statusIdName),this.statusIdName)
-    
-      // console.log(postData)
-      // console.log(this.speficEmployeeLeaveData.id)
-     
-     
+
     }
   }
 
 
- // adminComments:this.speficEmployeeLeaveData.adminComments,
-        // appliedOn:this.speficEmployeeLeaveData.,
-        // comments:this.speficEmployeeLeaveData.,
-        // empId:this.speficEmployeeLeaveData.,
-        // fromDate:this.speficEmployeeLeaveData.,
-        // numOfDays:this.speficEmployeeLeaveData.,
-        // toDate:this.speficEmployeeLeaveData.,
