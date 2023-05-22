@@ -1,32 +1,57 @@
 <p-panel>
   <ng-template pTemplate="header">
-    <div class="col -md-6" style="text-align:left">
+    <div class="col -md-6" style="text-align: left">
       <strong>CREATE TAXTYPE </strong>
     </div>
-    <div class="col-sm-6" style="text-align:right">
-      
-      <button pButton class="h-1rem" style="float: right; font-size: smaller;margin-right:10px;" routerLink="/navbar"><i
-          class="pi pi-arrow-left icon"></i>BACK</button>
-      <button pButton class="h-1rem p-button-success" style="float: right;margin-right:5px; font-size: smaller;" (click)="AddTaxType()" ><i
-          class="pi pi-check icon"></i>SAVE</button>
-
+    <div class="col-sm-6" style="text-align: right">
+      <button
+        pButton
+        class="h-1rem"
+        style="float: right; font-size: smaller; margin-right: 10px"
+        routerLink="/navbar"
+      >
+        <i class="pi pi-arrow-left icon"></i>BACK
+      </button>
+      <button
+        pButton
+        class="h-1rem p-button-success"
+        style="float: right; margin-right: 5px; font-size: smaller"
+        (click)="AddTaxType()"
+      >
+        <i class="pi pi-check icon"></i>SAVE
+      </button>
     </div>
   </ng-template>
   <div class="row">
     <div class="col-md-4 p-4">
-      <p-toast position="top-center" ></p-toast>
-    <form class=" form-styles" [formGroup]="form"  #tax="ngForm">
-      <div class="cont2" >
-        <label for="designation-input" class="input-styling" required>Type
-          <span class="required">*</span>
-        </label>
-        <div class="taxtype-input-field">
-
-          <input id="designation-input" class="h-2rem" type="input" placeholder="Enter Tax Type" pInputText name="tax" formControlName="tax" />
-          <small class="text-danger "   *ngIf="!form.get('tax')?.valid &&(form.get('tax')?.touched||form.get('tax')?.dirty)">TaxType is required</small>
+      <p-toast position="top-center"></p-toast>
+      <form class="form-styles" [formGroup]="form" #tax="ngForm">
+        <div class="cont2">
+          <label for="designation-input" class="input-styling" required
+            >Type
+            <span class="required">*</span>
+          </label>
+          <div class="taxtype-input-field">
+            <input
+              id="designation-input"
+              class="h-2rem"
+              type="input"
+              placeholder="Enter Tax Type"
+              pInputText
+              name="tax"
+              formControlName="tax"
+            />
+            <small
+              class="text-danger"
+              *ngIf="
+                !form.get('tax')?.valid &&
+                (form.get('tax')?.touched || form.get('tax')?.dirty)
+              "
+              >TaxType is required</small
+            >
+          </div>
         </div>
-
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </p-panel>
