@@ -5,12 +5,13 @@
     <strong>CREATE DESIGNATION </strong>
   </div>
       <div class="col-sm-6" style="text-align:right">
-        <p-toast position="top-center" ></p-toast>
+       
           <button pButton class="h-1rem" style="float: right; font-size: smaller;margin-right:10px;" routerLink="/navbar"><i class="pi pi-arrow-left icon "></i>BACK</button>
           <button pButton class="h-1rem p-button-success" (click)="addDesignation()" style="float: right;margin-right:5px; font-size: smaller;"><i class="pi pi-check icon"></i>SAVE</button>
 
   </div>
   </ng-template>
+  <p-toast position="top-center" ></p-toast>
   <div class="row">
     <div class="col-md-4 p-4">
     <form  class=" form-styles" [formGroup]="DsgForm" >
