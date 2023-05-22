@@ -120,6 +120,5 @@ export class UpdateEmployeeComponent {
     this._service.UpdateEmployeeData(form).subscribe(res => {
       console.log(res);
     })
-    // this.form.reset();
   }
 }
