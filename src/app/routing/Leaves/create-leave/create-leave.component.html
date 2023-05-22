@@ -6,11 +6,12 @@
     <div class="col-sm-6"  style="text-align:right">
       <button pButton class="h-1rem" style="float: right; font-size: smaller;" routerLink="/navbar/apply"><i
           class="pi pi-arrow-left icon"></i>BACK</button>
-          <p-toast position="top-center" ></p-toast>
+
       <button pButton class="h-1rem p-button-success" style="float: right;margin-right:5px; font-size: smaller;" type="submit"
         (click)="onFormSubmit()"><i class="pi pi-check icon" ></i>SAVE</button>
-      
+
     </div>
+    <p-toast position="top-center" ></p-toast>
   </ng-template>
   <div class="row">
     <form  (ngSubmit)="onFormSubmit()" [formGroup]="empForm"   class=" form-styles cont  " >
@@ -19,21 +20,19 @@
           <span class="required">*</span>
         </label>
         <p-dropdown [options]="leaveTypes" placeholder="Select Leave Type" optionLabel="name" [showClear]="true"
-          formControlName="leaveTypeId" [ngClass]="{ 'is-invalid': submitted && f['leaveTypeId'].errors }" ></p-dropdown>
-          <div *ngIf="submitted && f['leaveTypeId'].errors" class="invalid-feedback">
-            <div *ngIf="f['leaveTypeId'].errors['required']">StatusId is required</div>
-          </div>
-          
+          formControlName="leaveTypeId" ></p-dropdown>
+          <small class="text-danger "  *ngIf="!empForm.get('leaveTypeId')?.valid &&(empForm.get('leaveTypeId')?.touched||empForm.get('leaveTypeId')?.dirty)">LeaveType is required</small>
+
+
       </div>
       <div class="cont2">
         <label for="designation-input" class="input-styling" required>From Date
           <span class="required">*</span>
         </label>
         <p-calendar [showIcon]="true" id="designation-input" placeholder="DD-MM-YYYY"
-          formControlName="FromDate"  min="minDate"   [ngClass]="{ 'is-invalid': submitted && f['FromDate'].errors }" ></p-calendar>
-          <div *ngIf="submitted && f['FromDate'].errors" class="invalid-feedback">
-            <div *ngIf="f['FromDate'].errors['required']">FromDate is required</div>
-          </div>
+          formControlName="FromDate"  min="minDate"   ></p-calendar>
+
+          <small class="text-danger "  *ngIf="!empForm.get('FromDate')?.valid &&(empForm.get('FromDate')?.touched||empForm.get('FromDate')?.dirty)">FromDate is required</small>
 
       </div>
       <div class="cont2">
@@ -41,31 +40,28 @@
           <span class="required">*</span>
         </label>
         <p-calendar [showIcon]="true" id="designation-input" placeholder="DD-MM-YYYY"
-          formControlName="ToDate" max="maxDate"  [ngClass]="{ 'is-invalid': submitted && f['ToDate'].errors }"></p-calendar>
-          <div *ngIf="submitted && f['ToDate'].errors" class="invalid-feedback">
-            <div *ngIf="f['ToDate'].errors['required']">ToDate is required</div>
-          </div>
+          formControlName="ToDate" max="maxDate"  ></p-calendar>
+          <small class="text-danger "  *ngIf="!empForm.get('ToDate')?.valid &&(empForm.get('ToDate')?.touched||empForm.get('ToDate')?.dirty)">ToDate is required</small>
+
       </div>
       <div class="cont2">
         <label for="designation-input" class="input-styling" required>Status
           <span class="required">*</span>
         </label>
-        <input id="designation-input" type="input"  class="h-2rem"  placeholder="New" pInputText formControlName="StatusId" 
-         [ngClass]="{ 'is-invalid': submitted && f['StatusId'].errors }"/>
-        <div *ngIf="submitted && f['StatusId'].errors" class="invalid-feedback">
-          <div *ngIf="f['StatusId'].errors['required']">StatusId is required</div>
-        </div>
+        <input id="designation-input" type="input"  class="h-2rem"  placeholder="New" pInputText formControlName="StatusId"
+         />
+         <small class="text-danger "  *ngIf="!empForm.get('StatusId')?.valid &&(empForm.get('StatusId')?.touched||empForm.get('StatusId')?.dirty)">Status is required</small>
+
       </div>
       <div class="cont2">
         <label for="designation-input" class="input-styling" required>Comments
           <span class="required">*</span>
         </label>
-        <input id="designation-input" type="input" class="h-2rem" placeholder="Enter Comments" pInputText formControlName="Comments" 
-        [ngClass]="{ 'is-invalid': submitted && f['Comments'].errors }" />
+        <input id="designation-input" type="input" class="h-2rem" placeholder="Enter Comments" pInputText formControlName="Comments"
+        />
 
-        <div *ngIf="submitted && f['Comments'].errors" class="invalid-feedback">
-          <div *ngIf="f['Comments'].errors['required']">Comments is required</div>
-        </div>
+        <small class="text-danger "  *ngIf="!empForm.get('Comments')?.valid &&(empForm.get('Comments')?.touched||empForm.get('Comments')?.dirty)">Comments is required</small>
+
       </div>
     </form>
   </div>
