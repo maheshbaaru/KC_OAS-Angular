@@ -21,6 +21,7 @@
         (click)="save()"
       >
         <i class="pi pi-check icon"></i>SAVE
+        <p-toast position="top-center"></p-toast>
       </button>
     </div>
   </ng-template>
@@ -40,7 +41,14 @@
             placeholder="Enter Employee ID"
             required
           />
-          <small class="text-danger "  *ngIf="!empForm.get('employeeID')?.valid &&(empForm.get('employeeID')?.touched||empForm.get('employeeID')?.dirty)">EmpID is required
+          <small
+            class="text-danger"
+            *ngIf="
+              !empForm.get('employeeID')?.valid &&
+              (empForm.get('employeeID')?.touched ||
+                empForm.get('employeeID')?.dirty)
+            "
+            >EmpID is required
           </small>
           <br />
           <br />
@@ -56,7 +64,13 @@
             pInputText
             placeholder="Enter Email"
           />
-          <small class="text-danger "  *ngIf="!empForm.get('email')?.valid &&(empForm.get('email')?.touched||empForm.get('email')?.dirty)">Email is required
+          <small
+            class="text-danger"
+            *ngIf="
+              !empForm.get('email')?.valid &&
+              (empForm.get('email')?.touched || empForm.get('email')?.dirty)
+            "
+            >Email is required
           </small>
           <br />
           <br />
@@ -71,7 +85,14 @@
             optionLabel="name"
             placeholder="Select Role"
           ></p-dropdown>
-          <small class="text-danger "  *ngIf="!empForm.get('designationName')?.valid &&(empForm.get('designationName')?.touched||empForm.get('designationName')?.dirty)">DesignationName is required
+          <small
+            class="text-danger"
+            *ngIf="
+              !empForm.get('designationName')?.valid &&
+              (empForm.get('designationName')?.touched ||
+                empForm.get('designationName')?.dirty)
+            "
+            >DesignationName is required
           </small>
 
           <br />
@@ -84,8 +105,15 @@
             [binary]="true"
           ></p-checkbox>
           <label for="any">IsActive<span class="required">*</span></label>
-          <br>
-          <small class="text-danger "  *ngIf="!empForm.get('isActive')?.valid &&(empForm.get('isActive')?.touched||empForm.get('isActive')?.dirty)">IsActive is required
+          <br />
+          <small
+            class="text-danger"
+            *ngIf="
+              !empForm.get('isActive')?.valid &&
+              (empForm.get('isActive')?.touched ||
+                empForm.get('isActive')?.dirty)
+            "
+            >IsActive is required
           </small>
         </div>
       </div>
@@ -102,7 +130,14 @@
             required
             placeholder="Enter First Name"
           />
-          <small class="text-danger "  *ngIf="!empForm.get('firstName')?.valid &&(empForm.get('firstName')?.touched||empForm.get('firstName')?.dirty)">First Name is required
+          <small
+            class="text-danger"
+            *ngIf="
+              !empForm.get('firstName')?.valid &&
+              (empForm.get('firstName')?.touched ||
+                empForm.get('firstName')?.dirty)
+            "
+            >First Name is required
           </small>
           <br />
           <br />
@@ -117,7 +152,14 @@
             pInputText
             placeholder="Enter PAN Number"
           />
-          <small class="text-danger "  *ngIf="!empForm.get('panNumber')?.valid &&(empForm.get('panNumber')?.touched||empForm.get('panNumber')?.dirty)">PAN Number is required
+          <small
+            class="text-danger"
+            *ngIf="
+              !empForm.get('panNumber')?.valid &&
+              (empForm.get('panNumber')?.touched ||
+                empForm.get('panNumber')?.dirty)
+            "
+            >PAN Number is required
           </small>
           <br />
           <br />
@@ -128,12 +170,19 @@
 
           <p-dropdown
             [options]="Shifts"
-
+            name="shiftName"
             optionLabel="shiftName"
             formControlName="shiftName"
             placeholder="Select Shift"
           ></p-dropdown>
-          <small class="text-danger "  *ngIf="!empForm.get('shiftName')?.valid &&(empForm.get('shiftName')?.touched||empForm.get('shiftName')?.dirty)">ShiftName is required
+          <small
+            class="text-danger"
+            *ngIf="
+              !empForm.get('shiftName')?.valid &&
+              (empForm.get('shiftName')?.touched ||
+                empForm.get('shiftName')?.dirty)
+            "
+            >ShiftName is required
           </small>
         </div>
       </div>
@@ -150,7 +199,14 @@
             pInputText
             placeholder="Enter Last Name"
           />
-          <small class="text-danger "  *ngIf="!empForm.get('lastName')?.valid &&(empForm.get('lastName')?.touched||empForm.get('lastName')?.dirty)">Last Name is required
+          <small
+            class="text-danger"
+            *ngIf="
+              !empForm.get('lastName')?.valid &&
+              (empForm.get('lastName')?.touched ||
+                empForm.get('lastName')?.dirty)
+            "
+            >Last Name is required
           </small>
           <br />
           <br />
@@ -165,7 +221,14 @@
             pInputText
             placeholder="Enter Password"
           />
-          <small class="text-danger "  *ngIf="!empForm.get('Password')?.valid &&(empForm.get('Password')?.touched||empForm.get('Password')?.dirty)">Password is required
+          <small
+            class="text-danger"
+            *ngIf="
+              !empForm.get('Password')?.valid &&
+              (empForm.get('Password')?.touched ||
+                empForm.get('Password')?.dirty)
+            "
+            >Password is required
           </small>
           <br />
           <br />
@@ -178,7 +241,13 @@
             placeholder="DD-MM-YYYY"
             formControlName="doj"
           ></p-calendar>
-          <small class="text-danger "  *ngIf="!empForm.get('doj')?.valid &&(empForm.get('doj')?.touched||empForm.get('doj')?.dirty)">doj is required
+          <small
+            class="text-danger"
+            *ngIf="
+              !empForm.get('doj')?.valid &&
+              (empForm.get('doj')?.touched || empForm.get('doj')?.dirty)
+            "
+            >doj is required
           </small>
         </div>
       </div>
