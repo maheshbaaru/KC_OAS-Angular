@@ -4,7 +4,7 @@
       <strong>CREATE TAXTYPE </strong>
     </div>
     <div class="col-sm-6" style="text-align:right">
-
+      <p-toast  ></p-toast>
       <button pButton class="h-1rem" style="float: right; font-size: smaller;margin-right:10px;" routerLink="/navbar"><i
           class="pi pi-arrow-left icon"></i>BACK</button>
       <button pButton class="h-1rem p-button-success" style="float: right;margin-right:5px; font-size: smaller;" (click)="AddTaxType()" ><i
@@ -13,7 +13,6 @@
     </div>
   </ng-template>
   <div class="row">
-    <p-toast  position="top-center"></p-toast>
     <form class=" form-styles cont  " [formGroup]="form"  #tax="ngForm">
       <div class="taxtype-content-container">
         <label for="designation-input" class="input-styling" required>Type
