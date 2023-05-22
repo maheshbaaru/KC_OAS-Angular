@@ -44,13 +44,7 @@ export class SalDeductionComponent {
     @Inject(LOCALE_ID) public local: string,
     private messageSer: MessageService
   ) {
-    // this.taxTaypes = [
-    //   { name: 'SELECT TAX' },
-    //   { name: 'INCOME TAX' },
-    //   { name: 'INSURANCE' },
-    //   { name: 'LOP' },
-    //   { name: 'PROVIDENT FUND' },
-    // ];
+
     this.form = fb.group({
       TaxTypeId: [null, Validators.required],
       EmpId: [null, Validators.required],
@@ -76,13 +70,6 @@ export class SalDeductionComponent {
           Name: `${person.firstName} ${person.lastName}`,
         }));
         this.employeeName = employeeData;
-
-        // this.employee.map((eachData:any)=>{
-        //   let filterData=this.users.find((emp:any)=>emp.employeeId*1 ==eachData.empId)
-        //   eachData['Name']=filterData ? filterData.firstName + filterData.lastName : "";
-        //   console.log(filterData);
-        // })
-        // console.log(this.employee);
       });
     });
     this.cols = [
@@ -105,6 +92,7 @@ export class SalDeductionComponent {
         this.form.controls[control].markAsTouched();
         this.form.controls[control].markAsDirty();
       }
+      this.messageSer.add({ severity: 'error', summary: 'Error', detail: 'Please fill the required fields',sticky: true  });
       return;
     } else if (this.form.valid) {
       this.taxType = this.form.value.TaxTypeId.id;
@@ -142,8 +130,5 @@ export class SalDeductionComponent {
     this.salDeductionServ
       .getTaxDeduction()
       .subscribe((res) => (this.taxTaypes = res));
-    // this.employeeSer.getEmp().subscribe((res) =>{
-    //   this.salDeduction =res
-    // } );
   }
 }
