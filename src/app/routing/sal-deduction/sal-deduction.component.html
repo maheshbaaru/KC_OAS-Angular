@@ -125,8 +125,7 @@
     </ng-template>
 
     <ng-template pTemplate="footer">
-      <p-toast position="top-center" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'"
-        [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
+      <p-toast position="top-center"></p-toast>
       <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
       <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" id="save" type="submit"
         (click)="save()" ></button>

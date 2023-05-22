@@ -67,7 +67,7 @@ export class CreateNewSalaryDetailsComponent {
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
-        detail: 'pleses fill the required fields',
+        detail: 'Please fill the required fields',
         sticky: true,
       });
       return;
