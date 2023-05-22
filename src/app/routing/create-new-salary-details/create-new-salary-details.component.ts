@@ -64,6 +64,12 @@ export class CreateNewSalaryDetailsComponent {
         this.empForm.controls[control].markAsTouched();
         this.empForm.controls[control].markAsDirty();
       }
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'pleses fill the required fields',
+        sticky: true,
+      });
       return;
     } else if (this.empForm.valid) {
       this.EmpId = this.empForm.value.EmpId.employeeID;
