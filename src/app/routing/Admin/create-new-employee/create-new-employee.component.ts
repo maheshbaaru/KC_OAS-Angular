@@ -41,7 +41,7 @@ export class CreateNewEmployeeComponent {
       employeeID: [null, Validators.required],
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
-      email: [null, Validators.required,EmailValidator],
+      email: [null, [Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       panNumber: [null, Validators.required],
       designationName: [null, Validators.required],
       shiftName: [null, Validators.required],
