@@ -92,7 +92,7 @@
             <label class="p-mb-3">Amount
               <span class="text-red-500" required>*</span>
             </label>
-            <p-inputNumber id="Amount" mode="currency" currency="INR" locale="en-US" autofocus placeholder="Amount"
+            <p-inputNumber id="Amount"  mode="currency" currency="INR" locale="en-US" autofocus placeholder="Amount"
                formControlName="Amount"  class="h-2rem" [class.is-invalid]="form.get('Amount')?.invalid && (form.get('Amount')?.dirty || form.get('Amount')?.touched)">
                </p-inputNumber>
 
@@ -125,10 +125,9 @@
     </ng-template>
 
     <ng-template pTemplate="footer">
-      <p-toast position="top-center" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'"
-        [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
-      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-      <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" id="save" type="submit"
+      <p-toast position="top-center"></p-toast>
+      <button pButton pRipple label="CANCEL" icon="pi pi-times icon" style="font-weight: 500;font-size: small;" class="p-button-danger h-1rem" (click)="hideDialog()"></button>
+      <button pButton pRipple label="SAVE" icon="pi pi-check icon" class="p-button-success h-1rem" style="font-weight: 500;font-size: small;" id="save" type="submit"
         (click)="save()" ></button>
     </ng-template>
   </p-dialog>

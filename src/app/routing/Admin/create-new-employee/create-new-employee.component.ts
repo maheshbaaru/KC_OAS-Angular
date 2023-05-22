@@ -33,13 +33,13 @@ export class CreateNewEmployeeComponent {
 
   constructor(
     private empServ: EmployeeService,
-    private fb: FormBuilder, private messageSer: MessageService
+    private fb: FormBuilder,
+    private messageService: MessageService
 
   ) { }
 
   ngOnInit() {
     this.empForm = this.fb.group({
-
       employeeID: [null, Validators.required],
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
@@ -71,7 +71,7 @@ export class CreateNewEmployeeComponent {
         this.empForm.controls[control].markAsDirty();
       }
 
-      this.messageSer.add(
+      this.messageService.add(
         {
           severity: 'error',
           summary: 'Error',
@@ -96,14 +96,14 @@ export class CreateNewEmployeeComponent {
         ShiftId: this.empForm.value.shiftName.shiftId,
         Doj: this.empForm.value.doj
       }
-    
+
 
       // let data = JSON.stringify(this.empForm.value);
       //this.empServ.postEmp(data);
       this.empServ.createEmployee(obj).subscribe((res) => {
         //   console.log(d);
         if (res) {
-          return this.messageSer.add({
+          return this.messageService.add({
             severity: 'success',
             summary: 'Success',
             detail: 'created Employee Data Saved Successfully',
@@ -117,6 +117,3 @@ export class CreateNewEmployeeComponent {
     this.save_button = this.empForm.valid;
   }
 }
-
-
-

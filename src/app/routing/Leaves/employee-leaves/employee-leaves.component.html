@@ -10,13 +10,15 @@
         </div>
     </ng-template>
     <div class="row">
-        <form [formGroup]="empForm" class=" form-styles cont  ">
+        <form [formGroup]="updateform" class=" form-styles cont  ">
             <div class="cont2 ">
                 <label for="designation-input" class="input-styling" required>EmpID
                     <span class="required">*</span>
                 </label>
                 <p-dropdown [options]="employeeName" placeholder="Select Employee" optionLabel="Name" [showClear]="true"
                     formControlName="name"></p-dropdown>
+                    <small class="text-danger "  *ngIf="!updateform.get('name')?.valid &&(updateform.get('name')?.touched||updateform.get('name')?.dirty)">Name is required
+                    </small>
             </div>
             <div class="cont2 ">
                 <label for="designation-input" class="input-styling" required>Leave Type
@@ -24,18 +26,24 @@
                 </label>
                 <p-dropdown [options]="leaveTypes" optionLabel="name" placeholder="Select Leave Type" optionLabel="name" [showClear]="true"
                     formControlName="leaveType"></p-dropdown>
+                    <small class="text-danger "  *ngIf="!updateform.get('leaveType')?.valid &&(updateform.get('leaveType')?.touched||updateform.get('leaveType')?.dirty)">LeaveType is required
+                    </small>
             </div>
             <div class="cont2">
                 <label for="designation-input" class="input-styling" required>Year
                 </label>
-                <p-calendar [showIcon]="true" view="year" dateFormat="yy" id="designation-input" inputId="yearpicker" placeholder="YYYY"
+                <p-calendar [showIcon]="true" view="year" dateFormat="yy" id="designation-input" inputId="yearpicker" placeholder="Year"
                     formControlName="year"></p-calendar>
+                    <small class="text-danger "  *ngIf="!updateform.get('year')?.valid &&(updateform.get('year')?.touched||updateform.get('year')?.dirty)">Year is required
+                    </small>
             </div>
             <div class="cont2">
                 <label for="designation-input" class="input-styling" required>No. of Leaves
                 </label>
-                <input id="designation-input" class="h-2rem" type="input" placeholder="Number of leaves" pInputText
+                <input id="designation-input" class="h-2rem" type="number" placeholder="Number of leaves" pInputText
                     formControlName="noOfLeaves" />
+                    <small class="text-danger "  *ngIf="!updateform.get('noOfLeaves')?.valid &&(updateform.get('noOfLeaves')?.touched||updateform.get('noOfLeaves')?.dirty)">Name is required
+                    </small>
             </div>
         </form>
     </div>
@@ -45,7 +53,7 @@
         styleClass="p-datatable-gridlines"
         [globalFilterFields]="['empId','empName','numOfLeaves']">
         <ng-template pTemplate="header">
-          
+
             <tr>
                 <th>
                     <div class="p-d-flex p-jc-between p-ai-center">

@@ -42,6 +42,13 @@ export class CreateDesignationComponent implements OnInit {
         this.DsgForm.controls[control].markAsTouched();
         this.DsgForm.controls[control].markAsDirty();
       }
+
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'pleses fill the required fields',
+        sticky: true,
+      });
       return;
     } else if (this.DsgForm.valid) {
       this.addDesinations = this.DsgForm.value;
@@ -60,6 +67,5 @@ export class CreateDesignationComponent implements OnInit {
     }
 
     this.DsgForm.reset();
-    this.router.navigate(['/navbar']);
   }
 }

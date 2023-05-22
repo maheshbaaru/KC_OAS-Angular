@@ -11,8 +11,6 @@ import { MessageService } from 'primeng/api';
 import { DatePipe, formatDate } from '@angular/common';
 
 import { LeavesService } from 'src/app/services/leaves.service';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
-
 interface LeaveType {
   name: string;
 }
@@ -33,14 +31,7 @@ export class CreateLeaveComponent {
   id: any;
   submitted = false;
   isLoggedIn = false;
-  // empForm = new  FormGroup({
-  //   empId: new FormControl('', [Validators.required]),
-  //   leaveTypeId: new FormControl('', [Validators.required]),
-  //   nOfLeaves: new FormControl('', [Validators.required]),
-  //   year: new FormControl('', [Validators.required]),
-  //   remainingLeaves: new FormControl('', [Validators.required]),
-
-  // });
+ 
 
   constructor(
     private _fb: FormBuilder,
@@ -48,7 +39,8 @@ export class CreateLeaveComponent {
     private formBuilder: FormBuilder,
     private messageServ: MessageService,
     private route: Router,
-    @Inject(LOCALE_ID) public local: string
+    @Inject(LOCALE_ID) public local: string,
+    private messageService: MessageService
   ) {}
 
   minDate = new Date(2000, 0, 1);
@@ -82,6 +74,7 @@ export class CreateLeaveComponent {
       for (const control of Object.keys(this.empForm.controls)) {
         this.empForm.controls[control].markAsTouched();
       }
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please fill the required fields',sticky: true  });
     }
     this.submitted = true;
 
@@ -119,19 +112,14 @@ export class CreateLeaveComponent {
       )
       .subscribe((res: any) => {
         // console.log(res);
-        if (res !== null && res !== res.statusText && res !== res.type) {
-          this.messageServ.add({
+        if (res) {
+          this.messageService.add({
             severity: 'success',
             summary: 'Success',
-            detail: 'EmployeeLeaves saved',
+            detail: 'Leave details saved',
+            
           });
-        } else {
-          this.messageServ.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: 'Please gave EmployeeLeaves data',
-          });
-        }
+        } 
       });
     this.empForm.reset();
     this.route.navigate(['/navbar/apply']);

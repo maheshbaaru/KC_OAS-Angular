@@ -26,11 +26,16 @@ export class CreateTaxtypeComponent {
         this.form.controls[control].markAsTouched();
         this.form.controls[control].markAsDirty();
       }
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Please fill the required fields',
+        sticky: true,
+      });
       return;
     } else if (this.form.valid) {
       this.taxType = this.form.value;
       this.httpClient.AddTaxType(this.taxType.tax).subscribe((res: any) => {
-        console.log(res);
         if (res) {
           this.messageService.add({
             severity: 'success',

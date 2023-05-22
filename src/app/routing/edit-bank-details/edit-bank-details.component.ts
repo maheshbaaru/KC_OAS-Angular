@@ -4,7 +4,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeService } from 'src/app/services/employeBankService';
-
+import { MessageService } from 'primeng/api';
 
 export interface EmployeeInterFace{
   accname?:string,
@@ -67,7 +67,8 @@ export class EditBankDetailsComponent implements OnInit{
   constructor(
     private router:Router,
     private route:ActivatedRoute,
-    private employeeService: EmployeService
+    private employeeService: EmployeService,
+    private messageService: MessageService
     ){}
 
     employeess: EmployeeInterFace[] | any;
@@ -79,11 +80,6 @@ export class EditBankDetailsComponent implements OnInit{
 
     integerRegex=/^(?:-(?:[1-9](?:\d{0,2}(?:,\d{3})+|\d*))|(?:0|(?:[1-9](?:\d{0,2}(?:,\d{3})+|\d*))))(?:.\d+|)$/
   ngOnInit(): void {
-    const toast = document.getElementById("success-toast") as HTMLElement;
-    if (toast) {
-      toast.textContent = ""; 
-      toast.style.display = "none";
-    }
 
     this.activeRoutIdFunction()
       this.employeeService.getSpecifiEmployeeDataById().subscribe((result:any)=>{
@@ -102,24 +98,6 @@ export class EditBankDetailsComponent implements OnInit{
     const activatedRouteId = this.route.snapshot.paramMap.get('id')
     return this.employeeService.id(activatedRouteId)
   }
-
-
-  showSuccessToast(event:any) {
-    const toast = document.getElementById("success-toast") || null;
-    if (toast) {
-      toast.textContent = "Success!";
-      toast.style.display = "block";
-      toast.style.position = "fixed";
-      toast.style.top = "10px";
-      toast.style.right = "10px";
-      toast.classList.add("toast-appear");
-      setTimeout(() => {
-        toast.classList.remove("toast-appear");
-        toast.style.display = "none";
-      }, 2000);
-    }
-  }
-  
   onClickSave(event:any){
     if(event){
       this.submited=true
@@ -133,18 +111,19 @@ export class EditBankDetailsComponent implements OnInit{
         
       }
      this.employeeService.updateEmployeeBankData(postData)
-    
-     if(event){
-      this.showSuccessToast(event);
-      }else{
-      const successToast = document.getElementById("success-toast");
-      if (successToast) {
-        successToast.style.display = "none";
-        successToast.style.backgroundColor = "none";
-      }
-    }
+     this.messageService.add({
+      severity: 'success',
+       summary: 'Success',
+        detail: 'Successfully Updated Bank Accno'
+      });
+     
 
     }else{
+      this.messageService.add({
+        severity: 'error', 
+        summary: 'Error', 
+        detail: 'Please Fill The Required Fields'
+        });
       console.log("valid")
       this.submited=false
       setTimeout(() => {

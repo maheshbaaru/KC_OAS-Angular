@@ -1,16 +1,20 @@
 
 <div class="edit-bank-container">
-    <div id="success-toast" class="success-toast"></div>
     <div class="ebd-container">
         <div class="ebd-caption-content1">
             <h1 class="ebd-title">UPDATE BANK DETAILS</h1>
         </div>
         <div class="ebd-buttons-container">
+            <p-toast ></p-toast>
             <button class="creat-button"  routerLink="/navbar/bankDetails" >
                  <i class="pi pi-arrow-left icon" style="font-size: 0.7rem;margin-top: 4px;"></i> 
                  <p class="btn-text">Back</p>
             </button>
-            <button class="creat-button" (click)="onClickSave(register.form.valid)" > 
+            <button 
+            class="creat-button" 
+            form="register"
+            type="submit" 
+            > 
                 <i class="pi pi-check icon" style="font-size: 0.7rem;margin-top: 5px;"></i> 
                 <p class="btn-text">Save</p>
 
@@ -18,7 +22,11 @@
         </div>
     </div>
 
-    <form  class="ebd-contnt-container"  #register="ngForm" (ngSubmit)="onClickSave(register.form.valid)" >
+    <form 
+     class="ebd-contnt-container"
+     id="register"
+       #register="ngForm" 
+       (ngSubmit)="onClickSave(register.form.valid)" >
        
         <div class="cont2" >
             <label for="EmpId" class="input-styling" 
@@ -59,10 +67,10 @@
          />
          
          <div *ngIf="submited && accno.errors" class="alert alert-danger" style="max-width: 230px;">
-             <span *ngIf="accno.errors?.['required']">Account number is required.</span> <br>
-             <span *ngIf="accno.errors?.['pattern']">Please provide valid acc no !!</span> <br>
-             <span *ngIf="accno.errors?.['maxlength']">Account number cannot exceed 15 characters.</span> <br>
-             <span *ngIf="accno.errors?.['minlength']">Account number must be at least 5 characters long.</span> <br>
+             <span style="font-size: 12px;" *ngIf="accno.errors?.['required']">Account number is required.</span> <br>
+             <span style="font-size: 12px;" *ngIf="accno.errors?.['pattern']">Please provide valid acc no !!</span> <br>
+             <span style="font-size: 12px;" *ngIf="accno.errors?.['maxlength']">Account number cannot exceed 15 characters.</span> 
+             <span style="font-size: 12px;" *ngIf="accno.errors?.['minlength']">Account number must be at least 5 characters long.</span>
          </div>
        </div>
 
