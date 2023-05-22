@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
-import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
+import { Observable, Subscriber } from 'rxjs';
+
 import { ProfileService } from 'src/app/services/profile.service';
-import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-updatephoto',
@@ -68,10 +66,7 @@ export class UpdatephotoComponent {
 
   constructor(
     private messageService: MessageService,
-    private service: EmployeedDataService,
-    private formBuilder: FormBuilder,
     private profileServ: ProfileService,
-    private storageService: StorageService,
     private route: Router
   ) {}
 
@@ -81,8 +76,6 @@ export class UpdatephotoComponent {
     this.myReactiveForm = new FormGroup({
       photo: new FormControl(null, Validators.required),
     });
-    // this.profileServ.addprofilephoto(EmpId,Id).subscribe((data:any)=>{
-    //   this.preview= 'data:image/jpg;base64,'+data.photo});
   }
 
   upload() {
@@ -93,6 +86,7 @@ export class UpdatephotoComponent {
         this.myReactiveForm.controls[control].markAsTouched();
         this.myReactiveForm.controls[control].markAsDirty();
       }
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please fill the required fields',sticky: true  });
       return;
     } else if (this.myReactiveForm.valid) {
       if (!profilepic) {
@@ -129,6 +123,5 @@ export class UpdatephotoComponent {
       }
     }
     this.myReactiveForm.reset();
-    this.route.navigate(['/navbar']);
   }
 }

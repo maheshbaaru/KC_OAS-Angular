@@ -149,8 +149,6 @@
           <br />
           <br />
 
-          <!-- <p-checkbox formControlName="isActive" name="active" inputId="ia" [binary]="true"></p-checkbox>
-          <label for="any">IsActive<span class="required">*</span></label> -->
         </div>
       </div>
       <div class="col-md-4">
@@ -180,8 +178,7 @@
           <div *ngIf="submitted && f['shiftId'].errors" class="invalid-feedback">
             <div *ngIf="f['shiftId'].errors['required']">shiftName is required</div>
           </div>
-          <!-- <p-dropdown name="shiftName"  formControlName="shiftName"
-            placeholder="Select Shift"></p-dropdown> -->
+        
         </div>
       </div>
       <div class="col-md-4">
@@ -195,19 +192,12 @@
             </div>
           <br />
           <br />
-          <!-- <label for="Password" class="input-styling" required>Password<span class="required">*</span>
-          </label>
-          <input type="text" formControlName="Password" class="p-inputtext-normal h-2rem" required pInputText
-            placeholder="Enter Password" />
-          <br />
-          <br /> -->
-
+         
           <label for="dateofjoining-input" class="input-styling" required>DOJ <span class="required">*</span>
           </label>
           <input type="calender" formControlName="doj"  class="p-inputtext-normal h-2rem" required pInputText
           placeholder="Enter DD-MM-YYYY" />
-          <!-- <p-calendar id="dateofjoining-input" placeholder="DD-MM-YYYY" formControlName="doj"></p-calendar> -->
-
+      
           <br />
           <br />
 <div class="checkbox">

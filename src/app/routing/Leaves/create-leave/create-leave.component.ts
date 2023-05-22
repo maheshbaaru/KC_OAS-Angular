@@ -11,8 +11,6 @@ import { MessageService } from 'primeng/api';
 import { DatePipe, formatDate } from '@angular/common';
 
 import { LeavesService } from 'src/app/services/leaves.service';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
-
 interface LeaveType {
   name: string;
 }
