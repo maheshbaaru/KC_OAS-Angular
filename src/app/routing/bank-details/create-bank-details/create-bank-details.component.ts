@@ -7,7 +7,7 @@ import { Employee } from 'src/app/Modesls/employeBankInterface';
 import { EmployeService } from 'src/app/services/employeBankService';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-
+import { MessageService } from 'primeng/api';
 
 const shakeAnimation = trigger('shakeAnimation', [
   state('invalid', style({
@@ -71,6 +71,7 @@ export class CreateBankDetailsComponent implements OnInit {
     private _fb: FormBuilder,
     private employeesService: EmployeService,
     private router: Router,
+    private messageService: MessageService
     ) { 
       this.form()
     }
@@ -141,9 +142,19 @@ export class CreateBankDetailsComponent implements OnInit {
       alert("Are You Sure You Want To Create New Employee Bank Details")
       console.log(this.newArray)
         this.employeesService.PostEmployeeNewBankData(this.newArray)
+        this.messageService.add({
+          severity: 'success',
+           summary: 'Success',
+            detail: 'Successfully Created Bank Details'
+          });
       this.form()
      } 
      else {
+      this.messageService.add({
+        severity: 'error', 
+        summary: 'Error', 
+        detail: 'Please Fill The Required Fields'
+        });
        this.submitted=false
        setTimeout(() => {
          this.submitted=true

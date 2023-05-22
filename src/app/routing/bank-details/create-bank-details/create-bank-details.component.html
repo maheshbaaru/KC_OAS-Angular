@@ -4,6 +4,7 @@
       <strong>CREATE BANK DETAILS</strong>
     </div>
     <div class="col-sm-6" style="text-align: right">
+      <p-toast ></p-toast>
       <button
         pButton
         class="h-1rem"
@@ -17,7 +18,6 @@
         class="h-1rem p-button-success"
         style="float: right; margin-right: 5px; font-size: smaller"
         type="submit"
-        (click)="onFormSubmit()"
         form="myForm"
       >
         <i class="pi pi-check icon"></i>SAVE
@@ -53,7 +53,7 @@
           ></p-dropdown>
           
           <div *ngIf="submitted && f['EmpNameById'].errors" class="alert alert-danger">
-            <div *ngIf="f['EmpNameById'].errors['required']">EmpID field required</div>
+            <div style="font-size: 12px;" *ngIf="f['EmpNameById'].errors['required']">EmpID field required</div>
           </div>
       
         </div>
@@ -78,10 +78,10 @@
           [@shakeAnimation]=" !(submitted && f['ACCNO'].errors) ?'valid':'invalid'"
         />
         <div *ngIf="submitted && f['ACCNO'].errors" class="alert alert-danger" style="max-width: 230px;">
-          <span *ngIf="f['ACCNO'].errors?.['required']">Account number is required.</span> <br>
-          <span *ngIf="f['ACCNO'].errors?.['pattern']">Please provide valid acc no !!</span> <br>
-          <span *ngIf="f['ACCNO'].errors?.['maxlength']">Account number cannot exceed 15 characters.</span> <br>
-          <span *ngIf="f['ACCNO'].errors?.['minlength']">Account number must be at least 5 characters long.</span> <br>
+          <span style="font-size: 12px;" *ngIf="f['ACCNO'].errors?.['required']">Account number is required.</span> 
+          <span style="font-size: 12px;" *ngIf="f['ACCNO'].errors?.['pattern']">Please provide valid acc no !!</span>  
+          <span style="font-size: 12px;" *ngIf="f['ACCNO'].errors?.['minlength']">Account number must be at least 5 characters long.</span>
+          <span style="font-size: 12px;" *ngIf="f['ACCNO'].errors?.['maxlength']">Account number cannot exceed 15 characters.</span>
         </div>
       </div>
 
@@ -104,8 +104,8 @@
 
         <div *ngIf="submitted && f['ACCNAME'].errors" class="alert alert-danger" style="max-width: 230px;">
 
-          <span *ngIf="f['ACCNAME'].errors['required']">Acc Name field is required</span>
-          <span *ngIf="f['ACCNAME'].errors['word']">Acc Name field should contain only words</span>
+          <span style="font-size: 12px;" *ngIf="f['ACCNAME'].errors['required']">Acc Name field is required</span> <br>
+          <span style="font-size: 12px;" *ngIf="f['ACCNAME'].errors['word']">Acc Name field should contain only words</span>
           
           </div>
       </div>
