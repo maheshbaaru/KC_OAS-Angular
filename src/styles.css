@@ -31,7 +31,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important;}
     }
 
     label{
-       font-weight: 500;
+       font-weight: 400;
        font-size: smaller;
     }
     
@@ -156,4 +156,9 @@ border: transparent;
 .text-danger{
     font-size: smaller;
     padding-right:30px;
+}
+
+.p-dropdown .p-dropdown-label{
+    padding:0.3rem;
+    font-size: smaller;
 }
