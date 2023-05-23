@@ -104,6 +104,7 @@ export class LeavesApprovelComponent {
   }
 
   statusFilterTable(event:any){
+    
     if(event === null){
       this.leavesApproved=this.httpstoredData
 
@@ -123,9 +124,13 @@ export class LeavesApprovelComponent {
 
   fromcalenderFilterTable(event:any,date:any){
 
-    if(date.inputFieldValue===""){
-      this.leavesApproved=this.httpstoredData
+    console.log(date.renderer.namespaceId)
+    if(event.detail=== 2){
+      if(date.inputFieldValue===""){
+       this.leavesApproved=this.httpstoredData
+     }
     }
+
 
   var fromDateDataMap = this.leavesApproved.filter((e:any)=>{
    if(e.fromDate===null){
@@ -139,21 +144,22 @@ export class LeavesApprovelComponent {
   if(fromDateDataMap.length> 0){
     this.leavesApproved=fromDateDataMap
    }
-  else{
-    this.leavesApproved=this.httpstoredData
-    // this.leavesApproved={
-
-    // }
-  }
+  // else{
+  //   this.leavesApproved=this.httpstoredData
+  // }
 
   }
 
 
   tocalenderFilterTable(event:any,toDate:any){
 
-    if(toDate.inputFieldValue===""){
-      this.leavesApproved=this.httpstoredData
+    console.log(toDate.renderer.namespaceId)
+    if(event.detail=== 2){
+      if(toDate.inputFieldValue===""){
+       this.leavesApproved=this.httpstoredData
+     }
     }
+   
 
   var toDateData = this.leavesApproved.filter((e:any)=>{
         if(e.toDate===null){
@@ -166,20 +172,15 @@ export class LeavesApprovelComponent {
 
   if(toDateData.length> 0){
     this.leavesApproved=toDateData
-    // console.log("it go failed")
-  }else{
-    this.leavesApproved=this.httpstoredData
-  }
+
+   }
+  //else{
+  //   this.leavesApproved=this.httpstoredData
+  // }
     
    
   }
 
 
-  // const newDate = new Date(date.inputFieldValue);
-    // const formattedDate = newDate.toISOString();
-    // const FinalDate = formattedDate.replace(/Z$/, "").split('T')[0];
-    
-    // console.log(event);
-    // console.log(FinalDate);
    
 }
