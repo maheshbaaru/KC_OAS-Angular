@@ -125,7 +125,7 @@ export class UpdateprofileComponent {
   GetEmployee() {
     this.service.getEmployeeById(this.userdata.id).subscribe((res) => {
       this.updateform.patchValue(res);
-      this.submitted = true;
+      // this.submitted = true;
       for (const control of Object.keys(this.updateform.controls)) {
         this.updateform.controls[control].markAsTouched();
       }

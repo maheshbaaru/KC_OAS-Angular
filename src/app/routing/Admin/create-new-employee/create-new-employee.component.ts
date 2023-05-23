@@ -1,4 +1,5 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { Component, ChangeDetectorRef, Inject, LOCALE_ID } from '@angular/core';
 import {
   EmailValidator,
   FormBuilder,
@@ -34,11 +35,13 @@ export class CreateNewEmployeeComponent {
   constructor(
     private empServ: EmployeeService,
     private fb: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
+    @Inject(LOCALE_ID) public local: string,
 
   ) { }
 
   ngOnInit() {
+    debugger;
     this.empForm = this.fb.group({
       employeeID: [null, Validators.required],
       firstName: [null, Validators.required],
@@ -65,6 +68,7 @@ export class CreateNewEmployeeComponent {
   }
 
   save() {
+    debugger;
     if (this.empForm.invalid) {
       for (const control of Object.keys(this.empForm.controls)) {
         this.empForm.controls[control].markAsTouched();
@@ -85,16 +89,16 @@ export class CreateNewEmployeeComponent {
     ) {
 
       let obj = {
-        Id: this.empForm.value.employeeID,
+        designationId: this.empForm.value.designationName.id,
         FirstName: this.empForm.value.firstName,
         LastName: this.empForm.value.lastName,
         Email: this.empForm.value.email,
-        Password: this.empForm.value.Password,
+        Password: btoa(this.empForm.value.Password),
         IsActive: this.empForm.value.isActive,
         EmployeeId: this.empForm.value.employeeID,
         PanNumber: this.empForm.value.panNumber,
         ShiftId: this.empForm.value.shiftName.shiftId,
-        Doj: this.empForm.value.doj
+        Doj: formatDate(this.empForm.value.doj, 'YYYY-MM-dd', this.local)
       }
 
 

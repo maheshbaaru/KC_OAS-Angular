@@ -6,6 +6,8 @@ import { Shifts } from '../Admin/create-new-employee/create-new-employee.compone
 import { Roles } from '../Admin/create-new-employee/create-new-employee.component';
 import { ActivatedRoute } from '@angular/router';
 import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+
 @Component({
   selector: 'app-update-employee',
   templateUrl: './update-employee.component.html',
@@ -19,58 +21,36 @@ export class UpdateEmployeeComponent {
   updatedForm: FormGroup;
   designationId: Date;
   form: any;
-  constructor(private _service: EmployeeService, private active: ActivatedRoute, private fb: FormBuilder) {
+
+  submitted = false;
+  constructor(private _service: EmployeeService,
+     private active: ActivatedRoute,
+      private fb: FormBuilder,
+      private messageService: MessageService) {
     this.updatedForm = this.fb.group({
-      employeeID: new FormControl({
-        value: '',
-        disabled: true,
-      }),
-      FirstName: new FormControl({
-        value: '',
-        disabled: false,
-      }),
-      LastName: new FormControl({
-        value: '',
-        disabled: false,
-      }),
-      Email: new FormControl({
-        value: '',
-        disabled: false,
-      }),
-      PanNumber: new FormControl({
-        value: '',
-        disabled: false,
-      }),
-      DesignationId: new FormControl({
-        value: '',
-        disabled: false,
-      }),
-      shiftId: new FormControl({
-        value: '',
-        disabled: false,
-      }),
-      checked: new FormControl({
-        value: '',
-        disabled: false,
-      }),
-      DOJ: new FormControl({
-        value: '',
-        disabled: false,
-      }),
+      employeeID:[null, Validators.required],
+      FirstName: [null, Validators.required],
+      LastName: [null, Validators.required],
+      Email: [null, Validators.required],
+      PanNumber: [null, Validators.required],
+      DesignationId: [null, Validators.required],
+      shiftId: [null, Validators.required],
+      checked: [null, Validators.required],
+      DOJ: [null, Validators.required],
     });
   }
+  get f() { return this.updatedForm.controls; }
   ngOnInit() {
-    debugger;
     let id = +this.active.snapshot.params['id'];
     this._service.getSpecificEmployeeById(id).subscribe(res => {
       this.Result = res;
-      console.log(this.Result);
+      
       this._service.getShifts().subscribe(data => {
         this.shifts = data;
-        console.log(this.roles);
+        
         this._service.getDesignationRoles().subscribe(data => {
           this.roles = data;
-          console.log(this.roles);
+          
           this.updatedForm = this.fb.group({
             employeeID: this.Result.employeeId,
             Email: this.Result.email,
@@ -89,36 +69,32 @@ export class UpdateEmployeeComponent {
         })
       })
     })
-    console.log(this.updatedForm);
+  
 
   }
 
-  // onSubmit() {
-  //   this.updatedForm = { ...this.updatedForm.value };
-  //   this._service.UpdateEmployeeData(this.updatedForm.value);
-  // }
-
-  //}
 
 
+  onSubmit(form:any) {
+    console.log(form)
+    if(this.updatedForm.valid){
+      
+      this._service.UpdateEmployeeData(form).subscribe(res => {
+        console.log(res);
+      })
+      this.messageService.add({
+        severity: 'success',
+         summary: 'Success',
+          detail: 'Successfully Updated Employee Details'
+        });
+    }
+    else{
+      this.messageService.add({
+        severity: 'error', 
+        summary: 'Error', 
+        detail: 'Please Correctly Fill The Required Fields'
+        });
 
-  onSubmit(form: any) {
-    debugger;
-    console.log(form);
-    // const postdata = {
-    //   employeeId: this.form.employeeID,
-    //   email: this.form.Email,
-    //   firstName: this.form.FirstName,
-    //   lastName: this.form.LastName,
-    //   //Password: this.form.Password,
-    //   panNumber: this.form.PanNumber,
-    //   designationId: this.form.DesignationId.find((item: any) => item.id == this.updatedForm.controls['designationID']),
-    //   shiftId: this.form.shiftId.find((item: any) => item.shiftId == this.updatedForm.controls['shiftId']),
-    //   Doj: this.form.DOJ,
-    //   isActive: this.form.checked
-    // };
-    this._service.UpdateEmployeeData(form).subscribe(res => {
-      console.log(res);
-    })
+    }
   }
 }
