@@ -21,6 +21,7 @@
                 [ngClass]="{ 'is-invalid': f.submitted && username.errors }" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
               <div *ngIf="username.errors && f.submitted" class="invalid-feedback">
                 <div *ngIf="username.errors['required']"> Username is required! </div>
+                <div *ngIf="username.errors['pattern']">Enter Valid Username  </div>
 
               </div>
             </div>
@@ -33,14 +34,14 @@
         <div class="p-col-12 p-md-4">
           <label>Password</label>
           <input type="password" class="form-control" pInputText placeholder="Password" name="password"
-            [(ngModel)]="form.password" required minlength="3" #password="ngModel"
+            [(ngModel)]="form.password" required minlength="6" #password="ngModel"
             [ngClass]="{ 'is-invalid': f.submitted && password.errors }"  >
 
           <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
             <div *ngIf="password.errors['required']">Password is required</div>
             <div *ngIf="password.errors['minlength']">
               Password must be at least 6 characters
-            </div> 
+            </div>
           </div>
 
         </div>
@@ -63,9 +64,10 @@
 
         <div class="form-group">
           <div *ngIf="isLoginFailed" class="alert alert-danger" role="alert">
-            Login failed: {{ errorMessage }}
+            {{ errorMessage }}
           </div>
         </div>
+        <p-toast position="top-center"></p-toast>
       </p-card>
 
 

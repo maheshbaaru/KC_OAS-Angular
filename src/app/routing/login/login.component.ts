@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { first } from 'rxjs';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 import { AuthguardService } from 'src/app/services/authguard.service';
@@ -13,11 +14,9 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-
   rememberMe: boolean;
   show = false;
   password: string;
-
 
   form: any = {
     username: null,
@@ -30,18 +29,14 @@ export class LoginComponent {
   roles: string[] = [];
   loginForm: any;
 
-
-
   constructor(
     private fb: FormBuilder,
     private authService: AuthguardService,
     private storageService: StorageService,
     private router: Router,
-    private service: EmployeedDataService
-  ) { }
-
-
-
+    private service: EmployeedDataService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
@@ -52,38 +47,57 @@ export class LoginComponent {
   }
 
   onSubmit() {
-
-    this.password = 'password'
+    this.password = 'password';
     const { username, password, rememberMe } = this.form;
     this.authService.login(username, password).subscribe({
       next: (data: any) => {
-        this.service.getEmployeeList().subscribe((data1: any) => {
-          window.sessionStorage.setItem('loggedinUser', JSON.stringify(data1.find((x: any) =>
-            x.id == data.id)));
-          window.sessionStorage.setItem('EmployeeList', JSON.stringify(data1));
-        });
-        if (data != '' && data != null) {
-
-          this.storageService.saveUser(data);
-          this.isLoginFailed = false;
-          this.isLoggedIn = true;
-          this.router.navigate(['navbar']);
+        if (data) {
+          this.service.getEmployeeList().subscribe((data1: any) => {
+            window.sessionStorage.setItem(
+              'loggedinUser',
+              JSON.stringify(data1.find((x: any) => x.id == data.id))
+            );
+            window.sessionStorage.setItem(
+              'EmployeeList',
+              JSON.stringify(data1)
+            );
+          });
+          if (data != '' && data != null) {
+            this.storageService.saveUser(data);
+            this.isLoginFailed = false;
+            this.isLoggedIn = true;
+            this.router.navigate(['navbar']);
+          } else {
+            this.errorMessage = 'Username/Password is incorrect';
+            this.isLoginFailed = true;
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Please fill the required fields',
+              sticky: true,
+            });
+          }
         } else {
-          this.errorMessage = 'Invalid user email or password entered';
+          this.errorMessage = 'Username/Password is incorrect';
           this.isLoginFailed = true;
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Username/Password is incorrect',
+            sticky: true,
+          });
         }
       },
+
       error: (err: { error: { message: string } }) => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       },
-
     });
     if (rememberMe) {
-      sessionStorage.setItem('rememberMe', 'yes')
+      sessionStorage.setItem('rememberMe', 'yes');
     }
   }
-
 
   reloadPage(): void {
     window.location.reload();
