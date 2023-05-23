@@ -17,15 +17,16 @@
       <button
         pButton
         class="h-1rem p-button-success"
-        style="float: right; margin-right: 5px; font-size: smaller;"
+        style="float: right; margin-right: 5px; font-size: smaller"
         type="submit"
         form="form"
       >
-        <i class="pi pi-check icon" ></i>SAVE
+        <i class="pi pi-check icon"></i>SAVE
       </button>
-    </div> 
-   </ng-template>
-     <form    [formGroup]="updatedForm"
+    </div>
+  </ng-template>
+  <form
+    [formGroup]="updatedForm"
     id="form"
     #form="ngForm"
     (ngSubmit)="onSubmit(form.form.value)"
@@ -245,6 +246,7 @@
             formControlName="DOJ"
             name="DOJ"
             readonly="readonly"
+            style="cursor: not-allowed"
             required
           />
           <div
