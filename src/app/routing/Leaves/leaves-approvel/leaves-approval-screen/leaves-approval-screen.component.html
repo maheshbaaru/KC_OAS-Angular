@@ -7,23 +7,23 @@
         </div>
         <div class="laps-buttons-container">
          
-          <p-toast position="top-center" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'1000ms'" [showTransformOptions]="'translateX(100%)'"></p-toast>
-            <button class="creat-button" routerLink="../../leavesApprov"> 
+          
+            <button class="p-button h-1rem" routerLink="../../leavesApprov"> 
                 <i class="pi pi-arrow-left icon" style="font-size: 0.7rem;margin-top: 3px;"></i> 
-                <p class="btn-text">Back</p>
+                <p class="btn-text">BACK</p>
 
             </button>
             <button 
-            class="creat-button" 
+            class="p-button-success h-1rem" 
             form="myForm" 
             type="submit" 
             >
                 <i class="pi pi-check icon" style="font-size: 0.7rem;margin-top: 3px;"></i> 
-                <p class="btn-text">Save</p>
+                <p class="btn-text">SAVE</p>
             </button>
         </div>
     </div>
-    
+    <p-toast position="top-center"></p-toast>
     <form 
     class="laps-contnt-container"
      id="myForm" 
