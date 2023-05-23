@@ -47,7 +47,7 @@
             name="employeeID"
             required minlength="1" maxlength="4"
           />
-          <div *ngIf="f['employeeID'].invalid && (f['employeeID'].dirty || f['employeeID'].touched)" class="alert alert-danger">
+          <div *ngIf="f['employeeID'].invalid && (f['employeeID'].dirty || f['employeeID'].touched)" class="alert alert-danger" style="min-width: 250px;">
             <div *ngIf="f['employeeID'].errors?.['required']">
               This field is required.
             </div>
@@ -70,7 +70,7 @@
             name="Email"
             required
           />
-          <div *ngIf="f['Email'].invalid && (f['Email'].dirty || f['Email'].touched)" class="alert alert-danger">
+          <div *ngIf="f['Email'].invalid && (f['Email'].dirty || f['Email'].touched)" class="alert alert-danger" style="min-width: 250px;">
             <div *ngIf="f['Email'].errors?.['required']">
               This field is required.
             </div>
@@ -101,7 +101,7 @@
             [required]="true"
           ></p-checkbox>
           <label for="any">IsActive<span class="required">*</span></label>
-          <div *ngIf="f['checked'].invalid && (f['checked'].dirty || f['checked'].touched)" class="alert alert-danger">
+          <div *ngIf="f['checked'].invalid && (f['checked'].dirty || f['checked'].touched)" class="alert alert-danger" style="min-width: 250px;">
             <div *ngIf="f['checked'].errors?.['required']">
               This field is required.
             </div>
@@ -121,7 +121,7 @@
             name="FirstName"
             required
           />
-          <div *ngIf="f['FirstName'].invalid && (f['FirstName'].dirty || f['FirstName'].touched)" class="alert alert-danger">
+          <div *ngIf="f['FirstName'].invalid && (f['FirstName'].dirty || f['FirstName'].touched)" class="alert alert-danger" style="min-width: 250px;">
             <div *ngIf="f['FirstName'].errors?.['required']">
               This field is required.
             </div>
@@ -142,7 +142,7 @@
             name="PanNumber"
             required
           />
-          <div *ngIf="f['PanNumber'].invalid && (f['PanNumber'].dirty || f['PanNumber'].touched)" class="alert alert-danger">
+          <div *ngIf="f['PanNumber'].invalid && (f['PanNumber'].dirty || f['PanNumber'].touched)" class="alert alert-danger" style="min-width: 250px;">
             <div *ngIf="f['PanNumber'].errors?.['required']">
               This field is required.
             </div>
@@ -180,7 +180,7 @@
             required
           />
 
-          <div *ngIf="f['LastName'].invalid && (f['LastName'].dirty || f['LastName'].touched)" class="alert alert-danger">
+          <div *ngIf="f['LastName'].invalid && (f['LastName'].dirty || f['LastName'].touched)" class="alert alert-danger" style="min-width: 250px;" >
             <div *ngIf="f['LastName'].errors?.['required']">
               This field is required.
             </div>
@@ -211,7 +211,7 @@
             name="DOJ"
             required
           />
-          <div *ngIf="f['DOJ'].invalid && (f['DOJ'].dirty || f['DOJ'].touched)" class="alert alert-danger">
+          <div *ngIf="f['DOJ'].invalid && (f['DOJ'].dirty || f['DOJ'].touched)" class="alert alert-danger" style="min-width: 250px;">
             <div *ngIf="f['DOJ'].errors?.['required']">
               This field is required.
             </div>
