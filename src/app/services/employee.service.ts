@@ -100,7 +100,7 @@ export class EmployeeService {
   }
 
   createEmployee(obj: any): Observable<any[]> {
-    const { Id, 
+    const { designationId, 
       FirstName, 
       LastName, 
   Email,
@@ -112,7 +112,7 @@ export class EmployeeService {
           Doj 
         } = obj;
     return this.http.post<any>(
-      `${this.API_CALL}/AddEmployee?FirstName=${FirstName}&LastName=${LastName}&email=${Email}&password=${Password}&isActive=${IsActive}&EmployeeId=${EmployeeId}&//panNumber=${PanNumber}&shiftId=${ShiftId}&doj=${Doj}&id=${Id}`, this.httpOptions);
+      `${this.API_CALL}/AddEmployee?DesignationId=${designationId}&FirstName=${FirstName}&LastName=${LastName}&email=${Email}&password=${Password}&isActive=${IsActive}&EmployeeId=${EmployeeId}&PanNumber=${PanNumber}&shiftId=${ShiftId}&doj=${Doj}`, this.httpOptions);
     }
   getSpecificEmployeeById(id: any): Observable<any> {
     return this.http.get(`https://localhost:7236/GetEmployeeById?id=` + id);
@@ -125,13 +125,9 @@ export class EmployeeService {
  
     console.log(form);
     return this.http.put<any>(
-    `${this.API_CALL}/UpdateEmployeeTbl?FirstName=
-    ${form.FirstName}&
-    $LastName=${form.LastName}
-    &Email=${form.Email}
-    &IsActive=${form.checked}
-    &EmployeeId=${form.employeeID}
-    &PanNumber=${form.PanNumber}&ShiftId=${form.shiftId.shiftId}&DesignationId=${form.DesignationId.id}`,
+           `${this.API_CALL}/UpdateEmployeeTbl?employeeID=${form.employeeID}&Email=${form.Email}&isActive=${form.checked}&FirstName=${form.FirstName}&PanNumber=${form.PanNumber}&
+           LastName=${form.LastName}&
+           shiftId=${form.shiftId.shiftId}&DesignationId=${form.DesignationId.id}`,  
              this.httpOptions
           );
   }
