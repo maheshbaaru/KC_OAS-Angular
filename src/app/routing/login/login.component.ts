@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { first } from 'rxjs';
@@ -15,9 +20,10 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class LoginComponent {
   rememberMe: boolean;
+  f: any;
   show = false;
   password: string;
-
+  myform: FormGroup;
   form: any = {
     username: null,
     password: null,
@@ -44,58 +50,84 @@ export class LoginComponent {
       this.roles = this.storageService.getUser().designationID;
     }
     this.rememberMe = false;
+    this.f = new FormGroup({
+      username: new FormControl(null),
+      password: new FormControl(null),
+      rememberMe: new FormControl(null),
+    });
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: 'Please fill the required fields',
+      sticky: true,
+    });
   }
 
   onSubmit() {
+    console.log('a....');
     this.password = 'password';
     const { username, password, rememberMe } = this.form;
-    this.authService.login(username, password).subscribe({
-      next: (data: any) => {
-        if (data) {
-          this.service.getEmployeeList().subscribe((data1: any) => {
-            window.sessionStorage.setItem(
-              'loggedinUser',
-              JSON.stringify(data1.find((x: any) => x.id == data.id))
-            );
-            window.sessionStorage.setItem(
-              'EmployeeList',
-              JSON.stringify(data1)
-            );
-          });
-          if (data != '' && data != null) {
-            this.storageService.saveUser(data);
-            this.isLoginFailed = false;
-            this.isLoggedIn = true;
-            this.router.navigate(['navbar']);
+    if (this.form.invalid) {
+      for (const control of Object.keys(this.form.controls)) {
+        this.form.controls[control].markAsTouched();
+        this.form.controls[control].markAsDirty();
+      }
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Please fill the required fields',
+        sticky: true,
+      });
+      return;
+    } else {
+      this.authService.login(username, password).subscribe({
+        next: (data: any) => {
+          if (data) {
+            this.service.getEmployeeList().subscribe((data1: any) => {
+              window.sessionStorage.setItem(
+                'loggedinUser',
+                JSON.stringify(data1.find((x: any) => x.id == data.id))
+              );
+              window.sessionStorage.setItem(
+                'EmployeeList',
+                JSON.stringify(data1)
+              );
+            });
+            if (data != '' && data != null) {
+              this.storageService.saveUser(data);
+              this.isLoginFailed = false;
+              this.isLoggedIn = true;
+              this.router.navigate(['navbar']);
+            } else {
+              this.errorMessage = 'Username/Password is incorrect';
+              this.isLoginFailed = true;
+              this.messageService.add({
+                severity: 'error',
+                summary: 'Error',
+                detail: 'Please fill the required fields',
+                sticky: true,
+              });
+            }
           } else {
             this.errorMessage = 'Username/Password is incorrect';
             this.isLoginFailed = true;
             this.messageService.add({
               severity: 'error',
               summary: 'Error',
-              detail: 'Please fill the required fields',
+              detail: 'Username/Password is incorrect',
               sticky: true,
             });
           }
-        } else {
-          this.errorMessage = 'Username/Password is incorrect';
-          this.isLoginFailed = true;
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: 'Username/Password is incorrect',
-            sticky: true,
-          });
-        }
-      },
+        },
 
-      error: (err: { error: { message: string } }) => {
-        this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
-      },
-    });
-    if (rememberMe) {
-      sessionStorage.setItem('rememberMe', 'yes');
+        error: (err: { error: { message: string } }) => {
+          this.errorMessage = err.error.message;
+          this.isLoginFailed = true;
+        },
+      });
+      if (rememberMe) {
+        sessionStorage.setItem('rememberMe', 'yes');
+      }
     }
   }
 

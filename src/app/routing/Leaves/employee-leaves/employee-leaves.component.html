@@ -52,8 +52,8 @@
             </div>
         </form>
     </div>
-    <p-table #dt [value]="employeeLeavs" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true" [rows]="10"
-        [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [paginator]="true"
+    <p-table #dt [value]="employeeLeavs" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true" [rows]="15"
+        [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,15,20,25,50]" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
         styleClass="p-datatable-gridlines"
         [globalFilterFields]="['empId','empName','numOfLeaves']">

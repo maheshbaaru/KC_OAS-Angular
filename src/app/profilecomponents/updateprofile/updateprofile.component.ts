@@ -21,6 +21,7 @@ import { MessageService } from 'primeng/api';
 export class UpdateprofileComponent {
   empdata: any;
   submitted = false;
+  isAct = true;
   public updateform: FormGroup;
 
   constructor(
@@ -117,7 +118,7 @@ export class UpdateprofileComponent {
           }
         });
       this.submitted = true;
-      this.router.navigate(['navbar/Employees']);
+      // this.router.navigate(['navbar/Employees']);
     }
   }
 
