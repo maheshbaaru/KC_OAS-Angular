@@ -117,7 +117,7 @@ export class UpdateprofileComponent {
           }
         });
       this.submitted = true;
-      this.router.navigate(['./Employees']);
+      this.router.navigate(['navbar/Employees']);
     }
   }
 
