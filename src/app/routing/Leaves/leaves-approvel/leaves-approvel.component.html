@@ -47,8 +47,8 @@
               <p-calendar
               [showIcon]="true"
               id="designation-input"
-              dateFormat="yy-mm-dd"
-              placeholder="DD/MM/YYYY"
+              dateFormat="mm-dd-yy"
+              placeholder="MM-DD-YYYY"
                name="year"
                 formControlName="year"
                 (click)="fromcalenderFilterTable($event, fromCalender)"
@@ -62,9 +62,9 @@
             <p-calendar
              [showIcon]="true"
              id="designation-input"
-              placeholder="DD/MM/YYYY"
+              placeholder="MM-DD-YYYY"
               name="yearTo"
-              dateFormat="yy-mm-dd"
+              dateFormat="mm-dd-yy"
               formControlName="yearTo"
               (click)="tocalenderFilterTable($event, toCalender)"
               #toCalender

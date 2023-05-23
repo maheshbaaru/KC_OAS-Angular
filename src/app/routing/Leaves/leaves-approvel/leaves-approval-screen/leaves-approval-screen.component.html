@@ -94,7 +94,7 @@
              name="fromDate"  
              disabled
              style="cursor: not-allowed;"
-             [ngModel]="speficEmployeeLeaveData.fromDate | date: 'dd-MM-yyyy'"
+             [ngModel]="speficEmployeeLeaveData.fromDate | date: 'MM-dd-yyyy'"
               (ngModelChange)="speficEmployeeLeaveData.fromDate=$event"
               />
        </div>
@@ -109,7 +109,7 @@
         disabled 
          name="toDate" 
          style="cursor: not-allowed;"
-        [ngModel]="speficEmployeeLeaveData.toDate | date: 'dd-MM-yyyy'"
+        [ngModel]="speficEmployeeLeaveData.toDate | date: 'MM-dd-yyyy'"
         (ngModelChange)="speficEmployeeLeaveData.toDate=$event"
         />
        </div>
