@@ -3,27 +3,36 @@
     <div class="col -md-6" style="text-align: left">
       <strong>UPDATE EMPLOYEE </strong>
     </div>
-    <div class="col-sm-6" style="text-align: right">
+    <div class="col-sm-6"  style="text-align:right">
+      <button pButton class="h-1rem" style="float: right; font-size: smaller;" routerLink="/navbar/Employees"><i
+          class="pi pi-arrow-left icon"></i>BACK</button>
+
+      <button pButton class="h-1rem p-button-success" style="float: right;margin-right:5px; font-size: smaller;" type="submit"
+      (click)="onSubmit(f.value)"><i class="pi pi-check icon" ></i>SAVE</button>
+
+    </div>
+    <!-- <div class="col -md-6" style="text-align: right">
       <button
         pButton
         type="button"
-        label="Back"
-        icon=" pi pi-arrow-left"
+        style="float: right; font-size: smaller;"
+        icon=" pi pi-arrow-left icon"
         iconPos="left"
         routerLink="/navbar/Employees"
-        class="p-button-sm h-2rem"
-      ></button
+        class="p-button h-1rem"
+      >BACK</button
       >&nbsp;
       <button
         pButton
+        style="float: right; font-size: smaller;"
         type="subit"
-        label="Save"
+        
         (click)="onSubmit(f.value)"
-        icon="pi pi-check"
+        icon="pi pi-check icon"
         iconPos="left"
-        class="p-button-sm h-2rem"
-      ></button>
-    </div>
+        class="p-button-success h-1rem"
+      >SAVE</button>
+    </div> -->
   </ng-template>
   <form
     [formGroup]="updatedForm"
