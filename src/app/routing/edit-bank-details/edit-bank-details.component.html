@@ -6,17 +6,24 @@
         </div>
         <div class="ebd-buttons-container">
             <p-toast position="top-center" ></p-toast>
-            <button class="creat-button"  routerLink="/navbar/bankDetails" >
+            <button 
+            pButton
+            class="h-1rem"
+            style="float: right; font-size: smaller; margin-right: 10px;align-items: center;"
+             routerLink="/navbar/bankDetails"
+             >
                  <i class="pi pi-arrow-left icon" style="font-size: 0.7rem;margin-top: 4px;"></i> 
-                 <p class="btn-text">Back</p>
+                 <p class="btn-text" style="font-size: 0.8rem;margin-top: 16px;">Back</p>
             </button>
             <button 
-            class="creat-button" 
+            pButton
+            class="h-1rem p-button-success" 
+            style="float: right; margin-right: 5px; font-size: smaller"
             form="register"
             type="submit" 
             > 
-                <i class="pi pi-check icon" style="font-size: 0.7rem;margin-top: 5px;"></i> 
-                <p class="btn-text">Save</p>
+                <i class="pi pi-check icon" style="font-size: 0.7rem;margin-top: 4px;"></i> 
+                <p class="btn-text" style="font-size: 0.8rem;margin-top: 16px;">Save</p>
 
             </button>
         </div>
