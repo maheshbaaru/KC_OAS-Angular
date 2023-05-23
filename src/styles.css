@@ -49,6 +49,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     .form-styles{
         display:flex;
         flex-direction: row;
+        flex-wrap: wrap;
     
       
       }

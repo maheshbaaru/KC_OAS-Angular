@@ -1,105 +1,117 @@
-<!-- <p-panel header="UPDATE PROFILE"   >
+<p-panel>
+  <ng-template pTemplate="header">
+    <div class="col -md-6" style="text-align: left">
+      <strong>UPDATE PROFILE</strong>
+    </div>
+    <div class="col-md-6" style="text-align: right">
+      <button pButton class="h-1rem" style="float: right; font-size: smaller; margin-right: 10px"
+        routerLink="../Employees">
+        <i class="pi pi-arrow-left icon"></i>BACK
+      </button>
 
-    <ng-template pTemplate="icons">
+    <button pButton  class="h-1rem p-button-success"  style="float: right; margin-right: 5px; font-size: smaller" (click)=" upadteprofile($event)"
+        type="submit" >
+        <i class="pi pi-check icon" ></i>SAVE
+      </button>
+    </div>
+  </ng-template>
+  <p-toast position="top-center"></p-toast>
+  <div class="row">
+    <div class="col-s-3">
+    <form  [formGroup]="updateform" class="form-styles cont">
+      <div class="cont2 ">
+        <label for="employeeId" class="input-styling">EmployeeID <span class="required">*</span></label>
+          <input type="text" formControlName="employeeId" pInputText class="p-inputtext-normal h-2rem"
+            placeholder="Enter Employee ID" required [ngClass]="{ 'is-invalid': submitted && f['employeeId'].errors }" />
+            <div *ngIf="submitted && f['employeeId'].errors" class="invalid-feedback">
+              <div *ngIf="f['employeeId'].errors['required']">EmployeeID is required</div>
+            </div>
+      </div>
 
-        <div class="p-button-rounded">
-            <button pButton pRipple type="button"  label="save"
-            class="p-button-rounded p-button-info"></button>
+      <div class="cont2" [style]="{ width: '14rem' }">
+        <label for="firstName" class="input-styling">FirstName <span class="required">*</span></label>
+        <input type="text" pInputText formControlName="firstName" class="p-inputtext-normal h-2rem" required
+          placeholder="Enter First Name" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors } "/>
+          <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+            <div *ngIf="f['firstName'].errors['required']">firstName is required</div>
+          </div>
+
+      </div>
 
 
-            <button pButton pRipple type="button" [routerLink]="['/navbar']" label="Back"
-            class="p-button-rounded p-button-info"></button>
+      <div  class="cont2">
+        <label for="lastName" class="input-styling" required>LastName<span class="required">*</span>
+        </label>
+        <input type="text" formControlName="lastName" [disabled]="true"  class="p-inputtext-normal h-2rem" required pInputText
+          placeholder="Enter Last Name"  [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }"/>
+          <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+            <div *ngIf="f['lastName'].errors['required']">lastName is required</div>
+          </div>
+
+      </div>
+
+      <div  class="cont2">
+        <label for="email" class="input-styling">Email <span class="required">*</span></label>
+        <input type="text" formControlName="email" class="p-inputtext-normal h-2rem" required pInputText
+          placeholder="Enter Email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"/>
+          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors['required']">ToDate is required</div>
+          </div>
+      </div>
+
+      <div  class="cont2">
+        <label for="panNumber" class="input-styling">PanNumber <span class="required">*</span></label>
+        <input type="text" formControlName="panNumber" class="p-inputtext-normal h-2rem" pInputText
+          placeholder="Enter PAN Number" [ngClass]="{ 'is-invalid': submitted && f['panNumber'].errors }"/>
+          <div *ngIf="submitted && f['panNumber'].errors" class="invalid-feedback">
+            <div *ngIf="f['panNumber'].errors['required']">PanNumber is required</div>
+          </div>
+      </div>
+
+      <div  class="cont2">
+        <label for="dateofjoining-input" class="input-styling" required>DOJ <span class="required">*</span>
+        </label>
+        <input type="calender" formControlName="doj"  class="p-inputtext-normal h-2rem" required pInputText
+        placeholder="Enter DD-MM-YYYY" />
+
+      </div>
+      <div   class="cont2">
+        <label for="designationId" class="input-styling">DesignationID <span class="required">*</span></label>
+          <input type="text" formControlName="designationId" class="p-inputtext-normal h-2rem" required pInputText
+          placeholder="Enter designationId" [ngClass]="{ 'is-invalid': submitted && f['designationId'].errors }"/>
+          <div *ngIf="submitted && f['designationId'].errors" class="invalid-feedback">
+            <div *ngIf="f['designationId'].errors['required']">Designation ID is required</div>
+          </div>
+      </div>
+
+      <div  class="cont2">
+        <label for="shiftId" class="input-styling">ShiftId <span class="required">*</span></label>
+        <input type="text" formControlName="shiftId" class="p-inputtext-normal h-2rem" pInputText
+        [ngClass]="{ 'is-invalid': submitted && f['shiftId'].errors }"
+        />
+        <div *ngIf="submitted && f['shiftId'].errors" class="invalid-feedback">
+          <div *ngIf="f['shiftId'].errors['required']">shiftName is required</div>
         </div>
-    </ng-template>
-    <form [formGroup]="updateform"    >
-        <div class="formgrid grid m-5">
+      </div>
+      <div  class="cont2">
 
-                <div class="col-4 w-100% p-4">
-                    <span>EmployeeID</span>
-                    <div class="p-inputgroup" >
-                        <input class="form-control" formControlName="employeeID" type="text" pInputText placeholder="EmployeeID" ngDefaultControl>
-                    </div>
-                </div>
-
-                <div class="col-4 w-100%  p-4">
-                    <span>FirstName<span class="required">*</span></span>
-                    <div class="p-inputgroup" >
-                        <input class="form-control" formControlName="firstName" type="text"  pInputText placeholder="FirstName">
-                    </div>
-                </div>
-
-                <div class="col-4 w-100% p-4">
-                    <span>LastName<span class="required">*</span></span>
-                    <div class="p-inputgroup" >
-                        <input class="form-control" formControlName="lastName" type="text" pInputText placeholder="LastName" readonly="readonly">
-                    </div>
-                </div>
-
-
-
-
-                <div class="col-4  w-100% p-4">
-                    <span  >Email<span class="required">*</span></span>
-                    <div class="p-inputgroup" >
-                        <input class="form-control" formControlName="email" type="text" pInputText placeholder="Email" ngDefaultControl>
-                    </div>
-                </div>
-
-                <div class="col-4 w-100% p-4">
-                    <span>PanNumber<span class="required">*</span></span>
-                    <div class="p-inputgroup" >
-                        <input class="form-control" formControlName="panNumber" type="text" pInputText placeholder="PanNumber">
-                    </div>
-                </div>
-
-                <div class="col-4  w-100% p-4">
-                    <span>DesignationID<span class="required">*</span></span>
-                    <div class="p-inputgroup" >
-                        <input class="form-control" formControlName="designationName"  type="text" pInputText placeholder="DesignationID" >
-                    </div>
-                </div>
-
-
-
-
-
-                <div class="col-4  w-100% p-4">
-                    <span>ShiftId<span class="required">*</span></span>
-                    <div class="p-inputgroup" >
-                        <input class="form-control" formControlName="shiftName" type="text" pInputText placeholder="ShiftId">
-                    </div>
-                </div>
-                <div class="col-4  w-100% p-4">
-                    <span>DOJ<span class="required">*</span></span>
-                    <div class="p-inputgroup">
-                        <input class="form-control" formControlName="doj" type="text" pInputText placeholder="DOJ">
-                    </div>
-                </div>
-                <div class="col-4 w-100% p-5 mt-5">
-                    <div class="p-field-checkbox">
-                        <p-checkbox name="group1" formControlName="isActive" value=""  inputId="ny"></p-checkbox>
-                        <label>IsActive <span class="required">*</span></label>
-                    </div>
-                </div>
-              </div>
-
+      </div>
+      <div  class="checkbox cont2">
+        <p-checkbox formControlName="isActive" name="active" inputId="ia" [binary]="true"></p-checkbox>
+        <label for="any" style="padding-left: 8px;">IsActive<span class="required">*</span></label>
+      </div>
 
 
     </form>
-
-
-</p-panel> -->
-
-
-
+  </div>
+</div>
+</p-panel>
 
 
 
 
 
-
-
-
+<!--
 
 <p-panel>
   <ng-template pTemplate="header">
@@ -135,7 +147,7 @@
           <input type="text" formControlName="email" class="p-inputtext-normal h-2rem" required pInputText
             placeholder="Enter Email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"/>
             <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-              <div *ngIf="f['email'].errors['required']">ToDate is required</div>
+              <div *ngIf="f['email'].errors['required']">Email is required</div>
             </div>
           <br />
           <br />
@@ -144,7 +156,7 @@
           <input type="text" formControlName="designationId" class="p-inputtext-normal h-2rem" required pInputText
           placeholder="Enter designationId" [ngClass]="{ 'is-invalid': submitted && f['designationId'].errors }"/>
           <div *ngIf="submitted && f['designationId'].errors" class="invalid-feedback">
-            <div *ngIf="f['designationId'].errors['required']">ToDate is required</div>
+            <div *ngIf="f['designationId'].errors['required']">Designation ID is required</div>
           </div>
           <br />
           <br />
