@@ -139,7 +139,6 @@ export class CreateBankDetailsComponent implements OnInit {
         "bankName": "Kotak Bank",
         "accname": this.employeDetails.value.ACCNAME,
       }
-      alert("Are You Sure You Want To Create New Employee Bank Details")
       console.log(this.newArray)
         this.employeesService.PostEmployeeNewBankData(this.newArray)
         this.messageService.add({
