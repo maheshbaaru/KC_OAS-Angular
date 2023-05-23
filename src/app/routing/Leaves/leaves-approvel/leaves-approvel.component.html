@@ -15,9 +15,9 @@
                   <span class="required">*</span>
               </label>
               <p-dropdown
-              [options]="employeeName" 
-              placeholder="Select Employee" 
-              optionLabel="Name" 
+              [options]="employeeName"
+              placeholder="Select Employee"
+              optionLabel="Name"
               [showClear]="true"
                 formControlName="empName"
                 (onChange)=empfilterTable($event.value)
@@ -32,8 +32,8 @@
               <label for="designation-input" class="input-styling" required>Status ID
 
               </label>
-              <p-dropdown  
-              [options]="statusTypes" 
+              <p-dropdown
+              [options]="statusTypes"
               placeholder="Select Status Type" optionLabel="name"
               [showClear]="true" formControlName="name"
               (onChange)="statusFilterTable($event.value)"
@@ -44,13 +44,13 @@
           <div class="cont2">
               <label for="designation-input" class="input-styling" required>From Date
               </label>
-              <p-calendar 
-              [showIcon]="true"  
-              id="designation-input" 
+              <p-calendar
+              [showIcon]="true"
+              id="designation-input"
               dateFormat="yy-mm-dd"
               placeholder="DD/MM/YYYY"
-               name="year" 
-                formControlName="year" 
+               name="year"
+                formControlName="year"
                 (click)="fromcalenderFilterTable($event, fromCalender)"
                 #fromCalender
                 >
@@ -60,10 +60,10 @@
             <label for="designation-input" class="input-styling" required>To Date
             </label>
             <p-calendar
-             [showIcon]="true" 
+             [showIcon]="true"
              id="designation-input"
-              placeholder="DD/MM/YYYY" 
-              name="yearTo" 
+              placeholder="DD/MM/YYYY"
+              name="yearTo"
               dateFormat="yy-mm-dd"
               formControlName="yearTo"
               (click)="tocalenderFilterTable($event, toCalender)"
@@ -76,14 +76,14 @@
 
 </div>
 
-  <p-table 
-        #dt1 [value]="leavesApproved" 
-        styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" 
-        [tableStyle]="{'min-height': '20rem'}" [paginator]="true" 
-        [rows]="10" [showCurrentPageReport]="true"  
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
-        [rowsPerPageOptions]="[10,25,50]" 
-        [globalFilterFields]="['id','empName','leaveTypeId','numOfDays','fromDate','toDate','appliedOn','statusId','comments','adminComments']" 
+  <p-table
+        #dt1 [value]="leavesApproved"
+        styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped"
+        [tableStyle]="{'min-height': '20rem'}" [paginator]="true"
+        [rows]="25" [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10,25,50]"
+        [globalFilterFields]="['id','empName','leaveTypeId','numOfDays','fromDate','toDate','appliedOn','statusId','comments','adminComments']"
         responsiveLayout="scroll">
 
 
@@ -172,7 +172,7 @@
         </td>
         <td>{{emp.empName}}</td>
         <td>{{emp.leaveTypeId}}</td>
-        
+
         <td>{{emp.numOfDays}}</td>
         <td>{{emp.fromDate}}</td>
         <td>{{emp.toDate}}</td>

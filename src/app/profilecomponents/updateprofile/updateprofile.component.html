@@ -111,7 +111,7 @@
         routerLink="../Employees">
         <i class="pi pi-arrow-left icon"></i>BACK
       </button>
-  
+
     <button pButton  class="h-1rem p-button-success"  style="float: right; margin-right: 5px; font-size: smaller" (click)=" upadteprofile($event)"
         type="submit" >
         <i class="pi pi-check icon" ></i>SAVE
@@ -179,7 +179,7 @@
           <div *ngIf="submitted && f['shiftId'].errors" class="invalid-feedback">
             <div *ngIf="f['shiftId'].errors['required']">shiftName is required</div>
           </div>
-        
+
         </div>
       </div>
       <div class="col-md-4">
@@ -193,19 +193,19 @@
             </div>
           <br />
           <br />
-         
+
           <label for="dateofjoining-input" class="input-styling" required>DOJ <span class="required">*</span>
           </label>
           <input type="calender" formControlName="doj"  class="p-inputtext-normal h-2rem" required pInputText
           placeholder="Enter DD-MM-YYYY" />
-      
+
           <br />
           <br />
 <div class="checkbox">
-  <p-checkbox formControlName="isActive" name="active" inputId="ia" [binary]="true"></p-checkbox>
+  <p-checkbox formControlName="isActive" name="active" inputId="ia" [(ngModel)]="isAct" [readonly]="true" [binary]="true"></p-checkbox>
           <label for="any" style="padding-left: 8px;">IsActive<span class="required">*</span></label>
 </div>
-        
+
         </div>
       </div>
     </div>
