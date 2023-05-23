@@ -24,11 +24,11 @@ export class UpdateEmployeeComponent {
 
   submitted = false;
   constructor(private _service: EmployeeService,
-     private active: ActivatedRoute,
-      private fb: FormBuilder,
-      private messageService: MessageService) {
+    private active: ActivatedRoute,
+    private fb: FormBuilder,
+    private messageService: MessageService) {
     this.updatedForm = this.fb.group({
-      employeeID:[null, Validators.required],
+      employeeID: [null, Validators.required],
       FirstName: [null, Validators.required],
       LastName: [null, Validators.required],
       Email: [null, Validators.required],
@@ -44,13 +44,13 @@ export class UpdateEmployeeComponent {
     let id = +this.active.snapshot.params['id'];
     this._service.getSpecificEmployeeById(id).subscribe(res => {
       this.Result = res;
-      
+
       this._service.getShifts().subscribe(data => {
         this.shifts = data;
-        
+
         this._service.getDesignationRoles().subscribe(data => {
           this.roles = data;
-          
+
           this.updatedForm = this.fb.group({
             employeeID: this.Result.employeeId,
             Email: this.Result.email,
@@ -69,31 +69,31 @@ export class UpdateEmployeeComponent {
         })
       })
     })
-  
+
 
   }
 
 
 
-  onSubmit(form:any) {
+  onSubmit(form: any) {
     console.log(form)
-    if(this.updatedForm.valid){
-      
+    if (this.updatedForm.valid) {
+
       this._service.UpdateEmployeeData(form).subscribe(res => {
         console.log(res);
       })
       this.messageService.add({
         severity: 'success',
-         summary: 'Success',
-          detail: 'Successfully Updated Employee Details'
-        });
+        summary: 'Success',
+        detail: 'Successfully Updated Employee Details'
+      });
     }
-    else{
+    else {
       this.messageService.add({
-        severity: 'error', 
-        summary: 'Error', 
+        severity: 'error',
+        summary: 'Error',
         detail: 'Please Correctly Fill The Required Fields'
-        });
+      });
 
     }
   }
