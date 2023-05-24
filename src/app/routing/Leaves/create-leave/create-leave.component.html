@@ -48,7 +48,7 @@
         <label for="designation-input" class="input-styling" required>Status
           <span class="required">*</span>
         </label>
-        <input id="designation-input" type="input"  class="h-2rem"  placeholder="New" pInputText formControlName="StatusId" autocompleteOff
+        <input id="designation-input" type="input"  class="h-2rem"  placeholder="New" pInputText formControlName="StatusId" autocomplete="off"
          />
          <small class="text-danger "  *ngIf="!empForm.get('StatusId')?.valid &&(empForm.get('StatusId')?.touched||empForm.get('StatusId')?.dirty)">Status is required</small>
 

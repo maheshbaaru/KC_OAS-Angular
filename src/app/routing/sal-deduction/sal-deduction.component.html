@@ -38,7 +38,7 @@
 
     <ng-template pTemplate="header" let-columns>
       <tr>
-        <th *ngFor="let col of columns">
+        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
           <div class="p-d-flex p-jc-between p-ai-center">
             {{ col.header }}
             <p-columnFilter type="text" [field]="col.field" display="menu"></p-columnFilter>
