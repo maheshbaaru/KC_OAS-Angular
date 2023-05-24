@@ -122,12 +122,9 @@ export class EmployeeService {
 
 
   UpdateEmployeeData(form: any){
- 
-    console.log(form);
+ debugger;
     return this.http.put<any>(
-           `${this.API_CALL}/UpdateEmployeeTbl?employeeID=${form.employeeID}&Email=${form.Email}&isActive=${form.checked}&FirstName=${form.FirstName}&PanNumber=${form.PanNumber}&
-           LastName=${form.LastName}&
-           shiftId=${form.shiftId.shiftId}&DesignationId=${form.DesignationId.id}`,  
+           `${this.API_CALL}/UpdateEmployeeTbl?employeeID=${form.employeeID}&Email=${form.Email}&isActive=${form.checked}&FirstName=${form.FirstName}&PanNumber=${form.PanNumber}&LastName=${form.LastName}&shiftId=${form.shiftId.shiftId}&DesignationId=${form.DesignationId.id}`,  
              this.httpOptions
           );
   }
