@@ -4,7 +4,7 @@
   <strong>SALARY DISPLAY LIST  </strong>
 </div>
     <div class="col-6" style="text-align:right">
-        <button pButton class="h-1rem" routerLink="/navbar/salary-details" style="float: right;font-size: small;font-weight: 500 ;" ><i class="pi pi-arrow-left icon"></i>Back</button>
+        <button pButton class="h-1rem" routerLink="/navbar/salary-details" style="float: right;font-size: small;font-weight: 500 ;" ><i class="pi pi-arrow-left icon"></i>BACK</button>
 
 </div>
 </ng-template>
@@ -50,9 +50,9 @@
       <tr>
           <td>{{Employee.firstName}} {{Employee.lastName}}</td>
           <td>{{Employee.salary}}</td>
-          <td>{{Employee.lastRevisedDate| date: 'dd-MM-yyyy'}}</td>
-          <td>{{Employee.nextRevisedDate| date: 'dd-MM-yyyy'}}</td>
-          <td>{{Employee.modifiedDate|date:'dd-MM-yyyy'}}</td>
+          <td>{{Employee.lastRevisedDate| date: 'MM-dd-yyyy HH:mm:ss'}}</td>
+          <td>{{Employee.nextRevisedDate| date: 'MM-dd-yyyy HH:mm:ss'}}</td>
+          <td>{{Employee.modifiedDate| date: 'MM-dd-yyyy HH:mm:ss'}}</td>
       </tr>
   </ng-template>
 
