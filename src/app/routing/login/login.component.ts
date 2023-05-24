@@ -24,6 +24,7 @@ export class LoginComponent {
   show = false;
   password: string;
   myform: FormGroup;
+  invalid= true
   form: any = {
     username: null,
     password: null,
@@ -50,17 +51,13 @@ export class LoginComponent {
       this.roles = this.storageService.getUser().designationID;
     }
     this.rememberMe = false;
+    this.invalid
     this.f = new FormGroup({
       username: new FormControl(null),
       password: new FormControl(null),
       rememberMe: new FormControl(null),
     });
-    this.messageService.add({
-      severity: 'error',
-      summary: 'Error',
-      detail: 'Please fill the required fields',
-      sticky: true,
-    });
+   
   }
 
   onSubmit() {
@@ -71,14 +68,17 @@ export class LoginComponent {
       for (const control of Object.keys(this.form.controls)) {
         this.form.controls[control].markAsTouched();
         this.form.controls[control].markAsDirty();
+        this.loginForm=false
+      
       }
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Please fill the required fields',
-        sticky: true,
-      });
-      return;
+      // this.messageService.add({
+      //   severity: 'error',
+      //   summary: 'Error',
+      //   detail: 'Please fill the required fields',
+      //   sticky: true,
+      // });
+ 
+     
     } else {
       this.authService.login(username, password).subscribe({
         next: (data: any) => {
@@ -94,9 +94,10 @@ export class LoginComponent {
               );
             });
             if (data != '' && data != null) {
+              console.log("kc")
               this.storageService.saveUser(data);
               this.isLoginFailed = false;
-              this.isLoggedIn = true;
+              this.isLoggedIn = false;
               this.router.navigate(['navbar']);
             } else {
               this.errorMessage = 'Username/Password is incorrect';
@@ -109,12 +110,13 @@ export class LoginComponent {
               });
             }
           } else {
-            this.errorMessage = 'Username/Password is incorrect';
+            this.messageService.clear();
+            // this.errorMessage = 'Username/Password is incorrect';
             this.isLoginFailed = true;
             this.messageService.add({
               severity: 'error',
               summary: 'Error',
-              detail: 'Username/Password is incorrect',
+              detail: 'Enter Username/Password ',
               sticky: true,
             });
           }
