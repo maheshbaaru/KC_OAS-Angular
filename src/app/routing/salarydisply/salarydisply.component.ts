@@ -22,8 +22,6 @@ export class SalarydisplyComponent {
 
     this._ser.getEmployeeById(id).subscribe(data => {
       this.resultData = data;
-      console.log(this.resultData);
-
     })
   }
 
