@@ -5,7 +5,7 @@
   </div>
 
   <div class="login-form">
-    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.invalid && onSubmit()" #f="ngForm" novalidate>
+    <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
       <p-card [style]="{width: '360px'}" styleClass="shadow-2">
         <ng-template pTemplate="header">
