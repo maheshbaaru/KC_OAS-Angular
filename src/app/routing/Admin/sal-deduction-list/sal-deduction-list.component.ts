@@ -26,7 +26,9 @@ export class SalDeductionListComponent {
     ];
   }
   ngAfterViewInit() {
-    let id = +this.active.snapshot.params['id'];
+    let id = this.active.snapshot.params['id'].replace('KC', '');
+
+    console.log(id);
 
     this.employeeSer.getEmployee(id).subscribe((data: any) => {
       this.employeeList = data;

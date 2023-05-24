@@ -44,7 +44,6 @@ export class SalDeductionComponent {
     @Inject(LOCALE_ID) public local: string,
     private messageSer: MessageService
   ) {
-
     this.form = fb.group({
       TaxTypeId: [null, Validators.required],
       EmpId: [null, Validators.required],
@@ -67,7 +66,15 @@ export class SalDeductionComponent {
         );
         const employeeData = this.users.map((person: any) => ({
           ...person,
-          Name: `${person.firstName} ${person.lastName}`,
+          employeeId:
+            person.employeeId < 100
+              ? 'KC0' + person.employeeId
+              : person.employeeId && person.employeeId >= 100
+              ? 'KC' + person.employeeId
+              : person.employeeId,
+          Name: `${person.firstName ? person.firstName : ''} ${
+            person.lastName ? person.lastName : ''
+          }`,
         }));
         this.employeeName = employeeData;
       });
@@ -92,7 +99,12 @@ export class SalDeductionComponent {
         this.form.controls[control].markAsTouched();
         this.form.controls[control].markAsDirty();
       }
-      this.messageSer.add({ severity: 'error', summary: 'Error', detail: 'Please fill the required fields',sticky: true  });
+      this.messageSer.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Please fill the required fields',
+        sticky: true,
+      });
       return;
     } else if (this.form.valid) {
       this.taxType = this.form.value.TaxTypeId.id;
