@@ -4,11 +4,17 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { LeavesService } from 'src/app/services/leaves.service';
+import { DatePipe } from '@angular/common'
 //import namesData from 'src/assets/data/names.json';
 interface StatusType {
   name: string;
 }
 interface EmployeeName {
+  Name: string;
+}
+
+
+interface nameType {
   Name: string;
 }
 
@@ -34,12 +40,14 @@ export class LeavesApprovelComponent {
   employeeSearchText:string;
   employees: any;
   employeeName: any;
+  
 
   constructor(
     private http: HttpClient,
     private _fb: FormBuilder,
     private empservice: EmployeeService,
-    private leaveSer: LeavesService
+    private leaveSer: LeavesService,
+    public datepipe: DatePipe
   ) {
      //this.names = namesData;
     // this.statusTypes = [
@@ -59,14 +67,13 @@ export class LeavesApprovelComponent {
 
   ngOnInit() {
     this.empservice.appliedLeaves().subscribe((data) => {
-       console.log(data)
+      console.log(data)
       this.leavesApproved = data;
       this.httpstoredData = data;
     });
 
     this.empservice.getAllEmployees().subscribe((res)=>{
       this.employees= res
-      // console.log(res)
       const employeeData = this.employees.map((emp:any)=>({
         ...emp,
         Name: `${emp.firstName}${emp.lastName}`,
@@ -86,7 +93,9 @@ export class LeavesApprovelComponent {
 
   }
 
-  empfilterTable(event:any){
+  empfilterTable(event:any ,data:any){
+    console.log(event)
+    
     if(event === null){
       this.leavesApproved=this.httpstoredData
 
@@ -104,7 +113,7 @@ export class LeavesApprovelComponent {
   }
 
   statusFilterTable(event:any){
-    
+   
     if(event === null){
       this.leavesApproved=this.httpstoredData
 
@@ -123,50 +132,58 @@ export class LeavesApprovelComponent {
   }
 
   fromcalenderFilterTable(event:any,date:any){
-
-    console.log(date.renderer.namespaceId)
     if(event.detail=== 2){
       if(date.inputFieldValue===""){
-       this.leavesApproved=this.httpstoredData
+        this.leavesApproved=this.httpstoredData
      }
     }
-
-
+    let latest_date: any
+    try{
+      let newdate2 = new Date(date.inputFieldValue)
+      latest_date= this.datepipe.transform(newdate2, 'yyyy-MM-dd');
+    } catch(error:any){
+      console.log(error)
+    }
+   
   var fromDateDataMap = this.leavesApproved.filter((e:any)=>{
    if(e.fromDate===null){
     return null;
    }
    else{
-    return e.fromDate.split("T")[0] ===date.inputFieldValue
+    return e.fromDate.split("T")[0] ===latest_date
    }
   })
 
   if(fromDateDataMap.length> 0){
     this.leavesApproved=fromDateDataMap
    }
-  // else{
-  //   this.leavesApproved=this.httpstoredData
-  // }
+
 
   }
 
 
   tocalenderFilterTable(event:any,toDate:any){
-
-    console.log(toDate.renderer.namespaceId)
+    console.log("to calender" , event.detail)
     if(event.detail=== 2){
       if(toDate.inputFieldValue===""){
        this.leavesApproved=this.httpstoredData
      }
     }
-   
+
+    let latest_date: any
+    try{
+      let newdate2 = new Date(toDate.inputFieldValue)
+      latest_date= this.datepipe.transform(newdate2, 'yyyy-MM-dd');
+    } catch(error:any){
+      console.log(error)
+    }
 
   var toDateData = this.leavesApproved.filter((e:any)=>{
         if(e.toDate===null){
           return null;
         }
         else{
-          return e.toDate.split("T")[0] ===toDate.inputFieldValue
+          return e.toDate.split("T")[0] ===latest_date
         }
   })
 
@@ -174,9 +191,7 @@ export class LeavesApprovelComponent {
     this.leavesApproved=toDateData
 
    }
-  //else{
-  //   this.leavesApproved=this.httpstoredData
-  // }
+
     
    
   }
