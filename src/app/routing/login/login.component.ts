@@ -24,7 +24,7 @@ export class LoginComponent {
   show = false;
   password: string;
   myform: FormGroup;
-  invalid= true
+  invalid = true;
   form: any = {
     username: null,
     password: null,
@@ -51,25 +51,22 @@ export class LoginComponent {
       this.roles = this.storageService.getUser().designationID;
     }
     this.rememberMe = false;
-    this.invalid
+    this.invalid;
     this.f = new FormGroup({
       username: new FormControl(null),
       password: new FormControl(null),
       rememberMe: new FormControl(null),
     });
-   
   }
 
   onSubmit() {
-    console.log('a....');
     this.password = 'password';
     const { username, password, rememberMe } = this.form;
     if (this.form.invalid) {
       for (const control of Object.keys(this.form.controls)) {
         this.form.controls[control].markAsTouched();
         this.form.controls[control].markAsDirty();
-        this.loginForm=false
-      
+        this.loginForm = false;
       }
       // this.messageService.add({
       //   severity: 'error',
@@ -77,8 +74,6 @@ export class LoginComponent {
       //   detail: 'Please fill the required fields',
       //   sticky: true,
       // });
- 
-     
     } else {
       this.authService.login(username, password).subscribe({
         next: (data: any) => {
@@ -94,7 +89,6 @@ export class LoginComponent {
               );
             });
             if (data != '' && data != null) {
-              console.log("kc")
               this.storageService.saveUser(data);
               this.isLoginFailed = false;
               this.isLoggedIn = false;

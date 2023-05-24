@@ -20,7 +20,8 @@
               optionLabel="Name"
               [showClear]="true"
                 formControlName="empName"
-                (onChange)=empfilterTable($event.value)
+                (onChange)=empfilterTable($event.value,empDropDown)
+                #empDropDown
                 >
               </p-dropdown>
 

@@ -28,10 +28,25 @@ export class SalDeductionListComponent {
   ngAfterViewInit() {
     let id = this.active.snapshot.params['id'].replace('KC', '');
 
-    console.log(id);
-
     this.employeeSer.getEmployee(id).subscribe((data: any) => {
       this.employeeList = data;
+
+      const salDeduction = this.employeeList.map((person: any) => ({
+        ...person,
+        empId:
+          person.empId < 10
+            ? 'KC00' + person.empId
+            : person.empId && person.empId < 100
+            ? 'KC0' + person.empId
+            : person.empId && person.employeeId >= 100
+            ? 'KC' + person.employeeId
+            : person.employeeId,
+
+        Name: `${person.firstName ? person.firstName : ''} ${
+          person.lastName ? person.lastName : ''
+        }`,
+      }));
+      this.employeeList = salDeduction;
     });
   }
 }

@@ -91,7 +91,7 @@ export class CreateNewSalaryDetailsComponent {
         formatDate(c, 'yy-mm-dd', this.local);
         this.messageService.clear();
         let invalid;
-        // console.log(diffDays, this.empForm.value.LastRevisedDate, event);
+
         if (c.toString() != this.empForm.value.NextRevisedDate.toString()) {
           this.messageService.clear();
           this.messageService.add({

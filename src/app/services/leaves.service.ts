@@ -25,9 +25,16 @@ export class LeavesService {
     return this.http.get(`${this.API_CALL}/LeavesApproval`);
   }
 
-  applyleave( LeaveTypeId:number,FromDate:string,ToDate:string,StatusId:number,Comments:string,diffDays:number) {
+  applyleave(
+    LeaveTypeId: number,
+    FromDate: string,
+    ToDate: string,
+    StatusId: number,
+    Comments: string,
+    diffDays: number
+  ) {
     let currentDate = new Date().toJSON().slice(0, 10);
-    console.log(currentDate);
+
     let data: any = window.sessionStorage.getItem('auth-user');
     let userdata = JSON.parse(data);
   

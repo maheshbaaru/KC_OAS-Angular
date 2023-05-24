@@ -91,7 +91,7 @@ export class EmployeeLeavesComponent {
     // });
     // this.leaveSer.applyleave().subscribe((data) => {
     //   this.employees = data;
-    //   console.log(this.employees)
+
     // });
     this.empservice.getUsers().subscribe((res) => {
       this.names = res;
@@ -122,11 +122,10 @@ export class EmployeeLeavesComponent {
       });
       return;
     } else if (this.updateform.valid) {
-      // console.log(this.updateform.value);
       this.leaveTypeId = this.leaveTypes = this.updateform.value.leaveType.id;
       this.EmpId = this.updateform.value.name.id;
       this.noOfLeaves = parseInt(this.updateform.value.noOfLeaves);
-      console.log(this.noOfLeaves);
+
       this.remainLeaves = this.updateform.value.remainingLeaves;
       this.year = this.updateform.value.year.getFullYear();
 
@@ -139,7 +138,6 @@ export class EmployeeLeavesComponent {
           this.remainLeaves
         )
         .subscribe((res: any) => {
-          console.log(res);
           if (res) {
             this.messageServ.add({
               severity: 'success',

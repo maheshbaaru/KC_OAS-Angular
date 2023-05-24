@@ -94,7 +94,7 @@ export class CreateLeaveComponent {
         });
       } else {
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        console.log(diffDays);
+
         this.leaveTypeId = this.empForm.value.leaveTypeId.id;
         this.FromDate = formatDate(
           this.empForm.value.FromDate,
@@ -120,7 +120,6 @@ export class CreateLeaveComponent {
             diffDays
           )
           .subscribe((res: any) => {
-            // console.log(res);
             if (res) {
               this.messageService.add({
                 severity: 'success',

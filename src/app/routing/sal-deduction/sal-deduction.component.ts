@@ -67,7 +67,9 @@ export class SalDeductionComponent {
         const employeeData = this.users.map((person: any) => ({
           ...person,
           employeeId:
-            person.employeeId < 100
+            person.employeeId < 10
+              ? 'KC00' + person.employeeId
+              : person.employeeId && person.employeeId < 100
               ? 'KC0' + person.employeeId
               : person.employeeId && person.employeeId >= 100
               ? 'KC' + person.employeeId

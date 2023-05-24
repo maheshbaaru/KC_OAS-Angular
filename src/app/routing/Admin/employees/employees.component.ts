@@ -8,11 +8,11 @@ import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 })
 export class EmployeesComponent {
   empdata: any;
-  // cols: any[];
+  cols: any[];
   constructor(
     //private router:Router,
     private service: EmployeedDataService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.service.getEmployeeList().subscribe((data1: any) => {
@@ -28,5 +28,15 @@ export class EmployeesComponent {
       //   { field: 'shiftName', header: 'Shift' },
       // ];
     });
+    this.cols = [
+      { field: 'EmployeeId', header: 'Emp ID' },
+      { field: 'firstName', header: 'FirstName' },
+      { field: 'lastName', header: 'LastName' },
+      { field: 'email', header: 'Email' },
+      { field: 'designationName', header: 'Designation' },
+      { field: 'panNumber', header: 'Pan Number' },
+      { field: 'isActive', header: 'IsActive' },
+      { field: 'shiftName', header: 'Shift' },
+    ];
   }
 }

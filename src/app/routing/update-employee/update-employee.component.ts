@@ -1,17 +1,21 @@
-
-
 import { Component } from '@angular/core';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { Shifts } from '../Admin/create-new-employee/create-new-employee.component';
 import { Roles } from '../Admin/create-new-employee/create-new-employee.component';
 import { ActivatedRoute } from '@angular/router';
-import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  Form,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-update-employee',
   templateUrl: './update-employee.component.html',
-  styleUrls: ['./update-employee.component.css']
+  styleUrls: ['./update-employee.component.css'],
 })
 export class UpdateEmployeeComponent {
   shifts: any;
@@ -23,10 +27,12 @@ export class UpdateEmployeeComponent {
   form: any;
 
   submitted = false;
-  constructor(private _service: EmployeeService,
+  constructor(
+    private _service: EmployeeService,
     private active: ActivatedRoute,
     private fb: FormBuilder,
-    private messageService: MessageService) {
+    private messageService: MessageService
+  ) {
     this.updatedForm = this.fb.group({
       employeeID: [null, Validators.required],
       FirstName: [null, Validators.required],
@@ -39,16 +45,18 @@ export class UpdateEmployeeComponent {
       DOJ: [null, Validators.required],
     });
   }
-  get f() { return this.updatedForm.controls; }
+  get f() {
+    return this.updatedForm.controls;
+  }
   ngOnInit() {
     let id = +this.active.snapshot.params['id'];
-    this._service.getSpecificEmployeeById(id).subscribe(res => {
+    this._service.getSpecificEmployeeById(id).subscribe((res) => {
       this.Result = res;
 
-      this._service.getShifts().subscribe(data => {
+      this._service.getShifts().subscribe((data) => {
         this.shifts = data;
 
-        this._service.getDesignationRoles().subscribe(data => {
+        this._service.getDesignationRoles().subscribe((data) => {
           this.roles = data;
 
           this.updatedForm = this.fb.group({
@@ -59,41 +67,32 @@ export class UpdateEmployeeComponent {
             PanNumber: this.Result.panNumber,
             LastName: this.Result.lastName,
             DOJ: this.Result.doj,
-            shiftId: this.shifts.find((item: any) =>
-              item.shiftId == this.Result.shiftId
+            shiftId: this.shifts.find(
+              (item: any) => item.shiftId == this.Result.shiftId
             ),
-            DesignationId: this.roles.find((item: any) =>
-              item.id == this.Result.designationId
-            )
-          })
-        })
-      })
-    })
-
-
+            DesignationId: this.roles.find(
+              (item: any) => item.id == this.Result.designationId
+            ),
+          });
+        });
+      });
+    });
   }
-
-
 
   onSubmit(form: any) {
     if (this.updatedForm.valid) {
-
-      this._service.UpdateEmployeeData(form).subscribe(res => {
-        console.log(res);
-      })
+      this._service.UpdateEmployeeData(form).subscribe((res) => {});
       this.messageService.add({
         severity: 'success',
         summary: 'Success',
-        detail: 'Successfully Updated Employee Details'
+        detail: 'Successfully Updated Employee Details',
       });
-    }
-    else {
+    } else {
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
-        detail: 'Please Correctly Fill The Required Fields'
+        detail: 'Please Correctly Fill The Required Fields',
       });
-
     }
   }
 }
