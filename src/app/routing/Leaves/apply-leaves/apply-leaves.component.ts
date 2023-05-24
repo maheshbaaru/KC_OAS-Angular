@@ -17,7 +17,6 @@ export class ApplyLeavesComponent {
     let loogedUser: any = window.sessionStorage.getItem('auth-user');
     loogedUser = JSON.parse(loogedUser);
     this.empSer.appliedLeaves().subscribe((data: any) => {
-      console.log(data);
       this.employeeLeavs = data.filter(
         (dat: any) => dat.empId == loogedUser.id * 1
       );
