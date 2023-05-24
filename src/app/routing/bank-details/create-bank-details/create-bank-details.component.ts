@@ -75,7 +75,6 @@ export class CreateBankDetailsComponent implements OnInit {
         Name: `${(e.firstName).trimStart()} ${e.lastName}`
       }))
       this.employeNameArray = employeeresponse
-      console.log(this.employeNameArray)
     })
 
   }
@@ -87,7 +86,6 @@ export class CreateBankDetailsComponent implements OnInit {
 
       this.firstname = this.employeDetails.value.EmpNameById.Name.split(" ")
       const [first, second] = this.firstname
-      console.log(this.firstname)
       this.idArray = this.employeNameArray.find(
         (e: any) =>
 

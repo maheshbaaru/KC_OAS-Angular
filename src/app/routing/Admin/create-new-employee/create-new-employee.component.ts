@@ -105,7 +105,6 @@ export class CreateNewEmployeeComponent {
       // let data = JSON.stringify(this.empForm.value);
       //this.empServ.postEmp(data);
       this.empServ.createEmployee(obj).subscribe((res) => {
-        //   console.log(d);
         if (res) {
           return this.messageService.add({
             severity: 'success',

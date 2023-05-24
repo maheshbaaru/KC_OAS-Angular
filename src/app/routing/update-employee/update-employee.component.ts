@@ -76,7 +76,6 @@ export class UpdateEmployeeComponent {
 
 
   onSubmit(form: any) {
-    console.log(form)
     if (this.updatedForm.valid) {
 
       this._service.UpdateEmployeeData(form).subscribe(res => {
