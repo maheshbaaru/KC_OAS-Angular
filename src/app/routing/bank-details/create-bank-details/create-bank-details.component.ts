@@ -113,7 +113,7 @@ export class CreateBankDetailsComponent implements OnInit {
         this.employeess = result
         const employeeresponse = this.employeess.map((e:any)=>({
           ...e,
-          Name:`${(e.firstName).trimEnd()} ${e.lastName}`
+          Name:`${(e.firstName)?.trimEnd()} ${e.lastName}`
         }))
         this.employeNameArray= employeeresponse
       })

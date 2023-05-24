@@ -78,12 +78,12 @@ export class CreateNewSalaryDetailsComponent {
       this.Salary = this.empForm.value.Salary;
       (this.LastRevisedDate = formatDate(
         this.empForm.value.LastRevisedDate,
-        'YYYY-MM-dd',
+        'MM-dd-yyyy',
         this.local
       )),
         (this.NextRevisedDate = formatDate(
           this.empForm.value.NextRevisedDate,
-          'YYYY-MM-dd',
+          'MM-dd-yyyy',
           this.local
         ));
 
