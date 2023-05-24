@@ -30,7 +30,7 @@
   </ng-template>
 
   <p-table #dt1 [columns]="cols" [value]="employeeName"
-    styleClass="p-datatable-sm p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10"
+    styleClass="p-datatable p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10"
     [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [rowsPerPageOptions]="[10, 25, 50]" [globalFilterFields]="['employeeId', 'Name']" responsiveLayout="scroll">
     <ng-template pTemplate="right"> </ng-template>

@@ -15,7 +15,7 @@
         <tr>
 
             <th>
-                <div class="p-d-flex p-jc-between p-ai-center">
+                <div class="p-d-flex p-jc-between p-ai-center ">
                     Employee ID
                     <p-columnFilter type="text" field="empId" display="menu"></p-columnFilter>
                 </div>
@@ -50,12 +50,12 @@
     <ng-template pTemplate="body" let-Employee>
         <tr>      
             <td>
-                    <a href="#" [routerLink]="['../updateSalaryDetails', Employee.empId]" >KC{{Employee.empId<100?'0'+Employee.empId:Employee.empId}}</a>
+                    <a href="#" class="empId" [routerLink]="['../updateSalaryDetails', Employee.empId]" >KC{{Employee.empId<100?'0'+Employee.empId:Employee.empId}}</a>
             </td>
         <td>{{Employee.firstName}} {{Employee.lastName}}</td>
         <td>{{Employee.salary}}</td>
-        <td>{{Employee.lastRevisedDate| date: 'dd-MM-yyyy'}}</td>
-        <td>{{Employee.nextRevisedDate| date: 'dd-MM-yyyy'}}</td>
+        <td>{{Employee.lastRevisedDate| date: 'MM-dd-yyyy HH:mm:ss'}}</td>
+        <td>{{Employee.nextRevisedDate| date: 'MM-dd-yyyy HH:mm:ss'}}</td>
         </tr>
     </ng-template>
   
