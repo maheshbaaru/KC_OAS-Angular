@@ -38,7 +38,6 @@ export class BankDetailsComponent implements OnInit{
 
 this.employeeService.getEmployeeData().subscribe((result:any)=>{
     this.employees=result;
-    console.log(this.employees);
     this.loading=false;
 })
      
