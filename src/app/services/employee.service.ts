@@ -15,7 +15,7 @@ export class EmployeeService {
   // +++++++++++//
   currentid: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -32,7 +32,6 @@ export class EmployeeService {
       .post(`${this.API_CALL}/createEmployee`, data)
       .subscribe((result) => {
         //const resultData = Object.values(result);
-        console.log(result);
       });
   }
   getUsers() {
@@ -63,7 +62,6 @@ export class EmployeeService {
   }
 
   getSpecifiEmployeeLeavesDataById(): Observable<any[]> {
-
     return new Observable((observer) => {
       this.http
         .get(`https://localhost:7236/GetSpecificEmpLeave?id=${this.currentid}`)
@@ -100,68 +98,59 @@ export class EmployeeService {
   }
 
   createEmployee(obj: any): Observable<any[]> {
-    const { designationId, 
-      FirstName, 
-      LastName, 
-  Email,
-       Password, 
-       IsActive,
-        EmployeeId,
-         PanNumber,
-          ShiftId, 
-          Doj 
-        } = obj;
+    const {
+      designationId,
+      FirstName,
+      LastName,
+      Email,
+      Password,
+      IsActive,
+      EmployeeId,
+      PanNumber,
+      ShiftId,
+      Doj,
+    } = obj;
     return this.http.post<any>(
-      `${this.API_CALL}/AddEmployee?DesignationId=${designationId}&FirstName=${FirstName}&LastName=${LastName}&email=${Email}&password=${Password}&isActive=${IsActive}&EmployeeId=${EmployeeId}&PanNumber=${PanNumber}&shiftId=${ShiftId}&doj=${Doj}`, this.httpOptions);
-    }
+      `${this.API_CALL}/AddEmployee?DesignationId=${designationId}&FirstName=${FirstName}&LastName=${LastName}&email=${Email}&password=${Password}&isActive=${IsActive}&EmployeeId=${EmployeeId}&PanNumber=${PanNumber}&shiftId=${ShiftId}&doj=${Doj}`,
+      this.httpOptions
+    );
+  }
   getSpecificEmployeeById(id: any): Observable<any> {
     return this.http.get(`https://localhost:7236/GetEmployeeById?id=` + id);
   }
 
-
-
-
-  UpdateEmployeeData(form: any){
- debugger;
+  UpdateEmployeeData(form: any) {
+    debugger;
     return this.http.put<any>(
-           `${this.API_CALL}/UpdateEmployeeTbl?employeeID=${form.employeeID}&Email=${form.Email}&isActive=${form.checked}&FirstName=${form.FirstName}&PanNumber=${form.PanNumber}&LastName=${form.LastName}&shiftId=${form.shiftId.shiftId}&DesignationId=${form.DesignationId.id}`,  
-             this.httpOptions
-          );
+      `${this.API_CALL}/UpdateEmployeeTbl?employeeID=${form.employeeID}&Email=${form.Email}&isActive=${form.checked}&FirstName=${form.FirstName}&PanNumber=${form.PanNumber}&LastName=${form.LastName}&shiftId=${form.shiftId.shiftId}&DesignationId=${form.DesignationId.id}`,
+      this.httpOptions
+    );
   }
-
-
-
-
-
-
-
-
-
 }
- // UpdateEmployeeData(
-    // EmployeeId: string,
-    // Email: string,
-    // FirstName: string,
-    // LastName: string,
-    // Password: string,
-    // PanNumber: string,
-    // DesignationId: number,
-    // ShiftId: number,
-    // Doj: Date
- // ) {
-    //debugger;
-    //const body = JSON.stringify({
-      // Id: EmployeeId,
-      // Email: Email,
-      // FirstName: FirstName,
-      // LastName: LastName,
-      // Password: Password,
-      // PanNumber: PanNumber,
-      // DesignationId: DesignationId,
-      // ShiftId: ShiftId,
-      // Doj: Doj,
-     
-   // });
+// UpdateEmployeeData(
+// EmployeeId: string,
+// Email: string,
+// FirstName: string,
+// LastName: string,
+// Password: string,
+// PanNumber: string,
+// DesignationId: number,
+// ShiftId: number,
+// Doj: Date
+// ) {
+//debugger;
+//const body = JSON.stringify({
+// Id: EmployeeId,
+// Email: Email,
+// FirstName: FirstName,
+// LastName: LastName,
+// Password: Password,
+// PanNumber: PanNumber,
+// DesignationId: DesignationId,
+// ShiftId: ShiftId,
+// Doj: Doj,
+
+// });
 //     return this.http.put<any>(
 //       `${this.API_CALL}/UpdateEmployeeTbl=`,
 //       body,
@@ -169,9 +158,5 @@ export class EmployeeService {
 //     );
 //   }
 // }
-
-
-
-
 
 //}

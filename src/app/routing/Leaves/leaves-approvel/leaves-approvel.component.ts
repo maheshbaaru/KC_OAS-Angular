@@ -1,10 +1,9 @@
-
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { LeavesService } from 'src/app/services/leaves.service';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
 //import namesData from 'src/assets/data/names.json';
 interface StatusType {
   name: string;
@@ -13,14 +12,13 @@ interface EmployeeName {
   Name: string;
 }
 
-
 interface nameType {
   Name: string;
 }
 
-interface employeName{
-  firstName:string;
-  lastName:string;
+interface employeName {
+  firstName: string;
+  lastName: string;
 }
 @Component({
   selector: 'app-leaves-approvel',
@@ -30,17 +28,16 @@ interface employeName{
 export class LeavesApprovelComponent {
   leavesApproved: any;
 
-  httpstoredData:any
+  httpstoredData: any;
   empForm: FormGroup;
   names: EmployeeName[];
   statusTypes: any;
 
-  filterfromdate:any
+  filterfromdate: any;
 
-  employeeSearchText:string;
+  employeeSearchText: string;
   employees: any;
   employeeName: any;
-  
 
   constructor(
     private http: HttpClient,
@@ -49,7 +46,7 @@ export class LeavesApprovelComponent {
     private leaveSer: LeavesService,
     public datepipe: DatePipe
   ) {
-     //this.names = namesData;
+    //this.names = namesData;
     // this.statusTypes = [
     //   { name: 'Pending' },
     //   { name: 'Approved' },
@@ -67,135 +64,107 @@ export class LeavesApprovelComponent {
 
   ngOnInit() {
     this.empservice.appliedLeaves().subscribe((data) => {
-      console.log(data)
       this.leavesApproved = data;
       this.httpstoredData = data;
     });
 
-    this.empservice.getAllEmployees().subscribe((res)=>{
-      this.employees= res
-      const employeeData = this.employees.map((emp:any)=>({
+    this.empservice.getAllEmployees().subscribe((res) => {
+      this.employees = res;
+      const employeeData = this.employees.map((emp: any) => ({
         ...emp,
         Name: `${emp.firstName}${emp.lastName}`,
-      }))
-      this.employeeName = employeeData
-  })
-  
+      }));
+      this.employeeName = employeeData;
+    });
   }
 
-// ngDoCheck(){
-//   console.log(this.filterfromdate)
-// }
+  // ngDoCheck(){
+
+  // }
 
   ngAfterViewInit() {
-
     this.leaveSer.getStatus().subscribe((res) => (this.statusTypes = res));
-
   }
 
-  empfilterTable(event:any ,data:any){
-    console.log(event)
-    
-    if(event === null){
-      this.leavesApproved=this.httpstoredData
-
+  empfilterTable(event: any, data: any) {
+    if (event === null) {
+      this.leavesApproved = this.httpstoredData;
     }
-    const empnameData = this.leavesApproved.filter((e:any)=>(
-      e.empName==event.Name
-    ))
+    const empnameData = this.leavesApproved.filter(
+      (e: any) => e.empName == event.Name
+    );
 
-    if(empnameData.length!==0){
-      this.leavesApproved=empnameData
-    }
-    else{
-      this.leavesApproved={}
+    if (empnameData.length !== 0) {
+      this.leavesApproved = empnameData;
+    } else {
+      this.leavesApproved = {};
     }
   }
 
-  statusFilterTable(event:any){
-   
-    if(event === null){
-      this.leavesApproved=this.httpstoredData
-
+  statusFilterTable(event: any) {
+    if (event === null) {
+      this.leavesApproved = this.httpstoredData;
     }
-      console.log(event)
-      const statusData = this.leavesApproved.filter((e:any)=>(
-        e.statusId==event.id
-      ))
 
-      if(statusData.length!==0){
-        this.leavesApproved=statusData
+    const statusData = this.leavesApproved.filter(
+      (e: any) => e.statusId == event.id
+    );
+
+    if (statusData.length !== 0) {
+      this.leavesApproved = statusData;
+    } else {
+      this.leavesApproved = {};
+    }
+  }
+
+  fromcalenderFilterTable(event: any, date: any) {
+    if (event.detail === 2) {
+      if (date.inputFieldValue === '') {
+        this.leavesApproved = this.httpstoredData;
       }
-      else{
-        this.leavesApproved={}
+    }
+    let latest_date: any;
+    try {
+      let newdate2 = new Date(date.inputFieldValue);
+      latest_date = this.datepipe.transform(newdate2, 'yyyy-MM-dd');
+    } catch (error: any) {}
+
+    var fromDateDataMap = this.leavesApproved.filter((e: any) => {
+      if (e.fromDate === null) {
+        return null;
+      } else {
+        return e.fromDate.split('T')[0] === latest_date;
       }
+    });
+
+    if (fromDateDataMap.length > 0) {
+      this.leavesApproved = fromDateDataMap;
+    }
   }
 
-  fromcalenderFilterTable(event:any,date:any){
-    if(event.detail=== 2){
-      if(date.inputFieldValue===""){
-        this.leavesApproved=this.httpstoredData
-     }
+  tocalenderFilterTable(event: any, toDate: any) {
+    if (event.detail === 2) {
+      if (toDate.inputFieldValue === '') {
+        this.leavesApproved = this.httpstoredData;
+      }
     }
-    let latest_date: any
-    try{
-      let newdate2 = new Date(date.inputFieldValue)
-      latest_date= this.datepipe.transform(newdate2, 'yyyy-MM-dd');
-    } catch(error:any){
-      console.log(error)
+
+    let latest_date: any;
+    try {
+      let newdate2 = new Date(toDate.inputFieldValue);
+      latest_date = this.datepipe.transform(newdate2, 'yyyy-MM-dd');
+    } catch (error: any) {}
+
+    var toDateData = this.leavesApproved.filter((e: any) => {
+      if (e.toDate === null) {
+        return null;
+      } else {
+        return e.toDate.split('T')[0] === latest_date;
+      }
+    });
+
+    if (toDateData.length > 0) {
+      this.leavesApproved = toDateData;
     }
-   
-  var fromDateDataMap = this.leavesApproved.filter((e:any)=>{
-   if(e.fromDate===null){
-    return null;
-   }
-   else{
-    return e.fromDate.split("T")[0] ===latest_date
-   }
-  })
-
-  if(fromDateDataMap.length> 0){
-    this.leavesApproved=fromDateDataMap
-   }
-
-
   }
-
-
-  tocalenderFilterTable(event:any,toDate:any){
-    console.log("to calender" , event.detail)
-    if(event.detail=== 2){
-      if(toDate.inputFieldValue===""){
-       this.leavesApproved=this.httpstoredData
-     }
-    }
-
-    let latest_date: any
-    try{
-      let newdate2 = new Date(toDate.inputFieldValue)
-      latest_date= this.datepipe.transform(newdate2, 'yyyy-MM-dd');
-    } catch(error:any){
-      console.log(error)
-    }
-
-  var toDateData = this.leavesApproved.filter((e:any)=>{
-        if(e.toDate===null){
-          return null;
-        }
-        else{
-          return e.toDate.split("T")[0] ===latest_date
-        }
-  })
-
-  if(toDateData.length> 0){
-    this.leavesApproved=toDateData
-
-   }
-
-    
-   
-  }
-
-
-   
 }

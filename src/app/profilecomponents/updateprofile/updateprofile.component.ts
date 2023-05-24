@@ -66,15 +66,14 @@ export class UpdateprofileComponent {
   }
   userdata: any;
   formdataget() {
-    console.log('coming here');
     let data: any = window.sessionStorage.getItem('loggedinUser');
     this.userdata = JSON.parse(data);
     //  this.updateform.patchValue(this.userdata);
-    // console.log(data);
+
     this.GetEmployee();
     if (!this.userdata.isActive) this.updateform.controls['isActive'].disable();
     // this.service.getEmployeeList().subscribe((data1: any) => {
-    //   console.log(data1);
+
     //  this.updateform = data1.filter((dat: any) => dat.empId == data1.id * 1);
     // this.empdata = data.filter((dat: any) => dat.empId == this.userdata.id * 1);
     // // //  this.updateform.get('email')?.setValue(data.email);
@@ -85,7 +84,7 @@ export class UpdateprofileComponent {
 
   //  formdataget() {
   //   this.service.getEmployeeList().subscribe((data1: any) => {
-  //     console.log(data1);
+
   //     this.updateform.setValue(data1);
   //     if (!data1.isActive) this.updateform.controls['isActive'].disable();
   //   });

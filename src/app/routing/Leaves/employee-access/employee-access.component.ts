@@ -14,22 +14,16 @@ export class EmployeeAccessComponent {
   empAccess: any;
   constructor(private empServe: EmployeeService) {}
 
-
   ngOnInit() {
- 
     // let loogedUser: any = window.sessionStorage.getItem('auth-user')
     // loogedUser = JSON.parse(loogedUser)
     // debugger
     // this.empServe.getUsers().subscribe((data: any) => {
     // return data;
-   
     // this.empAccess = data.filter((dat: any) => dat.id == loogedUser.employeeID* 1);
-    // console.log(this.empAccess);
-    
     // });
   }
   ngAfterViewInit() {
     return this.empServe.getUsers().subscribe((res) => (this.empAccess = res));
   }
-
 }
