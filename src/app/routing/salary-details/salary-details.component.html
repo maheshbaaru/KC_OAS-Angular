@@ -6,18 +6,18 @@
       <input style="margin-left:10px;" type="text" pInputText class="h-1rem" placeholder="Search Employee" (input)="table.filterGlobal($any($event.target).value,'contains')"    />
     </div>
         <div class="col-sm-6" style="text-align:right">
-            <button pButton routerLink="../create-new-salary-details" class="h-1rem p-button-success"style="float: right;font-size: small;font-weight: 500;margin-right:10px;">+ CREATE NEW</button>  
+            <button pButton routerLink="../create-new-salary-details" class="h-1rem p-button-success"style="float: right;font-size: small;font-weight: 500;margin-right:10px;">+ CREATE NEW</button>
     </div>
-    </ng-template> 
-    <p-table #dt [value]="empSalDetails" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10"  styleClass="p-datatable-gridlines"   
-    [globalFilterFields]="['empId','firstName','salary','lastRevisedDate','nextRevisedDate']">
+    </ng-template>
+    <p-table #dt [value]="empSalDetails" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10"  styleClass="p-datatable-gridlines"
+    [globalFilterFields]="['Eid','Name','salary','lastRevisedDate','nextRevisedDate']">
     <ng-template pTemplate="header">
         <tr>
 
             <th>
                 <div class="p-d-flex p-jc-between p-ai-center ">
                     Employee ID
-                    <p-columnFilter type="text" field="empId" display="menu"></p-columnFilter>
+                    <p-columnFilter type="text" field="Eid" display="menu"></p-columnFilter>
                 </div>
 
             </th>
@@ -48,17 +48,17 @@
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-Employee>
-        <tr>      
+        <tr>
             <td>
-                    <a href="#" class="empId" [routerLink]="['../updateSalaryDetails', Employee.empId]" >KC{{Employee.empId<100?'0'+Employee.empId:Employee.empId}}</a>
+                    <a href="#" class="empId" [routerLink]="['../updateSalaryDetails', Employee.empId]" >{{Employee.Eid}}</a>
             </td>
-        <td>{{Employee.firstName}} {{Employee.lastName}}</td>
+        <td>{{Employee.Name}}</td>
         <td>{{Employee.salary}}</td>
-        <td>{{Employee.lastRevisedDate| date: 'MM-dd-yyyy HH:mm:ss'}}</td>
-        <td>{{Employee.nextRevisedDate| date: 'MM-dd-yyyy HH:mm:ss'}}</td>
+        <td>{{Employee.lastRevisedDate}}</td>
+        <td>{{Employee.nextRevisedDate}}</td>
         </tr>
     </ng-template>
-  
-  </p-table> 
+
+  </p-table>
   </p-panel>
-  
+
