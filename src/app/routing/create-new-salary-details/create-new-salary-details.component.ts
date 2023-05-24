@@ -4,6 +4,7 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -53,6 +54,15 @@ export class CreateNewSalaryDetailsComponent {
       });
     });
   }
+  onLastDateChange(event: any) {
+    var d = new Date(event);
+    var year = d.getFullYear();
+    var month = d.getMonth();
+    var day = d.getDate();
+    var c = new Date(year + 1, month, day);
+    formatDate(c, 'yy-mm-dd', this.local);
+    this.empForm.controls['NextRevisedDate'].setValue(c);
+  }
 
   get f() {
     return this.empForm.controls;
@@ -72,38 +82,59 @@ export class CreateNewSalaryDetailsComponent {
       });
       return;
     } else if (this.empForm.valid) {
-      this.EmpId = this.empForm.value.EmpId.employeeID;
-      this.Eid = this.EmpId.replace('KC0', '');
+      if (this.empForm.value.LastRevisedDate) {
+        var d = new Date(this.empForm.value.LastRevisedDate);
+        var year = d.getFullYear();
+        var month = d.getMonth();
+        var day = d.getDate();
+        var c = new Date(year + 1, month, day);
+        formatDate(c, 'yy-mm-dd', this.local);
+        this.messageService.clear();
+        let invalid;
+        // console.log(diffDays, this.empForm.value.LastRevisedDate, event);
+        if (c.toString() != this.empForm.value.NextRevisedDate.toString()) {
+          this.messageService.clear();
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Enter Valid Date',
+            sticky: true,
+          });
+        } else {
+          this.EmpId = this.empForm.value.EmpId.employeeID;
+          this.Eid = this.EmpId.replace('KC0', '');
 
-      this.Salary = this.empForm.value.Salary;
-      (this.LastRevisedDate = formatDate(
-        this.empForm.value.LastRevisedDate,
-        'MM-dd-yyyy',
-        this.local
-      )),
-        (this.NextRevisedDate = formatDate(
-          this.empForm.value.NextRevisedDate,
-          'MM-dd-yyyy',
-          this.local
-        ));
+          this.Salary = this.empForm.value.Salary;
+          this.LastRevisedDate = formatDate(
+            this.empForm.value.LastRevisedDate,
+            'YYYY-MM-dd',
+            this.local
+          );
+          this.NextRevisedDate = formatDate(
+            this.empForm.value.NextRevisedDate,
+            'YYYY-MM-dd',
+            this.local
+          );
 
-      this._service
-        .CreatenewSalaryDetails(
-          this.Eid,
-          this.Salary,
-          this.LastRevisedDate,
-          this.NextRevisedDate
-        )
-        .subscribe((res) => {
-          if (res) {
-            return this.messageService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: ' New Salary details saved',
+          this._service
+            .CreatenewSalaryDetails(
+              this.Eid,
+              this.Salary,
+              this.LastRevisedDate,
+              this.NextRevisedDate
+            )
+            .subscribe((res) => {
+              if (res) {
+                return this.messageService.add({
+                  severity: 'success',
+                  summary: 'Success',
+                  detail: ' New Salary details saved',
+                });
+              }
+              this.empForm.reset();
             });
-          }
-        });
+        }
+      }
     }
-    this.empForm.reset();
   }
 }

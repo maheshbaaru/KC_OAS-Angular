@@ -7,13 +7,13 @@
         <button pButton class="h-1rem" style="float: right; font-size: smaller;margin-right:10px;"
         routerLink="/navbar/salary-details"><i class="pi pi-arrow-left icon"></i>BACK</button>
 
-        
+
         <button
           pButton class="h-1rem p-button-success"
          style="float: right;margin-right:5px; font-size: smaller;"
          type="submit" (click)="onFormSubmit()" >
          <i class="pi pi-check icon"></i>SAVE</button>
-       
+
   </div>
   </ng-template>
 
@@ -51,7 +51,7 @@
        <label for="designation-input" class="input-styling" required>Last Revised Date
            <span class="required">*</span>
         </label>
-        <p-calendar [showIcon]="true"  id="designation-input" placeholder="MM-DD-YYYY"  formControlName="LastRevisedDate"></p-calendar>
+        <p-calendar [showIcon]="true"  id="designation-input" placeholder="MM-DD-YYYY" (onSelect)="onLastDateChange($event)" formControlName="LastRevisedDate" ></p-calendar>
         <small class="text-danger "  *ngIf="!empForm.get('LastRevisedDate')?.valid &&(empForm.get('LastRevisedDate')?.touched||empForm.get('LastRevisedDate')?.dirty)">LastRevisedDate is required
         </small>
       </div>
