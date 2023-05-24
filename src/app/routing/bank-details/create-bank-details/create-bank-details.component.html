@@ -50,7 +50,7 @@
           name="EmpNameById"
           formControlName="EmpNameById"
           [ngClass]="{'error':submitted && f['EmpNameById'].errors}"
-          [@shakeAnimation]=" !(submitted && f['EmpNameById'].errors) ?'valid':'invalid'"
+          
           ></p-dropdown>
           
           <div *ngIf="submitted && f['EmpNameById'].errors" class="alert alert-danger">
@@ -75,8 +75,8 @@
           name="ACCNO"
           formControlName="ACCNO"
           [pattern]="integerRegex"
-          [ngClass]="{'error':submitted && f['EmpNameById'].errors}"
-          [@shakeAnimation]=" !(submitted && f['ACCNO'].errors) ?'valid':'invalid'"
+          [ngClass]="{'error':submitted && f['ACCNO'].errors}"
+          
         />
         <div *ngIf="submitted && f['ACCNO'].errors" class="alert alert-danger" style="max-width: 230px;">
           <span style="font-size: 12px;" *ngIf="f['ACCNO'].errors?.['required']">Account number is required.</span> 
@@ -99,8 +99,8 @@
           placeholder="Enter Holder Name"
           name="ACCNAME"
           formControlName="ACCNAME"
-          [ngClass]="{'error':submitted && f['EmpNameById'].errors}"
-          [@shakeAnimation]=" !(submitted && f['ACCNAME'].errors) ?'valid':'invalid'"
+          [ngClass]="{'error':submitted && f['ACCNAME'].errors}"
+          
         />
 
         <div *ngIf="submitted && f['ACCNAME'].errors" class="alert alert-danger" style="max-width: 230px;">

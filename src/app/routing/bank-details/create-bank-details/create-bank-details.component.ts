@@ -6,53 +6,12 @@ import { Router } from '@angular/router';
 import { Employee } from 'src/app/Modesls/employeBankInterface';
 import { EmployeService } from 'src/app/services/employeBankService';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { MessageService } from 'primeng/api';
 
-const shakeAnimation = trigger('shakeAnimation', [
-  state('invalid', style({
-    transform: 'translateX(0px)',
-    borderColor: 'red'
-  })),
-  state('invalid', style({
-    transform: 'translateX(0px)',
-  })),
-  transition('* => invalid', [
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(0px)', borderColor: 'red' })),
-  ]),
-  transition('invalid => *', [
-    animate('0.1s', style({ transform: 'translateX(0px)'})),
-  ])
-]);
-
-
-const shakeAnimationPassword =trigger('shakeAnimationPassword',[
-  state('invalid',style({
-    transform:'translateX(0px)',
-    borderColor:'red'
-  })),
-  
-  
-  transition('* => invalid', [
-    animate('0.1s', style({ transform: 'translateX(10px)' , borderColor:'red'})),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor:'red' })),
-    animate('0.1s', style({ transform: 'translateX(0px)', borderColor:'red' }))
-  ]),
-])
 
 @Component({
   selector: 'app-create-bank-details',
   templateUrl: './create-bank-details.component.html',
-  animations:[shakeAnimation,shakeAnimationPassword],
   styleUrls: ['./create-bank-details.component.css']
 })
 export class CreateBankDetailsComponent implements OnInit {
@@ -113,9 +72,10 @@ export class CreateBankDetailsComponent implements OnInit {
         this.employeess = result
         const employeeresponse = this.employeess.map((e:any)=>({
           ...e,
-          Name:`${(e.firstName)?.trimEnd()} ${e.lastName}`
+          Name:`${(e.firstName).trimStart()} ${e.lastName}`
         }))
         this.employeNameArray= employeeresponse
+        console.log(this.employeNameArray)
       })
      
     }
@@ -126,12 +86,15 @@ export class CreateBankDetailsComponent implements OnInit {
       this.submitted=true
       
       this.firstname=this.employeDetails.value.EmpNameById.Name.split(" ")
-      
+      const[first,second]=this.firstname
+      console.log(this.firstname)
       this.idArray = this.employeNameArray.find(
             (e:any)=>
-            e.lastName ===this.firstname.reverse()[0]
+            
+            e.lastName ===second
+            
             )
-  
+        console.log(this.idArray)
       this.newArray = {
         "id":this.idArray.id,
         "empId": this.idArray.empId,
@@ -140,7 +103,7 @@ export class CreateBankDetailsComponent implements OnInit {
         "accname": this.employeDetails.value.ACCNAME,
       }
       console.log(this.newArray)
-        this.employeesService.PostEmployeeNewBankData(this.newArray)
+          this.employeesService.PostEmployeeNewBankData(this.newArray)
         this.messageService.add({
           severity: 'success',
            summary: 'Success',
@@ -157,7 +120,7 @@ export class CreateBankDetailsComponent implements OnInit {
        this.submitted=false
        setTimeout(() => {
          this.submitted=true
-       }, 400);
+       }, 200);
      }   
    
 

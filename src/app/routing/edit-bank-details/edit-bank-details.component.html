@@ -70,7 +70,7 @@
          required maxlength="15" minlength="5"
           [ngClass]="{'error':submited && accno.errors}"
           [pattern]="integerRegex"
-          [@shakeAnimation]=" !(submited && accno.errors) ?'valid':'invalid'"
+          
          />
          
          <div *ngIf="submited && accno.errors" class="alert alert-danger" style="max-width: 230px;">

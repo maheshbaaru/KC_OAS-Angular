@@ -41,7 +41,7 @@ export class CreateNewEmployeeComponent {
   ) { }
 
   ngOnInit() {
-    debugger;
+
     this.empForm = this.fb.group({
       employeeID: [null, Validators.required],
       firstName: [null, Validators.required],

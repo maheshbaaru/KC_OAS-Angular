@@ -1,4 +1,3 @@
-import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
@@ -32,51 +31,11 @@ export interface EmployeeInterFace{
   toDate   ?:string,
 }
 
-const shakeAnimation = trigger('shakeAnimation', [
-  state('invalid', style({
-    transform: 'translateX(0px)',
-    borderColor: 'red'
-  })),
-  state('invalid', style({
-    transform: 'translateX(0px)',
-  })),
-  transition('* => invalid', [
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(0px)', borderColor: 'red' })),
-  ]),
-  transition('invalid => *', [
-    animate('0.1s', style({ transform: 'translateX(0px)'})),
-  ])
-]);
 
-
-const shakeAnimationPassword =trigger('shakeAnimationPassword',[
-  state('invalid',style({
-    transform:'translateX(0px)',
-    borderColor:'red'
-  })),
-  
-  
-  transition('* => invalid', [
-    animate('0.1s', style({ transform: 'translateX(10px)' , borderColor:'red'})),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor:'red' })),
-    animate('0.1s', style({ transform: 'translateX(0px)', borderColor:'red' }))
-  ]),
-])
 
 @Component({
   selector: 'leaves-approval-screen',
   templateUrl: './leaves-approval-screen.component.html',
-  // styleUrls: ['./leaves-approval-screen.component.css']
-  animations:[shakeAnimation,shakeAnimationPassword],
   styleUrls: ['./leaves-approval-screen.component.scss']
 })
 export class LeavesApprovalScreenComponent {
@@ -96,11 +55,7 @@ export class LeavesApprovalScreenComponent {
   
   leaveTypeName2: leavetype;
   statusTypeName2: statustype;
-  // ngDoCheck(){
-  //   console.log(this.leaveTypeName)
-  // }
-  
-
+ 
   ngOnInit() {
 
     const toast = document.getElementById("success-toast") as HTMLElement;
@@ -192,24 +147,10 @@ export class LeavesApprovalScreenComponent {
     {leaveTypeName:"Compansation"},
     {leaveTypeName:"Optional"},
   ]
-  // showSuccessToast(event:any) {
-  //   const toast = document.getElementById("success-toast") || null;
-  //   if (toast) {
-  //     toast.textContent = "Success!";
-  //     toast.style.display = "block";
-  //     toast.style.position = "fixed";
-  //     toast.style.top = "10px";
-  //     toast.style.right = "10px";
-  //     toast.classList.add("toast-appear");
-  //     setTimeout(() => {
-  //       toast.classList.remove("toast-appear");
-  //       toast.style.display = "none";
-  //     }, 2000);
-  //   }
-  // }
+ 
 
   onSave(event:any){
-    console.log("toast")
+    
     if(event){
       this.isSubmited=true
       let leaveTypeid= null
@@ -256,7 +197,7 @@ export class LeavesApprovalScreenComponent {
           
         }
         this.empservice.updateLeavesApprovalData(postData)
-        console.log("error")
+       
         this.messageService.add({
            severity: 'success',
             summary: 'Success',
@@ -273,7 +214,7 @@ export class LeavesApprovalScreenComponent {
       
       setTimeout(() => {
         this.isSubmited=true
-      }, 400);
+      }, 200);
 
     }
 

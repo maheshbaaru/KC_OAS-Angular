@@ -63,12 +63,10 @@ API_BASE='https://localhost:7236';
     }
 
     PostEmployeeNewBankData(postData: any) {
-        // debugger;
-
         const body = JSON.stringify(postData);
 
         //  return this.http.put<any>('https://localhost:7236/UpdateBankDetails?', body,this.httpOptions)
-         return this.http.post<any>(`${this.API_BASE}/CreateNewEmpBankDetails?EmpId=${postData.empId}&Accno=${postData.accno}&BankName=${postData.bankName}&Accname=${postData.Accname}`,this.httpOptions)
+         return this.http.post<any>(`${this.API_BASE}/CreateNewEmpBankDetails?EmpId=${postData.empId}&Accno=${postData.accno}&BankName=${postData.bankName}&Accname=${postData.accname}`,this.httpOptions)
          .subscribe((result)=>{
             const resultData = Object.values(result)
          })
