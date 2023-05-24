@@ -20,7 +20,8 @@
               optionLabel="Name"
               [showClear]="true"
                 formControlName="empName"
-                (onChange)=empfilterTable($event.value)
+                (onChange)=empfilterTable($event.value,empDropDown)
+                #empDropDown
                 >
               </p-dropdown>
 
@@ -174,9 +175,9 @@
         <td>{{emp.leaveTypeId}}</td>
 
         <td>{{emp.numOfDays}}</td>
-        <td>{{emp.fromDate}}</td>
-        <td>{{emp.toDate}}</td>
-        <td>{{emp.appliedOn}}</td>
+        <td>{{emp.fromDate | date: 'MM-dd-yyyy HH:mm:ss'}}</td>
+        <td>{{emp.toDate | date: 'MM-dd-yyyy HH:mm:ss'}}</td>
+        <td>{{emp.appliedOn | date: 'MM-dd-yyyy HH:mm:ss'}}</td>
         <td>{{emp.statusId}}</td>
         <td>{{emp.comments}}</td>
         <td>{{emp.adminComments}}</td>

@@ -42,6 +42,7 @@ import { EditBankDetailsComponent } from './routing/edit-bank-details/edit-bank-
 import { EmployeService } from './services/employeBankService';
 import { CreateLeaveComponent } from './routing/Leaves/create-leave/create-leave.component';
 import { LeavesApprovalScreenComponent } from './routing/Leaves/leaves-approvel/leaves-approval-screen/leaves-approval-screen.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,7 @@ import { LeavesApprovalScreenComponent } from './routing/Leaves/leaves-approvel/
     PrimengModule,
     HttpClientModule,
   ],
-  providers: [SalaryService, EmployeService],
+  providers: [SalaryService, EmployeService,DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
