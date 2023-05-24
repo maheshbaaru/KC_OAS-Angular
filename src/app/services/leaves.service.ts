@@ -31,7 +31,7 @@ export class LeavesService {
     let data: any = window.sessionStorage.getItem('auth-user');
     let userdata = JSON.parse(data);
   
-    return this.http.post(`${this.API_CALL}/ApplyLeave?EmpId=${userdata.id}&LeaveTypeId=${LeaveTypeId}&NumOfDays=${diffDays}&FromDate=${FromDate}&ToDate=${ToDate}&Comments=${Comments}&Appliedon=${currentDate}&StatusId=${StatusId}`,this.httpOptions)
+    return this.http.post(`${this.API_CALL}/ApplyLeave?EmpId=${userdata.id}&LeaveTypeId=${LeaveTypeId}&NumOfDays=${diffDays}&FromDate=${FromDate}&ToDate=${ToDate}&Comments=${Comments}&Appliedon=${currentDate}&Status='New'&StatusId=1`,this.httpOptions)
   
   }
   employeeLeaves(
