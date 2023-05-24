@@ -16,7 +16,7 @@
 
                     <div class="nav-item" routerLinkActive="active" (mouseout)="$event.stopPropagation()">
                         <a class="nav-link customizing" #levelOneTrigger="matMenuTrigger"
-                            (mouseenter)="levelOneTrigger.openMenu()" [matMenuTriggerFor]="levelOne" style="font-family:sans-serif;">Leaves</a>
+                            (mouseenter)="levelOneTrigger.openMenu()" [matMenuTriggerFor]="levelOne" >Leaves</a>
                         <mat-menu #levelOne="matMenu" direction="down" yPosition="below">
                             <span (mouseleave)="levelOneTrigger.closeMenu()">
                                 <button mat-menu-item [routerLink]="['apply']" (click)="hideHome()">
@@ -80,7 +80,7 @@
 
                 <div class="nav-item" routerLinkActive="active" (mouseout)="$event.stopPropagation()">
                     <a class="nav-link customizing" #levelTWoTrigger="matMenuTrigger"
-                        (mouseenter)="levelTWoTrigger.openMenu()" [matMenuTriggerFor]="levelTWo"style="font-family:sans-serif;">Welcome {{name}} <img src="{{profilePic}}" class="profile-class" width="50px"height="50px" alt=" " /> </a>
+                        (mouseenter)="levelTWoTrigger.openMenu()" [matMenuTriggerFor]="levelTWo">Welcome {{name}} <img src="{{profilePic}}" class="profile-class" width="50px"height="50px" alt=" " /> </a>
                     <mat-menu #levelTWo="matMenu" direction="down" yPosition="below">
 
                         <span (mouseleave)="levelTWoTrigger.closeMenu()">
