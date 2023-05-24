@@ -41,7 +41,6 @@
             [required]="true"
             #leaveTypeDropdown="ngModel" 
             [ngClass]="{ 'error': isSubmited && leaveTypeDropdown.errors }"
-            [@shakeAnimation]=" !(isSubmited && leaveTypeDropdown.errors) ?'valid':'invalid'"
             ></p-dropdown>
             
             
@@ -175,8 +174,7 @@
               [(ngModel)]="statusTypeName2"
               [required]="true"
               #statusType="ngModel" 
-              [ngClass]="{ 'error': isSubmited && statusType.errors }"
-              [@shakeAnimation]=" !(isSubmited && statusType.errors) ?'valid':'invalid'"
+              [ngClass]="{ 'error': isSubmited && statusType.errors  }"
               ></p-dropdown>
 
               

@@ -1,6 +1,5 @@
 
 
-import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeService } from 'src/app/services/employeBankService';
@@ -16,50 +15,12 @@ export interface EmployeeInterFace{
   lastName?:string
 }
 
-const shakeAnimation = trigger('shakeAnimation', [
-  state('invalid', style({
-    transform: 'translateX(0px)',
-    borderColor: 'red'
-  })),
-  state('invalid', style({
-    transform: 'translateX(0px)',
-  })),
-  transition('* => invalid', [
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(10px)', borderColor: 'red' })),
-    animate('0.1s', style({ transform: 'translateX(0px)', borderColor: 'red' })),
-  ]),
-  transition('invalid => *', [
-    animate('0.1s', style({ transform: 'translateX(0px)'})),
-  ])
-]);
 
-
-const shakeAnimationPassword =trigger('shakeAnimationPassword',[
-  state('invalid',style({
-    transform:'translateX(0px)',
-    borderColor:'red'
-  })),
-  
-  
-  transition('* => invalid', [
-    animate('0.1s', style({ transform: 'translateX(10px)' , borderColor:'red'})),
-    animate('0.1s', style({ transform: 'translateX(-10px)', borderColor:'red' })),
-    animate('0.1s', style({ transform: 'translateX(0px)', borderColor:'red' }))
-  ]),
-])
 
 @Component({
   selector: 'edit-bank-details',
   templateUrl: './edit-bank-details.component.html',
-  animations:[shakeAnimation,shakeAnimationPassword],
+
   styleUrls: ['./edit-bank-details.component.css']
 })
 export class EditBankDetailsComponent implements OnInit{
@@ -83,6 +44,7 @@ export class EditBankDetailsComponent implements OnInit{
 
     this.activeRoutIdFunction()
       this.employeeService.getSpecifiEmployeeDataById().subscribe((result:any)=>{
+        console.log(result)
         this.employeess=result
 
         const newEmpData= this.employeess.map((e:any)=>({
@@ -128,7 +90,7 @@ export class EditBankDetailsComponent implements OnInit{
       this.submited=false
       setTimeout(() => {
         this.submited=true
-      }, 400);
+      }, 200);
     }
    
   }
