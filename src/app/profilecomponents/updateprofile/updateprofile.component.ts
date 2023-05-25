@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, LOCALE_ID,Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 import { HttpClientService } from 'src/app/services/http-client.service';
@@ -12,6 +12,7 @@ import {
 } from '@angular/forms';
 import { AuthguardService } from 'src/app/services/authguard.service';
 import { MessageService } from 'primeng/api';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-updateprofile',
@@ -23,6 +24,8 @@ export class UpdateprofileComponent {
   submitted = false;
   isAct = true;
   public updateform: FormGroup;
+ 
+  doj: string;
 
   constructor(
     private router: Router,
@@ -30,7 +33,10 @@ export class UpdateprofileComponent {
     private designatonservice: HttpClientService,
     private formBuilder: FormBuilder,
     private authServ: AuthguardService,
-    private messageService: MessageService
+ 
+    private messageService: MessageService,
+    @Inject(LOCALE_ID) public local: string,
+  
   ) {}
 
   get f(): { [key: string]: AbstractControl } {
@@ -39,7 +45,11 @@ export class UpdateprofileComponent {
 
   ngOnInit(): void {
     this.updateform = this.formBuilder.group({
-      employeeId: ['', Validators.required],
+      employeeId: new FormControl({
+        value: '',
+        disabled: true,
+      }),
+      // employeeId: ['', Validators.required ,disabled: true,],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', Validators.required],
@@ -61,6 +71,7 @@ export class UpdateprofileComponent {
         disabled: true,
       }),
     });
+    
 
     this.formdataget();
   }
@@ -69,7 +80,12 @@ export class UpdateprofileComponent {
     let data: any = window.sessionStorage.getItem('loggedinUser');
     this.userdata = JSON.parse(data);
     //  this.updateform.patchValue(this.userdata);
-
+    // this.doj = formatDate(
+    //   this.updateform.value.doj,
+    //   'MM-dd-YYYY',
+    //   this.local
+    // );
+   
     this.GetEmployee();
     if (!this.userdata.isActive) this.updateform.controls['isActive'].disable();
     // this.service.getEmployeeList().subscribe((data1: any) => {
@@ -80,6 +96,7 @@ export class UpdateprofileComponent {
     // this.updateform.patchValue(this.userdata);
     // //  if (!userdata.isActive) this.updateform.controls['isActive'].disable();
     // });
+
   }
 
   //  formdataget() {
@@ -95,6 +112,7 @@ export class UpdateprofileComponent {
         this.updateform.controls[control].markAsTouched();
         this.updateform.controls[control].markAsDirty();
       }
+   
 
       this.messageService.add({
         severity: 'error',
@@ -104,6 +122,7 @@ export class UpdateprofileComponent {
       });
       return;
     } else if (this.updateform.valid) {
+     
       this.service
         .updateprofile(this.updateform.value, this.userdata.id)
         .subscribe((res) => {
@@ -117,14 +136,22 @@ export class UpdateprofileComponent {
           }
         });
       this.submitted = true;
+
+     
+      
       // this.router.navigate(['navbar/Employees']);
     }
   }
-
+ 
   GetEmployee() {
     this.service.getEmployeeById(this.userdata.id).subscribe((res) => {
       this.updateform.patchValue(res);
       // this.submitted = true;
+      
+      
+        
+     
+     
       for (const control of Object.keys(this.updateform.controls)) {
         this.updateform.controls[control].markAsTouched();
       }
