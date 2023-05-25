@@ -175,3 +175,6 @@ border: transparent;
 .p-paginator .p-paginator-pages .p-paginator-page{
    font-size: smaller;
 }
+.p-inputtext {
+    font-size: smaller !important;   
+}
