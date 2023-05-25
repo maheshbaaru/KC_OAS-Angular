@@ -18,12 +18,16 @@
     margin: 30px;
 }
 .profile{
-    margin: 30px;
+    width: 233px;
 }
-/* img:hover{
-border-radius: 30%;
-transform:scale(2.5);
-} */
+.nav-item{
+    display: flex;
+    justify-content: space-between;
+}
+img{
+border-radius: 50%;
+
+}
 /* 
 .div-img{
     justify-content: center;
