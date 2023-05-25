@@ -9,7 +9,13 @@
             <button pButton routerLink="../create-new-salary-details" class="h-1rem p-button-success"style="float: right;font-size: small;font-weight: 500;margin-right:10px;">+ CREATE NEW</button>
     </div>
     </ng-template>
-    <p-table #dt [value]="empSalDetails" [tableStyle]="{'min-width': '50rem'}" [paginator]="true" [rows]="10"  styleClass="p-datatable-gridlines"
+
+
+
+    <p-table #dt [value]="empSalDetails" [tableStyle]="{'min-width': '50rem'}" 
+    styleClass="p-datatable p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="10"
+[showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+[rowsPerPageOptions]="[10, 25, 50]"
     [globalFilterFields]="['Eid','Name','salary','lastRevisedDate','nextRevisedDate']">
     <ng-template pTemplate="header">
         <tr>
