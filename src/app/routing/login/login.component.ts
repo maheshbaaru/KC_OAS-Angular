@@ -70,7 +70,7 @@ export class LoginComponent {
       
       // }
 
-      
+      this.messageService.clear();
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
@@ -98,16 +98,8 @@ export class LoginComponent {
               this.isLoginFailed = false;
               this.isLoggedIn = false;
               this.router.navigate(['navbar']);
-            } else {
-              this.errorMessage = 'Username/Password is incorrect';
-              this.isLoginFailed = true;
-              this.messageService.add({
-                severity: 'error',
-                summary: 'Error',
-                detail: 'Please fill the required fields',
-                sticky: true,
-              });
             }
+        
           } else {
             this.messageService.clear();
             // this.errorMessage = 'Username/Password is incorrect';
@@ -121,10 +113,7 @@ export class LoginComponent {
           }
         },
 
-        error: (err: { error: { message: string } }) => {
-          this.errorMessage = err.error.message;
-          this.isLoginFailed = true;
-        },
+       
       });
       if (rememberMe) {
         sessionStorage.setItem('rememberMe', 'yes');
