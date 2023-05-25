@@ -162,3 +162,16 @@ border: transparent;
     padding:0.3rem;
     font-size: smaller;
 }
+.p-paginator .p-dropdown {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    height: 2rem !important;
+    
+}
+
+.p-paginator .p-paginator-current{
+    font-size: smaller;
+}
+.p-paginator .p-paginator-pages .p-paginator-page{
+   font-size: smaller;
+}
