@@ -81,11 +81,17 @@ export class CreateBankDetailsComponent implements OnInit {
   ngOnInit() {
     this.employeesService.getEmployeeData().subscribe((result) => {
       this.employeess = result;
+      console.log(this.employeess);
+      
       const employeeresponse = this.employeess.map((e: any) => ({
         ...e,
-        Name: `${e.firstName.trimStart()} ${e.lastName}`,
+        Name: `${e.firstName} ${e.lastName}`,
+        
       }));
+
       this.employeNameArray = employeeresponse;
+      console.log(this.employeNameArray);
+      
     });
   }
 

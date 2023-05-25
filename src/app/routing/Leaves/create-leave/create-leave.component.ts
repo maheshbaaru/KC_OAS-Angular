@@ -69,6 +69,7 @@ export class CreateLeaveComponent {
         this.empForm.controls[control].markAsTouched();
         this.empForm.controls[control].markAsDirty();
       }
+      this.messageService.clear();
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
