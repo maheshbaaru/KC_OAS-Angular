@@ -71,7 +71,7 @@ export class LoginComponent {
       
       // }
 
-      this.messageService.clear();
+      
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
