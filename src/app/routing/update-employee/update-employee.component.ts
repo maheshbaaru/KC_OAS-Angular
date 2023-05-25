@@ -11,6 +11,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-update-employee',
@@ -31,7 +32,7 @@ export class UpdateEmployeeComponent {
     private _service: EmployeeService,
     private active: ActivatedRoute,
     private fb: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService, private date: DatePipe
   ) {
     this.updatedForm = this.fb.group({
       employeeID: [null, Validators.required],
@@ -66,7 +67,7 @@ export class UpdateEmployeeComponent {
             FirstName: this.Result.firstName,
             PanNumber: this.Result.panNumber,
             LastName: this.Result.lastName,
-            DOJ: this.Result.doj,
+            DOJ: this.Result.doj.split('T')[0],
             shiftId: this.shifts.find(
               (item: any) => item.shiftId == this.Result.shiftId
             ),
@@ -81,7 +82,7 @@ export class UpdateEmployeeComponent {
 
   onSubmit(form: any) {
     if (this.updatedForm.valid) {
-      this._service.UpdateEmployeeData(form).subscribe((res) => {});
+      this._service.UpdateEmployeeData(form).subscribe((res) => { });
       this.messageService.add({
         severity: 'success',
         summary: 'Success',
