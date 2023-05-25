@@ -1,8 +1,8 @@
  .nav-content{
     display: flex;
     justify-content: space-between;
-    
-} 
+
+}
 
 .right-content{
     display: flex;
@@ -18,7 +18,7 @@
     margin: 30px;
 }
 .profile{
-    width: 233px;
+    width:max-content;
 }
 .nav-item{
     display: flex;
@@ -28,7 +28,7 @@ img{
 border-radius: 50%;
 
 }
-/* 
+/*
 .div-img{
     justify-content: center;
     align-items: center;
@@ -46,7 +46,7 @@ border-radius: 50%;
 }
 img:hover{
     transform:scale(2.5);
-} 
+}
 .navbar-nav .mr-auto{
     margin: 15px;
 } */
@@ -72,6 +72,7 @@ footer {
    cursor: pointer;
    font-size: medium;
    font-weight:400;
+   padding-right: 10px;
 }
 .profile-class{
     width:50px;

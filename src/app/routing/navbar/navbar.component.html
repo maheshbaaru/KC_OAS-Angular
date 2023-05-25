@@ -4,7 +4,7 @@
 
         <div class="right-content">
             <div class="navbar-nav mr-auto">
-                <img src="assets/codecorpimage.png"  width="80px"height="80px" alt=" "style="padding: 10px; margin: 10px ;" />
+                <img src="assets/codecorpimage.png"  width="80px"height="80px" alt=" "style="padding: 13px;" />
             </div>
             <div class="navbar-nav mr-auto">
                 <a class="nav-link customizing" [routerLink]="['paySlip']" >Payslip</a>
@@ -82,7 +82,7 @@
                     <a class="nav-link customizing" #levelTWoTrigger="matMenuTrigger"
                         (mouseenter)="levelTWoTrigger.openMenu()" [matMenuTriggerFor]="levelTWo">Welcome {{name}}</a>
                         <img  #levelTWoTrigger="matMenuTrigger"
-                        (mouseenter)="levelTWoTrigger.openMenu()" [matMenuTriggerFor]="levelTWo" src="{{profilePic}}" class="profile-class" width="50px"height="50px" alt=" " /> 
+                        (mouseenter)="levelTWoTrigger.openMenu()" [matMenuTriggerFor]="levelTWo" src="{{profilePic}}" class="profile-class" width="50px"height="50px" alt=" " />
                     <mat-menu #levelTWo="matMenu" direction="down" yPosition="below">
 
                         <span (mouseleave)="levelTWoTrigger.closeMenu()">
