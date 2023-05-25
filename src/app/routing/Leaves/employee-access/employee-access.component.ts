@@ -24,6 +24,13 @@ export class EmployeeAccessComponent {
     // });
   }
   ngAfterViewInit() {
-    return this.empServe.getUsers().subscribe((res) => (this.empAccess = res));
+    let loogedUser: any = window.sessionStorage.getItem('auth-user');
+    loogedUser = JSON.parse(loogedUser);
+    return this.empServe.getUsers().subscribe((res: any) => {
+      this.empAccess = res.filter(
+        (dat: any) => dat.employeeId == loogedUser.employeeID
+      );
+      console.log(this.empAccess);
+    });
   }
 }

@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Observable, Subscriber } from 'rxjs';
@@ -86,7 +82,12 @@ export class UpdatephotoComponent {
         this.myReactiveForm.controls[control].markAsTouched();
         this.myReactiveForm.controls[control].markAsDirty();
       }
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please fill the required fields',sticky: true  });
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Please fill the required fields',
+        sticky: true,
+      });
       return;
     } else if (this.myReactiveForm.valid) {
       if (!profilepic) {
@@ -99,8 +100,6 @@ export class UpdatephotoComponent {
           .addprofilephoto(this.image, loogedUser.employeeID * 1)
           .subscribe((res: any) => {
             this.profileServ.userPhoto.next(this.preview);
-
-            console.log(res);
           });
       } else {
         this.image = this.image.replace('fakepath\\', '');
@@ -119,9 +118,9 @@ export class UpdatephotoComponent {
                 detail: 'Photo Uploaded.',
               });
             }
+            this.myReactiveForm.reset();
           });
       }
     }
-    this.myReactiveForm.reset();
   }
 }
