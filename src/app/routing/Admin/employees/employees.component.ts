@@ -29,7 +29,7 @@ export class EmployeesComponent {
       // ];
     });
     this.cols = [
-      { field: 'EmployeeId', header: 'Emp ID' },
+      { field: 'employeeID', header: 'Emp ID' },
       { field: 'firstName', header: 'FirstName' },
       { field: 'lastName', header: 'LastName' },
       { field: 'email', header: 'Email' },
