@@ -61,22 +61,23 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    console.log('a....');
     this.password = 'password';
     const { username, password, rememberMe } = this.form;
-    if (this.form.invalid) {
-      for (const control of Object.keys(this.form.controls)) {
-        this.form.controls[control].markAsTouched();
-        this.form.controls[control].markAsDirty();
-        this.loginForm=false
+    if (!this.form.username || this.form.username == null || !this.form.password || this.form.password ==null) {
+      // for (const control of Object.keys(this.form.controls)) {
+      //   // this.form.controls[control].markAsTouched();
+      //   // this.form.controls[control].markAsDirty();
+      //   this.loginForm=false
       
-      }
-      // this.messageService.add({
-      //   severity: 'error',
-      //   summary: 'Error',
-      //   detail: 'Please fill the required fields',
-      //   sticky: true,
-      // });
+      // }
+
+      this.messageService.clear();
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Please fill the required fields',
+        sticky: true,
+      });
  
      
     } else {
@@ -113,10 +114,10 @@ export class LoginComponent {
             this.messageService.clear();
             // this.errorMessage = 'Username/Password is incorrect';
             this.isLoginFailed = true;
-            this.messageService.add({
+            this.messageService.add({   
               severity: 'error',
               summary: 'Error',
-              detail: 'Enter Username/Password ',
+              detail: 'Username/Password is incorrect ',
               sticky: true,
             });
           }
