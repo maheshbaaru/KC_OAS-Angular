@@ -17,7 +17,6 @@ export class EmployeeAccessComponent {
   ngOnInit() {
     // let loogedUser: any = window.sessionStorage.getItem('auth-user')
     // loogedUser = JSON.parse(loogedUser)
-    // debugger
     // this.empServe.getUsers().subscribe((data: any) => {
     // return data;
     // this.empAccess = data.filter((dat: any) => dat.id == loogedUser.employeeID* 1);
@@ -30,7 +29,6 @@ export class EmployeeAccessComponent {
       this.empAccess = res.filter(
         (dat: any) => dat.employeeId == loogedUser.employeeID
       );
-      console.log(this.empAccess);
     });
   }
 }
