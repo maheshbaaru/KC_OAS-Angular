@@ -52,7 +52,6 @@ export class SalaryDetailsComponent {
     });
   }
   // getEmployeeById(id: number) {
-  //    debugger;
 
   // }
 }

@@ -80,7 +80,12 @@ export class ChangepasswordComponent {
         this.form.controls[control].markAsTouched();
         this.form.controls[control].markAsDirty();
       }
-      this.messageSer.add({ severity: 'error', summary: 'Error', detail: 'Please fill the required fields',sticky: true  });
+      this.messageSer.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Please fill the required fields',
+        sticky: true,
+      });
       return;
     } else if (this.form.valid) {
       let logedUser: any = window.sessionStorage.getItem('auth-user');
@@ -108,9 +113,9 @@ export class ChangepasswordComponent {
                 detail: 'Your Password Saved Successfully',
               });
             }
+            this.form.reset();
           });
       }
     }
-    this.form.reset();
   }
 }

@@ -136,9 +136,9 @@ export class SalDeductionComponent {
               detail: 'Employee SalaryDeduction saved',
             });
           }
+          this.form.reset();
         });
     }
-    this.form.reset();
   }
   ngAfterViewInit() {
     this.salDeductionServ

@@ -43,9 +43,8 @@ export class CreateTaxtypeComponent {
             detail: 'TaxType saved',
           });
         }
+        this.form.reset();
       });
     }
-
-    this.form.reset();
   }
 }

@@ -63,9 +63,8 @@ export class CreateDesignationComponent implements OnInit {
               detail: 'Designation saved',
             });
           }
+          this.DsgForm.reset();
         });
     }
-
-    this.DsgForm.reset();
   }
 }

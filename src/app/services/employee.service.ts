@@ -50,12 +50,6 @@ export class EmployeeService {
   appliedLeaves() {
     return this.http.get(`${this.API_CALL}/LeavesApproval`);
   }
-  // getDesignationRoles() {
-  //   return this.http.get(`${this.API_CALL}/GetDesignations`);
-  // }
-  // getShifts() {
-  //   return this.http.get(`${this.API_CALL}/TblShiftControllerAPI`);
-  // }
 
   id(id: any) {
     this.currentid = id;
@@ -120,43 +114,9 @@ export class EmployeeService {
   }
 
   UpdateEmployeeData(form: any) {
-    debugger;
     return this.http.put<any>(
       `${this.API_CALL}/UpdateEmployeeTbl?employeeID=${form.employeeID}&Email=${form.Email}&isActive=${form.checked}&FirstName=${form.FirstName}&PanNumber=${form.PanNumber}&LastName=${form.LastName}&shiftId=${form.shiftId.shiftId}&DesignationId=${form.DesignationId.id}`,
       this.httpOptions
     );
   }
 }
-// UpdateEmployeeData(
-// EmployeeId: string,
-// Email: string,
-// FirstName: string,
-// LastName: string,
-// Password: string,
-// PanNumber: string,
-// DesignationId: number,
-// ShiftId: number,
-// Doj: Date
-// ) {
-//debugger;
-//const body = JSON.stringify({
-// Id: EmployeeId,
-// Email: Email,
-// FirstName: FirstName,
-// LastName: LastName,
-// Password: Password,
-// PanNumber: PanNumber,
-// DesignationId: DesignationId,
-// ShiftId: ShiftId,
-// Doj: Doj,
-
-// });
-//     return this.http.put<any>(
-//       `${this.API_CALL}/UpdateEmployeeTbl=`,
-//       body,
-//       this.httpOptions
-//     );
-//   }
-// }
-
-//}
