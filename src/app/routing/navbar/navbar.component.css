@@ -1,8 +1,8 @@
  .nav-content{
     display: flex;
     justify-content: space-between;
-    
-} 
+
+}
 
 .right-content{
     display: flex;
@@ -18,13 +18,17 @@
     margin: 30px;
 }
 .profile{
-    margin: 30px;
+    width:max-content;
 }
-/* img:hover{
-border-radius: 30%;
-transform:scale(2.5);
-} */
-/* 
+.nav-item{
+    display: flex;
+    justify-content: space-between;
+}
+img{
+border-radius: 50%;
+
+}
+/*
 .div-img{
     justify-content: center;
     align-items: center;
@@ -42,7 +46,7 @@ transform:scale(2.5);
 }
 img:hover{
     transform:scale(2.5);
-} 
+}
 .navbar-nav .mr-auto{
     margin: 15px;
 } */
@@ -68,6 +72,7 @@ footer {
    cursor: pointer;
    font-size: medium;
    font-weight:400;
+   padding-right: 10px;
 }
 .profile-class{
     width:50px;
