@@ -24,7 +24,7 @@ export class LoginComponent {
   show = false;
   password: string;
   myform: FormGroup;
-  invalid= true
+  invalid = true;
   form: any = {
     username: null,
     password: null,
@@ -51,13 +51,12 @@ export class LoginComponent {
       this.roles = this.storageService.getUser().designationID;
     }
     this.rememberMe = false;
-    this.invalid
+    this.invalid;
     this.f = new FormGroup({
       username: new FormControl(null),
       password: new FormControl(null),
       rememberMe: new FormControl(null),
     });
-   
   }
 
   onSubmit() {
@@ -95,7 +94,6 @@ export class LoginComponent {
               );
             });
             if (data != '' && data != null) {
-              console.log("kc")
               this.storageService.saveUser(data);
               this.isLoginFailed = false;
               this.isLoggedIn = false;

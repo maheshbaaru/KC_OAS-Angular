@@ -16,6 +16,7 @@ interface LeaveType {
 })
 export class CreateLeaveComponent {
   leaveTypes: any | object;
+  statusTypes: any | object;
   empForm: FormGroup;
   leaveTypeId: any;
   FromDate: any;
@@ -25,6 +26,7 @@ export class CreateLeaveComponent {
   id: any;
   submitted = false;
   isLoggedIn = false;
+  status: any;
 
   constructor(
     private _fb: FormBuilder,
@@ -34,7 +36,9 @@ export class CreateLeaveComponent {
     private route: Router,
     @Inject(LOCALE_ID) public local: string,
     private messageService: MessageService
-  ) {}
+  ) {
+    
+  }
 
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
@@ -43,7 +47,13 @@ export class CreateLeaveComponent {
     this._leaveservice
       .getLeaveType()
       .subscribe((res) => (this.leaveTypes = res));
-
+      this._leaveservice
+      .getStatus()
+      .subscribe((res) => {(this.statusTypes = res)
+        
+        this.status= this.statusTypes[0];
+      console.log(this.status.name)}
+      );
     this.empForm = this.formBuilder.group({
       leaveTypeId: [null, Validators.required],
       FromDate: [null, Validators.required],
@@ -84,19 +94,19 @@ export class CreateLeaveComponent {
         });
       } else {
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        console.log(diffDays);
+
         this.leaveTypeId = this.empForm.value.leaveTypeId.id;
         this.FromDate = formatDate(
           this.empForm.value.FromDate,
-          'YYYY-MM-dd',
+          'MM-dd-YYYY',
           this.local
         );
         this.ToDate = formatDate(
           this.empForm.value.ToDate,
-          'YYYY-MM-dd',
+          'MM-dd-YYYY',
           this.local
         );
-
+        
         this.StatusId = this.empForm.value.StatusId;
         this.Comments = this.empForm.value.Comments;
 
@@ -110,7 +120,6 @@ export class CreateLeaveComponent {
             diffDays
           )
           .subscribe((res: any) => {
-            // console.log(res);
             if (res) {
               this.messageService.add({
                 severity: 'success',

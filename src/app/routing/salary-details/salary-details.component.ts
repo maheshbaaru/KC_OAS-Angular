@@ -47,12 +47,12 @@ export class SalaryDetailsComponent {
           this.local
         ),
       }));
-      console.log(salDetails);
+
       this.empSalDetails = salDetails;
     });
   }
   // getEmployeeById(id: number) {
   //    debugger;
-  //    console.log(id);
+
   // }
 }

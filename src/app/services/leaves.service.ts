@@ -25,13 +25,20 @@ export class LeavesService {
     return this.http.get(`${this.API_CALL}/LeavesApproval`);
   }
 
-  applyleave( LeaveTypeId:number,FromDate:string,ToDate:string,StatusId:number,Comments:string,diffDays:number) {
+  applyleave(
+    LeaveTypeId: number,
+    FromDate: string,
+    ToDate: string,
+    StatusId: number,
+    Comments: string,
+    diffDays: number
+  ) {
     let currentDate = new Date().toJSON().slice(0, 10);
-    console.log(currentDate);
+
     let data: any = window.sessionStorage.getItem('auth-user');
     let userdata = JSON.parse(data);
   
-    return this.http.post(`${this.API_CALL}/ApplyLeave?EmpId=${userdata.id}&LeaveTypeId=${LeaveTypeId}&NumOfDays=${diffDays}&FromDate=${FromDate}&ToDate=${ToDate}&Comments=${Comments}&Appliedon=${currentDate}&StatusId=${StatusId}`,this.httpOptions)
+    return this.http.post(`${this.API_CALL}/ApplyLeave?EmpId=${userdata.id}&LeaveTypeId=${LeaveTypeId}&NumOfDays=${diffDays}&FromDate=${FromDate}&ToDate=${ToDate}&Comments=${Comments}&Appliedon=${currentDate}&Status='New'&StatusId=1`,this.httpOptions)
   
   }
   employeeLeaves(
