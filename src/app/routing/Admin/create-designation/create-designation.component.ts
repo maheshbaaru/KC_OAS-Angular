@@ -62,8 +62,14 @@ export class CreateDesignationComponent implements OnInit {
               summary: 'Success',
               detail: 'Designation saved',
             });
+            this.DsgForm.reset();
+          } else {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Designation is Already Existing',
+            });
           }
-          this.DsgForm.reset();
         });
     }
   }

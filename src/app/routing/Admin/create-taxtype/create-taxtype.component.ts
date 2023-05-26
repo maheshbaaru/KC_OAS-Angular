@@ -42,8 +42,14 @@ export class CreateTaxtypeComponent {
             summary: 'Success',
             detail: 'TaxType saved',
           });
+          this.form.reset();
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'TaxType is Already Existing',
+          });
         }
-        this.form.reset();
       });
     }
   }
