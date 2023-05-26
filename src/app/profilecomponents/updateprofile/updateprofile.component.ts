@@ -45,11 +45,11 @@ export class UpdateprofileComponent {
 
   ngOnInit(): void {
     this.updateform = this.formBuilder.group({
-      employeeId: new FormControl({
-        value: '',
-        disabled: true,
-      }),
-      // employeeId: ['', Validators.required ,disabled: true,],
+    //   employeeId: new FormControl({
+    //     value: '',
+      
+    //   }),
+     employeeId: ['', Validators.required ],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', Validators.required],
