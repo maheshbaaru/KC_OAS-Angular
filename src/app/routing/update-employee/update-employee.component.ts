@@ -67,7 +67,8 @@ export class UpdateEmployeeComponent {
             FirstName: this.Result.firstName,
             PanNumber: this.Result.panNumber,
             LastName: this.Result.lastName,
-            DOJ: this.Result.doj,
+            // DOJ: this.Result.doj,
+            DOJ: this.Result.doj.split('T')[0],
             shiftId: this.shifts.find(
               (item: any) => item.shiftId == this.Result.shiftId
             ),
