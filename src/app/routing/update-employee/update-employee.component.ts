@@ -86,13 +86,13 @@ export class UpdateEmployeeComponent {
       this.messageService.add({
         severity: 'success',
         summary: 'Success',
-        detail: 'Successfully Updated Employee Details',
+        detail: ' Employee Details  Updated Successfully',
       });
     } else {
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
-        detail: 'Please Correctly Fill The Required Fields',
+        detail: 'Please  Fill The Required Fields',
       });
     }
   }
