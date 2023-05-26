@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from '../../../services/employee.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-sal-deduction-list',
@@ -13,7 +14,8 @@ export class SalDeductionListComponent {
 
   constructor(
     private active: ActivatedRoute,
-    private employeeSer: EmployeeService
+    private employeeSer: EmployeeService,
+    @Inject(LOCALE_ID) public local: string
   ) {}
   ngOnInit() {
     this.cols = [
@@ -33,6 +35,11 @@ export class SalDeductionListComponent {
 
       const salDeduction = this.employeeList.map((person: any) => ({
         ...person,
+        effectedMonth: formatDate(
+          person.effectedMonth,
+          'YYYY-MM-dd',
+          this.local
+        ),
         empId:
           person.empId < 10
             ? 'KC00' + person.empId

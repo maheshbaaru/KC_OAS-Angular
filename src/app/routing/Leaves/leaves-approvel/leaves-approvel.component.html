@@ -78,7 +78,7 @@
 </div>
 
   <p-table
-        #dt1 [value]="leavesApproved"
+        #dt1 [value]="leavesApproved" [columns]="cols"
         styleClass="p-datatable p-datatable-gridlines p-datatable-striped"
         [tableStyle]="{'min-height': '20rem'}" [paginator]="true"
         [rows]="25" [showCurrentPageReport]="true"
@@ -90,74 +90,12 @@
 
 
 
-    <ng-template pTemplate="header">
+    <ng-template pTemplate="header" let-columns>
       <tr>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-          Emp ID
-          <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
-
-        </div>
-        </th>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-            Emp Name
-            <p-columnFilter type="text" field="empName" display="menu"></p-columnFilter>
-          </div>
-        </th>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-          Leave Type
-          <p-columnFilter type="text" field="leaveTypeId" display="menu"></p-columnFilter>
-
-        </div>
-        </th>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-          Num Of Days
-          <p-columnFilter type="text" field="numOfDays" display="menu"></p-columnFilter>
-
-        </div>
-        </th>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-          From Date
-          <p-columnFilter type="text" field="fromDate" display="menu"></p-columnFilter>
-
-        </div>
-        </th>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-          To Date
-          <p-columnFilter type="text" field="toDate" display="menu"></p-columnFilter>
-
-        </div>
-        </th>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-          Applied On
-          <p-columnFilter type="text" field="appliedOn" display="menu"></p-columnFilter>
-
-        </div>
-        </th>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-          Status
-          <p-columnFilter type="text" field="status" display="menu"></p-columnFilter>
-
-        </div>
-        </th>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-          Comments
-          <p-columnFilter type="text" field="comments" display="menu"></p-columnFilter>
-
-        </div>
-        </th>
-        <th>
-          <div class="p-d-flex p-jc-between p-ai-center">
-          Admin Comments
-          <p-columnFilter type="text" field="adminComments" display="menu"></p-columnFilter>
+        <th *ngFor="let col of columns">
+          <div style="display: flex; width: max-content;">
+            <span style="padding-top: 6px;" >{{col.header}}</span>
+          <p-columnFilter type="text" [field]="col.field" display="menu"></p-columnFilter>
 
         </div>
         </th>
@@ -175,9 +113,9 @@
         <td>{{emp.leaveTypeId}}</td>
 
         <td>{{emp.numOfDays}}</td>
-        <td>{{emp.fromDate | date:"MM-dd-yyyy HH:mm:ss"}}</td>
-        <td>{{emp.toDate | date:"MM-dd-yyyy HH:mm:ss"}}</td>
-        <td>{{emp.appliedOn | date:"MM-dd-yyyy HH:mm:ss"}}</td>
+        <td>{{emp.fromDate | date:"MM-dd-yyyy"}}</td>
+        <td>{{emp.toDate | date:"MM-dd-yyyy"}}</td>
+        <td>{{emp.appliedOn | date:"MM-dd-yyyy"}}</td>
         <td>{{emp.status}}</td>
         <td>{{emp.comments}}</td>
         <td>{{emp.adminComments}}</td>

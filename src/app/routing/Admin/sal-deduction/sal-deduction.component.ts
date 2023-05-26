@@ -66,6 +66,7 @@ export class SalDeductionComponent {
         );
         const employeeData = this.users.map((person: any) => ({
           ...person,
+
           employeeId:
             person.employeeId < 10
               ? 'KC00' + person.employeeId
@@ -79,6 +80,7 @@ export class SalDeductionComponent {
           }`,
         }));
         this.employeeName = employeeData;
+        console.log(this.employeeName);
       });
     });
     this.cols = [

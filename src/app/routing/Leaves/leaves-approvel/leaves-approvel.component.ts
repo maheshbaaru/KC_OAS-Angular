@@ -27,7 +27,7 @@ interface employeName {
 })
 export class LeavesApprovelComponent {
   leavesApproved: any;
-
+  cols: any[];
   httpstoredData: any;
   empForm: FormGroup;
   names: EmployeeName[];
@@ -94,6 +94,19 @@ export class LeavesApprovelComponent {
     this.maxDate = new Date();
     this.maxDate.setMonth(nextMonth);
     this.maxDate.setFullYear(nextYear);
+
+    this.cols = [
+      { field: 'empId', header: 'Emp ID' },
+      { field: 'empName', header: 'Emp Name' },
+      { field: 'leaveTypeId', header: 'Leave Type' },
+      { field: 'numOfDays', header: 'Num Of Days' },
+      { field: 'fromDate', header: 'From Date' },
+      { field: 'toDate', header: 'To Date' },
+      { field: 'appliedOn', header: 'Applied On' },
+      { field: 'status', header: 'Status' },
+      { field: 'comments', header: 'Comments' },
+      { field: 'adminComments', header: 'Admin Comments' },
+    ];
   }
 
   // ngDoCheck(){

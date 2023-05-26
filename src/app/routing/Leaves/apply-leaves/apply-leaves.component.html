@@ -18,8 +18,8 @@
     <ng-template pTemplate="header" let-columns>
       <tr>
         <th *ngFor="let col of columns">
-          <div class="p-d-flex p-jc-between p-ai-center">
-         {{col.header}}
+          <div style="display: flex; width: max-content;">
+         <span style="padding-top: 6px;" >{{col.header}}</span>
           <p-columnFilter type="text" [field]="col.field" display="menu"></p-columnFilter>
 
         </div>
