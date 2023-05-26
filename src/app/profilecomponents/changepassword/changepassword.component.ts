@@ -56,22 +56,14 @@ export class ChangepasswordComponent {
         null,
         [
           Validators.required,
-          Validators.pattern(
-            /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
-          ),
-          Validators.minLength(8),
-        ],
+          Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/ ),Validators.minLength(8), ],
       ],
       confirmPass: [
         null,
         [
           Validators.required,
-          Validators.pattern(
-            /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
-          ),
-          Validators.minLength(8),
-        ],
-      ],
+          Validators.pattern( /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/ ), 
+            Validators.minLength(8),], ],
     });
   }
   formSubmit() {

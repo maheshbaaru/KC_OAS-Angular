@@ -56,7 +56,8 @@ img:hover{
 .mat-toolbar.mat-primary {
     /* background: #495cc5;  */
     /* background: #3f51b5; */
-    background: rgb(139, 136, 136);
+    /* background: rgb(139, 136, 136); */
+    background: rgb(28 54 99);
     color: #fff;
 }
 

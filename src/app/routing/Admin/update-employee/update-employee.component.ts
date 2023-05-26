@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { EmployeeService } from 'src/app/services/employee.service';
-import { Shifts } from '../Admin/create-new-employee/create-new-employee.component';
-import { Roles } from '../Admin/create-new-employee/create-new-employee.component';
+import { Shifts } from '../create-new-employee/create-new-employee.component';
+import { Roles } from '../create-new-employee/create-new-employee.component';
 import { ActivatedRoute } from '@angular/router';
 import {
   Form,

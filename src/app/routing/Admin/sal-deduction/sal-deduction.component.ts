@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EmployeeService } from '../../services/employee.service';
+import { EmployeeService } from '../../../services/employee.service';
 import { SalarydeductionlistService } from 'src/app/services/salarydeductionlist.service';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { DatePipe, formatDate } from '@angular/common';

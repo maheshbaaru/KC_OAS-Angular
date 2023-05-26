@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { UpdateprofileComponent } from './profilecomponents/updateprofile/updateprofile.component';
 import { LoginComponent } from './routing/login/login.component';
 import { NavbarComponent } from './routing/navbar/navbar.component';
-import { SalaryDetailsComponent } from './routing/salary-details/salary-details.component';
+import { SalaryDetailsComponent } from './routing/Admin/salary-details/salary-details.component';
 // import { SalaryDetailsComponent } from './salary-details/salary-details.component';
 import { CreateDesignationComponent } from './routing/Admin/create-designation/create-designation.component';
 import { CreateTaxtypeComponent } from './routing/Admin/create-taxtype/create-taxtype.component';
 import { CreateNewSalaryDetailsComponent } from './routing/create-new-salary-details/create-new-salary-details.component';
 import { ProfilePhotoComponent } from './profilecomponents/profile-photo/profile-photo.component';
 
-import { SalDeductionComponent } from './routing/sal-deduction/sal-deduction.component';
+import { SalDeductionComponent } from './routing/Admin/sal-deduction/sal-deduction.component';
 import { HomeComponent } from './routing/home/home.component';
 
 import { SalDeductionListComponent } from './routing/Admin/sal-deduction-list/sal-deduction-list.component';
@@ -23,7 +23,7 @@ import { ChangepasswordComponent } from './profilecomponents/changepassword/chan
 import { CreateNewEmployeeComponent } from './routing/Admin/create-new-employee/create-new-employee.component';
 import { UpdatephotoComponent } from './profilecomponents/updatephoto/updatephoto.component';
 import { ForgotpasswordComponent } from './routing/forgotpassword/forgotpassword.component';
-import { UpdateEmployeeComponent } from './routing/update-employee/update-employee.component';
+import { UpdateEmployeeComponent } from './routing/Admin/update-employee/update-employee.component';
 import { EmployeeLeavesComponent } from './routing/Leaves/employee-leaves/employee-leaves.component';
 import { BankDetailsComponent } from './routing/bank-details/bank-details.component';
 import { CreateBankDetailsComponent } from './routing/bank-details/create-bank-details/create-bank-details.component';

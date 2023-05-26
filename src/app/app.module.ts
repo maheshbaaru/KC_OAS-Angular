@@ -8,7 +8,7 @@ import { LoginComponent } from './routing/login/login.component';
 import { NavbarComponent } from './routing/navbar/navbar.component';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SalaryDetailsComponent } from './routing/salary-details/salary-details.component';
+import { SalaryDetailsComponent } from './routing/Admin/salary-details/salary-details.component';
 import { SalaryService } from './services/salary.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
@@ -22,7 +22,7 @@ import { ProfilePhotoComponent } from './profilecomponents/profile-photo/profile
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { SalDeductionComponent } from './routing/sal-deduction/sal-deduction.component';
+import { SalDeductionComponent } from './routing/Admin/sal-deduction/sal-deduction.component';
 import { SalDeductionListComponent } from './routing/Admin/sal-deduction-list/sal-deduction-list.component';
 import { LeavesApprovelComponent } from './routing/Leaves/leaves-approvel/leaves-approvel.component';
 import { EmployeeAccessComponent } from './routing/Leaves/employee-access/employee-access.component';
@@ -34,7 +34,7 @@ import { ChangepasswordComponent } from './profilecomponents/changepassword/chan
 import { UpdatephotoComponent } from './profilecomponents/updatephoto/updatephoto.component';
 import { ForgotpasswordComponent } from './routing/forgotpassword/forgotpassword.component';
 
-import { UpdateEmployeeComponent } from './routing/update-employee/update-employee.component';
+import { UpdateEmployeeComponent } from './routing/Admin/update-employee/update-employee.component';
 import { EmployeeLeavesComponent } from './routing/Leaves/employee-leaves/employee-leaves.component';
 import { BankDetailsComponent } from './routing/bank-details/bank-details.component';
 import { CreateBankDetailsComponent } from './routing/bank-details/create-bank-details/create-bank-details.component';
