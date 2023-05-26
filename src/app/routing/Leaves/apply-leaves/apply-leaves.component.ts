@@ -23,7 +23,7 @@ export class ApplyLeavesComponent {
     loogedUser = JSON.parse(loogedUser);
     this.empSer.appliedLeaves().subscribe((data: any) => {
       this.employeeLeavs = data.filter(
-        (dat: any) => dat.empId == loogedUser.id * 1
+        (dat: any) => dat.empId == loogedUser.employeeID * 1
       );
     });
     this.cols = [
