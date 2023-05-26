@@ -1,4 +1,4 @@
-import { Component, LOCALE_ID,Inject } from '@angular/core';
+import { Component, LOCALE_ID, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
 import { HttpClientService } from 'src/app/services/http-client.service';
@@ -24,7 +24,7 @@ export class UpdateprofileComponent {
   submitted = false;
   isAct = true;
   public updateform: FormGroup;
- 
+
   doj: string;
 
   constructor(
@@ -33,11 +33,11 @@ export class UpdateprofileComponent {
     private designatonservice: HttpClientService,
     private formBuilder: FormBuilder,
     private authServ: AuthguardService,
- 
+
     private messageService: MessageService,
     @Inject(LOCALE_ID) public local: string,
-  
-  ) {}
+
+  ) { }
 
   get f(): { [key: string]: AbstractControl } {
     return this.updateform.controls;
@@ -45,11 +45,11 @@ export class UpdateprofileComponent {
 
   ngOnInit(): void {
     this.updateform = this.formBuilder.group({
-    //   employeeId: new FormControl({
-    //     value: '',
-      
-    //   }),
-     employeeId: ['', Validators.required ],
+      //   employeeId: new FormControl({
+      //     value: '',
+
+      //   }),
+      employeeId: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', Validators.required],
@@ -71,7 +71,7 @@ export class UpdateprofileComponent {
         disabled: true,
       }),
     });
-    
+
 
     this.formdataget();
   }
@@ -85,7 +85,7 @@ export class UpdateprofileComponent {
     //   'MM-dd-YYYY',
     //   this.local
     // );
-   
+
     this.GetEmployee();
     if (!this.userdata.isActive) this.updateform.controls['isActive'].disable();
     // this.service.getEmployeeList().subscribe((data1: any) => {
@@ -112,7 +112,7 @@ export class UpdateprofileComponent {
         this.updateform.controls[control].markAsTouched();
         this.updateform.controls[control].markAsDirty();
       }
-   
+
 
       this.messageService.add({
         severity: 'error',
@@ -122,7 +122,7 @@ export class UpdateprofileComponent {
       });
       return;
     } else if (this.updateform.valid) {
-     
+
       this.service
         .updateprofile(this.updateform.value, this.userdata.id)
         .subscribe((res) => {
@@ -131,27 +131,27 @@ export class UpdateprofileComponent {
             this.messageService.add({
               severity: 'success',
               summary: 'Success',
-              detail: 'Designation saved',
+              detail: 'profile updated successfully',
             });
           }
         });
       this.submitted = true;
 
-     
-      
+
+
       // this.router.navigate(['navbar/Employees']);
     }
   }
- 
+
   GetEmployee() {
     this.service.getEmployeeById(this.userdata.id).subscribe((res) => {
       this.updateform.patchValue(res);
 
       console.log(res);
-      
+
       // this.submitted = true;
-      
-     
+
+
       for (const control of Object.keys(this.updateform.controls)) {
         this.updateform.controls[control].markAsTouched();
       }
