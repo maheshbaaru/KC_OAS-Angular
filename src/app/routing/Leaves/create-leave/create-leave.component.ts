@@ -36,9 +36,7 @@ export class CreateLeaveComponent {
     private route: Router,
     @Inject(LOCALE_ID) public local: string,
     private messageService: MessageService
-  ) {
-    
-  }
+  ) {}
 
   minDate = new Date(2000, 0, 1);
   maxDate = new Date(2020, 0, 1);
@@ -47,13 +45,12 @@ export class CreateLeaveComponent {
     this._leaveservice
       .getLeaveType()
       .subscribe((res) => (this.leaveTypes = res));
-      this._leaveservice
-      .getStatus()
-      .subscribe((res) => {(this.statusTypes = res)
-        
-        this.status= this.statusTypes[0];
-      console.log(this.status.name)}
-      );
+    this._leaveservice.getStatus().subscribe((res) => {
+      this.statusTypes = res;
+
+      this.status = this.statusTypes[0];
+      console.log(this.status.name);
+    });
     this.empForm = this.formBuilder.group({
       leaveTypeId: [null, Validators.required],
       FromDate: [null, Validators.required],
@@ -107,7 +104,7 @@ export class CreateLeaveComponent {
           'MM-dd-YYYY',
           this.local
         );
-        
+
         this.StatusId = this.empForm.value.StatusId;
         this.Comments = this.empForm.value.Comments;
 
@@ -128,8 +125,9 @@ export class CreateLeaveComponent {
                 detail: 'Leave details saved',
               });
             }
+            this.empForm.reset();
           });
-        this.empForm.reset();
+
         // this.route.navigate(['/navbar/apply']);
       }
     }

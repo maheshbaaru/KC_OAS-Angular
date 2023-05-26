@@ -29,7 +29,7 @@
         <label for="designation-input" class="input-styling" required>From Date
           <span class="required">*</span>
         </label>
-        <p-calendar [showIcon]="true" id="designation-input" placeholder="DD-MM-YYYY"
+        <p-calendar [showIcon]="true" id="designation-input" placeholder="MM-DD-YYYY"
           formControlName="FromDate"  min="minDate"   ></p-calendar>
 
           <small class="text-danger "  *ngIf="!empForm.get('FromDate')?.valid &&(empForm.get('FromDate')?.touched||empForm.get('FromDate')?.dirty)">FromDate is required</small>
@@ -39,7 +39,7 @@
         <label for="designation-input" class="input-styling" required>To Date
           <span class="required">*</span>
         </label>
-        <p-calendar [showIcon]="true" id="designation-input" placeholder="DD-MM-YYYY"
+        <p-calendar [showIcon]="true" id="designation-input" placeholder="MM-DD-YYYY"
           formControlName="ToDate" max="maxDate"  ></p-calendar>
           <small class="text-danger "  *ngIf="!empForm.get('ToDate')?.valid &&(empForm.get('ToDate')?.touched||empForm.get('ToDate')?.dirty)">ToDate is required</small>
 

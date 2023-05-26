@@ -49,6 +49,7 @@ export class LoginComponent {
     if (this.storageService.isLoggedIn()) {
       this.isLoggedIn = true;
       this.roles = this.storageService.getUser().designationID;
+      this.router.navigate(['navbar']);
     }
     this.rememberMe = false;
     this.invalid;
@@ -62,12 +63,17 @@ export class LoginComponent {
   onSubmit() {
     this.password = 'password';
     const { username, password, rememberMe } = this.form;
-    if (!this.form.username || this.form.username == null || !this.form.password || this.form.password ==null) {
+    if (
+      !this.form.username ||
+      this.form.username == null ||
+      !this.form.password ||
+      this.form.password == null
+    ) {
       // for (const control of Object.keys(this.form.controls)) {
       //   // this.form.controls[control].markAsTouched();
       //   // this.form.controls[control].markAsDirty();
       //   this.loginForm=false
-      
+
       // }
 
       this.messageService.clear();
@@ -77,8 +83,6 @@ export class LoginComponent {
         detail: 'Please fill the required fields',
         sticky: true,
       });
- 
-     
     } else {
       this.authService.login(username, password).subscribe({
         next: (data: any) => {
@@ -99,12 +103,11 @@ export class LoginComponent {
               this.isLoggedIn = false;
               this.router.navigate(['navbar']);
             }
-        
           } else {
             this.messageService.clear();
             // this.errorMessage = 'Username/Password is incorrect';
             this.isLoginFailed = true;
-            this.messageService.add({   
+            this.messageService.add({
               severity: 'error',
               summary: 'Error',
               detail: 'Username/Password is incorrect ',
@@ -112,8 +115,6 @@ export class LoginComponent {
             });
           }
         },
-
-       
       });
       if (rememberMe) {
         sessionStorage.setItem('rememberMe', 'yes');

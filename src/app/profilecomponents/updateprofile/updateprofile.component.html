@@ -136,7 +136,7 @@
           <input type="text" formControlName="email" class="p-inputtext-normal h-2rem" required pInputText
             placeholder="Enter Email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"/>
             <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-              <div *ngIf="f['email'].errors['required']">ToDate is required</div>
+              <div *ngIf="f['email'].errors['required']">Email is required</div>
             </div>
           <br />
           <br />
@@ -145,7 +145,7 @@
           <input type="text" formControlName="designationId" class="p-inputtext-normal h-2rem" required pInputText  style="cursor: not-allowed"
           placeholder="Enter designationId" [ngClass]="{ 'is-invalid': submitted && f['designationId'].errors }"/>
           <div *ngIf="submitted && f['designationId'].errors" class="invalid-feedback">
-            <div *ngIf="f['designationId'].errors['required']">ToDate is required</div>
+            <div *ngIf="f['designationId'].errors['required']">DesignationID is required</div>
           </div>
           <br />
           <br />

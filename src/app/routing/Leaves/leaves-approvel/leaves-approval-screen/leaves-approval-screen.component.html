@@ -8,42 +8,42 @@
             <button pButton class="h-1rem" style="float: right; font-size: smaller;margin-right:10px;"
         routerLink="../../leavesApprov"><i class="pi pi-arrow-left icon"></i>BACK</button>
             <button pButton  style="float: right; font-size: smaller;margin-right:10px;"
-            class="p-button-success h-1rem" 
+            class="p-button-success h-1rem"
             style="float: right; margin-right: 15px; font-size: smaller;padding-right: 12px;"
-            form="myForm" 
-            type="submit" 
+            form="myForm"
+            type="submit"
             >
-                <i class="pi pi-check icon" ></i> 
+                <i class="pi pi-check icon" ></i>
                 SAVE
             </button>
         </div>
     </div>
     <p-toast position="top-center"></p-toast>
-    <form 
+    <form
     class="laps-contnt-container"
-     id="myForm" 
+     id="myForm"
      #myForm="ngForm"
-      (ngSubmit)="onSave(myForm.form.valid)">
+      (ngSubmit)="onSave(myForm.form)">
         <div class="cont2" >
-        
-            <label for="designation-input" class="input-styling" 
+
+            <label for="designation-input" class="input-styling"
               >LeaveType
               <span class="required">*</span>
             </label>
             <p-dropdown
             [options]="leaveType"
-            optionLabel="leaveTypeName"
+            optionLabel="name"
             [showClear]="true"
             name="leaveTypeName"
             placeholder="Select Leave Type"
             (onChange)="onSelectLeaveTye($event.value)"
-            [(ngModel)]="leaveTypeName2"
+            [(ngModel)]="speficEmployeeLeaveData.leaveTypeId"
             [required]="true"
-            #leaveTypeDropdown="ngModel" 
+            #leaveTypeDropdown="ngModel"
             [ngClass]="{ 'error': isSubmited && leaveTypeDropdown.errors }"
             ></p-dropdown>
-            
-            
+
+
               <div *ngIf="isSubmited && leaveTypeDropdown.errors" class="alert alert-danger">
                 <span style="font-size: 12px;" *ngIf="leaveTypeDropdown.errors?.['required']">Leave type is required.</span>
               </div>
@@ -52,8 +52,8 @@
         </div>
 
         <div class="cont2" >
-        
-            <label for="name" class="input-styling" 
+
+            <label for="name" class="input-styling"
               >EmpId
               <span class="required">*</span>
             </label>
@@ -65,39 +65,39 @@
               [readonly]="true"
               style="cursor: not-allowed;"
               ></p-dropdown>
-          
+
             </div>
-        
+
           <div class="cont2">
             <label for="numofDays" class="input-styling">numofDays <span class="required">*</span></label>
-            
-            <input 
-            type="text" 
+
+            <input
+            type="text"
             id="numofDays"
             pInputText
             class="h-2rem"
-             disabled 
+             disabled
              style="cursor: not-allowed;"
-              name="numofDays" 
+              name="numofDays"
               [(ngModel)]="speficEmployeeLeaveData.numOfDays"/>
         </div>
-       
-       
+
+
       <div class="cont2">
         <label for="fromDate" class="input-styling">FromDate <span class="required">*</span></label>
-            <input 
-            type="text" 
+            <input
+            type="text"
             pInputText
             id="fromDate"
             class="h-2rem"
-             name="fromDate"  
+             name="fromDate"
              disabled
              style="cursor: not-allowed;"
              [ngModel]="speficEmployeeLeaveData.fromDate | date: 'MM-dd-yyyy'"
               (ngModelChange)="speficEmployeeLeaveData.fromDate=$event"
               />
        </div>
-    
+
        <div class="cont2">
         <label for="toDate" class="input-styling">ToDate <span class="required">*</span></label>
         <input
@@ -105,8 +105,8 @@
          pInputText
         id="toDate"
         class="h-2rem"
-        disabled 
-         name="toDate" 
+        disabled
+         name="toDate"
          style="cursor: not-allowed;"
         [ngModel]="speficEmployeeLeaveData.toDate | date: 'MM-dd-yyyy'"
         (ngModelChange)="speficEmployeeLeaveData.toDate=$event"
@@ -115,69 +115,68 @@
 
        <div class="cont2">
         <label for="appliedOn" class="input-styling">AppliedOn <span class="required">*</span></label>
-            
-            <input 
-            type="text" 
-            id="appliedOn" 
+
+            <input
+            type="text"
+            id="appliedOn"
             class="h-2rem"
-             disabled 
+             disabled
              pInputText
               name="appliedOn"
               style="cursor: not-allowed;"
-            [ngModel]="speficEmployeeLeaveData.appliedOn | date: 'dd-MM-yyyy'"
+            [ngModel]="speficEmployeeLeaveData.appliedOn | date: 'MM-dd-yyyy'"
               (ngModelChange)="speficEmployeeLeaveData.appliedOn=$event"
             />
         </div>
 
          <div class="cont2">
             <label for="comments" class="input-styling">Comments <span class="required">*</span></label>
-            
-            <input 
-            type="text" 
+
+            <input
+            type="text"
             id="comments"
             pInputText
             class="h-2rem"
-             disabled 
-              name="comments" 
+             disabled
+              name="comments"
               style="cursor: not-allowed;"
               [(ngModel)]="speficEmployeeLeaveData.comments"/>
         </div>
 
          <div class="cont2">
             <label for="toDate" class="input-styling">Admin Comments <span class="required">*</span></label>
-            
-            <input 
+
+            <input
             type="text"
-             id="Admin-comments" 
+             id="Admin-comments"
              pInputText
              class="h-2rem"
-             disabled value="Admin Comments" 
-             name="Admin-comments" 
+             disabled value="Admin Comments"
+             name="Admin-comments"
              style="cursor: not-allowed;"
              [(ngModel)]="speficEmployeeLeaveData.adminComments"/>
         </div>
 
 
         <div class="cont2" >
-        
-            <label for="StatusId" class="input-styling" 
+            <label for="StatusId" class="input-styling"
               >Status ID
               <span class="required">*</span>
             </label>
             <p-dropdown
               [options]="statusId"
-              optionLabel="statusType"
+              optionLabel="name"
               [showClear]="true"
               name="StatusId"
               placeholder="Select Status Type"
               (onChange)="onSelectStatusType($event.value)"
-              [(ngModel)]="statusTypeName2"
+              [(ngModel)]="speficEmployeeLeaveData.statusId"
               [required]="true"
-              #statusType="ngModel" 
+              #statusType="ngModel"
               [ngClass]="{ 'error': isSubmited && statusType.errors  }"
               ></p-dropdown>
 
-              
+
               <div *ngIf="isSubmited && statusType.errors" class="alert alert-danger">
                 <span style="font-size: 12px;" *ngIf="statusType.errors?.['required']">Status type is required.</span>
               </div>
@@ -186,5 +185,4 @@
             </div>
     </form>
   </div>
-  
-  
+
