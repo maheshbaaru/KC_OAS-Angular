@@ -21,7 +21,6 @@
         (click)="save()"
       >
         <i class="pi pi-check icon"></i>SAVE
-        
       </button>
     </div>
   </ng-template>
@@ -85,6 +84,8 @@
             formControlName="designationName"
             optionLabel="name"
             placeholder="Select Role"
+            class="align-items-center"
+            [style]="{ width: '95%' }"
           ></p-dropdown>
           <small
             class="text-danger"
@@ -175,6 +176,8 @@
             optionLabel="shiftName"
             formControlName="shiftName"
             placeholder="Select Shift"
+            class="align-items-center"
+            [style]="{ width: '95%' }"
           ></p-dropdown>
           <small
             class="text-danger"
