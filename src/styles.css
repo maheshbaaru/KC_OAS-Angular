@@ -7,6 +7,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif !important;}
     color: red;
 
 }
+.p-toast .p-toast-message .p-toast-message-content{
+    font-size: smaller;
+}
+.p-toast {
+    position: fixed;
+   width:20rem !important;
+}
+.p-toast-top-center {
+    top: 20px;
+    left: 100%;
+    transform: translate(-50%);
+}
 .p-component{
     font-family:  Roboto, "Helvetica Neue", sans-serif !important;
 }
