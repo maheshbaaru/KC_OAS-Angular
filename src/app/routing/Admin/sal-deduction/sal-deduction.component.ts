@@ -117,7 +117,7 @@ export class SalDeductionComponent {
       this.selectedLOP = this.form.value.LOPDAYS;
       (this.month = formatDate(
         this.form.value.Month,
-        'YYYY-MM-dd',
+        'YYYY-MM-dd HH:mm:ss',
         this.local
       )),
         (this.description = this.form.value.TaxTypeId.type);
