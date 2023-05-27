@@ -36,6 +36,13 @@
            <td>{{Employee.email}}</td>
            <td>{{Employee.designationName}}</td>
            <td>{{Employee.panNumber}}</td>
+           <td>
+            <p-checkbox
+              [(ngModel)]="Employee.isActive"
+              [binary]="true"
+              inputId="binary"
+            ></p-checkbox>
+          </td>
 
 <td>{{Employee.shiftName}}</td>
   </tr>
