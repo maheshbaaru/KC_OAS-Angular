@@ -64,6 +64,7 @@ export class LeavesApprovalScreenComponent {
           .getSpecifiEmployeeLeavesDataById()
           .subscribe((result1: any) => {
             for (const result of result1) {
+              this.leaveTypeName=result.leaveTypeId
               this.speficEmployeeLeaveData = {
                 adminComments: result.adminComments,
                 appliedOn:formatDate( result.appliedOn, 'MM-dd-yyyy', this.local),
@@ -71,6 +72,7 @@ export class LeavesApprovalScreenComponent {
                 empId: result.empId,
                 fromDate: formatDate(result.fromDate, 'MM-dd-yyyy', this.local),
                 id: result.id,
+              
                 leaveTypeId: {
                   id: result.leaveTypeId,
                   name: result.leaveTypeName,

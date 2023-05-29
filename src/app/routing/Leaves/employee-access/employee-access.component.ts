@@ -29,6 +29,19 @@ export class EmployeeAccessComponent {
       this.empAccess = res.filter(
         (dat: any) => dat.employeeId == loogedUser.employeeID
       );
+      this.empAccess=this.empAccess.map((person: any) => ({
+        ...person,
+
+        employeeId:
+          person.employeeId < 10
+            ? 'KC00' + person.employeeId
+            : person.employeeId && person.employeeId < 100
+            ? 'KC0' + person.employeeId
+            : person.employeeId && person.employeeId >= 100
+            ? 'KC' + person.employeeId
+            : person.employeeId,
+      }));
+      console.log(this.empAccess);
     });
   }
 }

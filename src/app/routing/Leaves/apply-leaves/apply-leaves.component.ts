@@ -14,6 +14,7 @@ export class ApplyLeavesComponent {
   employeeLeavs: any;
   appliedLeaves: any;
   cols: any[];
+  employee: any;
   constructor(
     private empSer: EmployeeService,
     @Inject(LOCALE_ID) public local: string
@@ -25,11 +26,25 @@ export class ApplyLeavesComponent {
       this.employeeLeavs = data.filter(
         (dat: any) => dat.empId == loogedUser.employeeID * 1
       );
+      this.employeeLeavs=this.employeeLeavs.map((person: any) => ({
+        ...person,
+
+        empId:
+          person.empId < 10
+            ? 'KC00' + person.empId
+            : person.empId && person.empId < 100
+            ? 'KC0' + person.empId
+            : person.empId && person.empId >= 100
+            ? 'KC' + person.empId
+            : person.empId,
+      }));
+      console.log(this.employeeLeavs);
+      
     });
     this.cols = [
       { field: 'empId', header: 'Emp ID' },
       { field: 'empName', header: 'Emp Name' },
-      { field: 'leaveTypeName', header: 'Leave Type' },
+      { field: 'leaveTypeId', header: 'Leave Type' },
       { field: 'numOfDays', header: 'Num Of Days' },
       { field: 'fromDate', header: 'From Date' },
       { field: 'toDate', header: 'To Date' },
