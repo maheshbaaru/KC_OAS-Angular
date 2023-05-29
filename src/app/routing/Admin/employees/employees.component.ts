@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
+import { EmployeeService } from 'src/app/services/employee.service';
 //import { Router } from '@angular/router';
 @Component({
   selector: 'app-employees',
@@ -11,10 +12,12 @@ export class EmployeesComponent {
   cols: any[];
   constructor(
     //private router:Router,
-    private service: EmployeedDataService
+    private service: EmployeedDataService,private Empser:EmployeeService
   ) {}
 
   ngOnInit(): void {
+
+   
     this.service.getEmployeeList().subscribe((data1: any) => {
       this.empdata = data1;
       // this.cols = [
@@ -38,5 +41,21 @@ export class EmployeesComponent {
       { field: 'isActive', header: 'IsActive' },
       { field: 'shiftName', header: 'Shift' },
     ];
+  }
+
+  updatedata(data:any){
+    this.Empser.UpdateEmployeeData(data,).subscribe((res)=>{
+      if (res) {
+        this.getEmployeeList();
+      
+      }
+
+    });
+
+  }
+  getEmployeeList() {
+    this.service.getEmployeeById(this.empdata.id).subscribe((res) => {
+      this.empdata.patchValue(res);
+    });
   }
 }
