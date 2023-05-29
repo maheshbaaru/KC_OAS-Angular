@@ -49,7 +49,6 @@ export class CreateLeaveComponent {
       this.statusTypes = res;
 
       this.status = this.statusTypes[0];
-      console.log(this.status.name);
     });
     this.empForm = this.formBuilder.group({
       leaveTypeId: [null, Validators.required],

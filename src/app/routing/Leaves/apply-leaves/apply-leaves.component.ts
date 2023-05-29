@@ -25,7 +25,6 @@ export class ApplyLeavesComponent {
       this.employeeLeavs = data.filter(
         (dat: any) => dat.empId == loogedUser.employeeID * 1
       );
-      console.log(data);
     });
     this.cols = [
       { field: 'empId', header: 'Emp ID' },

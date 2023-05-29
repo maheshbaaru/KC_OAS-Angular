@@ -35,9 +35,8 @@ export class UpdateprofileComponent {
     private authServ: AuthguardService,
 
     private messageService: MessageService,
-    @Inject(LOCALE_ID) public local: string,
-
-  ) { }
+    @Inject(LOCALE_ID) public local: string
+  ) {}
 
   get f(): { [key: string]: AbstractControl } {
     return this.updateform.controls;
@@ -72,7 +71,6 @@ export class UpdateprofileComponent {
       }),
     });
 
-
     this.formdataget();
   }
   userdata: any;
@@ -96,7 +94,6 @@ export class UpdateprofileComponent {
     // this.updateform.patchValue(this.userdata);
     // //  if (!userdata.isActive) this.updateform.controls['isActive'].disable();
     // });
-
   }
 
   //  formdataget() {
@@ -113,7 +110,6 @@ export class UpdateprofileComponent {
         this.updateform.controls[control].markAsDirty();
       }
 
-
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
@@ -122,7 +118,6 @@ export class UpdateprofileComponent {
       });
       return;
     } else if (this.updateform.valid) {
-
       this.service
         .updateprofile(this.updateform.value, this.userdata.id)
         .subscribe((res) => {
@@ -137,8 +132,6 @@ export class UpdateprofileComponent {
         });
       this.submitted = true;
 
-
-
       // this.router.navigate(['navbar/Employees']);
     }
   }
@@ -147,10 +140,7 @@ export class UpdateprofileComponent {
     this.service.getEmployeeById(this.userdata.id).subscribe((res) => {
       this.updateform.patchValue(res);
 
-      console.log(res);
-
       // this.submitted = true;
-
 
       for (const control of Object.keys(this.updateform.controls)) {
         this.updateform.controls[control].markAsTouched();

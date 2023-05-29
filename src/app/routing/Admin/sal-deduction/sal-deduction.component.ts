@@ -80,7 +80,6 @@ export class SalDeductionComponent {
           }`,
         }));
         this.employeeName = employeeData;
-        console.log(this.employeeName);
       });
     });
     this.cols = [
