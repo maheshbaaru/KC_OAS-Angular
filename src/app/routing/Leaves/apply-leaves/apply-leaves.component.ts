@@ -25,11 +25,12 @@ export class ApplyLeavesComponent {
       this.employeeLeavs = data.filter(
         (dat: any) => dat.empId == loogedUser.employeeID * 1
       );
+      console.log(data);
     });
     this.cols = [
       { field: 'empId', header: 'Emp ID' },
       { field: 'empName', header: 'Emp Name' },
-      { field: 'leaveTypeId', header: 'Leave Type' },
+      { field: 'leaveTypeName', header: 'Leave Type' },
       { field: 'numOfDays', header: 'Num Of Days' },
       { field: 'fromDate', header: 'From Date' },
       { field: 'toDate', header: 'To Date' },

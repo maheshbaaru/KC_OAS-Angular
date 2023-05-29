@@ -9,7 +9,7 @@
   </div>
   </ng-template>
 
-  <p-table  #dt1 [columns]="cols" [value]="employeeLeavs" styleClass="p-datatable p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="15" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,15,20,25]"
+  <p-table   [columns]="cols" [value]="employeeLeavs" styleClass="p-datatable p-datatable-gridlines p-datatable-striped" [paginator]="true" [rows]="15" [showCurrentPageReport]="true"  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,15,20,25]"
    [globalFilterFields]="['empId','empName', 'leaveTypeId','numOfDays','fromDate','toDate','appliedOn','status','comments','adminComments']" responsiveLayout="scroll">
 
 
@@ -32,7 +32,7 @@
       <tr >
         <td >{{emp.empId}}</td>
         <td>{{emp.empName}}</td>
-        <td>{{emp.leaveTypeId}}</td>
+        <td>{{emp.leaveTypeName}}</td>
         <td>{{emp.numOfDays}}</td>
         <td>{{emp.fromDate | date:"MM-dd-yyyy"}}</td>
         <td>{{emp.toDate | date:"MM-dd-yyyy"}}</td>
