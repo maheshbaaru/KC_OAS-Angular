@@ -25,19 +25,18 @@
      #myForm="ngForm"
       (ngSubmit)="onSave(myForm.form)">
         <div class="cont2" >
-
             <label for="designation-input" class="input-styling"
               >LeaveType
               <span class="required">*</span>
             </label>
             <p-dropdown
-            [options]="leaveType"
+            [options]="leaveData"
             optionLabel="name"
             [showClear]="true"
-            name="leaveTypeName"
+            name="name"
             placeholder="Select Leave Type"
             (onChange)="onSelectLeaveTye($event.value)"
-            [(ngModel)]="speficEmployeeLeaveData.leaveTypeId"
+            [(ngModel)]="speficEmployeeLeaveData && speficEmployeeLeaveData.leaveTypeId" 
             [required]="true"
             #leaveTypeDropdown="ngModel"
             [ngClass]="{ 'error': isSubmited && leaveTypeDropdown.errors }"
@@ -57,14 +56,15 @@
               >EmpId
               <span class="required">*</span>
             </label>
-            <p-dropdown
-              [options]="[speficEmployeeLeaveData]"
-              optionLabel="name"
-              [showClear]="true"
-              name="name"
-              [readonly]="true"
-              style="cursor: not-allowed;"
-              ></p-dropdown>
+            <input
+            type="text"
+            id="empName"
+            pInputText
+         
+             disabled
+             class="disabledButton h-2rem"
+              name="empName"
+              [(ngModel)]="speficEmployeeLeaveData &&  speficEmployeeLeaveData.name"/>
 
             </div>
 
@@ -75,11 +75,11 @@
             type="text"
             id="numofDays"
             pInputText
-            class="h-2rem"
+         
              disabled
-             style="cursor: not-allowed;"
+             class="disabledButton h-2rem"
               name="numofDays"
-              [(ngModel)]="speficEmployeeLeaveData.numOfDays"/>
+              [(ngModel)]="speficEmployeeLeaveData &&  speficEmployeeLeaveData.numOfDays"/>
         </div>
 
 
@@ -89,12 +89,11 @@
             type="text"
             pInputText
             id="fromDate"
-            class="h-2rem"
              name="fromDate"
              disabled
-             style="cursor: not-allowed;"
-             [ngModel]="speficEmployeeLeaveData.fromDate | date: 'MM-dd-yyyy'"
-              (ngModelChange)="speficEmployeeLeaveData.fromDate=$event"
+             class="disabledButton h-2rem"
+             [(ngModel)]="speficEmployeeLeaveData && speficEmployeeLeaveData.fromDate "
+           
               />
        </div>
 
@@ -104,12 +103,12 @@
          type="text"
          pInputText
         id="toDate"
-        class="h-2rem"
+        class="disabledButton h-2rem"
         disabled
          name="toDate"
-         style="cursor: not-allowed;"
-        [ngModel]="speficEmployeeLeaveData.toDate | date: 'MM-dd-yyyy'"
-        (ngModelChange)="speficEmployeeLeaveData.toDate=$event"
+        
+        [(ngModel)]="speficEmployeeLeaveData && speficEmployeeLeaveData.toDate"
+   
         />
        </div>
 
@@ -119,13 +118,13 @@
             <input
             type="text"
             id="appliedOn"
-            class="h-2rem"
+            
              disabled
              pInputText
               name="appliedOn"
-              style="cursor: not-allowed;"
-            [ngModel]="speficEmployeeLeaveData.appliedOn | date: 'MM-dd-yyyy'"
-              (ngModelChange)="speficEmployeeLeaveData.appliedOn=$event"
+              class="disabledButton h-2rem"
+            [(ngModel)]="speficEmployeeLeaveData && speficEmployeeLeaveData.appliedOn"
+              
             />
         </div>
 
@@ -136,11 +135,11 @@
             type="text"
             id="comments"
             pInputText
-            class="h-2rem"
+     
              disabled
               name="comments"
-              style="cursor: not-allowed;"
-              [(ngModel)]="speficEmployeeLeaveData.comments"/>
+              class="disabledButton h-2rem"
+              [(ngModel)]="speficEmployeeLeaveData && speficEmployeeLeaveData.comments"/>
         </div>
 
          <div class="cont2">
@@ -150,11 +149,11 @@
             type="text"
              id="Admin-comments"
              pInputText
-             class="h-2rem"
+             class="disabledButton h-2rem"
              disabled value="Admin Comments"
              name="Admin-comments"
-             style="cursor: not-allowed;"
-             [(ngModel)]="speficEmployeeLeaveData.adminComments"/>
+            
+             [(ngModel)]="speficEmployeeLeaveData && speficEmployeeLeaveData.adminComments"/>
         </div>
 
 
@@ -170,7 +169,7 @@
               name="StatusId"
               placeholder="Select Status Type"
               (onChange)="onSelectStatusType($event.value)"
-              [(ngModel)]="speficEmployeeLeaveData.statusId"
+              [(ngModel)]="speficEmployeeLeaveData && speficEmployeeLeaveData.statusId"
               [required]="true"
               #statusType="ngModel"
               [ngClass]="{ 'error': isSubmited && statusType.errors  }"

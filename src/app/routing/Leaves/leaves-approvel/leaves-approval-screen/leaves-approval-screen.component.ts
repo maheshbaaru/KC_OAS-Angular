@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { LeavesService } from 'src/app/services/leaves.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { formatDate } from '@angular/common';
 interface statustype {
   statusType: string;
 }
@@ -21,12 +22,12 @@ export interface EmployeeInterFace {
   id?: number;
 
   lastName?: string;
-  leaveTypeId?: number;
+  leaveTypeId?: object;
 
   leaveTypeName?: string;
   numOfDays?: number;
-  statusId?: number;
-
+  statusId?: object;
+name:string;
   statusTypeName?: string;
   toDate?: string;
 }
@@ -41,8 +42,10 @@ export class LeavesApprovalScreenComponent {
     private leaveSer: LeavesService,
     private empservice: EmployeeService,
     private route: ActivatedRoute,
-    private messageService: MessageService
+    private messageService: MessageService,
+    @Inject(LOCALE_ID) public local: string
   ) {}
+  speficEmployeeLeaveData: EmployeeInterFace
 
   leaveTypeName = 'Sick';
   statusIdName = 'Approved';
@@ -50,10 +53,39 @@ export class LeavesApprovalScreenComponent {
   isSubmited = false;
   leaveType: any;
   statusId: any;
-  leaveTypeName2: leavetype;
-  statusTypeName2: statustype;
+  leaveData:any
 
   ngOnInit() {
+    this.leaveSer.getLeaveType().subscribe((resp) => {
+      this.leaveData = resp;
+      this.leaveSer.getStatus().subscribe((res) => {
+        this.statusId = res;
+        this.empservice
+          .getSpecifiEmployeeLeavesDataById()
+          .subscribe((result1: any) => {
+            for (const result of result1) {
+              this.speficEmployeeLeaveData = {
+                adminComments: result.adminComments,
+                appliedOn:formatDate( result.appliedOn, 'MM-dd-yyyy', this.local),
+                comments: result.comments,
+                empId: result.empId,
+                fromDate: formatDate(result.fromDate, 'MM-dd-yyyy', this.local),
+                id: result.id,
+                leaveTypeId: {
+                  id: result.leaveTypeId,
+                  name: result.leaveTypeName,
+                },
+                numOfDays: result.numOfDays,
+                statusId: { id: result.statusId, name: result.statusTypeName },
+                toDate:   formatDate(result.toDate, 'MM-dd-yyyy', this.local),
+                firstName: result.firstName,
+                lastName: result.lastName,
+                name: `${result.firstName} ${result.lastName}`,
+              };
+            }
+          });
+      });
+    });
     const toast = document.getElementById('success-toast') as HTMLElement;
     if (toast) {
       toast.textContent = '';
@@ -61,38 +93,8 @@ export class LeavesApprovalScreenComponent {
     }
 
     this.activeRoutIdFunction();
-    this.leaveSer.getLeaveType().subscribe((res) => {
-      this.leaveType = res;
-    });
-    this.leaveSer.getStatus().subscribe((res) => {
-      this.statusId = res;
-      this.empservice
-        .getSpecifiEmployeeLeavesDataById()
-        .subscribe((result1: any) => {
-          for (const result of result1) {
-            this.speficEmployeeLeaveData = {
-              adminComments: result.adminComments,
-              appliedOn: result.appliedOn,
-              comments: result.comments,
-              empId: result.empId,
-              fromDate: result.fromDate,
-              id: result.id,
-              leaveTypeId: {
-                id: result.leaveTypeId,
-                name: result.leaveTypeName,
-              },
-              numOfDays: result.numOfDays,
-              statusId: { id: result.statusId, name: result.statusTypeName },
-              toDate: result.toDate,
-              firstName: result.firstName,
-              lastName: result.lastName,
-              leaveTypeName: result.leaveTypeName,
-              statusTypeName: result.statusTypeName,
-              name: `${result.firstName} ${result.lastName}`,
-            };
-          }
-        });
-    });
+    
+   
   }
   activeRoutIdFunction() {
     const activatedRouteId = this.route.snapshot.paramMap.get('id');
@@ -100,12 +102,10 @@ export class LeavesApprovalScreenComponent {
   }
 
   onSelectLeaveTye(event: any) {
-    this.leaveTypeName2 = event;
     this.leaveTypeName = event.id;
   }
 
   onSelectStatusType(event: any) {
-    this.statusTypeName2 = event;
     this.statusIdName = event.id;
   }
 
@@ -113,7 +113,6 @@ export class LeavesApprovalScreenComponent {
     return true;
   }
 
-  speficEmployeeLeaveData: any;
 
   // statusId = [
   //   { statusType: 'Approved' },
@@ -136,8 +135,7 @@ export class LeavesApprovalScreenComponent {
   onSave(event: any) {
     if (event) {
       this.isSubmited = true;
-      let leaveTypeid = null;
-      let statusId = null;
+     
       const postData = {
         statusId: this.statusIdName,
         leaveTypeId: this.leaveTypeName,

@@ -40,6 +40,7 @@ export class LeavesApprovelComponent {
   employeeName: any;
   date: Date;
 
+
   minDate: Date;
 
   maxDate: Date;
@@ -70,7 +71,19 @@ export class LeavesApprovelComponent {
   ngOnInit() {
     this.empservice.appliedLeaves().subscribe((data) => {
       this.leavesApproved = data;
-      this.httpstoredData = data;
+      const employeeData = this.leavesApproved.map((emp: any) => ({
+        ...emp,
+        empId:emp.empId < 10
+        ? 'KC00' + emp.empId
+        : emp.empId && emp.empId < 100
+        ? 'KC0' + emp.empId
+        : emp.empId && emp.empId >= 100
+        ? 'KC' + emp.empId
+        : emp.empId,
+        Name: emp.firstName&&emp.lastName?`${emp.firstName}${emp.lastName}`:'',
+      }));
+      this.httpstoredData=employeeData;
+      this.leavesApproved=employeeData
     });
 
     this.empservice.getAllEmployees().subscribe((res) => {
@@ -97,7 +110,7 @@ export class LeavesApprovelComponent {
 
     this.cols = [
       { field: 'empId', header: 'Emp ID' },
-      { field: 'empName', header: 'Emp Name' },
+      { field: 'Name', header: 'Emp Name' },
       { field: 'leaveTypeId', header: 'Leave Type' },
       { field: 'numOfDays', header: 'Num Of Days' },
       { field: 'fromDate', header: 'From Date' },
@@ -109,9 +122,6 @@ export class LeavesApprovelComponent {
     ];
   }
 
-  // ngDoCheck(){
-
-  // }
 
   ngAfterViewInit() {
     this.leaveSer.getStatus().subscribe((res) => (this.statusTypes = res));
@@ -120,32 +130,36 @@ export class LeavesApprovelComponent {
   empfilterTable(event: any, data: any) {
     if (event === null) {
       this.leavesApproved = this.httpstoredData;
+    }else{
+      const empnameData = this.leavesApproved.filter(
+        (e: any) => e.empName == event.Name
+      );
+  
+      if (empnameData.length !== 0) {
+        this.leavesApproved = empnameData;
+      } else {
+        this.leavesApproved = {};
+      }
     }
-    const empnameData = this.leavesApproved.filter(
-      (e: any) => e.empName == event.Name
-    );
-
-    if (empnameData.length !== 0) {
-      this.leavesApproved = empnameData;
-    } else {
-      this.leavesApproved = {};
-    }
+    
   }
 
   statusFilterTable(event: any) {
     if (event === null) {
       this.leavesApproved = this.httpstoredData;
+    }else{
+      const statusData = this.leavesApproved.filter(
+        (e: any) => e.statusId == event.id
+      );
+  
+      if (statusData.length !== 0) {
+        this.leavesApproved = statusData;
+      } else {
+        this.leavesApproved = {};
+      }
     }
 
-    const statusData = this.leavesApproved.filter(
-      (e: any) => e.statusId == event.id
-    );
-
-    if (statusData.length !== 0) {
-      this.leavesApproved = statusData;
-    } else {
-      this.leavesApproved = {};
-    }
+    
   }
 
   fromcalenderFilterTable(event: any, date: any) {

@@ -19,7 +19,6 @@
               placeholder="Select Employee"
               optionLabel="Name"
               [showClear]="true"
-                formControlName="empName"
                 (onChange)=empfilterTable($event.value,empDropDown)
                 #empDropDown
                 >
@@ -50,8 +49,7 @@
               id="designation-input"
               dateFormat="mm-dd-yy"
               placeholder="MM-DD-YYYY"
-               name="year"
-                formControlName="year"
+        
                 (click)="fromcalenderFilterTable($event, fromCalender)"
                 #fromCalender
                 >
@@ -64,16 +62,12 @@
              [showIcon]="true"
              id="designation-input"
               placeholder="MM-DD-YYYY"
-              name="yearTo"
               dateFormat="mm-dd-yy"
-              formControlName="yearTo"
               (click)="tocalenderFilterTable($event, toCalender)"
               #toCalender
               ></p-calendar>
         </div>
-
       </form>
-
 
 </div>
 
@@ -106,12 +100,11 @@
       <tr>
         <td >
           <a [routerLink]="['../approval-screen', emp.id]" class="empId">
-             KC{{emp.empId<100?'0'+emp.empId:emp.empId}}
+             {{emp.empId}}
           </a>
         </td>
         <td>{{emp.empName}}</td>
-        <td>{{emp.leaveTypeId}}</td>
-
+        <td>{{emp.leaveTypeName}}</td>
         <td>{{emp.numOfDays}}</td>
         <td>{{emp.fromDate | date:"MM-dd-yyyy HH:mm:ss"}}</td>
         <td>{{emp.toDate | date:"MM-dd-yyyy HH:mm:ss"}}</td>
