@@ -12,8 +12,11 @@ export class EmployeesComponent {
   cols: any[];
   constructor(
     //private router:Router,
-    private service: EmployeedDataService,private Empser:EmployeeService
-  ) {}
+  //   private service: EmployeedDataService,private Empser:EmployeeService
+  // ) {}
+    private service: EmployeedDataService
+    , private _ser: EmployeeService
+  ) { }
 
   ngOnInit(): void {
 
@@ -43,19 +46,31 @@ export class EmployeesComponent {
     ];
   }
 
-  updatedata(data:any){
-    this.Empser.UpdateEmployeeData(data,).subscribe((res)=>{
-      if (res) {
-        this.getEmployeeList();
+  // updatedata(data:any){
+  //   this.Empser.UpdateEmployeeData(data,).subscribe((res)=>{
+  //     if (res) {
+  //       this.getEmployeeList();
       
-      }
+  //     }
 
-    });
+  //   });
 
-  }
+  // }
   getEmployeeList() {
     this.service.getEmployeeById(this.empdata.id).subscribe((res) => {
       this.empdata.patchValue(res);
     });
   }
+
+  checkedChange(event: any, empId: any) {
+    let id = parseInt(empId.replace("KC", ''));
+    console.log(event.checked);
+    this._ser.updateEmpStatus(event.checked, id).subscribe((res) => {
+      console.log(res);
+    });
+
+  }
+
+
 }
+
