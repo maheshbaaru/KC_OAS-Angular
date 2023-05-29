@@ -37,7 +37,7 @@ export class SalDeductionListComponent {
         ...person,
         effectedMonth: formatDate(
           person.effectedMonth,
-          'YYYY-MM-dd HH:mm:ss',
+          'MM-dd-YYYY HH:mm:ss',
           this.local
         ),
         empId:
