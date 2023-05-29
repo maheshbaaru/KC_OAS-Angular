@@ -11,6 +11,13 @@ const httpOptions = {
 })
 export class EmployeedDataService {
   constructor(private http: HttpClient) {}
+
+  getEmployeeData(){
+    return this.http.get<any>(
+      environment.API_URL + environment.BASE_URL + 'GetEmployeeTbls',
+      httpOptions
+    );
+  }
   getEmployeeList() {
     return this.http.get<any>(
       environment.API_URL + environment.BASE_URL + 'GetEmployees',
