@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EmployeedDataService } from 'src/app/services/EmployeesDataService';
+import { EmployeeService } from 'src/app/services/employee.service';
 //import { Router } from '@angular/router';
 @Component({
   selector: 'app-employees',
@@ -12,7 +13,8 @@ export class EmployeesComponent {
   constructor(
     //private router:Router,
     private service: EmployeedDataService
-  ) {}
+    , private _ser: EmployeeService
+  ) { }
 
   ngOnInit(): void {
     this.service.getEmployeeList().subscribe((data1: any) => {
@@ -39,4 +41,17 @@ export class EmployeesComponent {
       { field: 'shiftName', header: 'Shift' },
     ];
   }
+
+
+  checkedChange(event: any, empId: any) {
+    let id = parseInt(empId.replace("KC", ''));
+    console.log(event.checked);
+    this._ser.updateEmpStatus(event.checked, id).subscribe((res) => {
+      console.log(res);
+    });
+
+  }
+
+
 }
+

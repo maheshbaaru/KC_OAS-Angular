@@ -15,7 +15,7 @@ export class EmployeeService {
   // +++++++++++//
   currentid: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -118,5 +118,10 @@ export class EmployeeService {
       `${this.API_CALL}/UpdateEmployeeTbl?employeeID=${form.employeeID}&Email=${form.Email}&isActive=${form.checked}&FirstName=${form.FirstName}&PanNumber=${form.PanNumber}&LastName=${form.LastName}&shiftId=${form.shiftId.shiftId}&DesignationId=${form.DesignationId.id}`,
       this.httpOptions
     );
+  }
+  updateEmpStatus(event: any, id: any) { 
+    return this.http.put<any>(
+      `${this.API_CALL}/UpdateEmployeeTbl?isActive=${event}&EmployeeId=${id}`, this.httpOptions);
+
   }
 }
