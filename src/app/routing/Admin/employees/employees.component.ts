@@ -66,7 +66,12 @@ export class EmployeesComponent {
     let id = parseInt(empId.replace("KC", ''));
     this._ser.updateEmpStatus(event.checked, id).subscribe((res) => {
     });
+  }
+    getAllInactiveEmployees(empdata:any){
 
+
+    debugger;
+    console.log(empdata);
   }
 
 
