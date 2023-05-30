@@ -24,10 +24,10 @@
     display: flex;
     justify-content: space-between;
 }
-img{
+/* img{
 border-radius: 50%;
 
-}
+} */
 /*
 .div-img{
     justify-content: center;
@@ -73,8 +73,9 @@ footer {
    cursor: pointer;
    font-size: medium;
    font-weight:400;
-   padding-right: 25px;
+   padding-left: 37px;
 }
 .profile-class{
     width:50px;
+    border-radius: 50%;
 }
