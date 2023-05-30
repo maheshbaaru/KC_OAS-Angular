@@ -12,6 +12,8 @@ import { EmployeService } from '../../services/employeBankService';
 })
 export class BankDetailsComponent implements OnInit{
   employees: Employee[] | any;
+  
+  employees2: Employee[] | any;
 
   employeeSearchText:string
   
@@ -21,7 +23,7 @@ export class BankDetailsComponent implements OnInit{
 
   statuses: any[] | any;
 
-  loading: boolean = true;
+  
 
   @ViewChild('dt') table: Table | any;
 
@@ -37,8 +39,29 @@ export class BankDetailsComponent implements OnInit{
       //});
 
 this.employeeService.getEmployeeData().subscribe((result:any)=>{
-    this.employees=result;
-    this.loading=false;
+   
+    // this.employees=result;
+    this.employees2=result;
+
+    const employeeData = this.employees2.map((person: any) => ({
+        ...person,
+
+        empId:
+          person.empId < 10
+            ? 'KC00' + person.empId
+            : person.empId && person.empId < 100
+            ? 'KC0' + person.empId
+            : person.empId && person.empId >= 100
+            ? 'KC' + person.empId
+            : person.empId,
+          }));
+      this.employees = employeeData;
+
+
+
+
+
+
 })
      
 

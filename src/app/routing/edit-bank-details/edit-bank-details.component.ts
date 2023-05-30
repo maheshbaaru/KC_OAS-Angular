@@ -54,7 +54,9 @@ export class EditBankDetailsComponent implements OnInit {
     const activatedRouteId = this.route.snapshot.paramMap.get('id');
     return this.employeeService.id(activatedRouteId);
   }
+  
   onClickSave(event: any) {
+    console.log(this.employeeNameArray)
     if (event) {
       this.submited = true;
 

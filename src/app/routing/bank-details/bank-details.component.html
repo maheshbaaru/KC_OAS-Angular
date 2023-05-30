@@ -19,7 +19,7 @@
 <div class="table-bottom-container">
     <p-table 
         #dt [value]="employees" [(selection)]="selectedCustomers" dataKey="id" styleClass="p-datatable-customers" [rowHover]="true"
-        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" 
         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [tableStyle]="{'min-height': '20rem'}"
         [filterDelay]="0" styleClass="p-datatable-gridlines" 
         [globalFilterFields]="['empId','accno','firstName','lastName','bankName']">
@@ -78,8 +78,8 @@
                             KC{{employee.EmpId<100?'0'+employee.EmpId:employee.EmpId}}
                         </a> -->
                         
-                        <a [routerLink]="['../edit-bank-details', employee.empId]" class="empId">
-                            KC{{employee.empId<100?'0'+employee.empId:employee.empId}}
+                        <a [routerLink]="['../edit-bank-details', employee.id]" class="empId">
+                            {{employee.empId}}
                         </a>
 
                     </td>
