@@ -64,9 +64,7 @@ export class EmployeesComponent {
 
   checkedChange(event: any, empId: any) {
     let id = parseInt(empId.replace("KC", ''));
-    console.log(event.checked);
     this._ser.updateEmpStatus(event.checked, id).subscribe((res) => {
-      console.log(res);
     });
 
   }

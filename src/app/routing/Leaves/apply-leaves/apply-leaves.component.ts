@@ -38,7 +38,7 @@ export class ApplyLeavesComponent {
             ? 'KC' + person.empId
             : person.empId,
       }));
-      console.log(this.employeeLeavs);
+    
       
     });
     this.cols = [

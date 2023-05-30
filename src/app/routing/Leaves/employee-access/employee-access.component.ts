@@ -41,7 +41,7 @@ export class EmployeeAccessComponent {
             ? 'KC' + person.employeeId
             : person.employeeId,
       }));
-      console.log(this.empAccess);
+
     });
   }
 }
