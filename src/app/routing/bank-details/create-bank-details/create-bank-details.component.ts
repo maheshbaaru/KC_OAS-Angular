@@ -102,8 +102,7 @@ export class CreateBankDetailsComponent implements OnInit {
       );
 
       this.newArray = {
-        id: this.idArray.id,
-        empId: this.idArray.empId,
+        empId: this.employeDetails.value.EmpNameById.id,
         accno: this.employeDetails.value.ACCNO,
         bankName: 'Kotak Bank',
         accname: this.employeDetails.value.ACCNAME,
