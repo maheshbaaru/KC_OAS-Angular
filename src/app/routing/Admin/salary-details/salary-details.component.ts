@@ -27,11 +27,13 @@ export class SalaryDetailsComponent {
       const salDetails = this.empSalDetails.map((person: any) => ({
         ...person,
         Eid:
-          person.empId < 100
-            ? 'KC0' + person.empId
-            : person.empId && person.employeeId >= 100
-            ? 'KC' + person.employeeId
-            : person.employeeId,
+        person.empId < 10
+        ? 'KC00' + person.empId
+        : person.empId && person.empId < 100
+        ? 'KC0' + person.empId
+        : person.empId && person.empId >= 100
+        ? 'KC' + person.empId
+        : person.empId,
 
         Name: `${person.firstName ? person.firstName : ''} ${
           person.lastName ? person.lastName : ''
