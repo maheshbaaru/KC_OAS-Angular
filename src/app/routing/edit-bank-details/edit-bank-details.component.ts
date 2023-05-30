@@ -28,7 +28,17 @@ export class EditBankDetailsComponent implements OnInit {
   ) {}
 
   employeess: EmployeeInterFace[] | any;
-  employeeNameArray: any;
+  // employeeNameArray: any;
+  employeeNameArray={
+      "id": null,
+      "empId": null,
+      "accno": "",
+      "bankName": "",
+      "accname": "",
+      "firstName": "",
+      "lastName": "",
+      "Name": ""
+  }
   activedRouteId: string | null;
   employees: any;
 
@@ -49,12 +59,16 @@ export class EditBankDetailsComponent implements OnInit {
         }));
         this.employeeNameArray = newEmpData[0];
       });
+      console.log(this.employeeNameArray)
   }
   activeRoutIdFunction() {
     const activatedRouteId = this.route.snapshot.paramMap.get('id');
     return this.employeeService.id(activatedRouteId);
   }
   
+  // ngDoCheck(){
+  //   console.log(this.employeeNameArray)
+  // }
   onClickSave(event: any) {
     console.log(this.employeeNameArray)
     if (event) {
