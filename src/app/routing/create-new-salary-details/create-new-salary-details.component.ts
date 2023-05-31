@@ -29,6 +29,7 @@ export class CreateNewSalaryDetailsComponent {
   LastRevisedDate: any;
   NextRevisedDate: any;
   Eid: any;
+  id: any;
   submitted = false;
 
   constructor(
@@ -101,8 +102,9 @@ export class CreateNewSalaryDetailsComponent {
             sticky: true,
           });
         } else {
-          this.EmpId = this.empForm.value.EmpId.employeeID;
-          this.Eid = this.EmpId.replace('KC0', '');
+          // this.id = this.empForm.value.EmpId.id;
+          this.EmpId = this.empForm.value.EmpId.id;
+          // this.Eid = this.EmpId.replace('KC', '');
 
           this.Salary = this.empForm.value.Salary;
           this.LastRevisedDate = formatDate(
@@ -118,7 +120,8 @@ export class CreateNewSalaryDetailsComponent {
 
           this._service
             .CreatenewSalaryDetails(
-              this.Eid,
+              // this.id,
+              this.EmpId,
               this.Salary,
               this.LastRevisedDate,
               this.NextRevisedDate
