@@ -10,11 +10,7 @@
         placeholder="Search Employee"
         (input)="table.filterGlobal($any($event.target).value, 'contains')"
       />
-    </div>
-    <div class="col-3">
-      <p-checkbox   [binary]="true" 
-      inputId="binary"></p-checkbox><label style="color: white;padding-left: 10px;">InActive</label>
-    </div>
+    </div> 
     <div class="col-sm-6" style="text-align: right">
       <button
         pButton
