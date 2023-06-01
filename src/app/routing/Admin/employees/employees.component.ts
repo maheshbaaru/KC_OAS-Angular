@@ -67,12 +67,7 @@ export class EmployeesComponent {
     this._ser.updateEmpStatus(event.checked, id).subscribe((res) => {
     });
   }
-    getAllInactiveEmployees(empdata:any){
-
-
-    debugger;
-    console.log(empdata);
-  }
+    
 
 
 }
